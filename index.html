@@ -143,45 +143,53 @@ transform:translateY(-1px);
 padding:96px var(--pad);
 }
 
+/* FIX: keep top spacing, remove bottom gap before solution section */
 .hero-section{
 min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
+padding-top:96px;
+padding-right:var(--pad);
+padding-left:var(--pad);
+padding-bottom:0;
 }
 
-/* SECTION 2 has its own height */
+/* SECTION 2 */
 .solution-section{
-  position: relative;
-  min-height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 70px var(--pad);
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  overflow: hidden;
+position:relative;
+min-height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:70px var(--pad);
+border-top:1px solid rgba(255,255,255,.06);
+border-bottom:1px solid rgba(255,255,255,.06);
+overflow:hidden;
 }
 
 .solution-section::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(8,22,58,.45), rgba(8,22,58,.70)),
-    url("airport.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index:0;
+content:"";
+position:absolute;
+inset:0;
+background:
+linear-gradient(rgba(8,22,58,.45), rgba(8,22,58,.70)),
+url("airport.jpg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+z-index:0;
 }
 
 .solution-stack{
-  position: relative;
-  z-index: 1;
-}    
-    
-    
+position:relative;
+z-index:1;
+display:grid;
+gap:14px;
+text-align:center;
+max-width:900px;
+margin:auto;
+}
 
 /* combined 3 + 4 section */
 .journey-story-section{
@@ -299,14 +307,6 @@ margin-top:4px;
 }
 
 /* solution */
-
-.solution-stack{
-display:grid;
-gap:14px;
-text-align:center;
-max-width:900px;
-margin:auto;
-}
 
 .solution-lead{
 font-size:clamp(22px,2vw,30px);
@@ -698,28 +698,37 @@ One journey — yet it takes multiple apps to make it work.
 
 </section>
 
-<section class="section solution-section">
+<section class="solution-section">
 
-<div class="solution-stack">
-    
-<div class="line-2">
-But the journey is one continuous experience.
-</div>
+  <div class="solution-stack">
+      
+    <div class="line-2">
+      But the journey is one continuous experience.
+    </div>
 
-<h2 style="font-size:clamp(42px,6vw,92px)">
-Travelpin keeps it together.
-</h2>
+    <h2 style="font-size:clamp(42px,6vw,92px)">
+      Travelpin keeps it together.
+    </h2>
 
-<p class="solution-lead">
-One calm layer across the journey — before you leave,
-while you move, and long after you arrive.
-</p>
+    <p class="solution-lead">
+      One calm layer across the journey — before you leave,
+      while you move, and long after you arrive.
+    </p>
 
-</div>
+  </div>
 
 </section>
 
 <section class="section journey-story-section" id="product-story">
+
+<div class="story-intro">
+<h2 class="chapter-title">
+From leaving home to remembering why you went.
+</h2>
+<p>
+Travelpin brings the trip into one calm flow — leave on time, pack what matters, stay updated, keep others in the loop, and hold on to the journey after it ends.
+</p>
+</div>
 
 <div class="story-shell">
 
@@ -962,4 +971,4 @@ syncPhoneToScroll()
 </script>
 
 </body>
-</html>
+</html>-- please give me correct versionEOF
