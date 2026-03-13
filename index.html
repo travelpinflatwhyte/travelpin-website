@@ -29,6 +29,8 @@
 
   --glass:rgba(255,255,255,.08);
   --glass-border:rgba(255,255,255,.12);
+  --section-space:112px;
+  --section-space-mobile:90px;
 }
 
 *{box-sizing:border-box;}
@@ -145,7 +147,7 @@ body{
   font-weight:600;
   font-size:14px;
   cursor:pointer;
-  transition:.2s;
+  transition:background .22s ease, transform .22s ease, border-color .22s ease;
   text-decoration:none;
   display:inline-flex;
   align-items:center;
@@ -170,7 +172,7 @@ body{
 /* layout */
 
 .section{
-  padding:96px var(--pad);
+  padding:var(--section-space) var(--pad);
 }
 
 .wrap{
@@ -254,6 +256,14 @@ p{
   max-width:920px;
 }
 
+.hero-signal-note{
+  margin-top:20px;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(238,243,255,.64);
+}
+
 .hero-signal-item{
   font-size:13px;
   letter-spacing:.02em;
@@ -286,11 +296,11 @@ p{
   background-position:0 100%;
   background-size:0 2px;
   padding-bottom:.1em;
-  transition:background-size .62s cubic-bezier(.22,.61,.36,1);
+  transition:background-size .24s cubic-bezier(.22,.61,.36,1);
 }
 
 .wing-underline--blue{ --underline-color:#1F93C8; }
-.wing-underline--orange{ --underline-color:#FFC813; }
+.wing-underline--orange{ --underline-color:#F29C01; }
 .wing-underline--white{ --underline-color:#FCFCFC; }
 
 body.intro-animate .wing-underline{
@@ -325,7 +335,7 @@ body.intro-animate .wing-underline{
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:80px var(--pad);
+  padding:var(--section-space) var(--pad);
   overflow:hidden;
   border-top:1px solid rgba(255,255,255,.06);
   border-bottom:1px solid rgba(255,255,255,.06);
@@ -428,13 +438,9 @@ body.intro-animate .wing-underline{
 /* product intro + story */
 
 .journey-story-section{
-  padding-top:100px;
-  padding-bottom:120px;
-  background:
-    radial-gradient(900px 500px at 15% 30%, rgba(90,120,255,0.18), transparent 60%),
-    radial-gradient(700px 500px at 85% 70%, rgba(255,170,210,0.10), transparent 60%),
-    radial-gradient(600px 400px at 50% 110%, rgba(255,210,120,0.08), transparent 70%),
-    linear-gradient(to right, #08163a 0%, #08163a 70%, #3b2f63 100%);
+  padding-top:var(--section-space);
+  padding-bottom:var(--section-space);
+  background:linear-gradient(to right, #08163a 0%, #08163a 70%, #3b2f63 100%);
 }
 
 .story-intro{
@@ -526,7 +532,7 @@ body.intro-animate .wing-underline{
   border:1px solid rgba(255,255,255,.06);
   opacity:.38;
   transform:scale(.985);
-  transition:opacity .3s ease, transform .3s ease, background .3s ease, border-color .3s ease;
+  transition:opacity .24s ease, transform .24s ease, background .24s ease, border-color .24s ease;
 }
 
 .feature-item.active{
@@ -587,7 +593,7 @@ body.intro-animate .wing-underline{
   margin:0 auto;
   opacity:0;
   transform:translateY(16px) scale(.985);
-  transition:transform .6s ease, opacity .6s ease;
+  transition:transform .26s ease, opacity .26s ease;
 }
 
 .phone-frame.in-view{
@@ -657,7 +663,7 @@ body.intro-animate .wing-underline{
   padding:18px 16px 18px;
   opacity:0;
   transform:translateX(14px);
-  transition:opacity .35s ease, transform .35s ease;
+  transition:opacity .24s ease, transform .24s ease;
   pointer-events:none;
   display:flex;
   flex-direction:column;
@@ -828,8 +834,8 @@ body.intro-animate .wing-underline{
 /* philosophy */
 
 .philosophy-section{
-  padding-top:120px;
-  padding-bottom:120px;
+  padding-top:var(--section-space);
+  padding-bottom:var(--section-space);
   background:#ffffff;
   border-top:1px solid rgba(8,22,58,.08);
   border-bottom:1px solid rgba(8,22,58,.08);
@@ -862,8 +868,8 @@ body.intro-animate .wing-underline{
 /* final cta */
 
 .final-cta{
-  padding-top:120px;
-  padding-bottom:140px;
+  padding-top:var(--section-space);
+  padding-bottom:var(--section-space);
   background:
     radial-gradient(760px 420px at 84% 18%, rgba(240,160,255,.16), transparent 64%),
     radial-gradient(900px 520px at 12% 92%, rgba(110,145,255,.14), transparent 68%),
@@ -889,7 +895,7 @@ body.intro-animate .wing-underline{
   margin-left:8px;
   opacity:.72;
   transform:translateX(0);
-  transition:transform .16s ease, opacity .16s ease;
+  transition:transform .2s ease, opacity .2s ease;
 }
 
 .final-cta .btn:hover::after,
@@ -901,7 +907,7 @@ body.intro-animate .wing-underline{
 .reveal{
   opacity:0;
   transform:translateY(12px);
-  transition:opacity .45s ease, transform .45s ease;
+  transition:opacity .26s ease, transform .26s ease;
   will-change:opacity, transform;
 }
 
@@ -939,6 +945,11 @@ body.intro-animate .wing-underline{
     gap:8px;
   }
 
+  .hero-signal-note{
+    margin-top:14px;
+    font-size:11px;
+  }
+
   .hero-signal-item{
     font-size:12px;
     padding:7px 10px;
@@ -961,8 +972,8 @@ body.intro-animate .wing-underline{
   .pause-section,
   .final-cta,
   .philosophy-section{
-    padding-top:90px;
-    padding-bottom:90px;
+    padding-top:var(--section-space-mobile);
+    padding-bottom:var(--section-space-mobile);
   }
 }
 
@@ -1033,11 +1044,11 @@ body.intro-animate .wing-underline{
           
         <div class="story-block">
           <div class="problem-item">One journey — yet it takes multiple apps to make it work.</div>
-          <div class="problem-item">That’s how travel feels today.</div>
         </div>
 
       </div>
 
+      <div class="hero-signal-note">But the journey is one continuous experience.</div>
       <div class="hero-signal-strip">
         <div class="hero-signal-item">Live flight updates</div>
         <div class="hero-signal-item">Smart checklist</div>
@@ -1446,6 +1457,9 @@ window.addEventListener('resize', () => {
 setupReveals();
 updateNavBehavior();
 syncFeatureByScroll();
+document.querySelectorAll('.problem-list .wing-underline').forEach((el, idx) => {
+  el.style.transitionDelay = `${70 * idx}ms`;
+});
 requestAnimationFrame(() => {
   document.body.classList.add('intro-animate');
 });
