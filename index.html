@@ -474,17 +474,12 @@ body.intro-animate .wing-underline{
 }
 
 .feature-list-intro{
-  position:sticky;
-  top:120px;
-  z-index:5;
-  margin-bottom:14px;
-  padding:4px 0 18px;
-  background:linear-gradient(
-    180deg,
-    rgba(8,22,58,.95) 0%,
-    rgba(8,22,58,.88) 70%,
-    rgba(8,22,58,0) 100%
-  );
+  position:relative;
+  top:auto;
+  z-index:1;
+  margin-bottom:20px;
+  padding:0;
+  background:none;
 }
 
 .feature-list-meta{
@@ -518,64 +513,171 @@ body.intro-animate .wing-underline{
   line-height:1.08;
 }
 
-.feature-rail{
+.feature-mobile-detail{
+  display:none;
+}
+
+.feature-mobile-viewer{
+  display:none;
+}
+
+.feature-rail-wrap{
   position:sticky;
   top:236px;
+  min-height:460px;
   display:grid;
-  gap:14px;
+  grid-template-columns:46px minmax(0, 1fr);
+  column-gap:16px;
+  align-items:start;
+}
+
+.feature-rail-nav{
+  position:sticky;
+  top:118px;
+  display:grid;
+  gap:10px;
+}
+
+.feature-nav-btn{
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.9);
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  transition:background .22s ease, transform .22s ease, border-color .22s ease, opacity .22s ease;
+}
+
+.feature-nav-btn:hover{
+  background:rgba(255,255,255,.14);
+  transform:translateY(-1px);
+}
+
+.feature-nav-btn:disabled{
+  opacity:.45;
+  cursor:default;
+  transform:none;
+}
+
+.feature-rail{
+  display:grid;
+  gap:12px;
+  align-content:start;
+  padding-left:8px;
 }
 
 .feature-item{
-  padding:18px 20px;
-  border-radius:22px;
-  background:rgba(255,255,255,.03);
-  border:1px solid rgba(255,255,255,.06);
-  opacity:.38;
-  transform:scale(.985);
-  transition:opacity .24s ease, transform .24s ease, background .24s ease, border-color .24s ease;
+  appearance:none;
+  padding:0;
+  border-radius:0;
+  background:transparent;
+  border:0;
+  transition:transform .24s ease;
+  cursor:pointer;
+  width:fit-content;
+  max-width:100%;
+  overflow:hidden;
+}
+
+.feature-item-head{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  width:fit-content;
+  padding:10px 16px 10px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.10);
+  transition:background .24s ease, border-color .24s ease, transform .24s ease, box-shadow .24s ease;
+}
+
+.feature-item-icon{
+  width:30px;
+  height:30px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.64);
+  color:rgba(255,255,255,.82);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  line-height:1;
+  flex:none;
 }
 
 .feature-item.active{
-  opacity:1;
-  transform:scale(1);
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 8px 24px rgba(9,19,58,.28);
-  animation:featurePulse .7s ease-out 1;
+  width:100%;
 }
 
-@keyframes featurePulse{
-  0%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 0 rgba(140,175,255,.28); }
-  100%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 8px 24px rgba(9,19,58,.28); }
+.feature-item.active .feature-item-head{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.16);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 8px 24px rgba(9,19,58,.2);
+}
+
+.feature-item.active .feature-item-icon{
+  border-color:#F29C01;
+  background:#F29C01;
+  color:#0b1228;
+}
+
+.feature-item.active .feature-item-icon::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background:#0b1228;
+}
+
+.feature-item.active .feature-item-plus{
+  display:none;
+}
+
+.feature-item:focus-visible{
+  outline:2px solid rgba(170,205,255,.78);
+  outline-offset:2px;
 }
 
 .feature-item-title{
-  font-size:clamp(22px,2.2vw,30px);
-  line-height:1.15;
-  letter-spacing:-.03em;
-  font-weight:700;
-  color:#fff;
+  font-size:clamp(16px,1.45vw,22px);
+  line-height:1.2;
+  letter-spacing:-.02em;
+  font-weight:650;
+  color:rgba(255,255,255,.92);
 }
 
 .feature-item-copy{
+  margin-top:0;
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(-4px);
+  font-size:clamp(15px,1.05vw,19px);
+  line-height:1.35;
+  letter-spacing:-.02em;
+  color:rgba(255,255,255,.86);
+  transition:max-height .28s ease, opacity .22s ease, transform .22s ease, margin-top .22s ease;
+  will-change:max-height, opacity, transform;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
+  padding:0 16px;
+  width:min(100%, 560px);
+}
+
+.feature-item.active .feature-item-copy{
   margin-top:10px;
-  font-size:clamp(16px,1.25vw,19px);
-  line-height:1.45;
-  color:rgba(255,255,255,.72);
+  max-height:260px;
+  opacity:1;
+  transform:translateY(0);
+  padding:12px 16px;
 }
 
 .feature-scroll-track{
-  margin-top:22px;
-}
-
-.feature-scroll-track::after{
-  content:"";
-  display:block;
-  height:34vh;
-}
-
-.feature-step{
-  min-height:48vh;
+  display:none;
 }
 
 .sticky-phone{
@@ -920,9 +1022,15 @@ body.intro-animate .wing-underline{
   .why-now-grid,
   .story-shell{
     grid-template-columns:1fr;
+    gap:18px;
   }
 
   .feature-rail{
+    position:relative;
+    top:auto;
+  }
+
+  .feature-rail-wrap{
     position:relative;
     top:auto;
   }
@@ -955,14 +1063,199 @@ body.intro-animate .wing-underline{
     padding:7px 10px;
   }
 
-  .feature-step{
-    min-height:34vh;
-  }
-
   .sticky-phone{
     position:relative;
     top:auto;
     margin-top:8px;
+  }
+
+  .feature-rail-nav{
+    display:none;
+  }
+
+  .feature-rail-wrap{
+    display:none;
+  }
+
+  .feature-mobile-viewer{
+    display:grid;
+    gap:12px;
+    margin-top:14px;
+  }
+
+  .feature-mobile-stage{
+    position:relative;
+    border-radius:24px;
+    background:rgba(0,0,0,.24);
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+    min-height:250px;
+    display:grid;
+    align-content:end;
+  }
+
+  .feature-mobile-overlay{
+    margin:0 16px 14px;
+    border-radius:18px;
+    background:rgba(32,35,44,.75);
+    border:1px solid rgba(255,255,255,.12);
+    padding:14px 14px;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+
+  .feature-mobile-overlay-title{
+    font-size:clamp(16px,4.6vw,22px);
+    line-height:1.2;
+    letter-spacing:-.01em;
+    font-weight:650;
+    color:#fff;
+  }
+
+  .feature-mobile-overlay-copy{
+    margin-top:6px;
+    font-size:clamp(14px,3.6vw,18px);
+    line-height:1.35;
+    color:rgba(255,255,255,.9);
+  }
+
+  .feature-mobile-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:38px;
+    height:38px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(16,22,40,.62);
+    color:rgba(255,255,255,.95);
+    font-size:22px;
+    line-height:1;
+    cursor:pointer;
+    z-index:2;
+  }
+
+  .feature-mobile-arrow--prev{ left:8px; }
+  .feature-mobile-arrow--next{ right:8px; }
+
+  .feature-mobile-pill-row{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:2px 2px 4px;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    margin:0 -2px;
+  }
+
+  .feature-mobile-pill{
+    appearance:none;
+    border:1px solid rgba(255,255,255,.10);
+    background:rgba(255,255,255,.08);
+    color:rgba(255,255,255,.9);
+    border-radius:999px;
+    padding:9px 14px 9px 10px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:clamp(15px,4vw,20px);
+    line-height:1.1;
+    letter-spacing:-.01em;
+    font-weight:600;
+    flex:0 0 auto;
+    scroll-snap-align:start;
+  }
+
+  .feature-mobile-pill-icon{
+    width:22px;
+    height:22px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.64);
+    color:rgba(255,255,255,.82);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:15px;
+    line-height:1;
+  }
+
+  .feature-mobile-pill.active{
+    background:rgba(255,255,255,.11);
+    border-color:rgba(255,255,255,.16);
+  }
+
+  .feature-mobile-pill.active .feature-mobile-pill-icon{
+    border-color:#F29C01;
+    background:#F29C01;
+    color:#0b1228;
+  }
+
+  .feature-mobile-pill.active .feature-mobile-pill-icon::before{
+    content:"";
+    width:8px;
+    height:8px;
+    border-radius:999px;
+    background:#0b1228;
+  }
+
+  .feature-mobile-pill.active .feature-mobile-pill-plus{
+    display:none;
+  }
+
+  .feature-mobile-pill:focus-visible,
+  .feature-mobile-arrow:focus-visible{
+    outline:2px solid rgba(170,205,255,.78);
+    outline-offset:2px;
+  }
+
+  .journey-story-section{
+    padding-bottom:calc(var(--section-space-mobile) + 20px);
+  }
+
+  .feature-nav-btn{
+    width:40px;
+    height:40px;
+    font-size:20px;
+  }
+
+  .feature-item{
+    width:100%;
+  }
+
+  .feature-rail{
+    padding-left:0;
+  }
+
+  .feature-item-head{
+    padding:8px 14px 8px 10px;
+    gap:10px;
+  }
+
+  .feature-item-icon{
+    width:24px;
+    height:24px;
+    font-size:16px;
+  }
+
+  .feature-item.active{
+    width:auto;
+  }
+
+  .feature-item-copy{
+    display:none;
+  }
+
+  .feature-mobile-detail{
+    display:none;
+  }
+
+  .feature-item-title{
+    font-size:clamp(18px,4.9vw,28px);
+  }
+
+  .feature-item-copy{
+    font-size:clamp(15px,3.7vw,20px);
+    max-height:0;
   }
 
   .story-intro{
@@ -1128,39 +1421,60 @@ body.intro-animate .wing-underline{
           <h3 class="feature-list-title">Everything you need, in one place.</h3>
         </div>
 
-        <div class="feature-rail">
-          <div class="feature-item active" data-feature="leave">
-            <div class="feature-item-title">Leave on time.</div>
-            <div class="feature-item-copy">
-              Traffic, timing, and airport buffers come together in one place — so you know when to leave without doing the math in your head.
-            </div>
+        <div class="feature-rail-wrap">
+          <div class="feature-rail-nav">
+            <button class="feature-nav-btn" id="feature-prev" aria-label="Previous feature">&#708;</button>
+            <button class="feature-nav-btn" id="feature-next" aria-label="Next feature">&#709;</button>
           </div>
-
-          <div class="feature-item" data-feature="pack">
-            <div class="feature-item-title">Pack what matters.</div>
-            <div class="feature-item-copy">
-              A checklist shaped around the trip you're taking — not a generic list you have to rebuild every time.
+          <div class="feature-rail">
+            <div class="feature-item active" data-feature="leave">
+              <div class="feature-item-head">
+                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <div class="feature-item-title">Leave on time.</div>
+              </div>
+              <div class="feature-item-copy">
+                Traffic, timing, and airport buffers come together in one place — so you know when to leave without doing the math in your head.
+              </div>
             </div>
-          </div>
 
-          <div class="feature-item" data-feature="updates">
-            <div class="feature-item-title">Stay updated.</div>
-            <div class="feature-item-copy">
-              Flight moments, delays, and changes stay visible without forcing you to jump between tabs and refresh multiple apps.
+            <div class="feature-item" data-feature="pack">
+              <div class="feature-item-head">
+                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <div class="feature-item-title">Pack what matters.</div>
+              </div>
+              <div class="feature-item-copy">
+                A checklist shaped around the trip you're taking — not a generic list you have to rebuild every time.
+              </div>
             </div>
-          </div>
 
-          <div class="feature-item" data-feature="share">
-            <div class="feature-item-title">Keep others in the loop.</div>
-            <div class="feature-item-copy">
-              The people waiting for you don’t need scattered messages. They get a calmer sense of where the journey stands.
+            <div class="feature-item" data-feature="updates">
+              <div class="feature-item-head">
+                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <div class="feature-item-title">Stay updated.</div>
+              </div>
+              <div class="feature-item-copy">
+                Flight moments, delays, and changes stay visible without forcing you to jump between tabs and refresh multiple apps.
+              </div>
             </div>
-          </div>
 
-          <div class="feature-item" data-feature="memory">
-            <div class="feature-item-title">Keep the journey.</div>
-            <div class="feature-item-copy">
-              A trip doesn’t end when you land. Save the moment, add what you felt, and let the memory stay with the place.
+            <div class="feature-item" data-feature="share">
+              <div class="feature-item-head">
+                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <div class="feature-item-title">Keep others in the loop.</div>
+              </div>
+              <div class="feature-item-copy">
+                The people waiting for you don’t need scattered messages. They get a calmer sense of where the journey stands.
+              </div>
+            </div>
+
+            <div class="feature-item" data-feature="memory">
+              <div class="feature-item-head">
+                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <div class="feature-item-title">Keep the journey.</div>
+              </div>
+              <div class="feature-item-copy">
+                A trip doesn’t end when you land. Save the moment, add what you felt, and let the memory stay with the place.
+              </div>
             </div>
           </div>
         </div>
@@ -1274,6 +1588,23 @@ body.intro-animate .wing-underline{
 
           </div>
         </div>
+        <div class="feature-mobile-viewer">
+          <div class="feature-mobile-stage">
+            <button class="feature-mobile-arrow feature-mobile-arrow--prev" id="feature-mobile-prev" aria-label="Previous feature">&#8249;</button>
+            <button class="feature-mobile-arrow feature-mobile-arrow--next" id="feature-mobile-next" aria-label="Next feature">&#8250;</button>
+            <div class="feature-mobile-overlay" id="feature-mobile-overlay">
+              <div class="feature-mobile-overlay-title">Leave on time.</div>
+              <div class="feature-mobile-overlay-copy">Traffic, timing, and airport buffers come together in one place — so you know when to leave without doing the math in your head.</div>
+            </div>
+          </div>
+          <div class="feature-mobile-pill-row" id="feature-mobile-pill-row">
+            <button class="feature-mobile-pill active" data-feature-mobile-index="0"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Leave on time.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="1"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Pack what matters.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="2"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Stay updated.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="3"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Keep others in the loop.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="4"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Keep the journey.</span></button>
+          </div>
+        </div>
       </aside>
 
     </div>
@@ -1303,13 +1634,17 @@ body.intro-animate .wing-underline{
 </main>
 
 <script>
-const featureSteps = Array.from(document.querySelectorAll('.feature-step'));
 const panels = Array.from(document.querySelectorAll('[data-screen-panel]'));
 const featureItems = Array.from(document.querySelectorAll('.feature-item'));
 const featureProgressEl = document.querySelector('#feature-progress');
+const featurePrevBtn = document.querySelector('#feature-prev');
+const featureNextBtn = document.querySelector('#feature-next');
+const featureMobilePrevBtn = document.querySelector('#feature-mobile-prev');
+const featureMobileNextBtn = document.querySelector('#feature-mobile-next');
+const featureMobilePills = Array.from(document.querySelectorAll('[data-feature-mobile-index]'));
+const featureMobileOverlay = document.querySelector('#feature-mobile-overlay');
 const phone = document.querySelector('.phone-frame');
 const nav = document.querySelector('.nav');
-const journeyStorySection = document.querySelector('#product-story');
 const revealTargets = [
   '.hero-title',
   '.problem-list .story-block',
@@ -1323,7 +1658,12 @@ const revealTargets = [
 let ticking = false;
 let currentPanel = null;
 let lastScrollY = window.scrollY;
+let activeFeatureIndex = 0;
 const featureNames = featureItems.map(item => item.getAttribute('data-feature')).filter(Boolean);
+const featureDetailData = featureItems.map((item) => ({
+  title: (item.querySelector('.feature-item-title')?.textContent || '').trim(),
+  copy: (item.querySelector('.feature-item-copy')?.textContent || '').trim()
+}));
 
 function showPanel(name){
   if(currentPanel === name) return;
@@ -1354,40 +1694,99 @@ function highlightFeature(name){
 function setFeatureByIndex(index){
   if(featureNames.length === 0) return;
   const clamped = Math.max(0, Math.min(featureNames.length - 1, index));
+  activeFeatureIndex = clamped;
   const name = featureNames[clamped];
   showPanel(name);
   highlightFeature(name);
+  featureItems.forEach((item, idx) => {
+    item.setAttribute('aria-selected', idx === clamped ? 'true' : 'false');
+    item.tabIndex = idx === clamped ? 0 : -1;
+  });
   if(featureProgressEl){
     featureProgressEl.textContent = `${clamped + 1}/${featureNames.length}`;
   }
+  if(featureMobileOverlay && featureDetailData[clamped]){
+    const titleEl = featureMobileOverlay.querySelector('.feature-mobile-overlay-title');
+    const copyEl = featureMobileOverlay.querySelector('.feature-mobile-overlay-copy');
+    if(titleEl) titleEl.textContent = featureDetailData[clamped].title;
+    if(copyEl) copyEl.textContent = featureDetailData[clamped].copy;
+  }
+  if(featureMobilePills.length){
+    featureMobilePills.forEach((pill, idx) => {
+      const active = idx === clamped;
+      pill.classList.toggle('active', active);
+      pill.setAttribute('aria-selected', active ? 'true' : 'false');
+      pill.tabIndex = active ? 0 : -1;
+    });
+  }
+  if(featurePrevBtn){
+    featurePrevBtn.disabled = clamped === 0;
+  }
+  if(featureNextBtn){
+    featureNextBtn.disabled = clamped === featureNames.length - 1;
+  }
+  if(featureMobilePrevBtn){
+    featureMobilePrevBtn.disabled = clamped === 0;
+  }
+  if(featureMobileNextBtn){
+    featureMobileNextBtn.disabled = clamped === featureNames.length - 1;
+  }
+  if(window.matchMedia('(max-width: 980px)').matches && featureMobilePills[clamped]){
+    featureMobilePills[clamped].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
 }
 
-function syncFeatureByScroll(){
-  if(!journeyStorySection || featureSteps.length === 0){
-    setFeatureByIndex(0);
-    return;
+function setupFeatureSelector(){
+  featureItems.forEach((item, idx) => {
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', `Show feature ${idx + 1}`);
+    item.addEventListener('click', () => {
+      setFeatureByIndex(idx);
+    });
+    item.addEventListener('keydown', (event) => {
+      if(event.key === 'Enter' || event.key === ' '){
+        event.preventDefault();
+        setFeatureByIndex(idx);
+        return;
+      }
+      if(event.key === 'ArrowDown' || event.key === 'ArrowRight'){
+        event.preventDefault();
+        setFeatureByIndex(idx + 1);
+        featureItems[Math.min(idx + 1, featureItems.length - 1)].focus();
+      }
+      if(event.key === 'ArrowUp' || event.key === 'ArrowLeft'){
+        event.preventDefault();
+        setFeatureByIndex(idx - 1);
+        featureItems[Math.max(idx - 1, 0)].focus();
+      }
+    });
+  });
+  if(featurePrevBtn){
+    featurePrevBtn.addEventListener('click', () => {
+      setFeatureByIndex(activeFeatureIndex - 1);
+    });
   }
-
-  const sectionRect = journeyStorySection.getBoundingClientRect();
-  if(sectionRect.top > window.innerHeight * 0.8){
-    setFeatureByIndex(0);
-    return;
+  if(featureNextBtn){
+    featureNextBtn.addEventListener('click', () => {
+      setFeatureByIndex(activeFeatureIndex + 1);
+    });
   }
-  if(sectionRect.bottom < window.innerHeight * 0.25){
-    setFeatureByIndex(featureSteps.length - 1);
-    return;
+  if(featureMobilePrevBtn){
+    featureMobilePrevBtn.addEventListener('click', () => {
+      setFeatureByIndex(activeFeatureIndex - 1);
+    });
   }
-
-  const firstRect = featureSteps[0].getBoundingClientRect();
-  const lastRect = featureSteps[featureSteps.length - 1].getBoundingClientRect();
-  const triggerY = window.innerHeight * 0.22;
-  const totalSpan = Math.max(lastRect.bottom - firstRect.top, 1);
-  const rawProgress = (triggerY - firstRect.top) / totalSpan;
-
-  /* Bias progression slightly earlier so the phone remains visible at final step. */
-  const biasedProgress = Math.min(Math.max((rawProgress * 1.35), 0), 0.9999);
-  const nextIndex = Math.floor(biasedProgress * featureSteps.length);
-  setFeatureByIndex(nextIndex);
+  if(featureMobileNextBtn){
+    featureMobileNextBtn.addEventListener('click', () => {
+      setFeatureByIndex(activeFeatureIndex + 1);
+    });
+  }
+  featureMobilePills.forEach((pill, idx) => {
+    pill.setAttribute('role', 'button');
+    pill.addEventListener('click', () => {
+      setFeatureByIndex(idx);
+    });
+  });
 }
 
 function updateNavBehavior(){
@@ -1444,7 +1843,6 @@ function onScrollSync(){
   ticking = true;
   requestAnimationFrame(() => {
     updateNavBehavior();
-    syncFeatureByScroll();
     ticking = false;
   });
 }
@@ -1452,11 +1850,11 @@ function onScrollSync(){
 window.addEventListener('scroll', onScrollSync, { passive:true });
 window.addEventListener('resize', () => {
   updateNavBehavior();
-  syncFeatureByScroll();
 });
 setupReveals();
+setupFeatureSelector();
 updateNavBehavior();
-syncFeatureByScroll();
+setFeatureByIndex(0);
 document.querySelectorAll('.problem-list .wing-underline').forEach((el, idx) => {
   el.style.transitionDelay = `${70 * idx}ms`;
 });
