@@ -97,6 +97,8 @@ body{
   z-index:50;
   display:flex;
   justify-content:center;
+  transform:translateY(0);
+  transition:transform .28s cubic-bezier(.22,.61,.36,1);
 }
 
 .nav-inner{
@@ -110,6 +112,17 @@ body{
   border:1px solid rgba(255,255,255,.10);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
+  transition:background .24s ease, border-color .24s ease, box-shadow .24s ease;
+}
+
+.nav.is-hidden{
+  transform:translateY(calc(-100% - 12px));
+}
+
+.nav.scrolled .nav-inner{
+  background:rgba(0,0,0,.28);
+  border-color:rgba(255,255,255,.16);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
 }
 
 .brand{
@@ -142,6 +155,16 @@ body{
 .btn:hover{
   background:var(--btn-hover);
   transform:translateY(-1px);
+}
+
+.btn:active{
+  transform:translateY(0) scale(.985);
+}
+
+.btn:focus-visible{
+  outline:2px solid rgba(180,210,255,.75);
+  outline-offset:2px;
+  box-shadow:0 0 0 5px rgba(125,165,255,.24);
 }
 
 /* layout */
@@ -222,6 +245,25 @@ p{
   max-width:920px;
 }
 
+.hero-signal-strip{
+  margin-top:20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  max-width:920px;
+}
+
+.hero-signal-item{
+  font-size:13px;
+  letter-spacing:.02em;
+  color:rgba(238,243,255,.84);
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+}
+
 .story-block{
   display:grid;
   gap:12px;
@@ -234,6 +276,25 @@ p{
 .problem-item{
   font-size:clamp(22px,2.3vw,30px);
   line-height:1.25;
+}
+
+.wing-underline{
+  --underline-color:#1F93C8;
+  text-decoration:none;
+  background-image:linear-gradient(var(--underline-color), var(--underline-color));
+  background-repeat:no-repeat;
+  background-position:0 100%;
+  background-size:0 2px;
+  padding-bottom:.1em;
+  transition:background-size .62s cubic-bezier(.22,.61,.36,1);
+}
+
+.wing-underline--blue{ --underline-color:#1F93C8; }
+.wing-underline--orange{ --underline-color:#FFC813; }
+.wing-underline--white{ --underline-color:#FCFCFC; }
+
+body.intro-animate .wing-underline{
+  background-size:100% 3px;
 }
 
 .problem-item.dim{
@@ -407,7 +468,25 @@ p{
 }
 
 .feature-list-intro{
-  margin-bottom:28px;
+  position:sticky;
+  top:120px;
+  z-index:5;
+  margin-bottom:14px;
+  padding:4px 0 18px;
+  background:linear-gradient(
+    180deg,
+    rgba(8,22,58,.95) 0%,
+    rgba(8,22,58,.88) 70%,
+    rgba(8,22,58,0) 100%
+  );
+}
+
+.feature-list-meta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:10px;
 }
 
 .feature-list-kicker{
@@ -415,7 +494,17 @@ p{
   letter-spacing:.08em;
   text-transform:uppercase;
   color:rgba(255,255,255,.60);
-  margin-bottom:10px;
+}
+
+.feature-progress{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.66);
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
 }
 
 .feature-list-title{
@@ -425,7 +514,7 @@ p{
 
 .feature-rail{
   position:sticky;
-  top:120px;
+  top:236px;
   display:grid;
   gap:14px;
 }
@@ -445,7 +534,13 @@ p{
   transform:scale(1);
   background:rgba(255,255,255,.08);
   border-color:rgba(255,255,255,.16);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 8px 24px rgba(9,19,58,.28);
+  animation:featurePulse .7s ease-out 1;
+}
+
+@keyframes featurePulse{
+  0%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 0 0 0 rgba(140,175,255,.28); }
+  100%{ box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 8px 24px rgba(9,19,58,.28); }
 }
 
 .feature-item-title{
@@ -464,11 +559,17 @@ p{
 }
 
 .feature-scroll-track{
-  margin-top:32px;
+  margin-top:22px;
+}
+
+.feature-scroll-track::after{
+  content:"";
+  display:block;
+  height:34vh;
 }
 
 .feature-step{
-  min-height:72vh;
+  min-height:48vh;
 }
 
 .sticky-phone{
@@ -484,7 +585,14 @@ p{
   width:min(400px,100%);
   position:relative;
   margin:0 auto;
-  transition:transform .6s ease;
+  opacity:0;
+  transform:translateY(16px) scale(.985);
+  transition:transform .6s ease, opacity .6s ease;
+}
+
+.phone-frame.in-view{
+  opacity:1;
+  transform:translateY(0) scale(1);
 }
 
 .phone-frame:hover{
@@ -509,11 +617,12 @@ p{
   inset:0;
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
   object-position:center top;
   display:block;
   background:#0d1736;
-}    
+  outline:2px solid red;
+}  
     
 
 /* PHONE IMPROVEMENT */
@@ -547,7 +656,7 @@ p{
   inset:0;
   padding:18px 16px 18px;
   opacity:0;
-  transform:translateY(10px);
+  transform:translateX(14px);
   transition:opacity .35s ease, transform .35s ease;
   pointer-events:none;
   display:flex;
@@ -557,8 +666,17 @@ p{
 
 .app-screen.active{
   opacity:1;
-  transform:translateY(0);
+  transform:translateX(0);
   pointer-events:auto;
+}
+
+.app-screen.was-active{
+  opacity:0;
+  transform:translateX(-14px);
+}
+    
+.app-screen--image{
+  padding:0;
 }
 
 .status-row{
@@ -712,6 +830,9 @@ p{
 .philosophy-section{
   padding-top:120px;
   padding-bottom:120px;
+  background:#ffffff;
+  border-top:1px solid rgba(8,22,58,.08);
+  border-bottom:1px solid rgba(8,22,58,.08);
 }
 
 .philosophy-stack{
@@ -720,12 +841,22 @@ p{
   text-align:center;
   display:grid;
   gap:18px;
+  color:#0f214f;
 }
 
 .philosophy-stack .big{
   font-size:clamp(34px,4vw,58px);
   line-height:1.08;
   letter-spacing:-.04em;
+  color:#0b1f4a;
+}
+
+.philosophy-stack .eyebrow{
+  color:rgba(15,33,79,.64);
+}
+
+.philosophy-stack p{
+  color:rgba(15,33,79,.76);
 }
 
 /* final cta */
@@ -733,6 +864,10 @@ p{
 .final-cta{
   padding-top:120px;
   padding-bottom:140px;
+  background:
+    radial-gradient(760px 420px at 84% 18%, rgba(240,160,255,.16), transparent 64%),
+    radial-gradient(900px 520px at 12% 92%, rgba(110,145,255,.14), transparent 68%),
+    linear-gradient(180deg, rgba(28,24,76,.86), rgba(24,20,70,.94));
 }
 
 .final-cta-stack{
@@ -749,6 +884,32 @@ p{
   letter-spacing:-.045em;
 }
 
+.final-cta .btn::after{
+  content:"\2192";
+  margin-left:8px;
+  opacity:.72;
+  transform:translateX(0);
+  transition:transform .16s ease, opacity .16s ease;
+}
+
+.final-cta .btn:hover::after,
+.final-cta .btn:focus-visible::after{
+  transform:translateX(3px);
+  opacity:1;
+}
+
+.reveal{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .45s ease, transform .45s ease;
+  will-change:opacity, transform;
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
 @media (max-width: 980px){
   .why-now-grid,
   .story-shell{
@@ -760,8 +921,31 @@ p{
     top:auto;
   }
 
+  .feature-list-intro{
+    position:relative;
+    top:auto;
+    margin-bottom:28px;
+    padding:0;
+    background:none;
+  }
+
+  .feature-list-meta{
+    flex-wrap:wrap;
+    margin-bottom:8px;
+  }
+
+  .hero-signal-strip{
+    margin-top:12px;
+    gap:8px;
+  }
+
+  .hero-signal-item{
+    font-size:12px;
+    padding:7px 10px;
+  }
+
   .feature-step{
-    min-height:38vh;
+    min-height:34vh;
   }
 
   .sticky-phone{
@@ -785,9 +969,16 @@ p{
 @media (prefers-reduced-motion: reduce){
   .paths .line, .paths .line2{ animation:none; }
   .app-screen{ transition:none; }
+  .app-screen.was-active{ transform:none; }
   .phone-frame{ transition:none; }
   .phone-frame:hover{ transform:none; }
   .phone-frame::before{ animation:none; }
+  .feature-item.active{ animation:none; }
+  .nav{ transition:none; }
+  .nav-inner{ transition:none; }
+  .btn, .final-cta .btn::after{ transition:none; }
+  .reveal{ transition:none; opacity:1; transform:none; }
+  .wing-underline{ transition:none; background-size:100% 3px; }
 }
 </style>
 </head>
@@ -826,17 +1017,17 @@ p{
       <div class="problem-list">
 
         <div class="story-block">
-          <div class="problem-item">Your ✈️ flight details live in one app.</div>
-          <div class="problem-item">Your 🧳 packing checklist sits somewhere else.</div>
+          <div class="problem-item">Your ✈️ <span class="wing-underline wing-underline--blue">flight details</span> live in <span class="wing-underline wing-underline--blue">one app</span>.</div>
+          <div class="problem-item">Your 🧳 <span class="wing-underline">packing checklist</span> sits <span class="wing-underline">somewhere else</span>.</div>
         </div>
 
         <div class="story-block">
           <div class="problem-item">When should I leave to reach the airport before check-in closes?</div>
-          <div class="problem-item">Check traffic • Book 🚕 — in another app.</div>
+          <div class="problem-item">Check traffic • Book 🚕 — <span class="wing-underline wing-underline--orange">in another app</span>.</div>
         </div>
 
         <div class="story-block">
-          <div class="problem-item">To keep your loved ones updated — you message 💬</div>
+          <div class="problem-item">To keep your loved ones updated — <span class="wing-underline wing-underline--white">you message</span> 💬</div>
           <div class="problem-item">🏠 Leaving home • 🛫 Taking off • 🛬 Landed</div>
         </div>
           
@@ -845,6 +1036,13 @@ p{
           <div class="problem-item">That’s how travel feels today.</div>
         </div>
 
+      </div>
+
+      <div class="hero-signal-strip">
+        <div class="hero-signal-item">Live flight updates</div>
+        <div class="hero-signal-item">Smart checklist</div>
+        <div class="hero-signal-item">Private sharing</div>
+        <div class="hero-signal-item">Memory pins</div>
       </div>
     </div>
   </section>
@@ -912,7 +1110,10 @@ p{
       <div class="story-left">
 
         <div class="feature-list-intro">
-          <div class="feature-list-kicker">The journey, together</div>
+          <div class="feature-list-meta">
+            <div class="feature-list-kicker">The journey, together</div>
+            <div class="feature-progress" id="feature-progress">1/5</div>
+          </div>
           <h3 class="feature-list-title">Everything you need, in one place.</h3>
         </div>
 
@@ -971,7 +1172,7 @@ p{
           <div class="phone-screen">
 
             
-              <div class="app-screen active" data-screen-panel="leave">
+              <div class="app-screen app-screen--image active" data-screen-panel="leave">
   <img src="leave-on-time.png" alt="Travelpin ETA screen" class="phone-shot">
 </div>
               
@@ -1094,17 +1295,39 @@ p{
 const featureSteps = Array.from(document.querySelectorAll('.feature-step'));
 const panels = Array.from(document.querySelectorAll('[data-screen-panel]'));
 const featureItems = Array.from(document.querySelectorAll('.feature-item'));
+const featureProgressEl = document.querySelector('#feature-progress');
 const phone = document.querySelector('.phone-frame');
+const nav = document.querySelector('.nav');
+const journeyStorySection = document.querySelector('#product-story');
+const revealTargets = [
+  '.hero-title',
+  '.problem-list .story-block',
+  '.hero-signal-strip',
+  '.solution-stack',
+  '.story-intro',
+  '.feature-list-intro',
+  '.philosophy-stack',
+  '.final-cta-stack'
+];
 let ticking = false;
+let currentPanel = null;
+let lastScrollY = window.scrollY;
+const featureNames = featureItems.map(item => item.getAttribute('data-feature')).filter(Boolean);
 
 function showPanel(name){
+  if(currentPanel === name) return;
   panels.forEach(panel => {
     if(panel.getAttribute('data-screen-panel') === name){
       panel.classList.add('active');
+      panel.classList.remove('was-active');
     }else{
+      if(panel.classList.contains('active')){
+        panel.classList.add('was-active');
+      }
       panel.classList.remove('active');
     }
   });
+  currentPanel = name;
 }
 
 function highlightFeature(name){
@@ -1117,32 +1340,91 @@ function highlightFeature(name){
   });
 }
 
-function syncPhoneToScroll(){
-  if(!phone) return;
+function setFeatureByIndex(index){
+  if(featureNames.length === 0) return;
+  const clamped = Math.max(0, Math.min(featureNames.length - 1, index));
+  const name = featureNames[clamped];
+  showPanel(name);
+  highlightFeature(name);
+  if(featureProgressEl){
+    featureProgressEl.textContent = `${clamped + 1}/${featureNames.length}`;
+  }
+}
 
-  const phoneRect = phone.getBoundingClientRect();
-  const phoneCenterY = phoneRect.top + phoneRect.height / 2;
+function syncFeatureByScroll(){
+  if(!journeyStorySection || featureSteps.length === 0){
+    setFeatureByIndex(0);
+    return;
+  }
 
-  let closest = null;
-  let smallest = Infinity;
+  const sectionRect = journeyStorySection.getBoundingClientRect();
+  if(sectionRect.top > window.innerHeight * 0.8){
+    setFeatureByIndex(0);
+    return;
+  }
+  if(sectionRect.bottom < window.innerHeight * 0.25){
+    setFeatureByIndex(featureSteps.length - 1);
+    return;
+  }
 
-  featureSteps.forEach(step => {
-    const rect = step.getBoundingClientRect();
-    if(rect.bottom < 0 || rect.top > window.innerHeight) return;
+  const firstRect = featureSteps[0].getBoundingClientRect();
+  const lastRect = featureSteps[featureSteps.length - 1].getBoundingClientRect();
+  const triggerY = window.innerHeight * 0.22;
+  const totalSpan = Math.max(lastRect.bottom - firstRect.top, 1);
+  const rawProgress = (triggerY - firstRect.top) / totalSpan;
 
-    const centerY = rect.top + rect.height / 2;
-    const distance = Math.abs(centerY - phoneCenterY);
+  /* Bias progression slightly earlier so the phone remains visible at final step. */
+  const biasedProgress = Math.min(Math.max((rawProgress * 1.35), 0), 0.9999);
+  const nextIndex = Math.floor(biasedProgress * featureSteps.length);
+  setFeatureByIndex(nextIndex);
+}
 
-    if(distance < smallest){
-      smallest = distance;
-      closest = step;
-    }
-  });
+function updateNavBehavior(){
+  if(!nav) return;
+  const y = window.scrollY;
+  nav.classList.toggle('scrolled', y > 20);
 
-  if(closest){
-    const screenName = closest.getAttribute('data-screen');
-    showPanel(screenName);
-    highlightFeature(screenName);
+  if(y < 24){
+    nav.classList.remove('is-hidden');
+  }else if(y > lastScrollY + 6){
+    nav.classList.add('is-hidden');
+  }else if(y < lastScrollY - 6){
+    nav.classList.remove('is-hidden');
+  }
+  lastScrollY = y;
+}
+
+function setupReveals(){
+  const nodes = revealTargets.flatMap(selector => Array.from(document.querySelectorAll(selector)));
+  nodes.forEach(node => node.classList.add('reveal'));
+
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    nodes.forEach(node => node.classList.add('is-visible'));
+    if(phone) phone.classList.add('in-view');
+    return;
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+  nodes.forEach(node => io.observe(node));
+
+  if(phone){
+    const phoneObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          phone.classList.add('in-view');
+          phoneObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+    phoneObserver.observe(phone);
   }
 }
 
@@ -1150,14 +1432,23 @@ function onScrollSync(){
   if(ticking) return;
   ticking = true;
   requestAnimationFrame(() => {
-    syncPhoneToScroll();
+    updateNavBehavior();
+    syncFeatureByScroll();
     ticking = false;
   });
 }
 
 window.addEventListener('scroll', onScrollSync, { passive:true });
-window.addEventListener('resize', syncPhoneToScroll);
-syncPhoneToScroll();
+window.addEventListener('resize', () => {
+  updateNavBehavior();
+  syncFeatureByScroll();
+});
+setupReveals();
+updateNavBehavior();
+syncFeatureByScroll();
+requestAnimationFrame(() => {
+  document.body.classList.add('intro-animate');
+});
 </script>
 
 </body>
