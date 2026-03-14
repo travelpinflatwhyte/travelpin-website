@@ -65,7 +65,7 @@ body{
   fill:none;
   stroke-linecap:round;
   stroke-dasharray:6 10;
-  animation:dash 18s linear infinite;
+  animation:dash 30s linear infinite;
 }
 
 .paths .line2{
@@ -74,7 +74,7 @@ body{
   fill:none;
   stroke-linecap:round;
   stroke-dasharray:10 14;
-  animation:dash 26s linear infinite reverse;
+  animation:dash 42s linear infinite reverse;
 }
 
 @keyframes dash{
@@ -112,8 +112,8 @@ body{
   border-radius:999px;
   background:rgba(0,0,0,.18);
   border:1px solid rgba(255,255,255,.10);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
   transition:background .24s ease, border-color .24s ease, box-shadow .24s ease;
 }
 
@@ -714,8 +714,8 @@ body.intro-animate .wing-underline{
   background:
     radial-gradient(400px 400px at 50% 50%, rgba(120,150,255,0.25), transparent 70%);
   z-index:-1;
-  filter:blur(60px);
-  animation:phoneGlow 6s ease-in-out infinite;
+  filter:blur(36px);
+  animation:phoneGlow 10s ease-in-out infinite;
 }    
     
     
@@ -729,7 +729,7 @@ body.intro-animate .wing-underline{
   object-position:center top;
   display:block;
   background:#0d1736;
-  outline:2px solid red;
+  outline:none;
 }  
     
 
@@ -740,8 +740,14 @@ body.intro-animate .wing-underline{
   position:relative;
   z-index:3;
   pointer-events:none;
-  filter:drop-shadow(0 60px 120px rgba(0,0,0,.55))
-         drop-shadow(0 20px 40px rgba(0,0,0,.35));
+  filter:drop-shadow(0 26px 52px rgba(0,0,0,.42))
+         drop-shadow(0 10px 22px rgba(0,0,0,.28));
+}
+
+body.is-scrolling .paths .line,
+body.is-scrolling .paths .line2,
+body.is-scrolling .phone-frame::before{
+  animation-play-state:paused;
 }
 
 .phone-screen{
@@ -1659,6 +1665,7 @@ let ticking = false;
 let currentPanel = null;
 let lastScrollY = window.scrollY;
 let activeFeatureIndex = 0;
+let scrollIdleTimer = null;
 const featureNames = featureItems.map(item => item.getAttribute('data-feature')).filter(Boolean);
 const featureDetailData = featureItems.map((item) => ({
   title: (item.querySelector('.feature-item-title')?.textContent || '').trim(),
@@ -1839,6 +1846,14 @@ function setupReveals(){
 }
 
 function onScrollSync(){
+  document.body.classList.add('is-scrolling');
+  if(scrollIdleTimer){
+    clearTimeout(scrollIdleTimer);
+  }
+  scrollIdleTimer = setTimeout(() => {
+    document.body.classList.remove('is-scrolling');
+  }, 140);
+
   if(ticking) return;
   ticking = true;
   requestAnimationFrame(() => {
