@@ -466,6 +466,10 @@ body.intro-animate .wing-underline{
   grid-template-columns:1fr 430px;
   gap:clamp(32px,4vw,72px);
   align-items:start;
+  padding:28px;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.02);
 }
 
 .story-left{
@@ -533,7 +537,9 @@ body.intro-animate .wing-underline{
 
 .feature-rail-nav{
   position:sticky;
+  left:0;
   top:118px;
+  transform:none;
   display:grid;
   gap:10px;
 }
@@ -689,7 +695,7 @@ body.intro-animate .wing-underline{
 
 /* PHONE IMPROVEMENT */
 .phone-frame{
-  width:min(400px,100%);
+  width:min(356px,100%);
   position:relative;
   margin:0 auto;
   opacity:0;
@@ -1028,6 +1034,10 @@ body.is-scrolling .phone-frame::before{
   .story-shell{
     grid-template-columns:1fr;
     gap:18px;
+  }
+
+  .story-shell{
+    padding:18px;
   }
 
   .feature-rail{
