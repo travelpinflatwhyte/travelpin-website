@@ -602,15 +602,16 @@ body.intro-animate .wing-underline{
 }
 
 .feature-item-icon{
-  width:30px;
-  height:30px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.64);
+  width:auto;
+  height:auto;
+  border-radius:0;
+  border:0;
+  background:none;
   color:rgba(255,255,255,.82);
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  font-size:20px;
+  font-size:18px;
   line-height:1;
   flex:none;
 }
@@ -626,21 +627,7 @@ body.intro-animate .wing-underline{
 }
 
 .feature-item.active .feature-item-icon{
-  border-color:#F29C01;
-  background:#F29C01;
-  color:#0b1228;
-}
-
-.feature-item.active .feature-item-icon::before{
-  content:"";
-  width:10px;
-  height:10px;
-  border-radius:999px;
-  background:#0b1228;
-}
-
-.feature-item.active .feature-item-plus{
-  display:none;
+  color:#F29C01;
 }
 
 .feature-item:focus-visible{
@@ -1228,10 +1215,11 @@ body.is-scrolling .phone-frame::before{
   }
 
   .feature-mobile-pill-icon{
-    width:22px;
-    height:22px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.64);
+    width:auto;
+    height:auto;
+    border-radius:0;
+    border:0;
+    background:none;
     color:rgba(255,255,255,.82);
     display:inline-flex;
     align-items:center;
@@ -1246,21 +1234,7 @@ body.is-scrolling .phone-frame::before{
   }
 
   .feature-mobile-pill.active .feature-mobile-pill-icon{
-    border-color:#F29C01;
-    background:#F29C01;
-    color:#0b1228;
-  }
-
-  .feature-mobile-pill.active .feature-mobile-pill-icon::before{
-    content:"";
-    width:8px;
-    height:8px;
-    border-radius:999px;
-    background:#0b1228;
-  }
-
-  .feature-mobile-pill.active .feature-mobile-pill-plus{
-    display:none;
+    color:#F29C01;
   }
 
   .feature-mobile-pill:focus-visible,
@@ -1491,7 +1465,7 @@ body.is-scrolling .phone-frame::before{
           <div class="feature-rail">
             <div class="feature-item active" data-feature="leave">
               <div class="feature-item-head">
-                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <span class="feature-item-icon"><span class="feature-item-plus">&#8600;</span></span>
                 <div class="feature-item-title">Leave on time.</div>
               </div>
               <div class="feature-item-copy">
@@ -1501,7 +1475,7 @@ body.is-scrolling .phone-frame::before{
 
             <div class="feature-item" data-feature="pack">
               <div class="feature-item-head">
-                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <span class="feature-item-icon"><span class="feature-item-plus">&#8600;</span></span>
                 <div class="feature-item-title">Pack what matters.</div>
               </div>
               <div class="feature-item-copy">
@@ -1511,7 +1485,7 @@ body.is-scrolling .phone-frame::before{
 
             <div class="feature-item" data-feature="updates">
               <div class="feature-item-head">
-                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <span class="feature-item-icon"><span class="feature-item-plus">&#8600;</span></span>
                 <div class="feature-item-title">Stay updated.</div>
               </div>
               <div class="feature-item-copy">
@@ -1521,7 +1495,7 @@ body.is-scrolling .phone-frame::before{
 
             <div class="feature-item" data-feature="share">
               <div class="feature-item-head">
-                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <span class="feature-item-icon"><span class="feature-item-plus">&#8600;</span></span>
                 <div class="feature-item-title">Keep others in the loop.</div>
               </div>
               <div class="feature-item-copy">
@@ -1531,7 +1505,7 @@ body.is-scrolling .phone-frame::before{
 
             <div class="feature-item" data-feature="memory">
               <div class="feature-item-head">
-                <span class="feature-item-icon"><span class="feature-item-plus">+</span></span>
+                <span class="feature-item-icon"><span class="feature-item-plus">&#8600;</span></span>
                 <div class="feature-item-title">Keep the journey.</div>
               </div>
               <div class="feature-item-copy">
@@ -1661,11 +1635,11 @@ body.is-scrolling .phone-frame::before{
             </div>
           </div>
           <div class="feature-mobile-pill-row" id="feature-mobile-pill-row">
-            <button class="feature-mobile-pill active" data-feature-mobile-index="0"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Leave on time.</span></button>
-            <button class="feature-mobile-pill" data-feature-mobile-index="1"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Pack what matters.</span></button>
-            <button class="feature-mobile-pill" data-feature-mobile-index="2"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Stay updated.</span></button>
-            <button class="feature-mobile-pill" data-feature-mobile-index="3"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Keep others in the loop.</span></button>
-            <button class="feature-mobile-pill" data-feature-mobile-index="4"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">+</span></span><span>Keep the journey.</span></button>
+            <button class="feature-mobile-pill active" data-feature-mobile-index="0"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Leave on time.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="1"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Pack what matters.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="2"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Stay updated.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="3"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Keep others in the loop.</span></button>
+            <button class="feature-mobile-pill" data-feature-mobile-index="4"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Keep the journey.</span></button>
           </div>
         </div>
       </aside>
