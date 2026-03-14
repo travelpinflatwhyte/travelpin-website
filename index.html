@@ -463,9 +463,10 @@ body.intro-animate .wing-underline{
   width:min(var(--max),100%);
   margin:0 auto;
   display:grid;
-  grid-template-columns:1fr 430px;
-  gap:clamp(32px,4vw,72px);
-  align-items:start;
+  grid-template-columns:1fr;
+  gap:clamp(20px,3vw,36px);
+  align-items:center;
+  justify-items:center;
   padding:28px;
   border-radius:22px;
   border:1px solid rgba(255,255,255,.14);
@@ -476,6 +477,7 @@ body.intro-animate .wing-underline{
   display:grid;
   gap:0;
   position:relative;
+  width:min(760px,100%);
 }
 
 .feature-sticky-left{
@@ -487,15 +489,16 @@ body.intro-animate .wing-underline{
   position:relative;
   top:auto;
   z-index:1;
-  margin-bottom:20px;
+  margin-bottom:6px;
   padding:0;
   background:none;
+  text-align:center;
 }
 
 .feature-list-meta{
   display:flex;
   align-items:center;
-  justify-content:space-between;
+  justify-content:center;
   gap:14px;
   margin-bottom:10px;
 }
@@ -528,17 +531,14 @@ body.intro-animate .wing-underline{
 }
 
 .feature-mobile-viewer{
-  display:none;
+  display:grid;
+  gap:12px;
+  width:min(760px,100%);
+  justify-items:center;
 }
 
 .feature-rail-wrap{
-  position:sticky;
-  top:236px;
-  min-height:460px;
-  display:grid;
-  grid-template-columns:minmax(0, 1fr);
-  column-gap:0;
-  align-items:start;
+  display:none;
 }
 
 .feature-rail-nav{
@@ -672,6 +672,72 @@ body.intro-animate .wing-underline{
   display:none;
 }
 
+.feature-mobile-stage{
+  display:none;
+}
+
+.feature-mobile-pill-row{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  width:100%;
+  margin:0;
+  padding:8px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
+  overflow:visible;
+}
+
+.feature-mobile-pill{
+  border:1px solid transparent;
+  background:transparent;
+  color:rgba(255,255,255,.92);
+  border-radius:12px;
+  padding:9px 13px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  line-height:1.2;
+  letter-spacing:-.01em;
+  font-weight:600;
+  flex:0 0 auto;
+}
+
+.feature-mobile-pill-icon{
+  width:auto;
+  height:auto;
+  border:0;
+  background:none;
+  color:rgba(255,255,255,.86);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  line-height:1;
+}
+
+.feature-mobile-pill.active{
+  background:rgba(255,255,255,.92);
+  color:#0d1736;
+}
+
+.feature-mobile-pill.active .feature-mobile-pill-icon{
+  color:#0d1736;
+}
+
+.feature-showcase-copy{
+  max-width:860px;
+  margin:8px auto 0;
+  text-align:center;
+  font-size:clamp(20px,2vw,34px);
+  line-height:1.25;
+  letter-spacing:-.02em;
+  color:rgba(255,255,255,.92);
+}
+
 body.scroll-accordion-enabled .feature-scroll-track{
   display:block;
   margin-top:10px;
@@ -704,16 +770,21 @@ body.scroll-accordion-enabled .feature-list-intro{
 }
 
 .sticky-phone{
-  position:sticky;
-  top:110px;
-  align-self:start;
+  position:relative;
+  top:auto;
+  align-self:center;
+  width:min(760px,100%);
+  margin:0 auto;
+  display:grid;
+  justify-items:center;
+  gap:14px;
 }
 
 /* frame image phone */
 
 /* PHONE IMPROVEMENT */
 .phone-frame{
-  width:min(356px,100%);
+  width:min(430px,100%);
   position:relative;
   margin:0 auto;
   opacity:0;
@@ -761,7 +832,7 @@ body.scroll-accordion-enabled .feature-list-intro{
   width:100%;
   display:block;
   position:relative;
-  z-index:3;
+  z-index:1;
   pointer-events:none;
   filter:drop-shadow(0 26px 52px rgba(0,0,0,.42))
          drop-shadow(0 10px 22px rgba(0,0,0,.28));
@@ -775,13 +846,13 @@ body.is-scrolling .phone-frame::before{
 
 .phone-screen{
   position:absolute;
-  top:5.3%;
-  left:7.15%;
-  width:85.7%;
-  height:89.15%;
+  top:5.9%;
+  left:6.5%;
+  width:87%;
+  height:88.4%;
   border-radius:38px;
   overflow:hidden;
-  z-index:1;
+  z-index:2;
   background:
     radial-gradient(500px 300px at 20% 0%, rgba(116,140,255,.16), transparent 55%),
     linear-gradient(180deg, #0d1736, #0e1630 40%, #111829);
@@ -1087,10 +1158,12 @@ body.is-scrolling .phone-frame::before{
     margin-bottom:28px;
     padding:0;
     background:none;
+    text-align:left;
   }
 
   .feature-list-meta{
     flex-wrap:wrap;
+    justify-content:flex-start;
     margin-bottom:8px;
   }
 
@@ -1127,6 +1200,8 @@ body.is-scrolling .phone-frame::before{
     display:grid;
     gap:12px;
     margin-top:6px;
+    width:100%;
+    justify-items:stretch;
   }
 
   .feature-mobile-stage{
@@ -1192,6 +1267,9 @@ body.is-scrolling .phone-frame::before{
     scroll-snap-type:x proximity;
     -webkit-overflow-scrolling:touch;
     margin:0 -2px;
+    border:0;
+    background:none;
+    border-radius:0;
   }
 
   .feature-mobile-pill{
@@ -1229,10 +1307,15 @@ body.is-scrolling .phone-frame::before{
   .feature-mobile-pill.active{
     background:rgba(255,255,255,.11);
     border-color:rgba(255,255,255,.16);
+    color:rgba(255,255,255,.9);
   }
 
   .feature-mobile-pill.active .feature-mobile-pill-icon{
     color:#F29C01;
+  }
+
+  .feature-showcase-copy{
+    display:none;
   }
 
   .feature-mobile-pill:focus-visible,
@@ -1527,7 +1610,7 @@ body.is-scrolling .phone-frame::before{
 
       <aside class="sticky-phone">
         <div class="phone-frame">
-          <img src="iphone-frame.svg" class="phone-frame-svg" alt="iPhone frame">
+          <img src="/Users/satish/.cursor/projects/Users-satish-Documents-GitHub-travelpin-website/assets/hw__cf6xzzs5yb0i_large_2x-2275d1e4-8c6a-4840-aad2-cecf59de9929.png" class="phone-frame-svg" alt="iPhone frame">
 
           <div class="phone-screen">
 
@@ -1639,6 +1722,9 @@ body.is-scrolling .phone-frame::before{
             <button class="feature-mobile-pill" data-feature-mobile-index="3"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Keep others in the loop.</span></button>
             <button class="feature-mobile-pill" data-feature-mobile-index="4"><span class="feature-mobile-pill-icon"><span class="feature-mobile-pill-plus">&#8600;</span></span><span>Keep the journey.</span></button>
           </div>
+          <div class="feature-showcase-copy" id="feature-showcase-copy">
+            Traffic, timing, and airport buffers come together in one place — so you know when to leave without doing the math in your head.
+          </div>
         </div>
       </aside>
 
@@ -1669,7 +1755,7 @@ body.is-scrolling .phone-frame::before{
 </main>
 
 <script>
-const ENABLE_DESKTOP_SCROLL_ACCORDION = true;
+const ENABLE_DESKTOP_SCROLL_ACCORDION = false;
 const storyLeftEl = document.querySelector('.story-left');
 const panels = Array.from(document.querySelectorAll('[data-screen-panel]'));
 const featureItems = Array.from(document.querySelectorAll('.feature-item'));
@@ -1680,6 +1766,7 @@ const featureMobilePrevBtn = document.querySelector('#feature-mobile-prev');
 const featureMobileNextBtn = document.querySelector('#feature-mobile-next');
 const featureMobilePills = Array.from(document.querySelectorAll('[data-feature-mobile-index]'));
 const featureMobileOverlay = document.querySelector('#feature-mobile-overlay');
+const featureShowcaseCopyEl = document.querySelector('#feature-showcase-copy');
 const phone = document.querySelector('.phone-frame');
 const nav = document.querySelector('.nav');
 const revealTargets = [
@@ -1769,6 +1856,9 @@ function setFeatureByIndex(index, options = {}){
     const copyEl = featureMobileOverlay.querySelector('.feature-mobile-overlay-copy');
     if(titleEl) titleEl.textContent = featureDetailData[clamped].title;
     if(copyEl) copyEl.textContent = featureDetailData[clamped].copy;
+  }
+  if(featureShowcaseCopyEl && featureDetailData[clamped]){
+    featureShowcaseCopyEl.textContent = featureDetailData[clamped].copy;
   }
   if(featureMobilePills.length){
     featureMobilePills.forEach((pill, idx) => {
