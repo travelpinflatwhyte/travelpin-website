@@ -475,6 +475,12 @@ body.intro-animate .wing-underline{
 .story-left{
   display:grid;
   gap:0;
+  position:relative;
+}
+
+.feature-sticky-left{
+  display:grid;
+  gap:12px;
 }
 
 .feature-list-intro{
@@ -530,18 +536,13 @@ body.intro-animate .wing-underline{
   top:236px;
   min-height:460px;
   display:grid;
-  grid-template-columns:46px minmax(0, 1fr);
-  column-gap:16px;
+  grid-template-columns:minmax(0, 1fr);
+  column-gap:0;
   align-items:start;
 }
 
 .feature-rail-nav{
-  position:sticky;
-  left:0;
-  top:118px;
-  transform:none;
-  display:grid;
-  gap:10px;
+  display:none;
 }
 
 .feature-nav-btn{
@@ -572,7 +573,7 @@ body.intro-animate .wing-underline{
   display:grid;
   gap:12px;
   align-content:start;
-  padding-left:8px;
+  padding-left:0;
 }
 
 .feature-item{
@@ -683,6 +684,37 @@ body.intro-animate .wing-underline{
 
 .feature-scroll-track{
   display:none;
+}
+
+body.scroll-accordion-enabled .feature-scroll-track{
+  display:block;
+  margin-top:10px;
+}
+
+body.scroll-accordion-enabled .feature-step{
+  min-height:34vh;
+}
+
+body.scroll-accordion-enabled .feature-sticky-left{
+  position:sticky;
+  top:118px;
+  z-index:6;
+  min-height:620px;
+  align-content:start;
+}
+
+body.scroll-accordion-enabled .feature-rail-wrap{
+  position:relative;
+  top:auto;
+  min-height:560px;
+}
+
+body.scroll-accordion-enabled .feature-list-intro{
+  position:relative;
+  top:auto;
+  padding:6px 0 12px;
+  margin-bottom:8px;
+  background:none;
 }
 
 .sticky-phone{
@@ -1031,7 +1063,7 @@ body.is-scrolling .phone-frame::before{
 
 @media (max-width: 980px){
   .solution-section{
-    min-height:420px;
+    min-height:320px;
     padding:72px var(--pad);
   }
 
@@ -1046,6 +1078,15 @@ body.is-scrolling .phone-frame::before{
   }
 
   .feature-rail{
+    position:relative;
+    top:auto;
+  }
+
+  body.scroll-accordion-enabled .feature-scroll-track{
+    display:none;
+  }
+
+  body.scroll-accordion-enabled .feature-sticky-left{
     position:relative;
     top:auto;
   }
@@ -1424,7 +1465,7 @@ body.is-scrolling .phone-frame::before{
     <div class="story-intro">
       <h3 class="chapter-title">From leaving home to the memories you bring back.</h3>
       <p>
-        Travelpin brings the trip into one calm flow — leave on time, pack what matters,
+        Travelpin keeps your trip in sync — leave on time, pack what matters,
         stay updated, keep others in the loop, and hold on to the journey after it ends.
       </p>
     </div>
@@ -1433,15 +1474,16 @@ body.is-scrolling .phone-frame::before{
 
       <div class="story-left">
 
-        <div class="feature-list-intro">
-          <div class="feature-list-meta">
-            <div class="feature-list-kicker">The journey, together</div>
-            <div class="feature-progress" id="feature-progress">1/5</div>
+        <div class="feature-sticky-left">
+          <div class="feature-list-intro">
+            <div class="feature-list-meta">
+              <div class="feature-list-kicker">The journey, together</div>
+              <div class="feature-progress" id="feature-progress">1/5</div>
+            </div>
+            <h3 class="feature-list-title">Everything you need, in one place.</h3>
           </div>
-          <h3 class="feature-list-title">Everything you need, in one place.</h3>
-        </div>
 
-        <div class="feature-rail-wrap">
+          <div class="feature-rail-wrap">
           <div class="feature-rail-nav">
             <button class="feature-nav-btn" id="feature-prev" aria-label="Previous feature">&#708;</button>
             <button class="feature-nav-btn" id="feature-next" aria-label="Next feature">&#709;</button>
@@ -1463,7 +1505,7 @@ body.is-scrolling .phone-frame::before{
                 <div class="feature-item-title">Pack what matters.</div>
               </div>
               <div class="feature-item-copy">
-                A checklist shaped around the trip you're taking — not a generic list you have to rebuild every time.
+                Pack for this trip, not a generic list. Your checklist adapts to destination, weather, and trip type.
               </div>
             </div>
 
@@ -1473,7 +1515,7 @@ body.is-scrolling .phone-frame::before{
                 <div class="feature-item-title">Stay updated.</div>
               </div>
               <div class="feature-item-copy">
-                Flight moments, delays, and changes stay visible without forcing you to jump between tabs and refresh multiple apps.
+                See live flight moments in one place — delays, gate changes, and milestones without app hopping.
               </div>
             </div>
 
@@ -1497,6 +1539,7 @@ body.is-scrolling .phone-frame::before{
               </div>
             </div>
           </div>
+        </div>
         </div>
 
         <!-- invisible scroll anchors -->
@@ -1654,6 +1697,8 @@ body.is-scrolling .phone-frame::before{
 </main>
 
 <script>
+const ENABLE_DESKTOP_SCROLL_ACCORDION = true;
+const storyLeftEl = document.querySelector('.story-left');
 const panels = Array.from(document.querySelectorAll('[data-screen-panel]'));
 const featureItems = Array.from(document.querySelectorAll('.feature-item'));
 const featureProgressEl = document.querySelector('#feature-progress');
@@ -1815,6 +1860,29 @@ function setupFeatureSelector(){
   });
 }
 
+function updateScrollAccordionMode(){
+  const enabled = ENABLE_DESKTOP_SCROLL_ACCORDION && !window.matchMedia('(max-width: 980px)').matches;
+  document.body.classList.toggle('scroll-accordion-enabled', enabled);
+  return enabled;
+}
+
+function syncDesktopScrollAccordion(){
+  if(!updateScrollAccordionMode() || !storyLeftEl || featureNames.length === 0) return;
+  const rect = storyLeftEl.getBoundingClientRect();
+  if(rect.top > window.innerHeight * 0.76 || rect.bottom < window.innerHeight * 0.24) return;
+
+  const totalScrollable = Math.max(rect.height - window.innerHeight * 0.45, 1);
+  const progressed = Math.min(Math.max((-rect.top) + (window.innerHeight * 0.22), 0), totalScrollable);
+  const progress = progressed / totalScrollable;
+  const index = Math.min(featureNames.length - 1, Math.floor(progress * featureNames.length));
+  setFeatureByIndex(index);
+}
+
+function setupDesktopScrollAccordion(){
+  updateScrollAccordionMode();
+  syncDesktopScrollAccordion();
+}
+
 function refreshActiveFeatureHeight(){
   const activeItem = featureItems[activeFeatureIndex];
   if(!activeItem) return;
@@ -1886,6 +1954,7 @@ function onScrollSync(){
   ticking = true;
   requestAnimationFrame(() => {
     updateNavBehavior();
+    syncDesktopScrollAccordion();
     ticking = false;
   });
 }
@@ -1893,10 +1962,12 @@ function onScrollSync(){
 window.addEventListener('scroll', onScrollSync, { passive:true });
 window.addEventListener('resize', () => {
   updateNavBehavior();
+  setupDesktopScrollAccordion();
   refreshActiveFeatureHeight();
 });
 setupReveals();
 setupFeatureSelector();
+setupDesktopScrollAccordion();
 updateNavBehavior();
 setFeatureByIndex(0);
 document.querySelectorAll('.problem-list .wing-underline').forEach((el, idx) => {
