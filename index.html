@@ -654,7 +654,6 @@ body.intro-animate .wing-underline{
   letter-spacing:-.02em;
   color:rgba(255,255,255,.86);
   transition:max-height .34s cubic-bezier(.22,.61,.36,1), opacity .24s ease, transform .24s ease, margin-top .24s ease;
-  will-change:max-height, opacity, transform;
   background:rgba(255,255,255,.10);
   border:1px solid rgba(255,255,255,.12);
   border-radius:22px;
@@ -1040,7 +1039,6 @@ body.is-scrolling .phone-frame::before{
   opacity:0;
   transform:translateY(12px);
   transition:opacity .26s ease, transform .26s ease;
-  will-change:opacity, transform;
 }
 
 .reveal.is-visible{
@@ -1695,15 +1693,29 @@ const revealTargets = [
   '.final-cta-stack'
 ];
 let ticking = false;
+let resizeTicking = false;
 let currentPanel = null;
 let lastScrollY = window.scrollY;
 let activeFeatureIndex = 0;
 let scrollIdleTimer = null;
+const mobileMedia = window.matchMedia('(max-width: 980px)');
+const reducedMotionMedia = window.matchMedia('(prefers-reduced-motion: reduce)');
 const featureNames = featureItems.map(item => item.getAttribute('data-feature')).filter(Boolean);
 const featureDetailData = featureItems.map((item) => ({
   title: (item.querySelector('.feature-item-title')?.textContent || '').trim(),
   copy: (item.querySelector('.feature-item-copy')?.textContent || '').trim()
 }));
+
+function cacheFeatureCopyHeights(){
+  featureItems.forEach((item) => {
+    const copy = item.querySelector('.feature-item-copy');
+    if(!copy) return;
+    copy.style.maxHeight = 'none';
+    const measured = copy.scrollHeight;
+    copy.style.maxHeight = item.classList.contains('active') ? `${measured}px` : '0px';
+    copy.dataset.measuredHeight = String(measured);
+  });
+}
 
 function showPanel(name){
   if(currentPanel === name) return;
@@ -1728,7 +1740,7 @@ function highlightFeature(name){
     item.classList.toggle('active', isActive);
     if(copy){
       if(isActive){
-        copy.style.maxHeight = `${copy.scrollHeight}px`;
+        copy.style.maxHeight = `${Number(copy.dataset.measuredHeight || 0)}px`;
       }else{
         copy.style.maxHeight = '0px';
       }
@@ -1736,11 +1748,13 @@ function highlightFeature(name){
   });
 }
 
-function setFeatureByIndex(index){
+function setFeatureByIndex(index, options = {}){
   if(featureNames.length === 0) return;
+  const { force = false } = options;
   const clamped = Math.max(0, Math.min(featureNames.length - 1, index));
-  activeFeatureIndex = clamped;
   const name = featureNames[clamped];
+  if(!force && clamped === activeFeatureIndex && currentPanel === name) return;
+  activeFeatureIndex = clamped;
   showPanel(name);
   highlightFeature(name);
   featureItems.forEach((item, idx) => {
@@ -1776,7 +1790,7 @@ function setFeatureByIndex(index){
   if(featureMobileNextBtn){
     featureMobileNextBtn.disabled = clamped === featureNames.length - 1;
   }
-  if(window.matchMedia('(max-width: 980px)').matches && featureMobilePills[clamped]){
+  if(mobileMedia.matches && featureMobilePills[clamped]){
     featureMobilePills[clamped].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
   }
 }
@@ -1835,7 +1849,7 @@ function setupFeatureSelector(){
 }
 
 function updateScrollAccordionMode(){
-  const enabled = ENABLE_DESKTOP_SCROLL_ACCORDION && !window.matchMedia('(max-width: 980px)').matches;
+  const enabled = ENABLE_DESKTOP_SCROLL_ACCORDION && !mobileMedia.matches;
   document.body.classList.toggle('scroll-accordion-enabled', enabled);
   return enabled;
 }
@@ -1858,11 +1872,12 @@ function setupDesktopScrollAccordion(){
 }
 
 function refreshActiveFeatureHeight(){
+  cacheFeatureCopyHeights();
   const activeItem = featureItems[activeFeatureIndex];
   if(!activeItem) return;
   const copy = activeItem.querySelector('.feature-item-copy');
   if(copy && activeItem.classList.contains('active')){
-    copy.style.maxHeight = `${copy.scrollHeight}px`;
+    copy.style.maxHeight = `${Number(copy.dataset.measuredHeight || 0)}px`;
   }
 }
 
@@ -1885,7 +1900,7 @@ function setupReveals(){
   const nodes = revealTargets.flatMap(selector => Array.from(document.querySelectorAll(selector)));
   nodes.forEach(node => node.classList.add('reveal'));
 
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  if(reducedMotionMedia.matches){
     nodes.forEach(node => node.classList.add('is-visible'));
     if(phone) phone.classList.add('in-view');
     return;
@@ -1935,15 +1950,21 @@ function onScrollSync(){
 
 window.addEventListener('scroll', onScrollSync, { passive:true });
 window.addEventListener('resize', () => {
-  updateNavBehavior();
-  setupDesktopScrollAccordion();
-  refreshActiveFeatureHeight();
+  if(resizeTicking) return;
+  resizeTicking = true;
+  requestAnimationFrame(() => {
+    updateNavBehavior();
+    setupDesktopScrollAccordion();
+    refreshActiveFeatureHeight();
+    resizeTicking = false;
+  });
 });
 setupReveals();
 setupFeatureSelector();
 setupDesktopScrollAccordion();
 updateNavBehavior();
-setFeatureByIndex(0);
+setFeatureByIndex(0, { force:true });
+cacheFeatureCopyHeights();
 document.querySelectorAll('.problem-list .wing-underline').forEach((el, idx) => {
   el.style.transitionDelay = `${70 * idx}ms`;
 });
