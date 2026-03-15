@@ -690,6 +690,8 @@ body.intro-animate .wing-underline{
   overflow-x:auto;
   overflow-y:hidden;
   -webkit-overflow-scrolling:touch;
+  position:relative;
+  z-index:8;
 }
 
 .feature-mobile-pill{
@@ -806,6 +808,7 @@ body.scroll-accordion-enabled .feature-list-intro{
   opacity:0;
   transform:translateY(16px) scale(.985);
   transition:transform .26s ease, opacity .26s ease;
+  pointer-events:none;
 }
 
 .phone-frame.in-view{
@@ -826,6 +829,7 @@ body.scroll-accordion-enabled .feature-list-intro{
   z-index:-1;
   filter:blur(36px);
   animation:phoneGlow 10s ease-in-out infinite;
+  pointer-events:none;
 }    
     
     
@@ -873,6 +877,7 @@ body.is-scrolling .phone-frame::before{
     radial-gradient(500px 300px at 20% 0%, rgba(116,140,255,.16), transparent 55%),
     linear-gradient(180deg, #0d1736, #0e1630 40%, #111829);
   border:1px solid rgba(255,255,255,.06);
+  pointer-events:none;
 }
 
 .app-screen{
@@ -891,7 +896,7 @@ body.is-scrolling .phone-frame::before{
 .app-screen.active{
   opacity:1;
   transform:translateX(0);
-  pointer-events:auto;
+  pointer-events:none;
 }
 
 .app-screen.was-active{
