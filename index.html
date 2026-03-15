@@ -545,30 +545,6 @@ body.intro-animate .wing-underline{
   display:none;
 }
 
-.feature-nav-btn{
-  width:46px;
-  height:46px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.9);
-  font-size:22px;
-  line-height:1;
-  cursor:pointer;
-  transition:background .22s ease, transform .22s ease, border-color .22s ease, opacity .22s ease;
-}
-
-.feature-nav-btn:hover{
-  background:rgba(255,255,255,.14);
-  transform:translateY(-1px);
-}
-
-.feature-nav-btn:disabled{
-  opacity:.45;
-  cursor:default;
-  transform:none;
-}
-
 .feature-rail{
   display:grid;
   gap:12px;
@@ -668,10 +644,6 @@ body.intro-animate .wing-underline{
   padding:12px 16px;
 }
 
-.feature-scroll-track{
-  display:none;
-}
-
 .feature-mobile-stage{
   display:none;
 }
@@ -713,27 +685,10 @@ body.intro-animate .wing-underline{
   white-space:normal;
 }
 
-.feature-mobile-pill-icon{
-  display:none;
-}
-
 .feature-mobile-pill-label{
   display:inline-block;
   line-height:1.15;
   text-align:center;
-}
-
-.feature-mobile-pill-icon{
-  width:auto;
-  height:auto;
-  border:0;
-  background:none;
-  color:rgba(255,255,255,.86);
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-size:14px;
-  line-height:1;
 }
 
 .feature-mobile-pill.active{
@@ -741,9 +696,6 @@ body.intro-animate .wing-underline{
   color:#0d1736;
 }
 
-.feature-mobile-pill.active .feature-mobile-pill-icon{
-  color:#0d1736;
-}
 
 .feature-showcase-copy{
   position:absolute;
@@ -768,37 +720,6 @@ body.intro-animate .wing-underline{
   -webkit-backdrop-filter:blur(6px);
   box-shadow:0 12px 30px rgba(4,10,30,.22);
   pointer-events:none;
-}
-
-body.scroll-accordion-enabled .feature-scroll-track{
-  display:block;
-  margin-top:10px;
-}
-
-body.scroll-accordion-enabled .feature-step{
-  min-height:34vh;
-}
-
-body.scroll-accordion-enabled .feature-sticky-left{
-  position:sticky;
-  top:118px;
-  z-index:6;
-  min-height:620px;
-  align-content:start;
-}
-
-body.scroll-accordion-enabled .feature-rail-wrap{
-  position:relative;
-  top:auto;
-  min-height:560px;
-}
-
-body.scroll-accordion-enabled .feature-list-intro{
-  position:relative;
-  top:auto;
-  padding:6px 0 12px;
-  margin-bottom:8px;
-  background:none;
 }
 
 .sticky-phone{
@@ -1174,15 +1095,6 @@ body.is-scrolling .phone-frame::before{
     top:auto;
   }
 
-  body.scroll-accordion-enabled .feature-scroll-track{
-    display:none;
-  }
-
-  body.scroll-accordion-enabled .feature-sticky-left{
-    position:relative;
-    top:auto;
-  }
-
   .feature-rail-wrap{
     position:relative;
     top:auto;
@@ -1326,28 +1238,10 @@ body.is-scrolling .phone-frame::before{
     scroll-snap-align:start;
   }
 
-  .feature-mobile-pill-icon{
-    width:auto;
-    height:auto;
-    border-radius:0;
-    border:0;
-    background:none;
-    color:rgba(255,255,255,.82);
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    font-size:15px;
-    line-height:1;
-  }
-
   .feature-mobile-pill.active{
     background:rgba(255,255,255,.11);
     border-color:rgba(255,255,255,.16);
     color:rgba(255,255,255,.9);
-  }
-
-  .feature-mobile-pill.active .feature-mobile-pill-icon{
-    color:#F29C01;
   }
 
   .feature-showcase-copy{
@@ -1362,12 +1256,6 @@ body.is-scrolling .phone-frame::before{
 
   .journey-story-section{
     padding-bottom:calc(var(--section-space-mobile) + 20px);
-  }
-
-  .feature-nav-btn{
-    width:40px;
-    height:40px;
-    font-size:20px;
   }
 
   .feature-item{
@@ -1575,10 +1463,6 @@ body.is-scrolling .phone-frame::before{
           </div>
 
           <div class="feature-rail-wrap">
-          <div class="feature-rail-nav">
-            <button class="feature-nav-btn" id="feature-prev" aria-label="Previous feature">&#708;</button>
-            <button class="feature-nav-btn" id="feature-next" aria-label="Next feature">&#709;</button>
-          </div>
           <div class="feature-rail">
             <div class="feature-item active" data-feature="leave">
               <div class="feature-item-head">
@@ -1631,15 +1515,6 @@ body.is-scrolling .phone-frame::before{
             </div>
           </div>
         </div>
-        </div>
-
-        <!-- invisible scroll anchors -->
-        <div class="feature-scroll-track">
-          <div class="feature-step" data-screen="leave"></div>
-          <div class="feature-step" data-screen="pack"></div>
-          <div class="feature-step" data-screen="updates"></div>
-          <div class="feature-step" data-screen="share"></div>
-          <div class="feature-step" data-screen="memory"></div>
         </div>
 
       </div>
@@ -1791,13 +1666,9 @@ body.is-scrolling .phone-frame::before{
 </main>
 
 <script>
-const ENABLE_DESKTOP_SCROLL_ACCORDION = false;
-const storyLeftEl = document.querySelector('.story-left');
 const panels = Array.from(document.querySelectorAll('[data-screen-panel]'));
 const featureItems = Array.from(document.querySelectorAll('.feature-item'));
 const featureProgressEl = document.querySelector('#feature-progress');
-const featurePrevBtn = document.querySelector('#feature-prev');
-const featureNextBtn = document.querySelector('#feature-next');
 const featureMobilePrevBtn = document.querySelector('#feature-mobile-prev');
 const featureMobileNextBtn = document.querySelector('#feature-mobile-next');
 const featureMobilePills = Array.from(document.querySelectorAll('[data-feature-mobile-index]'));
@@ -1904,12 +1775,6 @@ function setFeatureByIndex(index, options = {}){
       pill.tabIndex = active ? 0 : -1;
     });
   }
-  if(featurePrevBtn){
-    featurePrevBtn.disabled = clamped === 0;
-  }
-  if(featureNextBtn){
-    featureNextBtn.disabled = clamped === featureNames.length - 1;
-  }
   if(featureMobilePrevBtn){
     featureMobilePrevBtn.disabled = clamped === 0;
   }
@@ -1946,16 +1811,6 @@ function setupFeatureSelector(){
       }
     });
   });
-  if(featurePrevBtn){
-    featurePrevBtn.addEventListener('click', () => {
-      setFeatureByIndex(activeFeatureIndex - 1);
-    });
-  }
-  if(featureNextBtn){
-    featureNextBtn.addEventListener('click', () => {
-      setFeatureByIndex(activeFeatureIndex + 1);
-    });
-  }
   if(featureMobilePrevBtn){
     featureMobilePrevBtn.addEventListener('click', () => {
       setFeatureByIndex(activeFeatureIndex - 1);
@@ -1972,29 +1827,6 @@ function setupFeatureSelector(){
       setFeatureByIndex(idx);
     });
   });
-}
-
-function updateScrollAccordionMode(){
-  const enabled = ENABLE_DESKTOP_SCROLL_ACCORDION && !mobileMedia.matches;
-  document.body.classList.toggle('scroll-accordion-enabled', enabled);
-  return enabled;
-}
-
-function syncDesktopScrollAccordion(){
-  if(!updateScrollAccordionMode() || !storyLeftEl || featureNames.length === 0) return;
-  const rect = storyLeftEl.getBoundingClientRect();
-  if(rect.top > window.innerHeight * 0.76 || rect.bottom < window.innerHeight * 0.24) return;
-
-  const totalScrollable = Math.max(rect.height - window.innerHeight * 0.45, 1);
-  const progressed = Math.min(Math.max((-rect.top) + (window.innerHeight * 0.22), 0), totalScrollable);
-  const progress = progressed / totalScrollable;
-  const index = Math.min(featureNames.length - 1, Math.floor(progress * featureNames.length));
-  setFeatureByIndex(index);
-}
-
-function setupDesktopScrollAccordion(){
-  updateScrollAccordionMode();
-  syncDesktopScrollAccordion();
 }
 
 function refreshActiveFeatureHeight(){
@@ -2069,7 +1901,6 @@ function onScrollSync(){
   ticking = true;
   requestAnimationFrame(() => {
     updateNavBehavior();
-    syncDesktopScrollAccordion();
     ticking = false;
   });
 }
@@ -2080,14 +1911,12 @@ window.addEventListener('resize', () => {
   resizeTicking = true;
   requestAnimationFrame(() => {
     updateNavBehavior();
-    setupDesktopScrollAccordion();
     refreshActiveFeatureHeight();
     resizeTicking = false;
   });
 });
 setupReveals();
 setupFeatureSelector();
-setupDesktopScrollAccordion();
 updateNavBehavior();
 setFeatureByIndex(0, { force:true });
 cacheFeatureCopyHeights();
