@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Travelpin — From departure to memory</title>
 <meta name="description" content="Travelpin brings the journey together — from leaving home to remembering why you went." />
+<link rel="preload" as="image" href="logo-text.webp" type="image/webp" />
+<link rel="preload" as="image" href="leave-on-time.webp" type="image/webp" />
 
 <style>
 :root{
@@ -348,6 +350,12 @@ body.intro-animate .wing-underline{
   background:
     linear-gradient(rgba(8,22,58,.42), rgba(8,22,58,.72)),
     url("airport.jpg");
+  background:
+    linear-gradient(rgba(8,22,58,.42), rgba(8,22,58,.72)),
+    image-set(
+      url("airport.webp") type("image/webp"),
+      url("airport.jpg") type("image/jpeg")
+    );
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -1339,7 +1347,10 @@ body.is-scrolling .phone-frame::before{
 <header class="nav">
   <div class="nav-inner">
     <div class="brand">
-      <img src="logo-text.png" class="logo-text" alt="Travelpin">
+      <picture>
+        <source srcset="logo-text.webp" type="image/webp">
+        <img src="logo-text.png" class="logo-text" alt="Travelpin">
+      </picture>
     </div>
     <a href="#final-cta" class="btn">Download</a>
   </div>
@@ -1530,7 +1541,10 @@ body.is-scrolling .phone-frame::before{
 
             
               <div class="app-screen app-screen--image active" data-screen-panel="leave">
-  <img src="leave-on-time.png" alt="Travelpin ETA screen" class="phone-shot">
+  <picture>
+    <source srcset="leave-on-time.webp" type="image/webp">
+    <img src="leave-on-time.png" alt="Travelpin ETA screen" class="phone-shot">
+  </picture>
 </div>
               
 
