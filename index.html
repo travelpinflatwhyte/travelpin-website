@@ -1022,12 +1022,13 @@ body.is-scrolling .phone-frame::before{
   position:absolute;
   inset:0;
   background:
-    linear-gradient(180deg, rgba(5,10,30,.84) 0%, rgba(8,18,52,.88) 100%),
+    radial-gradient(120% 90% at 12% 12%, rgba(56,98,198,.42) 0%, rgba(56,98,198,0) 62%),
+    linear-gradient(180deg, rgba(5,10,30,.82) 0%, rgba(10,30,78,.88) 56%, rgba(4,10,36,.96) 100%),
     url("pins-map.png");
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-  opacity:.9;
+  background-size:100% 100%, 100% 100%, contain;
+  background-position:center, center, center;
+  background-repeat:no-repeat, no-repeat, no-repeat;
+  opacity:.96;
   z-index:0;
 }
 
@@ -1083,10 +1084,29 @@ body.is-scrolling .phone-frame::before{
   background:rgba(9,20,52,.42);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
-  padding:20px 18px;
+  padding:18px 16px 16px;
   display:grid;
-  gap:10px;
+  gap:12px;
   text-align:center;
+  justify-items:center;
+}
+
+.pins-card-media{
+  width:100%;
+  margin:0 0 8px;
+  display:flex;
+  justify-content:center;
+  padding:14px 10px 10px;
+  border-radius:16px;
+  background:
+    radial-gradient(70% 66% at 50% 44%, rgba(0,0,0,.9) 0%, rgba(2,9,31,.86) 36%, rgba(9,36,109,.58) 64%, rgba(17,112,122,.28) 84%, rgba(17,112,122,0) 100%),
+    radial-gradient(118% 90% at 50% 88%, rgba(41,102,214,.30) 0%, rgba(41,102,214,0) 76%);
+}
+
+.pins-card-media img{
+  width:min(330px,100%);
+  height:auto;
+  display:block;
 }
 
 .pins-card-title{
@@ -1767,9 +1787,9 @@ body.is-scrolling .phone-frame::before{
           Reach airport<br>on time.
         </div>
         <div class="phone-frame">
-          <img src="iphone-frame.svg" class="phone-frame-svg" alt="iPhone frame">
+            <img src="iphone-frame.svg" class="phone-frame-svg" alt="iPhone frame">
 
-          <div class="phone-screen">
+            <div class="phone-screen">
 
             
               <div class="app-screen app-screen--image active" data-screen-panel="leave">
@@ -1864,7 +1884,7 @@ body.is-scrolling .phone-frame::before{
               </div>
             </div>
 
-          </div>
+        </div>
         </div>
         <div class="feature-mobile-viewer">
           <div class="feature-mobile-stage">
@@ -1904,18 +1924,22 @@ body.is-scrolling .phone-frame::before{
 
       <div class="pins-highlights">
         <article class="pins-card">
+          <div class="pins-card-media"><img src="pins-placeholder.png" alt="Pins placeholder preview"></div>
           <div class="pins-card-title">📍 Pin the moment</div>
           <p>Drop a pin wherever something meaningful happens - a view, a restaurant, a hidden street, or a place you simply want to remember.</p>
         </article>
         <article class="pins-card">
+          <div class="pins-card-media"><img src="pins-placeholder.png" alt="Pins placeholder preview"></div>
           <div class="pins-card-title">🏷 Capture the vibe</div>
           <p>Tag the feeling of the place - beach, romantic, late night, city energy, quiet mountain - so your memories keep their mood.</p>
         </article>
         <article class="pins-card">
+          <div class="pins-card-media"><img src="pins-placeholder.png" alt="Pins placeholder preview"></div>
           <div class="pins-card-title">✍️ Write the story</div>
           <p>Add your own notes to capture what the moment felt like, not just where it happened.</p>
         </article>
         <article class="pins-card">
+          <div class="pins-card-media"><img src="pins-placeholder.png" alt="Pins placeholder preview"></div>
           <div class="pins-card-title">🗺 Build your personal map</div>
           <p>Over time, your pins form a living map of the places that shaped your travels.</p>
         </article>
