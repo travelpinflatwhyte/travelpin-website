@@ -1006,6 +1006,194 @@ body.is-scrolling .phone-frame::before{
   color:rgba(255,255,255,.76);
 }
 
+/* pins section */
+
+.pins-section{
+  padding-top:var(--section-space);
+  padding-bottom:calc(var(--section-space) - 14px);
+  position:relative;
+  background:#070f2a;
+  border-top:1px solid rgba(8,22,58,.08);
+  overflow:hidden;
+}
+
+.pins-section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(5,10,30,.84) 0%, rgba(8,18,52,.88) 100%),
+    url("pins-map.png");
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:.9;
+  z-index:0;
+}
+
+.pins-wrap{
+  width:min(var(--max),100%);
+  margin:0 auto;
+  display:grid;
+  gap:24px;
+  color:#eaf0ff;
+  position:relative;
+  z-index:1;
+  text-align:center;
+  justify-items:center;
+}
+
+.pins-kicker{
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(234,240,255,.72);
+}
+
+.pins-title{
+  font-size:clamp(34px,4.1vw,58px);
+  line-height:1.06;
+  letter-spacing:-.04em;
+  color:#f4f7ff;
+  max-width:940px;
+}
+
+.pins-copy{
+  max-width:960px;
+  display:grid;
+  gap:14px;
+  justify-items:center;
+}
+
+.pins-copy p{
+  color:rgba(234,240,255,.86);
+  font-size:clamp(18px,1.45vw,24px);
+  line-height:1.58;
+}
+
+.pins-highlights{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:16px;
+}
+
+.pins-card{
+  border-radius:20px;
+  border:1px solid rgba(214,228,255,.18);
+  background:rgba(9,20,52,.42);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  padding:20px 18px;
+  display:grid;
+  gap:10px;
+  text-align:center;
+}
+
+.pins-card-title{
+  font-size:clamp(18px,1.5vw,24px);
+  line-height:1.22;
+  letter-spacing:-.02em;
+  color:#f0f5ff;
+}
+
+.pins-card p{
+  font-size:clamp(15px,1.08vw,18px);
+  line-height:1.45;
+  color:rgba(230,238,255,.84);
+}
+
+/* basecamp section */
+
+.basecamp-section{
+  padding-top:var(--section-space);
+  padding-bottom:var(--section-space);
+  background:#ffffff;
+  border-top:1px solid rgba(8,22,58,.08);
+  border-bottom:1px solid rgba(8,22,58,.08);
+}
+
+.basecamp-wrap{
+  width:min(var(--max),100%);
+  margin:0 auto;
+  display:grid;
+  gap:24px;
+  color:#0f214f;
+}
+
+.basecamp-kicker{
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:rgba(15,33,79,.64);
+}
+
+.basecamp-title{
+  font-size:clamp(34px,4.1vw,58px);
+  line-height:1.06;
+  letter-spacing:-.04em;
+  color:#0b1f4a;
+  max-width:900px;
+}
+
+.basecamp-copy{
+  max-width:920px;
+  display:grid;
+  gap:14px;
+}
+
+.basecamp-copy p{
+  color:rgba(15,33,79,.78);
+  font-size:clamp(18px,1.45vw,24px);
+  line-height:1.58;
+}
+
+.basecamp-subhead{
+  font-size:clamp(26px,2.8vw,40px);
+  line-height:1.14;
+  letter-spacing:-.03em;
+  color:#0b1f4a;
+  margin-top:6px;
+}
+
+.basecamp-highlights{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:18px;
+  margin-top:6px;
+}
+
+.basecamp-card{
+  border-radius:20px;
+  border:1px solid rgba(11,31,74,.12);
+  background:#f6f9ff;
+  padding:20px 18px;
+  display:grid;
+  gap:10px;
+  text-align:left;
+}
+
+.basecamp-card-title{
+  font-size:clamp(18px,1.5vw,24px);
+  line-height:1.22;
+  letter-spacing:-.02em;
+  color:#0b1f4a;
+}
+
+.basecamp-card p{
+  font-size:clamp(15px,1.08vw,18px);
+  line-height:1.45;
+  color:rgba(15,33,79,.76);
+}
+
+.basecamp-closing{
+  font-size:clamp(22px,2.1vw,32px);
+  line-height:1.28;
+  letter-spacing:-.02em;
+  color:#0b1f4a;
+  margin-top:6px;
+  max-width:780px;
+}
+
 /* philosophy */
 
 .philosophy-section{
@@ -1316,6 +1504,41 @@ body.is-scrolling .phone-frame::before{
 
   .story-intro{
     margin-bottom:32px;
+  }
+
+  .pins-highlights{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .pins-wrap{
+    gap:18px;
+  }
+
+  .pins-copy{
+    gap:12px;
+  }
+
+  .basecamp-highlights{
+    grid-template-columns:1fr;
+    gap:14px;
+    margin-top:2px;
+  }
+
+  .basecamp-wrap{
+    gap:18px;
+  }
+
+  .basecamp-copy{
+    gap:12px;
+  }
+
+  .basecamp-subhead{
+    margin-top:2px;
+  }
+
+  .basecamp-closing{
+    margin-top:2px;
   }
 
   .pause-section,
@@ -1665,6 +1888,90 @@ body.is-scrolling .phone-frame::before{
     </div>
   </section>
 
+  <section class="section pins-section">
+    <div class="pins-wrap">
+      <div class="pins-kicker">TRAVEL-PINS</div>
+      <h3 class="pins-title">Places you've lived, loved, <br> and 
+        lingered.</h3>
+
+      <div class="pins-copy">
+        <p>Some places stay with you long after the trip ends.</p>
+        <p>
+          A quiet street you discovered late at night. A beach where time slowed down.<br>
+          A cafe where a conversation lasted longer than expected.
+        </p>
+      </div>
+
+      <div class="pins-highlights">
+        <article class="pins-card">
+          <div class="pins-card-title">📍 Pin the moment</div>
+          <p>Drop a pin wherever something meaningful happens - a view, a restaurant, a hidden street, or a place you simply want to remember.</p>
+        </article>
+        <article class="pins-card">
+          <div class="pins-card-title">🏷 Capture the vibe</div>
+          <p>Tag the feeling of the place - beach, romantic, late night, city energy, quiet mountain - so your memories keep their mood.</p>
+        </article>
+        <article class="pins-card">
+          <div class="pins-card-title">✍️ Write the story</div>
+          <p>Add your own notes to capture what the moment felt like, not just where it happened.</p>
+        </article>
+        <article class="pins-card">
+          <div class="pins-card-title">🗺 Build your personal map</div>
+          <p>Over time, your pins form a living map of the places that shaped your travels.</p>
+        </article>
+      </div>
+
+      <div class="pins-copy">
+        <p>
+          Over time, your map becomes more than a record of locations.<br>
+          It becomes a map of the moments that mattered.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section basecamp-section">
+    <div class="basecamp-wrap">
+      <div class="basecamp-kicker">TRAVELPIN BASECAMP</div>
+      <h3 class="basecamp-title">Your travel story, in one place.</h3>
+
+      <div class="basecamp-copy">
+        <p>
+          Every traveler develops patterns — the airports you pass through, the routes you fly most, and the rhythm of your journeys.
+        </p>
+      </div>
+
+      <h4 class="basecamp-subhead">A home for the journeys you’ve taken.</h4>
+
+      <div class="basecamp-copy">
+        <p>
+          From the first trip you record, Basecamp begins building your personal travel profile.
+          See the airports you've visited, the airlines and aircraft you fly most, and the patterns behind your journeys.
+        </p>
+        <p>
+          Over time, Basecamp becomes more than a dashboard - it becomes the story of how you move through the world.
+        </p>
+      </div>
+
+      <div class="basecamp-highlights">
+        <article class="basecamp-card">
+          <div class="basecamp-card-title">🧭 Your travel identity</div>
+          <p>See your trips, airports visited, favorite routes, and airlines you fly most.</p>
+        </article>
+        <article class="basecamp-card">
+          <div class="basecamp-card-title">✈️ Your travel rhythm</div>
+          <p>Understand how you travel - from the length of your flights to the time of day your journeys usually begin.</p>
+        </article>
+        <article class="basecamp-card">
+          <div class="basecamp-card-title">⚙️ Your travel preferences</div>
+          <p>Set your usual airport buffers, notification style, and starting locations so every new trip begins smarter.</p>
+        </article>
+      </div>
+
+      <p class="basecamp-closing">Every journey begins somewhere.<br>For Travelpin, that place is Basecamp.</p>
+    </div>
+  </section>
+
   <!-- 6. PHILOSOPHY -->
   <section class="section philosophy-section">
     <div class="philosophy-stack">
@@ -1706,6 +2013,8 @@ const revealTargets = [
   '.solution-stack',
   '.story-intro',
   '.feature-list-intro',
+  '.pins-wrap',
+  '.basecamp-wrap',
   '.philosophy-stack',
   '.final-cta-stack'
 ];
