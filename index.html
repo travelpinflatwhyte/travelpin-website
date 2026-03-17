@@ -1074,47 +1074,55 @@ body.is-scrolling .phone-frame::before{
 
 .pins-highlights{
   display:grid;
-  grid-template-columns:repeat(2, minmax(0,1fr));
-  gap:16px;
-}
-
-.pins-card{
-  border-radius:20px;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:clamp(20px,3vw,36px);
+  width:100%;
+  align-items:start;
+  border-radius:22px;
   border:1px solid rgba(214,228,255,.18);
   background:rgba(9,20,52,.42);
   backdrop-filter:blur(4px);
   -webkit-backdrop-filter:blur(4px);
-  padding:18px 16px 16px;
-  display:grid;
-  gap:12px;
-  text-align:center;
-  justify-items:center;
+  padding:28px;
 }
 
-.pins-card-media{
-  width:100%;
-  margin:0 0 8px;
+.pins-feature-list{
+  display:grid;
+  gap:0;
+}
+
+.pins-feature-item{
+  padding:14px 8px 14px 0;
+  display:grid;
+  gap:8px;
+  text-align:left;
+}
+
+.pins-feature-item + .pins-feature-item{
+  border-top:1px solid rgba(214,228,255,.14);
+}
+
+.pins-showcase{
+  padding:6px 0 6px 10px;
   display:flex;
   justify-content:center;
-  padding:0;
-  border-radius:0;
-  background:none;
+  align-items:center;
 }
 
-.pins-card-media img{
-  width:min(330px,100%);
+.pins-showcase img{
+  width:min(280px,100%);
   height:auto;
   display:block;
 }
 
-.pins-card-title{
+.pins-feature-title{
   font-size:clamp(18px,1.5vw,24px);
   line-height:1.22;
   letter-spacing:-.02em;
   color:#f0f5ff;
 }
 
-.pins-card p{
+.pins-feature-item p{
   font-size:clamp(15px,1.08vw,18px);
   line-height:1.45;
   color:rgba(230,238,255,.84);
@@ -1526,7 +1534,21 @@ body.is-scrolling .phone-frame::before{
 
   .pins-highlights{
     grid-template-columns:1fr;
-    gap:14px;
+    gap:18px;
+    padding:18px;
+  }
+
+  .pins-feature-list{
+    gap:0;
+  }
+
+  .pins-feature-item{
+    padding:12px 0;
+  }
+
+  .pins-showcase{
+    order:-1;
+    padding:4px 0 8px;
   }
 
   .pins-wrap{
@@ -1921,26 +1943,27 @@ body.is-scrolling .phone-frame::before{
       </div>
 
       <div class="pins-highlights">
-        <article class="pins-card">
-          <div class="pins-card-media"><img src="pins-placeholder-cut.png" alt="Pins placeholder preview"></div>
-          <div class="pins-card-title">📍 Pin the moment</div>
-          <p>Drop a pin wherever something meaningful happens - a view, a restaurant, a hidden street, or a place you simply want to remember.</p>
-        </article>
-        <article class="pins-card">
-          <div class="pins-card-media"><img src="pins-placeholder-cut.png" alt="Pins placeholder preview"></div>
-          <div class="pins-card-title">🏷 Capture the vibe</div>
-          <p>Tag the feeling of the place - beach, romantic, late night, city energy, quiet mountain - so your memories keep their mood.</p>
-        </article>
-        <article class="pins-card">
-          <div class="pins-card-media"><img src="pins-placeholder-cut.png" alt="Pins placeholder preview"></div>
-          <div class="pins-card-title">✍️ Write the story</div>
-          <p>Add your own notes to capture what the moment felt like, not just where it happened.</p>
-        </article>
-        <article class="pins-card">
-          <div class="pins-card-media"><img src="pins-placeholder-cut.png" alt="Pins placeholder preview"></div>
-          <div class="pins-card-title">🗺 Build your personal map</div>
-          <p>Over time, your pins form a living map of the places that shaped your travels.</p>
-        </article>
+        <div class="pins-feature-list">
+          <article class="pins-feature-item">
+            <div class="pins-feature-title">📍 Pin the moment</div>
+            <p>Drop a pin wherever something meaningful happens - a view, a restaurant, a hidden street, or a place you simply want to remember.</p>
+          </article>
+          <article class="pins-feature-item">
+            <div class="pins-feature-title">🏷 Capture the vibe</div>
+            <p>Tag the feeling of the place - beach, romantic, late night, city energy, quiet mountain - so your memories keep their mood.</p>
+          </article>
+          <article class="pins-feature-item">
+            <div class="pins-feature-title">✍️ Write the story</div>
+            <p>Add your own notes to capture what the moment felt like, not just where it happened.</p>
+          </article>
+          <article class="pins-feature-item">
+            <div class="pins-feature-title">🗺 Build your personal map</div>
+            <p>Over time, your pins form a living map of the places that shaped your travels.</p>
+          </article>
+        </div>
+        <div class="pins-showcase">
+          <img src="pins-placeholder-cut.png" alt="Travelpin pins screenshot preview">
+        </div>
       </div>
 
       <div class="pins-copy">
