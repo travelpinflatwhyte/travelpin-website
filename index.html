@@ -1293,6 +1293,50 @@ body.is-scrolling .phone-frame::before{
   opacity:1;
 }
 
+/* footer */
+
+.site-footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  background:linear-gradient(180deg, rgba(12,18,52,.84), rgba(8,14,42,.92));
+  padding:34px var(--pad);
+}
+
+.site-footer-inner{
+  width:min(var(--max),100%);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.site-footer-brand{
+  font-size:14px;
+  letter-spacing:.03em;
+  color:rgba(238,243,255,.74);
+}
+
+.site-footer-links{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.site-footer-links a{
+  font-size:14px;
+  color:rgba(238,243,255,.78);
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  transition:color .2s ease, border-color .2s ease;
+}
+
+.site-footer-links a:hover,
+.site-footer-links a:focus-visible{
+  color:#f4f7ff;
+  border-color:rgba(244,247,255,.42);
+}
+
 .reveal{
   opacity:0;
   transform:translateY(12px);
@@ -1586,6 +1630,15 @@ body.is-scrolling .phone-frame::before{
   .philosophy-section{
     padding-top:var(--section-space-mobile);
     padding-bottom:var(--section-space-mobile);
+  }
+
+  .site-footer{
+    padding:24px var(--pad);
+  }
+
+  .site-footer-inner{
+    justify-content:center;
+    text-align:center;
   }
 }
 
@@ -2039,6 +2092,17 @@ body.is-scrolling .phone-frame::before{
   </section>
 
 </main>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-brand">Travelpin © 2026. From departure to memory.</div>
+    <div class="site-footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#final-cta">Download</a>
+    </div>
+  </div>
+</footer>
 
 <script>
 const panels = Array.from(document.querySelectorAll('[data-screen-panel]'));
