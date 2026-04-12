@@ -193,44 +193,117 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 @media (max-width:768px) {
   nav{padding:1rem 1.2rem;}
   .nav-btn{padding:8px 14px;font-size:13px;}
+
+  /* HERO */
   .hero{padding-top:80px;padding-left:1.2rem;padding-right:1.2rem;}
   .hero-h1,.hero-h1-2{font-size:clamp(36px,10vw,52px);letter-spacing:-2px;}
-  .cards-field{height:auto !important;display:flex !important;flex-direction:column !important;gap:10px !important;margin-bottom:1.5rem !important;}
-  .mcard{position:relative !important;top:auto !important;left:auto !important;right:auto !important;bottom:auto !important;width:100% !important;animation:none !important;}
+  .hero-inner{max-width:100%;}
+
+  /* HERO CARDS — keep overlapping, just scale down */
+  .cards-field{
+    height:220px !important;
+    width:100% !important;
+    position:relative !important;
+    margin-bottom:1.5rem !important;
+  }
+  .mcard{
+    width:160px !important;
+    padding:10px 12px !important;
+    font-size:11px !important;
+  }
+  .mcard-eye{font-size:9px !important;}
+  .mcard-body{font-size:11px !important;line-height:1.4 !important;}
+
   .kicker-txt{white-space:normal;text-align:center;font-size:11px;}
   .phil-1,.phil-2{font-size:clamp(22px,7vw,34px);}
   .ctas{flex-direction:column;align-items:center;}
   .btn-p,.btn-s{width:100%;text-align:center;justify-content:center;}
+
+  /* CALM */
   .calm-image-wrap{height:70vh !important;min-height:400px !important;}
-  .calm-h2{font-size:clamp(24px,7vw,38px) !important;letter-spacing:-1px !important;}
+  .calm-h2{font-size:clamp(22px,6vw,34px) !important;letter-spacing:-1px !important;}
   .calm-body{font-size:14px !important;}
+
+  /* SCROLL STORY */
   .scroll-story{grid-template-columns:1fr !important;padding:0 1.2rem !important;}
   .phone-sticky{display:none !important;}
   .step{min-height:auto !important;padding:2rem 0 !important;}
   .step-inner{opacity:1 !important;transform:none !important;}
   .step-headline{font-size:clamp(22px,7vw,34px) !important;}
   .intro{padding:5rem 1.2rem 1.5rem !important;min-height:auto !important;}
+
+  /* PINS — phone first, then horizontal scroll features */
   .pins-section{padding:3rem 1.2rem !important;}
   .pins-inner{grid-template-columns:1fr !important;gap:2rem !important;}
   .pins-right{order:-1;}
+  .pins-left{gap:1.2rem !important;}
   .pins-headline{font-size:clamp(28px,8vw,42px) !important;text-align:center !important;}
+  .pins-body{max-width:100% !important;text-align:center !important;}
   .floating-tag{display:none !important;}
+
+  /* PINS features — horizontal scroll */
+  .pins-features{
+    display:flex !important;
+    flex-direction:row !important;
+    overflow-x:auto !important;
+    overflow-y:hidden !important;
+    gap:0 !important;
+    border-radius:16px !important;
+    -webkit-overflow-scrolling:touch !important;
+    scroll-snap-type:x mandatory !important;
+    padding-bottom:4px !important;
+  }
+  .pins-feature{
+    min-width:200px !important;
+    max-width:200px !important;
+    flex-shrink:0 !important;
+    border-bottom:none !important;
+    border-right:0.5px solid rgba(255,255,255,0.06) !important;
+    scroll-snap-align:start !important;
+    flex-direction:column !important;
+    gap:8px !important;
+  }
+  .pins-feature:last-child{border-right:none !important;}
+  .pins-closing{align-self:center !important;}
+
+  /* BASECAMP — completely restructure for mobile */
   .bc-section{min-height:auto !important;}
   .bc-content{padding:0 1.2rem 2.5rem !important;}
   .bc-top{padding:2rem 1.2rem 0 !important;}
-  .bc-headline{font-size:clamp(28px,8vw,44px) !important;letter-spacing:-2px !important;}
-  .bc-grid{grid-template-columns:repeat(2,1fr) !important;}
-  .bc-grid-2{grid-template-columns:1fr 1fr !important;}
+  .bc-headline{font-size:clamp(26px,7vw,38px) !important;letter-spacing:-2px !important;}
+  .bc-sub{font-size:15px !important;max-width:100% !important;margin-bottom:1.5rem !important;}
+
+  /* Badge full width */
+  .badge{width:100% !important;box-sizing:border-box !important;}
+
+  /* Top stats — 2x2 grid */
+  .bc-grid{
+    grid-template-columns:1fr 1fr !important;
+    gap:8px !important;
+  }
+
+  /* Bottom stats — stack to column */
+  .bc-grid-2{
+    grid-template-columns:1fr !important;
+    gap:8px !important;
+  }
+
   .stat{padding:14px 16px !important;}
+  .stat-value{font-size:clamp(24px,8vw,36px) !important;}
+  .stat-label{font-size:9px !important;}
+  .stat-desc{font-size:11px !important;}
+
   footer>div{flex-direction:column !important;text-align:center !important;gap:1rem !important;}
 }
 
 @media (max-width:480px) {
   .hero-h1,.hero-h1-2{font-size:clamp(30px,11vw,44px);}
-  .bc-grid{grid-template-columns:1fr !important;}
-  .bc-grid-2{grid-template-columns:1fr !important;}
+  .cards-field{height:200px !important;}
+  .mcard{width:145px !important;}
   .step-chips{gap:6px;}
   .chip{font-size:11px;padding:4px 10px;}
+  .bc-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;}
+  .pins-feature{min-width:180px !important;max-width:180px !important;}
 }
 
 </style>
@@ -890,7 +963,7 @@ stepInners[0].classList.add('active');
   <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
     <div>
       <div style="font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;font-weight:800;font-size:1.2rem;color:#fff;margin-bottom:4px;">travel<span style="color:#1d9e75;">pin</span></div>
-      <p style="font-size:12px;color:rgba(238,243,255,0.25);margin:0;">From departure to memory · San Francisco, CA</p>
+      <p style="font-size:12px;color:rgba(238,243,255,0.25);margin:0;">From departure to memory · India</p>
     </div>
     <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;">
       <a href="privacy.html" style="font-size:13px;color:rgba(238,243,255,0.4);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(238,243,255,0.4)'">Privacy</a>
