@@ -232,35 +232,54 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .step-headline{font-size:clamp(22px,7vw,34px) !important;}
   .intro{padding:5rem 1.2rem 1.5rem !important;min-height:auto !important;}
 
-  /* PINS — phone first, then horizontal scroll features */
-  .pins-section{padding:3rem 1.2rem !important;}
-  .pins-two-col{grid-template-columns:1fr !important;gap:2rem !important;}
-  .pins-phone-col{order:-1;}
+  /* PINS — completely restructured for mobile */
+  .pins-section{padding:2.5rem 1.2rem !important;overflow:hidden !important;}
+  .pins-wrap{overflow:hidden !important;}
+
+  /* Hide floating tags completely */
   .floating-tag{display:none !important;}
 
-  /* PINS features — horizontal scroll */
+  /* Stack to single column, phone on top */
+  .pins-two-col{
+    display:flex !important;
+    flex-direction:column !important;
+    gap:2rem !important;
+  }
+
+  /* Phone column — centred, constrained */
+  .pins-phone-col{
+    order:-1 !important;
+    width:100% !important;
+    display:flex !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    position:relative !important;
+  }
+
+  /* Force phone to fit screen */
+  .pins-phone-col .phone{
+    width:min(240px, 65vw) !important;
+    border-radius:40px !important;
+  }
+
+  /* Hide glow that causes overflow */
+  .pins-phone-col .phone-glow-wrap{display:none !important;}
+
+  /* Features — vertical stack */
   .pins-feat-list{
     display:flex !important;
-    flex-direction:row !important;
-    overflow-x:auto !important;
-    overflow-y:hidden !important;
-    gap:0 !important;
-    border-radius:16px !important;
-    -webkit-overflow-scrolling:touch !important;
-    scroll-snap-type:x mandatory !important;
-    padding-bottom:6px !important;
+    flex-direction:column !important;
+    overflow:visible !important;
   }
   .pins-feat-item{
-    min-width:190px !important;
-    flex-shrink:0 !important;
-    border-bottom:none !important;
-    border-right:0.5px solid rgba(255,255,255,0.06) !important;
-    scroll-snap-align:start !important;
-    flex-direction:column !important;
-    gap:8px !important;
-    align-items:flex-start !important;
+    min-width:0 !important;
+    width:100% !important;
+    flex-shrink:1 !important;
+    border-right:none !important;
+    border-bottom:0.5px solid rgba(255,255,255,0.06) !important;
+    flex-direction:row !important;
   }
-  .pins-feat-item:last-child{border-right:none !important;}
+  .pins-feat-item:last-child{border-bottom:none !important;}
 
   /* BASECAMP — completely restructure for mobile */
   .bc-section{min-height:auto !important;}
@@ -299,7 +318,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .step-chips{gap:6px;}
   .chip{font-size:11px;padding:4px 10px;}
   .bc-grid{grid-template-columns:1fr 1fr !important;gap:8px !important;}
-  .pins-feature{min-width:180px !important;max-width:180px !important;}
+
 }
 
 </style>
