@@ -234,15 +234,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
   /* PINS — phone first, then horizontal scroll features */
   .pins-section{padding:3rem 1.2rem !important;}
-  .pins-inner{grid-template-columns:1fr !important;gap:2rem !important;}
-  .pins-right{order:-1;}
-  .pins-left{gap:1.2rem !important;}
-  .pins-headline{font-size:clamp(28px,8vw,42px) !important;text-align:center !important;}
-  .pins-body{max-width:100% !important;text-align:center !important;}
+  .pins-two-col{grid-template-columns:1fr !important;gap:2rem !important;}
+  .pins-phone-col{order:-1;}
   .floating-tag{display:none !important;}
 
   /* PINS features — horizontal scroll */
-  .pins-features{
+  .pins-feat-list{
     display:flex !important;
     flex-direction:row !important;
     overflow-x:auto !important;
@@ -251,20 +248,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
     border-radius:16px !important;
     -webkit-overflow-scrolling:touch !important;
     scroll-snap-type:x mandatory !important;
-    padding-bottom:4px !important;
+    padding-bottom:6px !important;
   }
-  .pins-feature{
-    min-width:200px !important;
-    max-width:200px !important;
+  .pins-feat-item{
+    min-width:190px !important;
     flex-shrink:0 !important;
     border-bottom:none !important;
     border-right:0.5px solid rgba(255,255,255,0.06) !important;
     scroll-snap-align:start !important;
     flex-direction:column !important;
     gap:8px !important;
+    align-items:flex-start !important;
   }
-  .pins-feature:last-child{border-right:none !important;}
-  .pins-closing{align-self:center !important;}
+  .pins-feat-item:last-child{border-right:none !important;}
 
   /* BASECAMP — completely restructure for mobile */
   .bc-section{min-height:auto !important;}
@@ -774,7 +770,7 @@ stepInners[0].classList.add('active');
   <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(30,58,95,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(30,58,95,0.12) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;"></div>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(200,168,74,0.07) 0%,transparent 55%),radial-gradient(ellipse at 20% 60%,rgba(74,122,170,0.08) 0%,transparent 50%),radial-gradient(ellipse at 50% 0%,rgba(7,15,42,0.95) 0%,transparent 35%),radial-gradient(ellipse at 50% 100%,rgba(7,15,42,0.95) 0%,transparent 35%);pointer-events:none;z-index:0;"></div>
 
-  <div style="position:relative;z-index:1;max-width:1000px;margin:0 auto;">
+  <div class="pins-wrap" style="position:relative;z-index:1;max-width:1000px;margin:0 auto;">
 
     <!-- CENTRED HEADER -->
     <div style="text-align:center;margin-bottom:3.5rem;">
@@ -791,34 +787,34 @@ stepInners[0].classList.add('active');
     </div>
 
     <!-- TWO COLUMN: features left, phone right -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <div class="pins-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
 
       <!-- LEFT — features + closing -->
       <div style="display:flex;flex-direction:column;gap:1.5rem;">
 
-        <div style="display:flex;flex-direction:column;gap:0;border:0.5px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.02);">
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.06);">
+        <div class="pins-feat-list" style="display:flex;flex-direction:column;gap:0;border:0.5px solid rgba(255,255,255,0.08);border-radius:16px;overflow:hidden;background:rgba(255,255,255,0.02);">
+          <div class="pins-feat-item" style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.06);">
             <div style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);">📍</div>
             <div>
               <p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 3px;">Pin the moment</p>
               <p style="font-size:12px;color:rgba(238,243,255,0.4);line-height:1.45;margin:0;">Drop a pin wherever something meaningful happens — a view, a restaurant, a hidden street.</p>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.06);">
+          <div class="pins-feat-item" style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.06);">
             <div style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);">🏷</div>
             <div>
               <p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 3px;">Capture the vibe</p>
               <p style="font-size:12px;color:rgba(238,243,255,0.4);line-height:1.45;margin:0;">Tag the feeling — beach, late night, city energy, quiet mountain — so your memories keep their mood.</p>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.06);">
+          <div class="pins-feat-item" style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border-bottom:0.5px solid rgba(255,255,255,0.06);">
             <div style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);">✍️</div>
             <div>
               <p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 3px;">Write the story</p>
               <p style="font-size:12px;color:rgba(238,243,255,0.4);line-height:1.45;margin:0;">Add your own words to capture what the moment felt like, not just where it happened.</p>
             </div>
           </div>
-          <div style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;">
+          <div class="pins-feat-item" style="display:flex;align-items:flex-start;gap:14px;padding:16px 18px;">
             <div style="width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.1);">🗺</div>
             <div>
               <p style="font-size:14px;font-weight:600;color:#fff;margin:0 0 3px;">Build your personal map</p>
@@ -835,7 +831,7 @@ stepInners[0].classList.add('active');
       </div>
 
       <!-- RIGHT — phone -->
-      <div style="display:flex;justify-content:center;align-items:center;position:relative;">
+      <div class="pins-phone-col" style="display:flex;justify-content:center;align-items:center;position:relative;">
         <div style="position:absolute;inset:-60px;background:radial-gradient(circle at 50% 50%,rgba(200,168,74,0.15),transparent 65%);filter:blur(40px);pointer-events:none;"></div>
 
         <!-- Floating tags -->
