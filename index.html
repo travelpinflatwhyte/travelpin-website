@@ -251,91 +251,202 @@ p{
   color:rgba(255,255,255,.84);
 }
 
-.problem-list{
+/* “The problem” kicker + lead (from travel_hero_v5_bigger.html) */
+
+.hero-problem-intro{
   display:grid;
-  gap:18px;
-  max-width:920px;
+  justify-items:center;
+  gap:1.05rem;
+  margin-top:6px;
+  margin-bottom:4px;
+  width:100%;
+  max-width:560px;
+  text-align:center;
 }
 
-.hero-signal-strip{
-  margin-top:20px;
+.hero-problem-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  justify-content:center;
+}
+
+.hero-problem-line{
+  height:1px;
+  width:clamp(32px,10vw,44px);
+  flex-shrink:0;
+  border-radius:1px;
+}
+
+.hero-problem-line--l{
+  background:linear-gradient(to right, transparent, #c05050);
+}
+
+.hero-problem-line--r{
+  background:linear-gradient(to left, transparent, #c05050);
+}
+
+.hero-problem-label{
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:#c05050;
+}
+
+.hero-problem-lead{
+  margin:0;
+  font-size:15px;
+  line-height:1.45;
+  font-weight:500;
+  color:rgba(165,192,224,.82);
+}
+
+/* Floating app tiles (motion from travel_hero_v5_bigger.html) */
+
+@keyframes hero-v5-float1{0%,100%{transform:translateY(0) rotate(-5deg)}50%{transform:translateY(-10px) rotate(-5deg)}}
+@keyframes hero-v5-float2{0%,100%{transform:translateY(0) rotate(3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes hero-v5-float3{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-9px) rotate(-4deg)}}
+@keyframes hero-v5-float4{0%,100%{transform:translateY(0) rotate(5deg)}50%{transform:translateY(-11px) rotate(5deg)}}
+@keyframes hero-v5-tile-in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-v5-tiles{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:12px;
+  width:100%;
+  max-width:920px;
+  margin:0;
+  padding:0;
+  list-style:none;
+  align-items:start;
+  justify-items:center;
+  text-align:center;
+}
+
+.hero-v5-tile{
+  width:100%;
+  max-width:200px;
+  justify-self:center;
+}
+
+.hero-v5-tiles.is-visible .hero-v5-tile--1{animation:hero-v5-float1 3.4s ease-in-out infinite;}
+.hero-v5-tiles.is-visible .hero-v5-tile--2{animation:hero-v5-float2 3.9s ease-in-out infinite;}
+.hero-v5-tiles.is-visible .hero-v5-tile--3{animation:hero-v5-float3 3.6s ease-in-out infinite;}
+.hero-v5-tiles.is-visible .hero-v5-tile--4{animation:hero-v5-float4 4.1s ease-in-out infinite;}
+
+.hero-v5-tile-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  opacity:0;
+}
+
+.hero-v5-tiles.is-visible .hero-v5-tile-content{
+  animation:hero-v5-tile-in .65s ease forwards;
+}
+
+.hero-v5-tiles.is-visible .hero-v5-tile:nth-child(1) .hero-v5-tile-content{animation-delay:.05s;}
+.hero-v5-tiles.is-visible .hero-v5-tile:nth-child(2) .hero-v5-tile-content{animation-delay:.2s;}
+.hero-v5-tiles.is-visible .hero-v5-tile:nth-child(3) .hero-v5-tile-content{animation-delay:.35s;}
+.hero-v5-tiles.is-visible .hero-v5-tile:nth-child(4) .hero-v5-tile-content{animation-delay:.5s;}
+
+.hero-v5-icon{
+  width:76px;
+  height:76px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+  line-height:1;
+  box-shadow:0 6px 24px rgba(0,0,0,.45);
+}
+.hero-v5-icon--a{background:#0f2035;}
+.hero-v5-icon--b{background:#0f2a1a;}
+.hero-v5-icon--c{background:#2a1010;}
+.hero-v5-icon--d{background:#1e1030;}
+
+.hero-v5-tile-title{
+  font-size:13px;
+  font-weight:600;
+  margin:0;
+  line-height:1.2;
+}
+.hero-v5-tile-title--a{color:#8eb8ea;}
+.hero-v5-tile-title--b{color:#7dcea0;}
+.hero-v5-tile-title--c{color:#d4a08e;}
+.hero-v5-tile-title--d{color:#c4a8e8;}
+
+.hero-v5-tile-copy{
+  font-size:11px;
+  margin:0;
+  line-height:1.45;
+  color:rgba(238,243,255,.52);
+}
+
+/* “4 apps. Every. Single. Trip.” (from travel_hero_v5_bigger.html) */
+
+.hero-apps-kicker{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:100%;
+  max-width:920px;
+  margin:10px 0 0;
+  padding:0;
+}
+
+.hero-apps-kicker-line{
+  flex:1;
+  height:1px;
+  min-width:20px;
+}
+
+.hero-apps-kicker-line--l{
+  background:linear-gradient(to right, transparent, #d65c5c);
+}
+
+.hero-apps-kicker-line--r{
+  background:linear-gradient(to left, transparent, #d65c5c);
+}
+
+.hero-apps-kicker-text{
   display:flex;
   flex-wrap:wrap;
   justify-content:center;
-  gap:10px;
-  max-width:920px;
+  align-items:baseline;
+  column-gap:.35ch;
+  row-gap:.15rem;
+  font-size:clamp(17px,3.8vw,22px);
+  letter-spacing:-.025em;
+  line-height:1.2;
+  text-align:center;
 }
 
-.hero-signal-note{
-  margin-top:20px;
-  font-size:12px;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:rgba(238,243,255,.64);
-}
-
-.hero-signal-item{
-  font-size:13px;
-  letter-spacing:.02em;
-  color:rgba(238,243,255,.84);
-  padding:8px 12px;
-  border-radius:999px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.14);
-}
-
-.story-block{
-  display:grid;
-  gap:12px;
-}
-
-.story-block + .story-block{
-  margin-top:28px;
-}
-
-.problem-item{
-  font-size:clamp(22px,2.3vw,30px);
-  line-height:1.25;
-}
-
-.wing-underline{
-  --underline-color:#1F93C8;
-  text-decoration:none;
-  background-image:linear-gradient(var(--underline-color), var(--underline-color));
-  background-repeat:no-repeat;
-  background-position:0 100%;
-  background-size:0 2px;
-  padding-bottom:.1em;
-  transition:background-size .24s cubic-bezier(.22,.61,.36,1);
-}
-
-.wing-underline--blue{ --underline-color:#1F93C8; }
-.wing-underline--orange{ --underline-color:#F29C01; }
-.wing-underline--white{ --underline-color:#FCFCFC; }
-
-body.intro-animate .wing-underline{
-  background-size:100% 3px;
-}
-
-.problem-item.dim{
-  color:rgba(255,255,255,.78);
-}
-
-.problem-close{
-  margin-top:18px;
-  display:grid;
-  gap:8px;
-}
-
-.problem-close .big{
-  font-size:clamp(28px,3.2vw,44px);
-  line-height:1.06;
+.hero-apps-kicker-strong{
+  font-weight:700;
   color:#fff;
 }
 
-.problem-close .small{
-  font-size:clamp(18px,1.7vw,24px);
-  color:var(--text-soft);
+.hero-apps-kicker-soft{
+  font-weight:400;
+  color:#d65c5c;
+}
+
+@media (max-width: 640px){
+  .hero-v5-tiles{
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px 12px;
+  }
+  .hero-v5-tile{ max-width:none; }
+  .hero-v5-icon{
+    width:64px;
+    height:64px;
+    font-size:28px;
+  }
 }
 
 /* section 2 */
@@ -1389,21 +1500,6 @@ body.is-scrolling .phone-frame::before{
     margin-bottom:8px;
   }
 
-  .hero-signal-strip{
-    margin-top:12px;
-    gap:8px;
-  }
-
-  .hero-signal-note{
-    margin-top:14px;
-    font-size:11px;
-  }
-
-  .hero-signal-item{
-    font-size:12px;
-    padding:7px 10px;
-  }
-
   .sticky-phone{
     position:relative;
     top:auto;
@@ -1654,7 +1750,15 @@ body.is-scrolling .phone-frame::before{
   .nav-inner{ transition:none; }
   .btn, .final-cta .btn::after{ transition:none; }
   .reveal{ transition:none; opacity:1; transform:none; }
-  .wing-underline{ transition:none; background-size:100% 3px; }
+  .hero-v5-tiles.is-visible .hero-v5-tile--1,
+  .hero-v5-tiles.is-visible .hero-v5-tile--2,
+  .hero-v5-tiles.is-visible .hero-v5-tile--3,
+  .hero-v5-tiles.is-visible .hero-v5-tile--4{ animation:none; transform:none; }
+  .hero-v5-tiles.is-visible .hero-v5-tile-content{
+    animation:none;
+    opacity:1;
+    transform:none;
+  }
 }
 </style>
 </head>
@@ -1689,40 +1793,57 @@ body.is-scrolling .phone-frame::before{
       <div class="hero-title">
         <h1>
           TRAVEL TODAY IS FRAGMENTED.<br>
-        <!--  <span class="line-two">But the journey is one.</span> -->
         </h1>
       </div>
 
-      <div class="problem-list">
-
-        <div class="story-block">
-          <div class="problem-item">Your ✈️ <span class="wing-underline wing-underline--blue">flight details</span> live in <span class="wing-underline wing-underline--blue">one app</span>.</div>
-          <div class="problem-item">Your 🧳 <span class="wing-underline">packing checklist</span> sits <span class="wing-underline">somewhere else</span>.</div>
+      <div class="hero-problem-intro">
+        <div class="hero-problem-kicker">
+          <span class="hero-problem-line hero-problem-line--l" aria-hidden="true"></span>
+          <span class="hero-problem-label">The problem</span>
+          <span class="hero-problem-line hero-problem-line--r" aria-hidden="true"></span>
         </div>
-
-        <div class="story-block">
-          <div class="problem-item">When should I leave to reach the airport before check-in closes?</div>
-          <div class="problem-item">Check traffic • Book 🚕 — <span class="wing-underline wing-underline--orange">in another app</span>.</div>
-        </div>
-
-        <div class="story-block">
-          <div class="problem-item">To keep your loved ones updated — <span class="wing-underline wing-underline--white">you message</span> 💬</div>
-          <div class="problem-item">🏠 Leaving home • 🛫 Taking off • 🛬 Landed</div>
-        </div>
-          
-        <div class="story-block">
-          <div class="problem-item">One journey — yet it takes multiple apps to make it work.</div>
-        </div>
-
+        <p class="hero-problem-lead">One trip. You’re juggling all of these.</p>
       </div>
 
-      <div class="hero-signal-note">But the journey is one continuous experience.</div>
-      <div class="hero-signal-strip">
-        <div class="hero-signal-item">Live flight updates</div>
-        <div class="hero-signal-item">Smart checklist</div>
-        <div class="hero-signal-item">Private sharing</div>
-        <div class="hero-signal-item">Memory pins</div>
+      <div class="hero-v5-tiles" role="list" aria-label="Separate apps travelers use">
+        <div class="hero-v5-tile hero-v5-tile--1" role="listitem">
+          <div class="hero-v5-tile-content">
+            <div class="hero-v5-icon hero-v5-icon--a" aria-hidden="true">✈️</div>
+            <p class="hero-v5-tile-title hero-v5-tile-title--a">Flight tracker</p>
+            <p class="hero-v5-tile-copy">Check delays &amp; gate changes</p>
+          </div>
+        </div>
+        <div class="hero-v5-tile hero-v5-tile--2" role="listitem">
+          <div class="hero-v5-tile-content">
+            <div class="hero-v5-icon hero-v5-icon--b" aria-hidden="true">☑️</div>
+            <p class="hero-v5-tile-title hero-v5-tile-title--b">Packing app</p>
+            <p class="hero-v5-tile-copy">Manage your checklist</p>
+          </div>
+        </div>
+        <div class="hero-v5-tile hero-v5-tile--3" role="listitem">
+          <div class="hero-v5-tile-content">
+            <div class="hero-v5-icon hero-v5-icon--c" aria-hidden="true">🗺️</div>
+            <p class="hero-v5-tile-title hero-v5-tile-title--c">Maps</p>
+            <p class="hero-v5-tile-copy">Navigate to terminal</p>
+          </div>
+        </div>
+        <div class="hero-v5-tile hero-v5-tile--4" role="listitem">
+          <div class="hero-v5-tile-content">
+            <div class="hero-v5-icon hero-v5-icon--d" aria-hidden="true">💬</div>
+            <p class="hero-v5-tile-title hero-v5-tile-title--d">Messaging</p>
+            <p class="hero-v5-tile-copy">Update family yourself</p>
+          </div>
+        </div>
       </div>
+
+      <p class="hero-apps-kicker">
+        <span class="hero-apps-kicker-line hero-apps-kicker-line--l" aria-hidden="true"></span>
+        <span class="hero-apps-kicker-text">
+          <span class="hero-apps-kicker-strong">4 apps.</span>
+          <span class="hero-apps-kicker-soft"> Every. Single. Trip.</span>
+        </span>
+        <span class="hero-apps-kicker-line hero-apps-kicker-line--r" aria-hidden="true"></span>
+      </p>
     </div>
   </section>
 
@@ -2117,8 +2238,9 @@ const phone = document.querySelector('.phone-frame');
 const nav = document.querySelector('.nav');
 const revealTargets = [
   '.hero-title',
-  '.problem-list .story-block',
-  '.hero-signal-strip',
+  '.hero-problem-intro',
+  '.hero-v5-tiles',
+  '.hero-apps-kicker',
   '.solution-stack',
   '.story-intro',
   '.feature-list-intro',
@@ -2361,12 +2483,6 @@ setupFeatureSelector();
 updateNavBehavior();
 setFeatureByIndex(0, { force:true });
 cacheFeatureCopyHeights();
-document.querySelectorAll('.problem-list .wing-underline').forEach((el, idx) => {
-  el.style.transitionDelay = `${70 * idx}ms`;
-});
-requestAnimationFrame(() => {
-  document.body.classList.add('intro-animate');
-});
 </script>
 
 </body>
