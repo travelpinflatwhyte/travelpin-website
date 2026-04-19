@@ -206,12 +206,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .pins-feat-list{display:flex !important;flex-direction:column !important;overflow:visible !important;}
   .pins-feat-item{min-width:0 !important;width:100% !important;flex-direction:row !important;}
   .bc-section{min-height:auto !important;}
-  .bc-content{padding:0 1.2rem 2.5rem !important;}
-  .bc-top{padding:2rem 1.2rem 0 !important;}
+  .bc-content{padding:0.8rem 1.2rem 2.5rem !important;}
+  .bc-top{padding:1.2rem 1.2rem 0 !important;position:relative !important;top:auto !important;left:auto !important;right:auto !important;text-align:left !important;}
   .bc-headline{font-size:clamp(28px,8vw,44px) !important;letter-spacing:-2px !important;}
-  .bc-grid{grid-template-columns:repeat(2,1fr) !important;}
-  .bc-grid-2{grid-template-columns:1fr 1fr !important;}
-  .stat{padding:14px 16px !important;}
+  .bc-grid{grid-template-columns:repeat(2,1fr) !important;gap:8px !important;}
+  .bc-grid-2{grid-template-columns:1fr 1fr !important;gap:8px !important;}
+  .stat{padding:12px 14px !important;}
+  .stat-value{font-size:clamp(22px,6vw,32px) !important;letter-spacing:-1px !important;}
+  .stat-label{font-size:9px !important;}
+  .stat-desc{font-size:11px !important;}
   footer>div{flex-direction:column !important;text-align:center !important;gap:1rem !important;}
 }
 
@@ -788,7 +791,7 @@ stepInners[0].classList.add('active');
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(7,16,31,0.3) 0%,rgba(7,16,31,0.2) 30%,rgba(7,16,31,0.6) 60%,rgba(7,16,31,0.92) 80%,rgba(7,16,31,1) 100%);"></div>
   </div>
 
-  <div style="position:absolute;top:0;left:0;right:0;z-index:1;padding:2.5rem 2.5rem 0;">
+  <div class="bc-top" style="position:absolute;top:0;left:0;right:0;z-index:1;padding:2.5rem 2.5rem 0;">
     <p style="font-size:11px;letter-spacing:0.2em;color:rgba(238,243,255,0.4);text-transform:uppercase;font-weight:500;margin:0;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">Travelpin Basecamp</p>
   </div>
 
@@ -807,31 +810,31 @@ stepInners[0].classList.add('active');
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px;">
-      <div style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
+    <div class="bc-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px;">
+      <div class="stat" style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
         <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(238,243,255,0.3);margin:0 0 8px;">Time in the air</p>
         <p style="font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;margin:0 0 4px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">8 <span style="font-size:0.5em;color:rgba(255,255,255,0.4);">days</span></p>
         <p style="font-size:12px;color:rgba(238,243,255,0.4);margin:0;line-height:1.4;">199h 30m total</p>
       </div>
-      <div style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
+      <div class="stat" style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
         <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(238,243,255,0.3);margin:0 0 8px;">Trips taken</p>
         <p style="font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;margin:0 0 4px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">29</p>
         <p style="font-size:12px;color:rgba(238,243,255,0.4);margin:0;line-height:1.4;">and counting</p>
       </div>
-      <div style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
+      <div class="stat" style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
         <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(238,243,255,0.3);margin:0 0 8px;">Airports</p>
         <p style="font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;margin:0 0 4px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">18</p>
         <p style="font-size:12px;color:rgba(238,243,255,0.4);margin:0;line-height:1.4;">across the world</p>
       </div>
-      <div style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
+      <div class="stat" style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
         <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(238,243,255,0.3);margin:0 0 8px;">Avg. flight</p>
         <p style="font-size:clamp(28px,3.5vw,42px);font-weight:800;color:#fff;letter-spacing:-1.5px;line-height:1;margin:0 0 4px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">413<span style="font-size:0.4em;color:rgba(255,255,255,0.4);">m</span></p>
         <p style="font-size:12px;color:rgba(238,243,255,0.4);margin:0;line-height:1.4;">per flight</p>
       </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
-      <div style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(200,168,74,0.25);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
+    <div class="bc-grid-2" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+      <div class="stat" style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(200,168,74,0.25);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
         <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(200,168,74,0.6);margin:0 0 8px;">Favourite route</p>
         <p style="font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-1px;line-height:1;margin:6px 0 4px;display:flex;align-items:center;gap:8px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">DEL <span style="color:rgba(255,255,255,0.2);font-size:0.6em;">→</span> GOI</p>
         <p style="font-size:12px;color:rgba(238,243,255,0.4);margin:0;">6 flights · IndiGo 6E · 12x</p>
@@ -841,7 +844,7 @@ stepInners[0].classList.add('active');
         <p style="font-size:clamp(18px,2.2vw,24px);font-weight:800;color:#fff;letter-spacing:-0.8px;line-height:1.15;margin:6px 0 4px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;">Boeing 787-9</p>
         <p style="font-size:12px;color:rgba(238,243,255,0.4);margin:0;">Flown 4× · IATA 789 · 8 types</p>
       </div>
-      <div style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
+      <div class="stat" style="background:rgba(8,16,36,0.72);border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;backdrop-filter:blur(16px);">
         <p style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;color:rgba(238,243,255,0.3);margin:0 0 8px;">Airport footprint</p>
         <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:4px;">
           <span style="font-size:10px;font-weight:600;padding:3px 7px;border-radius:6px;background:rgba(74,122,170,0.2);border:0.5px solid rgba(74,122,170,0.3);color:#8eb8ea;">DEL ✦</span>
