@@ -111,8 +111,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .intro-headline{font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-2px;line-height:1.08;}
 .intro-sub{font-size:16px;color:var(--muted);font-weight:300;line-height:1.6;}
 .scroll-story{position:relative;display:grid;grid-template-columns:1fr 300px;gap:4rem;max-width:960px;margin:0 auto;padding:0 2rem;}
-.steps{display:flex;flex-direction:column;}
-.step{min-height:70vh;display:flex;align-items:center;padding:1.5rem 0;position:relative;}
+.steps{display:flex;flex-direction:column;padding-bottom:30vh;}
+.step{min-height:60vh;display:flex;align-items:center;padding:1.5rem 0;position:relative;}
 .step-inner{max-width:440px;opacity:0.25;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,0.61,0.36,1),transform 0.6s cubic-bezier(0.22,0.61,0.36,1);}
 .step-inner.active{opacity:1;transform:translateY(0);}
 .step-number{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;}
@@ -122,7 +122,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-body{font-size:15px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1.5rem;}
 .step-chips{display:flex;gap:8px;flex-wrap:wrap;}
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 12px;border-radius:100px;font-weight:500;border:0.5px solid;}
-.phone-sticky{position:sticky;top:50%;transform:translateY(-50%);height:fit-content;display:flex;justify-content:center;align-items:center;padding:2rem 0;align-self:start;margin-top:50vh;}
+.phone-sticky{position:sticky;top:calc(50vh - 246px);height:fit-content;display:flex;justify-content:center;align-items:center;padding:2rem 0;align-self:start;margin-top:0;}
 .phone-wrap{position:relative;}
 .phone-glow{position:absolute;inset:-50px;border-radius:50%;filter:blur(40px);opacity:0.5;pointer-events:none;z-index:0;transition:background 0.8s ease;}
 .phone{width:240px;position:relative;z-index:1;}
@@ -373,7 +373,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <p class="step-moment" style="color:var(--c1);border-color:var(--c1);">
           "If I leave now...<br>actually let me check."
         </p>
-        <p class="step-body">Traffic, airport buffers, and check-in deadlines — all figured out so you know exactly when to leave. No more mental math. No more close calls.</p>
+        <p class="step-body">Traffic, airport buffers, check-in deadlines — no more mental maths. Travelpin tells you exactly when to walk out the door.</p>
         <div class="step-chips">
           <span class="chip" style="background:rgba(74,122,170,0.1);border-color:rgba(74,122,170,0.3);color:#8eb8ea;">🕐 Smart ETA</span>
           <span class="chip" style="background:rgba(74,122,170,0.1);border-color:rgba(74,122,170,0.3);color:#8eb8ea;">☑ AI Checklist</span>
@@ -392,7 +392,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <p class="step-moment" style="color:var(--c2);border-color:var(--c2);">
           "Did I pack the adapter?<br>Probably. Maybe."
         </p>
-        <p class="step-body">Your checklist adapts to your destination, weather, and trip type. Not a generic list — a list built for this trip, right now.</p>
+        <p class="step-body">Not a generic list. A checklist built for this trip — destination, weather, how long you're gone. Everything you need. Nothing you don't.</p>
         <div class="step-chips">
           <span class="chip" style="background:rgba(58,138,90,0.1);border-color:rgba(58,138,90,0.3);color:#7dcea0;">📦 Smart packing</span>
           <span class="chip" style="background:rgba(58,138,90,0.1);border-color:rgba(58,138,90,0.3);color:#7dcea0;">🌦 Weather aware</span>
@@ -411,7 +411,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <p class="step-moment" style="color:var(--c3);border-color:var(--c3);">
           "Gate B4 is now B14.<br>You found out first."
         </p>
-        <p class="step-body">Live flight status the moment the airline updates it. Gate changes, delays, boarding — all in one place. No refreshing. No guessing.</p>
+        <p class="step-body">The moment the airline knows, you know. Gate changes, delays, boarding time — live, without lifting a finger.</p>
         <div class="step-chips">
           <span class="chip" style="background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.3);color:#4ec9a0;">✈️ Live updates</span>
           <span class="chip" style="background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.3);color:#4ec9a0;">🔔 Instant alerts</span>
@@ -430,7 +430,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <p class="step-moment" style="color:var(--c4);border-color:var(--c4);">
           "Mum's been awake since 4am.<br>She knows now."
         </p>
-        <p class="step-body">Automatic updates at every milestone — boarding, in the air, landed. The people waiting for you know before they worry. You didn't lift a finger.</p>
+        <p class="step-body">Boarding. In the air. Landed. The people waiting for you know at every milestone — automatically. No message sent. No one left wondering.</p>
         <div class="step-chips">
           <span class="chip" style="background:rgba(122,90,170,0.1);border-color:rgba(122,90,170,0.3);color:#c4a8e8;">👥 Auto sharing</span>
           <span class="chip" style="background:rgba(122,90,170,0.1);border-color:rgba(122,90,170,0.3);color:#c4a8e8;">🔒 Private</span>
@@ -449,7 +449,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <p class="step-moment" style="color:var(--c5);border-color:var(--c5);">
           "That place in Goa.<br>Still with you."
         </p>
-        <p class="step-body">Drop a pin wherever something meaningful happens. A view, a café, a quiet street. Over time, your pins become a living map of the journeys that shaped you.</p>
+        <p class="step-body">Drop a pin wherever something meaningful happens. A view, a café, a quiet street. Your pins become a living map of every journey that shaped you.</p>
         <div class="step-chips">
           <span class="chip" style="background:rgba(200,168,74,0.1);border-color:rgba(200,168,74,0.3);color:#e8c86a;">📍 Memory pins</span>
           <span class="chip" style="background:rgba(200,168,74,0.1);border-color:rgba(200,168,74,0.3);color:#e8c86a;">🗺 Your map</span>
