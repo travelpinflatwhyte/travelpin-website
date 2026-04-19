@@ -198,9 +198,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .intro{padding:5rem 1.2rem 1.5rem !important;min-height:auto !important;}
   .pins-section{padding:3rem 1.2rem !important;overflow:hidden !important;}
   .pins-two-col{display:flex !important;flex-direction:column !important;gap:2rem !important;}
-  .pins-phone-col{order:-1 !important;width:100% !important;display:flex !important;justify-content:center !important;overflow:hidden !important;}
-  .pins-phone-col .phone{width:min(240px,65vw) !important;border-radius:40px !important;}
+  .pins-phone-col{order:-1 !important;width:100% !important;display:flex !important;justify-content:center !important;align-items:center !important;overflow:visible !important;margin-bottom:1rem !important;}
+  .pins-phone-col .phone{width:min(200px,55vw) !important;}
   .pins-phone-col .phone-glow-wrap{display:none !important;}
+  .floating-tag{display:none !important;}
   .floating-tag{display:none !important;}
   .pins-feat-list{display:flex !important;flex-direction:column !important;overflow:visible !important;}
   .pins-feat-item{min-width:0 !important;width:100% !important;flex-direction:row !important;}
@@ -709,7 +710,7 @@ stepInners[0].classList.add('active');
     </div>
 
     <!-- TWO COLUMN: features left, phone right -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+    <div class="pins-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
 
       <!-- LEFT — features + closing -->
       <div style="display:flex;flex-direction:column;gap:1.5rem;">
@@ -753,7 +754,7 @@ stepInners[0].classList.add('active');
       </div>
 
       <!-- RIGHT — phone -->
-      <div style="display:flex;justify-content:center;align-items:center;position:relative;">
+      <div class="pins-phone-col" style="display:flex;justify-content:center;align-items:center;position:relative;">
         <div style="position:absolute;inset:-60px;background:radial-gradient(circle at 50% 50%,rgba(200,168,74,0.15),transparent 65%);filter:blur(40px);pointer-events:none;"></div>
 
         <!-- Floating tags -->
