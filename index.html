@@ -110,9 +110,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .intro-eyebrow{font-size:11px;letter-spacing:0.2em;color:var(--muted2);text-transform:uppercase;font-weight:500;}
 .intro-headline{font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-2px;line-height:1.08;}
 .intro-sub{font-size:16px;color:var(--muted);font-weight:300;line-height:1.6;}
-.scroll-story{position:relative;display:grid;grid-template-columns:1fr 300px;gap:4rem;max-width:960px;margin:0 auto;padding:0 2rem;}
-.steps{display:flex;flex-direction:column;padding-bottom:30vh;}
-.step{min-height:60vh;display:flex;align-items:center;padding:1.5rem 0;position:relative;}
+.scroll-story{position:relative;max-width:960px;margin:0 auto;padding:0 2rem;}
+.steps{display:flex;flex-direction:column;padding-bottom:4rem;}
+.step{min-height:60vh;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:1.5rem 0;position:relative;}
 .step-inner{max-width:440px;opacity:0.25;transform:translateY(20px);transition:opacity 0.6s cubic-bezier(0.22,0.61,0.36,1),transform 0.6s cubic-bezier(0.22,0.61,0.36,1);}
 .step-inner.active{opacity:1;transform:translateY(0);}
 .step-number{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;}
@@ -122,7 +122,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-body{font-size:15px;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1.5rem;}
 .step-chips{display:flex;gap:8px;flex-wrap:wrap;}
 .chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:5px 12px;border-radius:100px;font-weight:500;border:0.5px solid;}
-.phone-sticky{position:sticky;top:calc(50vh - 246px);height:fit-content;display:flex;justify-content:center;align-items:center;padding:2rem 0;align-self:start;margin-top:0;}
+.phone-sticky{display:none;}
 .phone-wrap{position:relative;}
 .phone-glow{position:absolute;inset:-50px;border-radius:50%;filter:blur(40px);opacity:0.5;pointer-events:none;z-index:0;transition:background 0.8s ease;}
 .phone{width:240px;position:relative;z-index:1;}
@@ -212,7 +212,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .calm-image-wrap{height:70vh !important;min-height:400px !important;}
   .calm-h2{font-size:clamp(22px,6vw,34px) !important;letter-spacing:-1px !important;}
   .calm-body{font-size:14px !important;}
-  .scroll-story{grid-template-columns:1fr !important;padding:0 1.2rem !important;}
+  .scroll-story{padding:0 1.2rem !important;}
+  .step{grid-template-columns:1fr !important;gap:1rem !important;min-height:auto !important;}
   .steps{padding-bottom:4vh !important;}
   .outro{padding:0.8rem 1.2rem !important;min-height:auto !important;}
   .phone-sticky{display:none !important;}
@@ -254,26 +255,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 
 .step-card-mobile{display:none;}
-@media(max-width:768px){
-  .step-card-mobile{display:block !important;}
-  .tp-c{background:#0d1728;border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:14px 16px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;}
-  .tp-ht{font-size:12px;font-weight:600;color:#fff;margin:0 0 1px;}
-  .tp-hs{font-size:10px;color:rgba(200,221,245,0.4);margin:0 0 12px;}
-  .tp-lbl{font-size:9px;letter-spacing:0.06em;color:rgba(200,221,245,0.4);text-transform:uppercase;font-weight:500;margin:0 0 2px;}
-  .tp-vl{font-size:15px;font-weight:700;color:#fff;margin:0;letter-spacing:-0.3px;}
-  .tp-vl span{font-size:10px;font-weight:400;color:rgba(200,221,245,0.4);margin-left:1px;}
-  .tp-dv{height:0.5px;background:rgba(255,255,255,0.07);margin:10px 0;}
-  .tp-nt{font-size:10px;color:rgba(200,221,245,0.4);margin:0;text-align:center;}
-  .tp-la{font-size:9px;font-weight:600;color:#d4537e;text-align:center;margin-bottom:3px;}
-  .tp-bar{display:flex;border-radius:100px;overflow:hidden;height:20px;gap:2px;}
-  .tp-sg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(255,255,255,0.9);}
-  .tp-lb{font-size:9px;font-weight:600;color:#7ab0e8;text-align:right;margin-top:3px;}
-  .tp-st{display:flex;justify-content:space-between;margin-bottom:4px;}
-  .tp-st span{font-size:9px;color:rgba(200,221,245,0.3);}
-  .tp-ac{color:#fff !important;font-weight:700 !important;}
-  input[type=range].tp-rng{width:100%;height:3px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.1);border-radius:2px;outline:none;cursor:pointer;}
-  input[type=range].tp-rng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;border:2.5px solid #1d9e75;cursor:pointer;}
-}
+
+
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 </style>
 </head>
 <body>
@@ -404,73 +391,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <span class="chip" style="background:rgba(74,122,170,0.1);border-color:rgba(74,122,170,0.3);color:#8eb8ea;">🕐 Smart ETA</span>
           <span class="chip" style="background:rgba(74,122,170,0.1);border-color:rgba(74,122,170,0.3);color:#8eb8ea;">☑ AI Checklist</span>
         </div>
-      </div>
-
-<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
-<style>
-.tp-c{background:#0d1728;border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:14px 16px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;}
-.tp-ht{font-size:12px;font-weight:600;color:#fff;margin:0 0 1px;}
-.tp-hs{font-size:10px;color:rgba(200,221,245,0.4);margin:0 0 12px;}
-.tp-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;}
-.tp-lbl{font-size:9px;letter-spacing:0.06em;color:rgba(200,221,245,0.4);text-transform:uppercase;font-weight:500;margin:0 0 2px;}
-.tp-vl{font-size:15px;font-weight:700;color:#fff;margin:0;letter-spacing:-0.3px;}
-.tp-vl span{font-size:10px;font-weight:400;color:rgba(200,221,245,0.4);margin-left:1px;}
-.tp-la{font-size:9px;font-weight:600;color:#d4537e;text-align:center;margin-bottom:3px;}
-.tp-bar{display:flex;border-radius:100px;overflow:hidden;height:20px;gap:2px;}
-.tp-sg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(255,255,255,0.9);}
-.tp-lb{font-size:9px;font-weight:600;color:#7ab0e8;text-align:right;margin-top:3px;}
-.tp-dv{height:0.5px;background:rgba(255,255,255,0.07);margin:10px 0;}
-.tp-nt{font-size:10px;color:rgba(200,221,245,0.4);margin:0;text-align:center;}
-.tp-st{display:flex;justify-content:space-between;margin-bottom:4px;}
-.tp-st span{font-size:9px;color:rgba(200,221,245,0.3);}
-.tp-st .tp-ac{color:#fff;font-weight:700;}
-input[type=range].tp-rng{width:100%;height:3px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.1);border-radius:2px;outline:none;cursor:pointer;}
-input[type=range].tp-rng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;border:2.5px solid #1d9e75;cursor:pointer;}
-</style>
-<div class="tp-c">
-  <p class="tp-ht">Estimated time to reach airport</p>
-  <p class="tp-hs">T2 &ndash; Departures &middot; 29.2 km</p>
-  <div class="tp-cols">
-    <div><p class="tp-lbl">Leave by</p><p class="tp-vl" id="s0-leave">9:00 <span>AM</span></p></div>
-    <div><p class="tp-lbl">Arrival</p><p class="tp-vl" id="s0-arrive">9:36 <span>AM</span></p></div>
-    <div><p class="tp-lbl">Cushion</p><p class="tp-vl" id="s0-cushion">2h 14m <span>Relax</span></p></div>
-  </div>
-  <p class="tp-la">Check-in closes at 10:50 AM</p>
-  <div class="tp-bar">
-    <div class="tp-sg" style="background:linear-gradient(to right,#22c55e,#a3e635);flex:2;border-radius:100px 0 0 100px;">36m</div>
-    <div class="tp-sg" style="background:#d4537e;flex:4.5;">1h 15m</div>
-    <div class="tp-sg" style="background:#7ab0e8;flex:2;border-radius:0 100px 100px 0;">40m</div>
-  </div>
-  <p class="tp-lb">Boarding closes at 11:30 AM</p>
-  <div class="tp-dv"></div>
-  <div class="tp-st">
-    <span>8:30</span><span class="tp-ac" id="s0-cur">9:00</span><span>10:00</span><span>11:00</span><span>11:30</span>
-  </div>
-  <input type="range" class="tp-rng" id="s0-slider" min="0" max="180" value="30" step="5"/>
-  <div class="tp-dv"></div>
-  <p class="tp-nt" id="s0-note">Leaving at 9:00 AM gives you <strong style="color:#1d9e75">2h 14m</strong> at the airport.</p>
+<div style="display:flex;flex-direction:column;justify-content:center;">
+<div style="display:flex;gap:0;margin-bottom:14px;">
+  <div style="flex:1;padding-right:14px;"><p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.3);font-weight:500;margin:0 0 4px;">Leave by</p><p style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.8px;margin:0;line-height:1;">9:00<span style="font-size:11px;font-weight:400;color:rgba(200,221,245,0.35);margin-left:2px;">AM</span></p><p style="font-size:10px;color:rgba(200,221,245,0.3);margin:3px 0 0;">Walk out now</p></div>
+  <div style="flex:1;padding:0 14px;border-left:0.5px solid rgba(255,255,255,0.08);"><p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.3);font-weight:500;margin:0 0 4px;">Airport arrival</p><p style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.8px;margin:0;line-height:1;">9:36<span style="font-size:11px;font-weight:400;color:rgba(200,221,245,0.35);margin-left:2px;">AM</span></p><p style="font-size:10px;color:rgba(200,221,245,0.3);margin:3px 0 0;">T2 &middot; 29.2 km</p></div>
+  <div style="flex:1;padding-left:14px;border-left:0.5px solid rgba(255,255,255,0.08);"><p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.3);font-weight:500;margin:0 0 4px;">Cushion</p><p style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.8px;margin:0;line-height:1;">2h 14m</p><p style="font-size:10px;color:#1d9e75;margin:3px 0 0;">Relax</p></div>
 </div>
-<script>
-(function(){
-var sl=document.getElementById('s0-slider');
-function toT(m){var t=8*60+30+m,h=Math.floor(t/60),mn=t%60,ap=h<12?'AM':'PM';return{h:h>12?h-12:h,m:mn.toString().padStart(2,'0'),ap:ap};}
-function upd(){
-  var v=parseInt(sl.value),l=toT(v),a=toT(v+36);
-  document.getElementById('s0-leave').innerHTML=l.h+':'+l.m+' <span>'+l.ap+'</span>';
-  document.getElementById('s0-arrive').innerHTML=a.h+':'+a.m+' <span>'+a.ap+'</span>';
-  document.getElementById('s0-cur').textContent=l.h+':'+l.m;
-  var c=140-v-36,ch=Math.floor(c/60),cm=c%60,cs=ch>0?ch+'h '+cm+'m':cm+'m';
-  var mood=c>=90?'Relax':c>=45?'Comfy':'Tight',col=c>=90?'#1d9e75':c>=45?'#c8a84a':'#c05050';
-  document.getElementById('s0-cushion').innerHTML=cs+' <span>'+mood+'</span>';
-  document.getElementById('s0-note').innerHTML=c>=45?'Leaving at '+l.h+':'+l.m+' '+l.ap+' gives you <strong style="color:'+col+'">'+cs+'</strong> at the airport.':'<strong style="color:#c05050">Cutting it close.</strong> Leave now.';
-}
-sl.addEventListener('input',upd);upd();
-})();
-</script>
+<p style="font-size:9px;font-weight:600;color:#d4537e;margin:0 0 4px;">Check-in closes at 10:50 AM</p>
+<div style="display:flex;height:20px;border-radius:100px;overflow:hidden;gap:2px;margin-bottom:4px;"><div style="flex:2;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:linear-gradient(to right,#22c55e,#a3e635);border-radius:100px 0 0 100px;">36m</div><div style="flex:4.5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:#d4537e;">1h 15m</div><div style="flex:2;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:#7ab0e8;border-radius:0 100px 100px 0;">40m</div></div>
+<p style="font-size:9px;font-weight:600;color:#7ab0e8;text-align:right;margin:0 0 10px;">Boarding closes at 11:30 AM</p>
+<p style="font-size:10px;color:rgba(200,221,245,0.3);margin:0;">Leaving at <strong style="color:rgba(200,221,245,0.6);">9:00 AM</strong> gives you <strong style="color:#1d9e75;">2h 14m</strong> at the airport.</p>
 </div>
     </div>
 
-    <!-- STEP 2 -->
     <div class="step" data-step="1">
       <div class="step-inner" id="si1">
         <div class="step-number" style="color:var(--c2);">
@@ -486,45 +419,12 @@ sl.addEventListener('input',upd);upd();
           <span class="chip" style="background:rgba(58,138,90,0.1);border-color:rgba(58,138,90,0.3);color:#7dcea0;">📦 Smart packing</span>
           <span class="chip" style="background:rgba(58,138,90,0.1);border-color:rgba(58,138,90,0.3);color:#7dcea0;">🌦 Weather aware</span>
         </div>
-      </div>
-
-<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
-<div class="tp-c">
-  <p class="tp-ht" style="margin-bottom:10px;">Checklist &middot; Miami &middot; 5 days</p>
-  <div style="display:flex;flex-direction:column;gap:0;">
-    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
-      <div style="width:14px;height:14px;border-radius:4px;background:rgba(58,138,90,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:8px;height:8px;border-radius:2px;background:#3a8a5a;"></div></div>
-      <span style="font-size:12px;color:#fff;flex:1;">Passport + travel docs</span>
-      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(59,130,246,0.12);color:#7ab0e8;border:0.5px solid rgba(59,130,246,0.2);">Docs</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
-      <div style="width:14px;height:14px;border-radius:4px;background:rgba(58,138,90,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:8px;height:8px;border-radius:2px;background:#3a8a5a;"></div></div>
-      <span style="font-size:12px;color:#fff;flex:1;">Sunscreen SPF 50+</span>
-      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(234,179,8,0.12);color:#c8a84a;border:0.5px solid rgba(234,179,8,0.2);">Miami</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
-      <div style="width:14px;height:14px;border-radius:4px;background:rgba(58,138,90,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:8px;height:8px;border-radius:2px;background:#3a8a5a;"></div></div>
-      <span style="font-size:12px;color:#fff;flex:1;">Universal adapter</span>
-      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(58,138,90,0.12);color:#3a8a5a;border:0.5px solid rgba(58,138,90,0.2);">Smart</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
-      <div style="width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);flex-shrink:0;"></div>
-      <span style="font-size:12px;color:rgba(200,221,245,0.5);flex:1;">Light linen shirts &times;3</span>
-      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(234,179,8,0.12);color:#c8a84a;border:0.5px solid rgba(234,179,8,0.2);">Miami</span>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;">
-      <div style="width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);flex-shrink:0;"></div>
-      <span style="font-size:12px;color:rgba(200,221,245,0.5);flex:1;">Headphones</span>
-      <span style="font-size:10px;color:rgba(200,221,245,0.3);">3 more items</span>
-    </div>
-  </div>
-  <div class="tp-dv"></div>
-  <p class="tp-nt"><strong style="color:#3a8a5a;">8 of 11</strong> packed &middot; Built for Miami, not generic</p>
-</div>
+<div style="display:flex;flex-direction:column;justify-content:center;">
+<div style="display:flex;flex-direction:column;"><div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);"><div style="width:15px;height:15px;border-radius:4px;flex-shrink:0;background:rgba(58,138,90,0.25);display:flex;align-items:center;justify-content:center;"><div style="width:9px;height:9px;border-radius:2px;background:#3a8a5a;"></div></div><span style="font-size:13px;color:#fff;flex:1;">Passport + travel docs</span><span style="font-size:9px;padding:2px 8px;border-radius:100px;background:rgba(59,130,246,0.1);color:#7ab0e8;border:0.5px solid rgba(59,130,246,0.2);">Docs</span></div><div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);"><div style="width:15px;height:15px;border-radius:4px;flex-shrink:0;background:rgba(58,138,90,0.25);display:flex;align-items:center;justify-content:center;"><div style="width:9px;height:9px;border-radius:2px;background:#3a8a5a;"></div></div><span style="font-size:13px;color:#fff;flex:1;">Sunscreen SPF 50+</span><span style="font-size:9px;padding:2px 8px;border-radius:100px;background:rgba(200,168,74,0.1);color:#c8a84a;border:0.5px solid rgba(200,168,74,0.2);">Miami</span></div><div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);"><div style="width:15px;height:15px;border-radius:4px;flex-shrink:0;background:rgba(58,138,90,0.25);display:flex;align-items:center;justify-content:center;"><div style="width:9px;height:9px;border-radius:2px;background:#3a8a5a;"></div></div><span style="font-size:13px;color:#fff;flex:1;">Universal adapter</span><span style="font-size:9px;padding:2px 8px;border-radius:100px;background:rgba(58,138,90,0.1);color:#3a8a5a;border:0.5px solid rgba(58,138,90,0.2);">Smart</span></div><div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);"><div style="width:15px;height:15px;border-radius:4px;flex-shrink:0;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);"></div><span style="font-size:13px;color:rgba(200,221,245,0.4);flex:1;">Light linen shirts &times;3</span><span style="font-size:9px;padding:2px 8px;border-radius:100px;background:rgba(200,168,74,0.1);color:#c8a84a;border:0.5px solid rgba(200,168,74,0.2);">Miami</span></div><div style="display:flex;align-items:center;gap:8px;padding:7px 0;"><div style="width:15px;height:15px;border-radius:4px;flex-shrink:0;background:rgba(255,255,255,0.05);border:0.5px solid rgba(255,255,255,0.1);"></div><span style="font-size:13px;color:rgba(200,221,245,0.4);flex:1;">Headphones</span><span style="font-size:10px;color:rgba(200,221,245,0.25);">+3 more</span></div></div>
+<p style="font-size:10px;color:rgba(200,221,245,0.3);margin:10px 0 0;"><strong style="color:#3a8a5a;">8 of 11</strong> packed &middot; Built for Miami, not generic</p>
 </div>
     </div>
 
-    <!-- STEP 3 -->
     <div class="step" data-step="2">
       <div class="step-inner" id="si2">
         <div class="step-number" style="color:var(--c3);">
@@ -540,34 +440,14 @@ sl.addEventListener('input',upd);upd();
           <span class="chip" style="background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.3);color:#4ec9a0;">✈️ Live updates</span>
           <span class="chip" style="background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.3);color:#4ec9a0;">🔔 Instant alerts</span>
         </div>
-      </div>
-
-<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
-<div class="tp-c">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
-    <div>
-      <div style="font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.5px;">SYD &rarr; DEL</div>
-      <div style="font-size:10px;color:rgba(200,221,245,0.5);margin-top:2px;">AI 302 &middot; Boarding 14:10 &middot; Gate B14</div>
-    </div>
-    <div style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(29,158,117,0.15);color:#1d9e75;">On time</div>
-  </div>
-  <div style="height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-bottom:6px;">
-    <div style="width:38%;height:100%;background:linear-gradient(to right,#1d9e75,#4ec9a0);border-radius:2px;"></div>
-  </div>
-  <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
-    <span style="font-size:9px;color:rgba(200,221,245,0.35);">Dep 14:30</span>
-    <span style="font-size:9px;color:#1d9e75;font-weight:600;">Boarding now</span>
-    <span style="font-size:9px;color:rgba(200,221,245,0.35);">Arr 20:15</span>
-  </div>
-  <div style="background:rgba(29,158,117,0.1);border:0.5px solid rgba(29,158,117,0.25);border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
-    <div style="width:7px;height:7px;border-radius:50%;background:#1d9e75;flex-shrink:0;animation:pulse 1.5s ease-in-out infinite;"></div>
-    <div style="font-size:11px;color:#c8ddf5;">Gate changed <strong style="color:#fff;">B4 &rarr; B14</strong> &middot; Updated 2 min ago</div>
-  </div>
-</div>
+<div style="display:flex;flex-direction:column;justify-content:center;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><div><p style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;">SYD &rarr; DEL</p><p style="font-size:10px;color:rgba(200,221,245,0.4);margin:3px 0 0;">AI 302 &middot; Boarding 14:10 &middot; Gate B14</p></div><span style="font-size:10px;font-weight:700;padding:4px 12px;border-radius:100px;background:rgba(29,158,117,0.12);color:#1d9e75;border:0.5px solid rgba(29,158,117,0.25);white-space:nowrap;">On time</span></div>
+<div style="height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;margin-bottom:6px;"><div style="width:38%;height:100%;background:linear-gradient(to right,#1d9e75,#4ec9a0);border-radius:2px;"></div></div>
+<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:9px;color:rgba(200,221,245,0.3);">Dep 14:30</span><span style="font-size:9px;color:#1d9e75;font-weight:600;">Boarding now</span><span style="font-size:9px;color:rgba(200,221,245,0.3);">Arr 20:15</span></div>
+<div style="display:flex;align-items:center;gap:8px;padding-top:10px;border-top:0.5px solid rgba(255,255,255,0.06);"><div style="width:7px;height:7px;border-radius:50%;background:#1d9e75;flex-shrink:0;animation:blink 1.5s ease-in-out infinite;"></div><span style="font-size:12px;color:rgba(200,221,245,0.7);">Gate changed <strong style="color:#fff;">B4 &rarr; B14</strong> &middot; <span style="color:rgba(200,221,245,0.35);">2 min ago</span></span></div>
 </div>
     </div>
 
-    <!-- STEP 4 -->
     <div class="step" data-step="3">
       <div class="step-inner" id="si3">
         <div class="step-number" style="color:var(--c4);">
@@ -583,47 +463,12 @@ sl.addEventListener('input',upd);upd();
           <span class="chip" style="background:rgba(122,90,170,0.1);border-color:rgba(122,90,170,0.3);color:#c4a8e8;">👥 Auto sharing</span>
           <span class="chip" style="background:rgba(122,90,170,0.1);border-color:rgba(122,90,170,0.3);color:#c4a8e8;">🔒 Private</span>
         </div>
-      </div>
-
-<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
-<div class="tp-c">
-  <p class="tp-ht" style="margin-bottom:10px;">Shared with Mum</p>
-  <div style="display:flex;flex-direction:column;gap:0;margin-bottom:10px;">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-      <div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div>
-      <span style="font-size:11px;color:rgba(200,221,245,0.6);flex:1;">Left home</span>
-      <span style="font-size:11px;color:rgba(200,221,245,0.35);">08:42</span>
-    </div>
-    <div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.1);margin-bottom:4px;"></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-      <div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div>
-      <span style="font-size:11px;color:rgba(200,221,245,0.6);flex:1;">Checked in</span>
-      <span style="font-size:11px;color:rgba(200,221,245,0.35);">10:05</span>
-    </div>
-    <div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.1);margin-bottom:4px;"></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
-      <div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div>
-      <span style="font-size:11px;color:rgba(200,221,245,0.6);flex:1;">Boarded</span>
-      <span style="font-size:11px;color:rgba(200,221,245,0.35);">14:18</span>
-    </div>
-    <div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.1);margin-bottom:4px;"></div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;animation:pulse 2s ease-in-out infinite;"></div>
-      <span style="font-size:11px;color:rgba(200,221,245,0.3);flex:1;">In the air</span>
-      <span style="font-size:11px;color:rgba(200,221,245,0.2);">&mdash;</span>
-    </div>
-  </div>
-  <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 12px;">
-    <p style="font-size:9px;color:rgba(200,221,245,0.35);margin:0 0 3px;">Mum</p>
-    <p style="font-size:11px;color:rgba(200,221,245,0.8);margin:0;line-height:1.4;">"Safe travels beta &#10084;&#65039; I'll be at arrivals."</p>
-  </div>
-  <div class="tp-dv"></div>
-  <p class="tp-nt">Updated automatically &middot; <strong style="color:#7a5aaa;">No message sent by you</strong></p>
-</div>
+<div style="display:flex;flex-direction:column;justify-content:center;">
+<div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Left home</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">08:42</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Checked in</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">10:05</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Boarded</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">14:18</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;animation:blink 2s ease-in-out infinite;"></div><span style="font-size:12px;color:rgba(200,221,245,0.25);flex:1;">In the air</span><span style="font-size:11px;color:rgba(200,221,245,0.2);">&mdash;</span></div></div>
+<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><p style="font-size:9px;color:rgba(200,221,245,0.25);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Mum</p><p style="font-size:12px;color:rgba(200,221,245,0.7);margin:0 0 8px;line-height:1.5;">"Safe travels beta &#10084;&#65039; I'll be at arrivals."</p><p style="font-size:10px;color:rgba(200,221,245,0.25);margin:0;">Auto-updated &middot; <strong style="color:rgba(122,90,170,0.7);">No message sent by you</strong></p></div>
 </div>
     </div>
 
-    <!-- STEP 5 -->
     <div class="step" data-step="4">
       <div class="step-inner" id="si4">
         <div class="step-number" style="color:var(--c5);">
@@ -639,18 +484,25 @@ sl.addEventListener('input',upd);upd();
           <span class="chip" style="background:rgba(200,168,74,0.1);border-color:rgba(200,168,74,0.3);color:#e8c86a;">📍 Memory pins</span>
           <span class="chip" style="background:rgba(200,168,74,0.1);border-color:rgba(200,168,74,0.3);color:#e8c86a;">🗺 Your map</span>
         </div>
-      </div>
+<div style="display:flex;flex-direction:column;justify-content:center;">
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;"><span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(200,168,74,0.08);color:rgba(200,168,74,0.7);border:0.5px solid rgba(200,168,74,0.2);">&#128205; Goa</span><span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(74,122,170,0.08);color:rgba(74,122,170,0.7);border:0.5px solid rgba(74,122,170,0.2);">&#127754; Beach</span><span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(200,168,74,0.08);color:rgba(200,168,74,0.7);border:0.5px solid rgba(200,168,74,0.2);">&#127749; Sunset</span><span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.04);color:rgba(200,221,245,0.4);border:0.5px solid rgba(255,255,255,0.08);">&#9997;&#65039; Note</span></div>
+<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;margin-bottom:12px;"><p style="font-size:12px;color:rgba(200,168,74,0.3);margin:0;font-style:italic;">Write what it felt like...</p></div>
+<div style="display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><span style="font-size:10px;color:rgba(200,168,74,0.5);">&#128506; View on your map</span><span style="font-size:10px;color:rgba(200,221,245,0.25);">14 pins &middot; 6 trips</span></div>
+</div>
+    </div>
 
-<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
-<div class="tp-c">
-  <p class="tp-ht" style="margin-bottom:10px;">Vagator Beach, Goa</p>
-  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
-    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(200,168,74,0.08);color:rgba(200,168,74,0.8);border:0.5px solid rgba(200,168,74,0.25);">&#128205; Goa</span>
-    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(74,122,170,0.08);color:rgba(74,122,170,0.8);border:0.5px solid rgba(74,122,170,0.25);">&#127754; Beach</span>
-    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(200,168,74,0.08);color:rgba(200,168,74,0.8);border:0.5px solid rgba(200,168,74,0.25);">&#127749; Sunset</span>
-    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.04);color:rgba(200,221,245,0.5);border:0.5px solid rgba(255,255,255,0.1);">&#9997;&#65039; Note</span>
-  </div>
-  <div style="background:rgba(200,168,74,0.06);border:0.5px dashed rgba(200,168,74,0.25);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
+  
+
+<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:8px;display:flex;flex-direction:column;gap:4px;">
+  <p style="font-size:12px;color:rgba(200,168,74,0.35);margin:0;font-style:italic;">Write what it felt like...</p>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:10px;padding-top:8px;border-top:0.5px solid rgba(255,255,255,0.06);">
+  <span style="font-size:10px;color:rgba(200,168,74,0.5);">&#128506; View on your map</span>
+  <span style="font-size:10px;color:rgba(200,221,245,0.25);">14 pins &middot; 6 trips</span>
+</div>
+</div>
+
+<div style="background:rgba(200,168,74,0.06);border:0.5px dashed rgba(200,168,74,0.25);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
     <p style="font-size:11px;color:rgba(200,168,74,0.35);margin:0;">Write what it felt like...</p>
   </div>
   <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -1214,6 +1066,7 @@ stepInners[0].classList.add('active');
     </div>
   </div>
 </footer>
+
 
 
 
