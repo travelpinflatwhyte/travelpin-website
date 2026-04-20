@@ -252,6 +252,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .chip{font-size:11px;padding:4px 10px;}
 }
 
+
+.step-card-mobile{display:none;}
+@media(max-width:768px){
+  .step-card-mobile{display:block !important;}
+  .tp-c{background:#0d1728;border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:14px 16px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;}
+  .tp-ht{font-size:12px;font-weight:600;color:#fff;margin:0 0 1px;}
+  .tp-hs{font-size:10px;color:rgba(200,221,245,0.4);margin:0 0 12px;}
+  .tp-lbl{font-size:9px;letter-spacing:0.06em;color:rgba(200,221,245,0.4);text-transform:uppercase;font-weight:500;margin:0 0 2px;}
+  .tp-vl{font-size:15px;font-weight:700;color:#fff;margin:0;letter-spacing:-0.3px;}
+  .tp-vl span{font-size:10px;font-weight:400;color:rgba(200,221,245,0.4);margin-left:1px;}
+  .tp-dv{height:0.5px;background:rgba(255,255,255,0.07);margin:10px 0;}
+  .tp-nt{font-size:10px;color:rgba(200,221,245,0.4);margin:0;text-align:center;}
+  .tp-la{font-size:9px;font-weight:600;color:#d4537e;text-align:center;margin-bottom:3px;}
+  .tp-bar{display:flex;border-radius:100px;overflow:hidden;height:20px;gap:2px;}
+  .tp-sg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(255,255,255,0.9);}
+  .tp-lb{font-size:9px;font-weight:600;color:#7ab0e8;text-align:right;margin-top:3px;}
+  .tp-st{display:flex;justify-content:space-between;margin-bottom:4px;}
+  .tp-st span{font-size:9px;color:rgba(200,221,245,0.3);}
+  .tp-ac{color:#fff !important;font-weight:700 !important;}
+  input[type=range].tp-rng{width:100%;height:3px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.1);border-radius:2px;outline:none;cursor:pointer;}
+  input[type=range].tp-rng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;border:2.5px solid #1d9e75;cursor:pointer;}
+}
 </style>
 </head>
 <body>
@@ -383,6 +405,69 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <span class="chip" style="background:rgba(74,122,170,0.1);border-color:rgba(74,122,170,0.3);color:#8eb8ea;">☑ AI Checklist</span>
         </div>
       </div>
+
+<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
+<style>
+.tp-c{background:#0d1728;border:0.5px solid rgba(255,255,255,0.1);border-radius:16px;padding:14px 16px;font-family:ui-sans-serif,system-ui,-apple-system,sans-serif;}
+.tp-ht{font-size:12px;font-weight:600;color:#fff;margin:0 0 1px;}
+.tp-hs{font-size:10px;color:rgba(200,221,245,0.4);margin:0 0 12px;}
+.tp-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:12px;}
+.tp-lbl{font-size:9px;letter-spacing:0.06em;color:rgba(200,221,245,0.4);text-transform:uppercase;font-weight:500;margin:0 0 2px;}
+.tp-vl{font-size:15px;font-weight:700;color:#fff;margin:0;letter-spacing:-0.3px;}
+.tp-vl span{font-size:10px;font-weight:400;color:rgba(200,221,245,0.4);margin-left:1px;}
+.tp-la{font-size:9px;font-weight:600;color:#d4537e;text-align:center;margin-bottom:3px;}
+.tp-bar{display:flex;border-radius:100px;overflow:hidden;height:20px;gap:2px;}
+.tp-sg{display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(255,255,255,0.9);}
+.tp-lb{font-size:9px;font-weight:600;color:#7ab0e8;text-align:right;margin-top:3px;}
+.tp-dv{height:0.5px;background:rgba(255,255,255,0.07);margin:10px 0;}
+.tp-nt{font-size:10px;color:rgba(200,221,245,0.4);margin:0;text-align:center;}
+.tp-st{display:flex;justify-content:space-between;margin-bottom:4px;}
+.tp-st span{font-size:9px;color:rgba(200,221,245,0.3);}
+.tp-st .tp-ac{color:#fff;font-weight:700;}
+input[type=range].tp-rng{width:100%;height:3px;-webkit-appearance:none;appearance:none;background:rgba(255,255,255,0.1);border-radius:2px;outline:none;cursor:pointer;}
+input[type=range].tp-rng::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#fff;border:2.5px solid #1d9e75;cursor:pointer;}
+</style>
+<div class="tp-c">
+  <p class="tp-ht">Estimated time to reach airport</p>
+  <p class="tp-hs">T2 &ndash; Departures &middot; 29.2 km</p>
+  <div class="tp-cols">
+    <div><p class="tp-lbl">Leave by</p><p class="tp-vl" id="s0-leave">9:00 <span>AM</span></p></div>
+    <div><p class="tp-lbl">Arrival</p><p class="tp-vl" id="s0-arrive">9:36 <span>AM</span></p></div>
+    <div><p class="tp-lbl">Cushion</p><p class="tp-vl" id="s0-cushion">2h 14m <span>Relax</span></p></div>
+  </div>
+  <p class="tp-la">Check-in closes at 10:50 AM</p>
+  <div class="tp-bar">
+    <div class="tp-sg" style="background:linear-gradient(to right,#22c55e,#a3e635);flex:2;border-radius:100px 0 0 100px;">36m</div>
+    <div class="tp-sg" style="background:#d4537e;flex:4.5;">1h 15m</div>
+    <div class="tp-sg" style="background:#7ab0e8;flex:2;border-radius:0 100px 100px 0;">40m</div>
+  </div>
+  <p class="tp-lb">Boarding closes at 11:30 AM</p>
+  <div class="tp-dv"></div>
+  <div class="tp-st">
+    <span>8:30</span><span class="tp-ac" id="s0-cur">9:00</span><span>10:00</span><span>11:00</span><span>11:30</span>
+  </div>
+  <input type="range" class="tp-rng" id="s0-slider" min="0" max="180" value="30" step="5"/>
+  <div class="tp-dv"></div>
+  <p class="tp-nt" id="s0-note">Leaving at 9:00 AM gives you <strong style="color:#1d9e75">2h 14m</strong> at the airport.</p>
+</div>
+<script>
+(function(){
+var sl=document.getElementById('s0-slider');
+function toT(m){var t=8*60+30+m,h=Math.floor(t/60),mn=t%60,ap=h<12?'AM':'PM';return{h:h>12?h-12:h,m:mn.toString().padStart(2,'0'),ap:ap};}
+function upd(){
+  var v=parseInt(sl.value),l=toT(v),a=toT(v+36);
+  document.getElementById('s0-leave').innerHTML=l.h+':'+l.m+' <span>'+l.ap+'</span>';
+  document.getElementById('s0-arrive').innerHTML=a.h+':'+a.m+' <span>'+a.ap+'</span>';
+  document.getElementById('s0-cur').textContent=l.h+':'+l.m;
+  var c=140-v-36,ch=Math.floor(c/60),cm=c%60,cs=ch>0?ch+'h '+cm+'m':cm+'m';
+  var mood=c>=90?'Relax':c>=45?'Comfy':'Tight',col=c>=90?'#1d9e75':c>=45?'#c8a84a':'#c05050';
+  document.getElementById('s0-cushion').innerHTML=cs+' <span>'+mood+'</span>';
+  document.getElementById('s0-note').innerHTML=c>=45?'Leaving at '+l.h+':'+l.m+' '+l.ap+' gives you <strong style="color:'+col+'">'+cs+'</strong> at the airport.':'<strong style="color:#c05050">Cutting it close.</strong> Leave now.';
+}
+sl.addEventListener('input',upd);upd();
+})();
+</script>
+</div>
     </div>
 
     <!-- STEP 2 -->
@@ -402,6 +487,41 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <span class="chip" style="background:rgba(58,138,90,0.1);border-color:rgba(58,138,90,0.3);color:#7dcea0;">🌦 Weather aware</span>
         </div>
       </div>
+
+<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
+<div class="tp-c">
+  <p class="tp-ht" style="margin-bottom:10px;">Checklist &middot; Miami &middot; 5 days</p>
+  <div style="display:flex;flex-direction:column;gap:0;">
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
+      <div style="width:14px;height:14px;border-radius:4px;background:rgba(58,138,90,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:8px;height:8px;border-radius:2px;background:#3a8a5a;"></div></div>
+      <span style="font-size:12px;color:#fff;flex:1;">Passport + travel docs</span>
+      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(59,130,246,0.12);color:#7ab0e8;border:0.5px solid rgba(59,130,246,0.2);">Docs</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
+      <div style="width:14px;height:14px;border-radius:4px;background:rgba(58,138,90,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:8px;height:8px;border-radius:2px;background:#3a8a5a;"></div></div>
+      <span style="font-size:12px;color:#fff;flex:1;">Sunscreen SPF 50+</span>
+      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(234,179,8,0.12);color:#c8a84a;border:0.5px solid rgba(234,179,8,0.2);">Miami</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
+      <div style="width:14px;height:14px;border-radius:4px;background:rgba(58,138,90,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><div style="width:8px;height:8px;border-radius:2px;background:#3a8a5a;"></div></div>
+      <span style="font-size:12px;color:#fff;flex:1;">Universal adapter</span>
+      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(58,138,90,0.12);color:#3a8a5a;border:0.5px solid rgba(58,138,90,0.2);">Smart</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);">
+      <div style="width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);flex-shrink:0;"></div>
+      <span style="font-size:12px;color:rgba(200,221,245,0.5);flex:1;">Light linen shirts &times;3</span>
+      <span style="font-size:9px;padding:2px 7px;border-radius:100px;background:rgba(234,179,8,0.12);color:#c8a84a;border:0.5px solid rgba(234,179,8,0.2);">Miami</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;padding:7px 0;">
+      <div style="width:14px;height:14px;border-radius:4px;background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.12);flex-shrink:0;"></div>
+      <span style="font-size:12px;color:rgba(200,221,245,0.5);flex:1;">Headphones</span>
+      <span style="font-size:10px;color:rgba(200,221,245,0.3);">3 more items</span>
+    </div>
+  </div>
+  <div class="tp-dv"></div>
+  <p class="tp-nt"><strong style="color:#3a8a5a;">8 of 11</strong> packed &middot; Built for Miami, not generic</p>
+</div>
+</div>
     </div>
 
     <!-- STEP 3 -->
@@ -421,6 +541,30 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <span class="chip" style="background:rgba(29,158,117,0.1);border-color:rgba(29,158,117,0.3);color:#4ec9a0;">🔔 Instant alerts</span>
         </div>
       </div>
+
+<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
+<div class="tp-c">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+    <div>
+      <div style="font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.5px;">SYD &rarr; DEL</div>
+      <div style="font-size:10px;color:rgba(200,221,245,0.5);margin-top:2px;">AI 302 &middot; Boarding 14:10 &middot; Gate B14</div>
+    </div>
+    <div style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:100px;background:rgba(29,158,117,0.15);color:#1d9e75;">On time</div>
+  </div>
+  <div style="height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-bottom:6px;">
+    <div style="width:38%;height:100%;background:linear-gradient(to right,#1d9e75,#4ec9a0);border-radius:2px;"></div>
+  </div>
+  <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
+    <span style="font-size:9px;color:rgba(200,221,245,0.35);">Dep 14:30</span>
+    <span style="font-size:9px;color:#1d9e75;font-weight:600;">Boarding now</span>
+    <span style="font-size:9px;color:rgba(200,221,245,0.35);">Arr 20:15</span>
+  </div>
+  <div style="background:rgba(29,158,117,0.1);border:0.5px solid rgba(29,158,117,0.25);border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;">
+    <div style="width:7px;height:7px;border-radius:50%;background:#1d9e75;flex-shrink:0;animation:pulse 1.5s ease-in-out infinite;"></div>
+    <div style="font-size:11px;color:#c8ddf5;">Gate changed <strong style="color:#fff;">B4 &rarr; B14</strong> &middot; Updated 2 min ago</div>
+  </div>
+</div>
+</div>
     </div>
 
     <!-- STEP 4 -->
@@ -440,6 +584,43 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <span class="chip" style="background:rgba(122,90,170,0.1);border-color:rgba(122,90,170,0.3);color:#c4a8e8;">🔒 Private</span>
         </div>
       </div>
+
+<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
+<div class="tp-c">
+  <p class="tp-ht" style="margin-bottom:10px;">Shared with Mum</p>
+  <div style="display:flex;flex-direction:column;gap:0;margin-bottom:10px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div>
+      <span style="font-size:11px;color:rgba(200,221,245,0.6);flex:1;">Left home</span>
+      <span style="font-size:11px;color:rgba(200,221,245,0.35);">08:42</span>
+    </div>
+    <div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.1);margin-bottom:4px;"></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div>
+      <span style="font-size:11px;color:rgba(200,221,245,0.6);flex:1;">Checked in</span>
+      <span style="font-size:11px;color:rgba(200,221,245,0.35);">10:05</span>
+    </div>
+    <div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.1);margin-bottom:4px;"></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div>
+      <span style="font-size:11px;color:rgba(200,221,245,0.6);flex:1;">Boarded</span>
+      <span style="font-size:11px;color:rgba(200,221,245,0.35);">14:18</span>
+    </div>
+    <div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.1);margin-bottom:4px;"></div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;animation:pulse 2s ease-in-out infinite;"></div>
+      <span style="font-size:11px;color:rgba(200,221,245,0.3);flex:1;">In the air</span>
+      <span style="font-size:11px;color:rgba(200,221,245,0.2);">&mdash;</span>
+    </div>
+  </div>
+  <div style="background:rgba(255,255,255,0.04);border:0.5px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 12px;">
+    <p style="font-size:9px;color:rgba(200,221,245,0.35);margin:0 0 3px;">Mum</p>
+    <p style="font-size:11px;color:rgba(200,221,245,0.8);margin:0;line-height:1.4;">"Safe travels beta &#10084;&#65039; I'll be at arrivals."</p>
+  </div>
+  <div class="tp-dv"></div>
+  <p class="tp-nt">Updated automatically &middot; <strong style="color:#7a5aaa;">No message sent by you</strong></p>
+</div>
+</div>
     </div>
 
     <!-- STEP 5 -->
@@ -459,6 +640,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <span class="chip" style="background:rgba(200,168,74,0.1);border-color:rgba(200,168,74,0.3);color:#e8c86a;">🗺 Your map</span>
         </div>
       </div>
+
+<div class="step-card-mobile" style="display:none;margin-top:1.5rem;">
+<div class="tp-c">
+  <p class="tp-ht" style="margin-bottom:10px;">Vagator Beach, Goa</p>
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(200,168,74,0.08);color:rgba(200,168,74,0.8);border:0.5px solid rgba(200,168,74,0.25);">&#128205; Goa</span>
+    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(74,122,170,0.08);color:rgba(74,122,170,0.8);border:0.5px solid rgba(74,122,170,0.25);">&#127754; Beach</span>
+    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(200,168,74,0.08);color:rgba(200,168,74,0.8);border:0.5px solid rgba(200,168,74,0.25);">&#127749; Sunset</span>
+    <span style="font-size:10px;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,0.04);color:rgba(200,221,245,0.5);border:0.5px solid rgba(255,255,255,0.1);">&#9997;&#65039; Note</span>
+  </div>
+  <div style="background:rgba(200,168,74,0.06);border:0.5px dashed rgba(200,168,74,0.25);border-radius:8px;padding:8px 10px;margin-bottom:8px;">
+    <p style="font-size:11px;color:rgba(200,168,74,0.35);margin:0;">Write what it felt like...</p>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:10px;color:rgba(200,168,74,0.6);">&#128506; View on your map</span>
+    <span style="font-size:10px;color:rgba(200,221,245,0.3);">14 pins &middot; 6 trips</span>
+  </div>
+</div>
+</div>
     </div>
 
   </div>
