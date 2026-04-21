@@ -112,7 +112,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .intro-sub{font-size:16px;color:var(--muted);font-weight:300;line-height:1.6;}
 .scroll-story{position:relative;max-width:960px;margin:0 auto;padding:0 2rem;}
 .steps{display:flex;flex-direction:column;padding-bottom:4rem;}
-.step{min-height:60vh;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:3rem 0;position:relative;}
+.step{min-height:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;padding:3rem 0;position:relative;}
 .step-inner{max-width:440px;opacity:1;transform:none;}
 .step-inner.active{opacity:1;transform:translateY(0);}
 .step-number{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;}
@@ -215,9 +215,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .scroll-story{padding:0 1.2rem !important;}
   .step{grid-template-columns:1fr !important;gap:1rem !important;min-height:auto !important;}
   .steps{padding-bottom:4vh !important;}
+  .step-wrap{margin-bottom:2.5rem !important;padding-bottom:2.5rem !important;}
   .outro{padding:0.8rem 1.2rem !important;min-height:auto !important;}
   .phone-sticky{display:none !important;}
-  .step{min-height:auto !important;padding:1.5rem 0 !important;grid-template-columns:1fr !important;gap:1.5rem !important;}
+  .step{min-height:auto !important;padding:1.5rem 0 !important;grid-template-columns:1fr !important;gap:1.5rem !important;align-items:start !important;}
   .step-inner{opacity:1 !important;transform:none !important;}
   .step-headline{font-size:clamp(22px,7vw,34px) !important;}
   .intro{padding:1.5rem 1.2rem 0.8rem !important;min-height:auto !important;}
@@ -264,7 +265,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 .step-left{display:flex;flex-direction:column;}
 .step-right{display:flex;flex-direction:column;justify-content:center;}
-.step-wrap{margin-bottom:0;}
+.step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
 </style>
 </head>
@@ -282,11 +283,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
     <h1 class="hero-h1">Travel today is</h1>
     <h1 class="hero-h1-2">fragmented.</h1>
 
-    <div class="problem-kicker">
-      <div class="pkline"></div>
-      <span class="pk-label">The problem</span>
-      <div class="pkline r"></div>
-    </div>
 
     <p class="problem-sub">One journey. You're juggling all of these.</p>
 
@@ -483,7 +479,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <div class="step-right">
           <div style="display:flex;flex-direction:column;justify-content:center;">
 <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Left home</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">08:42</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Checked in</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">10:05</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Boarded</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">14:18</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;animation:blink 2s ease-in-out infinite;"></div><span style="font-size:12px;color:rgba(200,221,245,0.25);flex:1;">In the air</span><span style="font-size:11px;color:rgba(200,221,245,0.2);">&mdash;</span></div></div>
-<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><p style="font-size:9px;color:rgba(200,221,245,0.25);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Mum</p><p style="font-size:12px;color:rgba(200,221,245,0.7);margin:0 0 8px;line-height:1.5;">"Safe travels beta &#10084;&#65039; I'll be at arrivals."</p><p style="font-size:10px;color:rgba(200,221,245,0.25);margin:0;">Auto-updated &middot; <strong style="color:rgba(122,90,170,0.7);">No message sent by you</strong></p></div>
+<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><p style="font-size:9px;color:rgba(200,221,245,0.25);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Mum</p><p style="font-size:12px;color:rgba(200,221,245,0.7);margin:0 0 8px;line-height:1.5;">"Safe travels son &#10084;&#65039; I'll be at arrivals."</p><p style="font-size:10px;color:rgba(200,221,245,0.25);margin:0;">Auto-updated &middot; <strong style="color:rgba(122,90,170,0.7);">No message sent by you</strong></p></div>
 </div>
         </div>
       </div>
