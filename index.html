@@ -283,6 +283,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
     <h1 class="hero-h1">Travel today is</h1>
     <h1 class="hero-h1-2">fragmented.</h1>
 
+    <div class="problem-kicker">
+      <div class="pkline"></div>
+      <span class="pk-label">The problem</span>
+      <div class="pkline r"></div>
+    </div>
 
     <p class="problem-sub">One journey. You're juggling all of these.</p>
 
@@ -316,7 +321,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
       <div class="kline r"></div>
     </div>
 
-    <div class="vdivider"></div>
 
     <div class="philosophy">
       <p class="phil-1">Travel doesn't need<br>more apps.</p>
@@ -390,12 +394,82 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Traffic, airport buffers, check-in deadlines — no more mental maths. Travelpin tells you exactly when to walk out the door.</p>
         </div>
         <div class="step-right">
-          <div style="display:flex;flex-direction:column;justify-content:center;">
-<div style="display:flex;gap:0;margin-bottom:14px;"><div style="flex:1;padding-right:14px;"><p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.3);font-weight:500;margin:0 0 4px;">Leave by</p><p style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.8px;margin:0;line-height:1;">9:00<span style="font-size:10px;font-weight:400;color:rgba(200,221,245,0.35);margin-left:2px;">AM</span></p><p style="font-size:10px;color:rgba(200,221,245,0.3);margin:3px 0 0;">Walk out now</p></div><div style="flex:1;padding:0 14px;border-left:0.5px solid rgba(255,255,255,0.08);"><p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.3);font-weight:500;margin:0 0 4px;">Airport arrival</p><p style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.8px;margin:0;line-height:1;">9:36<span style="font-size:10px;font-weight:400;color:rgba(200,221,245,0.35);margin-left:2px;">AM</span></p><p style="font-size:10px;color:rgba(200,221,245,0.3);margin:3px 0 0;">T2 &middot; 29.2 km</p></div><div style="flex:1;padding-left:14px;border-left:0.5px solid rgba(255,255,255,0.08);"><p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.3);font-weight:500;margin:0 0 4px;">Cushion</p><p style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.8px;margin:0;line-height:1;">2h 14m</p><p style="font-size:10px;color:#1d9e75;margin:3px 0 0;">Relax</p></div></div>
-<p style="font-size:9px;font-weight:600;color:#d4537e;margin:0 0 4px;">Check-in closes at 10:50 AM</p>
-<div style="display:flex;height:20px;border-radius:100px;overflow:hidden;gap:2px;margin-bottom:4px;"><div style="flex:2;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:linear-gradient(to right,#22c55e,#a3e635);border-radius:100px 0 0 100px;">36m</div><div style="flex:4.5;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:#d4537e;">1h 15m</div><div style="flex:2;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;background:#7ab0e8;border-radius:0 100px 100px 0;">40m</div></div>
-<p style="font-size:9px;font-weight:600;color:#7ab0e8;text-align:right;margin:0 0 10px;">Boarding closes at 11:30 AM</p>
-<p style="font-size:10px;color:rgba(200,221,245,0.3);margin:0;">Leaving at <strong style="color:rgba(200,221,245,0.6);">9:00 AM</strong> gives you <strong style="color:#1d9e75;">2h 14m</strong> at the airport.</p>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:0;">
+
+  <!-- Time row -->
+  <div style="display:flex;gap:0;margin-bottom:12px;">
+    <div style="flex:1;padding-right:16px;">
+      <p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.4);font-weight:500;margin:0 0 2px;">Leave-by</p>
+      <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;line-height:1;">9:00 <span style="font-size:10px;font-weight:400;color:rgba(200,221,245,0.5);">AM</span></p>
+    </div>
+    <div style="flex:1;padding:0 16px;border-left:0.5px solid rgba(255,255,255,0.08);">
+      <p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.4);font-weight:500;margin:0 0 2px;">Airport arrival</p>
+      <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;line-height:1;">9:38 <span style="font-size:10px;font-weight:400;color:rgba(200,221,245,0.5);">AM</span></p>
+    </div>
+    <div style="flex:1;padding-left:16px;border-left:0.5px solid rgba(255,255,255,0.08);">
+      <p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.4);font-weight:500;margin:0 0 2px;">Airport cushion</p>
+      <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;line-height:1;">2h 12m <span style="font-size:10px;font-weight:500;color:#1d9e75;">Relax</span></p>
+    </div>
+  </div>
+
+  <!-- Check-in label -->
+  <p style="font-size:10px;font-weight:600;color:#d4537e;margin:0 0 6px;text-align:center;">Check-in closes at 10:50 AM</p>
+
+  <!-- Timeline bar — gradient green | outlined pink | outlined blue -->
+  <div style="display:flex;height:20px;border-radius:100px;gap:3px;margin-bottom:6px;align-items:center;">
+    <!-- Drive segment: gradient green→yellow, solid -->
+    <div style="flex:2;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,#22c55e,#a8d422);border-radius:100px 0 0 100px;position:relative;">
+      <span style="font-size:11px;font-weight:700;color:rgba(0,0,0,0.6);">38m</span>
+    </div>
+    <!-- Check-in segment: outlined purple -->
+    <div style="flex:4.5;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(120,80,180,0.15);border:1.5px solid rgba(160,100,220,0.6);border-radius:8px;position:relative;">
+      <span style="font-size:11px;font-weight:700;color:#c8a8f0;">1h 15m</span>
+    </div>
+    <!-- Boarding segment: outlined blue -->
+    <div style="flex:2;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(74,122,200,0.15);border:1.5px solid rgba(100,160,240,0.6);border-radius:8px;position:relative;">
+      <span style="font-size:11px;font-weight:700;color:#90c0f0;">40m</span>
+    </div>
+    <!-- Grey remainder -->
+    <div style="flex:0.5;height:60%;background:rgba(255,255,255,0.08);border-radius:0 100px 100px 0;"></div>
+  </div>
+
+  <!-- Boarding closes label -->
+  <p style="font-size:10px;font-weight:600;color:#7ab0e8;text-align:right;margin:0 0 14px;">Boarding closes at 11:30 AM</p>
+
+  <!-- Scrubber (static illustration) -->
+  <!-- Time axis -->
+  <div style="position:relative;margin-bottom:4px;">
+    <!-- Track -->
+    <div style="height:3px;background:rgba(255,255,255,0.1);border-radius:2px;position:relative;margin:0 0 6px;">
+      <!-- Filled portion up to 9:00 (9:00 is 30min into 8:30-11:30 = 30/180 = 16.7%) -->
+      <div style="position:absolute;left:0;top:0;width:16.7%;height:100%;background:#1d9e75;border-radius:2px;"></div>
+      <!-- Tick marks -->
+      <div style="position:absolute;top:-4px;left:0%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
+      <div style="position:absolute;top:-4px;left:16.7%;width:1px;height:11px;background:rgba(255,255,255,0.35);"></div>
+      <div style="position:absolute;top:-4px;left:33.3%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
+      <div style="position:absolute;top:-4px;left:50%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
+      <div style="position:absolute;top:-4px;left:66.7%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
+      <div style="position:absolute;top:-4px;left:83.3%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
+      <div style="position:absolute;top:-4px;left:100%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
+      <!-- Blue line at 9:00 position -->
+      <div style="position:absolute;top:-8px;left:16.7%;width:2px;height:18px;background:#7ab0e8;border-radius:1px;"></div>
+      <!-- Thumb pill at 9:00 -->
+      <div style="position:absolute;top:50%;left:16.7%;transform:translate(-50%,-50%);width:52px;height:28px;background:#fff;border-radius:100px;display:flex;align-items:center;justify-content:center;">
+        <span style="font-size:12px;font-weight:800;color:#07101f;letter-spacing:-0.3px;">9:00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time labels -->
+  <div style="display:flex;justify-content:space-between;margin-top:12px;">
+    <span style="font-size:9px;color:rgba(200,221,245,0.3);">8:30 AM</span>
+    <span style="font-size:9px;color:rgba(200,221,245,0.3);">9:30</span>
+    <span style="font-size:9px;color:rgba(200,221,245,0.3);">10:00</span>
+    <span style="font-size:9px;color:rgba(200,221,245,0.3);">10:30</span>
+    <span style="font-size:9px;color:rgba(200,221,245,0.3);">11:00</span>
+    <span style="font-size:9px;color:rgba(200,221,245,0.3);">11:30 AM</span>
+  </div>
+
 </div>
         </div>
       </div>
@@ -479,7 +553,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         <div class="step-right">
           <div style="display:flex;flex-direction:column;justify-content:center;">
 <div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Left home</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">08:42</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Checked in</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">10:05</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Boarded</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">14:18</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;animation:blink 2s ease-in-out infinite;"></div><span style="font-size:12px;color:rgba(200,221,245,0.25);flex:1;">In the air</span><span style="font-size:11px;color:rgba(200,221,245,0.2);">&mdash;</span></div></div>
-<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><p style="font-size:9px;color:rgba(200,221,245,0.25);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Mum</p><p style="font-size:12px;color:rgba(200,221,245,0.7);margin:0 0 8px;line-height:1.5;">"Safe travels son &#10084;&#65039; I'll be at arrivals."</p><p style="font-size:10px;color:rgba(200,221,245,0.25);margin:0;">Auto-updated &middot; <strong style="color:rgba(122,90,170,0.7);">No message sent by you</strong></p></div>
+<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><p style="font-size:9px;color:rgba(200,221,245,0.25);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Mum</p><p style="font-size:12px;color:rgba(200,221,245,0.7);margin:0 0 8px;line-height:1.5;">"Safe travels beta &#10084;&#65039; I'll be at arrivals."</p><p style="font-size:10px;color:rgba(200,221,245,0.25);margin:0;">Auto-updated &middot; <strong style="color:rgba(122,90,170,0.7);">No message sent by you</strong></p></div>
 </div>
         </div>
       </div>
