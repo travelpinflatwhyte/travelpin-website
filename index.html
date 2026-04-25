@@ -267,14 +267,63 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-right{display:flex;flex-direction:column;justify-content:center;}
 .step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
-.eta-step .step{position:relative;border-radius:22px;overflow:hidden;padding:2.5rem;}
-.eta-step .step::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,22,58,0.97) 0%,rgba(8,22,58,0.93) 42%,rgba(8,22,58,0.72) 62%,rgba(8,22,58,0.35) 74%,rgba(8,22,58,0.2) 100%),url('Potrait%20image%20....png');background-size:cover;background-position:right center;z-index:0;}
-.eta-step .step-left,.eta-step .step-right,.eta-step .step-chips{position:relative;z-index:1;}
-.eta-step .step-right{min-height:340px;align-items:flex-end;}
+
+/* ETA step: product UI shot blended into section (no card frame) */
+.eta-step .step-right{
+  position:relative;
+  padding:0;
+  margin:0 -0.25rem 0 0;
+  min-height:min(48vw,400px);
+  justify-content:center;
+  align-items:flex-end;
+}
+.eta-step .eta-visual{
+  position:relative;
+  width:100%;
+  max-width:min(500px,92vw);
+  margin-left:auto;
+  line-height:0;
+  isolation:isolate;
+}
+.eta-step .eta-visual img{
+  width:100%;
+  height:auto;
+  display:block;
+  border:0;
+  border-radius:0;
+  box-shadow:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,0.2) 6%,#000 18%,#000 97%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,0.2) 6%,#000 18%,#000 97%,transparent 100%);
+}
+.eta-step .eta-visual::before{
+  content:'';
+  position:absolute;
+  z-index:1;
+  inset:0 auto 0 0;
+  width:min(42%,170px);
+  background:linear-gradient(90deg,#08163a 0%,rgba(8,22,58,0.65) 55%,transparent 100%);
+  pointer-events:none;
+}
+.eta-step .eta-visual::after{
+  content:'';
+  position:absolute;
+  z-index:1;
+  left:0;right:0;bottom:0;
+  height:min(30%,150px);
+  background:linear-gradient(to top,#08163a 0%,rgba(8,22,58,0.55) 40%,transparent 100%);
+  pointer-events:none;
+}
 @media (max-width:768px){
-  .eta-step .step{padding:1.4rem !important;}
-  .eta-step .step::before{background:linear-gradient(180deg,rgba(8,22,58,0.95) 0%,rgba(8,22,58,0.86) 45%,rgba(8,22,58,0.58) 100%),url('Potrait%20image%20....png');background-size:cover;background-position:center top;}
-  .eta-step .step-right{min-height:220px !important;}
+  .eta-step .step-right{
+    min-height:min(56vw,280px) !important;
+    margin:0 auto !important;
+    align-items:center !important;
+  }
+  .eta-step .eta-visual{
+    max-width:min(420px,100%) !important;
+    margin:0 auto !important;
+  }
+  .eta-step .eta-visual::before{width:min(50%,140px) !important;}
 }
 </style>
 </head>
@@ -397,6 +446,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Traffic, airport buffers, check-in deadlines — no more mental maths. Travelpin tells you exactly when to walk out the door.</p>
         </div>
         <div class="step-right">
+          <div class="eta-visual" aria-hidden="true">
+            <img src="ETA%20latest.png" alt="" decoding="async" loading="lazy" />
+          </div>
         </div>
       </div>
       <div class="step-chips">
