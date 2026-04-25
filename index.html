@@ -267,6 +267,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-right{display:flex;flex-direction:column;justify-content:center;}
 .step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
+.eta-step .step{position:relative;border-radius:22px;overflow:hidden;padding:2.5rem;}
+.eta-step .step::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,22,58,0.97) 0%,rgba(8,22,58,0.93) 42%,rgba(8,22,58,0.72) 62%,rgba(8,22,58,0.35) 74%,rgba(8,22,58,0.2) 100%),url('Potrait%20image%20....png');background-size:cover;background-position:right center;z-index:0;}
+.eta-step .step-left,.eta-step .step-right,.eta-step .step-chips{position:relative;z-index:1;}
+.eta-step .step-right{min-height:340px;align-items:flex-end;}
+@media (max-width:768px){
+  .eta-step .step{padding:1.4rem !important;}
+  .eta-step .step::before{background:linear-gradient(180deg,rgba(8,22,58,0.95) 0%,rgba(8,22,58,0.86) 45%,rgba(8,22,58,0.58) 100%),url('Potrait%20image%20....png');background-size:cover;background-position:center top;}
+  .eta-step .step-right{min-height:220px !important;}
+}
 </style>
 </head>
 <body>
@@ -374,7 +383,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   <!-- LEFT STEPS -->
   <div class="steps">
 
-    <div class="step-wrap">
+    <div class="step-wrap eta-step">
       <div class="step" data-step="0">
         <div class="step-left">
           <div class="step-number" style="color:var(--c1);">
@@ -388,83 +397,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Traffic, airport buffers, check-in deadlines — no more mental maths. Travelpin tells you exactly when to walk out the door.</p>
         </div>
         <div class="step-right">
-          <div style="display:flex;flex-direction:column;justify-content:center;gap:0;">
-
-  <!-- Time row -->
-  <div style="display:flex;gap:0;margin-bottom:12px;">
-    <div style="flex:1;padding-right:16px;">
-      <p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.4);font-weight:500;margin:0 0 2px;">Leave-by</p>
-      <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;line-height:1;">9:00 <span style="font-size:10px;font-weight:400;color:rgba(200,221,245,0.5);">AM</span></p>
-    </div>
-    <div style="flex:1;padding:0 16px;border-left:0.5px solid rgba(255,255,255,0.08);">
-      <p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.4);font-weight:500;margin:0 0 2px;">Airport arrival</p>
-      <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;line-height:1;">9:38 <span style="font-size:10px;font-weight:400;color:rgba(200,221,245,0.5);">AM</span></p>
-    </div>
-    <div style="flex:1;padding-left:16px;border-left:0.5px solid rgba(255,255,255,0.08);">
-      <p style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(200,221,245,0.4);font-weight:500;margin:0 0 2px;">Airport cushion</p>
-      <p style="font-size:16px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;line-height:1;">2h 12m <span style="font-size:10px;font-weight:500;color:#1d9e75;">Relax</span></p>
-    </div>
-  </div>
-
-  <!-- Check-in label -->
-  <p style="font-size:10px;font-weight:600;color:#d4537e;margin:0 0 6px;text-align:center;">Check-in closes at 10:50 AM</p>
-
-  <!-- Timeline bar — gradient green | outlined pink | outlined blue -->
-  <div style="display:flex;height:20px;border-radius:100px;gap:3px;margin-bottom:6px;align-items:center;">
-    <!-- Drive segment: gradient green→yellow, solid -->
-    <div style="flex:2;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(to right,#22c55e,#a8d422);border-radius:100px 0 0 100px;position:relative;">
-      <span style="font-size:11px;font-weight:700;color:rgba(0,0,0,0.6);">38m</span>
-    </div>
-    <!-- Check-in segment: outlined purple -->
-    <div style="flex:4.5;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(120,80,180,0.15);border:1.5px solid rgba(160,100,220,0.6);border-radius:8px;position:relative;">
-      <span style="font-size:11px;font-weight:700;color:#c8a8f0;">1h 15m</span>
-    </div>
-    <!-- Boarding segment: outlined blue -->
-    <div style="flex:2;height:100%;display:flex;align-items:center;justify-content:center;background:rgba(74,122,200,0.15);border:1.5px solid rgba(100,160,240,0.6);border-radius:8px;position:relative;">
-      <span style="font-size:11px;font-weight:700;color:#90c0f0;">40m</span>
-    </div>
-    <!-- Grey remainder -->
-    <div style="flex:0.5;height:60%;background:rgba(255,255,255,0.08);border-radius:0 100px 100px 0;"></div>
-  </div>
-
-  <!-- Boarding closes label -->
-  <p style="font-size:10px;font-weight:600;color:#7ab0e8;text-align:right;margin:0 0 14px;">Boarding closes at 11:30 AM</p>
-
-  <!-- Scrubber (static illustration) -->
-  <!-- Time axis -->
-  <div style="position:relative;margin-bottom:4px;">
-    <!-- Track -->
-    <div style="height:3px;background:rgba(255,255,255,0.1);border-radius:2px;position:relative;margin:0 0 6px;">
-      <!-- Filled portion up to 9:00 (9:00 is 30min into 8:30-11:30 = 30/180 = 16.7%) -->
-      <div style="position:absolute;left:0;top:0;width:16.7%;height:100%;background:#1d9e75;border-radius:2px;"></div>
-      <!-- Tick marks -->
-      <div style="position:absolute;top:-4px;left:0%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
-      <div style="position:absolute;top:-4px;left:16.7%;width:1px;height:11px;background:rgba(255,255,255,0.35);"></div>
-      <div style="position:absolute;top:-4px;left:33.3%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
-      <div style="position:absolute;top:-4px;left:50%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
-      <div style="position:absolute;top:-4px;left:66.7%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
-      <div style="position:absolute;top:-4px;left:83.3%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
-      <div style="position:absolute;top:-4px;left:100%;width:1px;height:11px;background:rgba(255,255,255,0.2);"></div>
-      <!-- Blue line at 9:00 position -->
-      <div style="position:absolute;top:-8px;left:16.7%;width:2px;height:18px;background:#7ab0e8;border-radius:1px;"></div>
-      <!-- Thumb pill at 9:00 -->
-      <div style="position:absolute;top:50%;left:16.7%;transform:translate(-50%,-50%);width:52px;height:28px;background:#fff;border-radius:100px;display:flex;align-items:center;justify-content:center;">
-        <span style="font-size:12px;font-weight:800;color:#07101f;letter-spacing:-0.3px;">9:00</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Time labels -->
-  <div style="display:flex;justify-content:space-between;margin-top:12px;">
-    <span style="font-size:9px;color:rgba(200,221,245,0.3);">8:30 AM</span>
-    <span style="font-size:9px;color:rgba(200,221,245,0.3);">9:30</span>
-    <span style="font-size:9px;color:rgba(200,221,245,0.3);">10:00</span>
-    <span style="font-size:9px;color:rgba(200,221,245,0.3);">10:30</span>
-    <span style="font-size:9px;color:rgba(200,221,245,0.3);">11:00</span>
-    <span style="font-size:9px;color:rgba(200,221,245,0.3);">11:30 AM</span>
-  </div>
-
-</div>
         </div>
       </div>
       <div class="step-chips">
