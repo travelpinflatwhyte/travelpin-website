@@ -1,0 +1,120 @@
+
+<style>
+@keyframes float1 { 0%,100%{transform:translateY(0) rotate(-5deg)} 50%{transform:translateY(-10px) rotate(-5deg)} }
+@keyframes float2 { 0%,100%{transform:translateY(0) rotate(3deg)} 50%{transform:translateY(-12px) rotate(3deg)} }
+@keyframes float3 { 0%,100%{transform:translateY(0) rotate(-4deg)} 50%{transform:translateY(-9px) rotate(-4deg)} }
+@keyframes float4 { 0%,100%{transform:translateY(0) rotate(5deg)} 50%{transform:translateY(-11px) rotate(5deg)} }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+@keyframes fadein { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+.a1{animation:fadein 0.7s 0.0s ease both;}
+.a2{animation:fadein 0.7s 0.15s ease both;}
+.a3{animation:fadein 0.7s 0.3s ease both;}
+.a4{animation:fadein 0.7s 0.45s ease both;}
+.a5{animation:fadein 0.7s 0.6s ease both;}
+.a6{animation:fadein 0.7s 0.75s ease both;}
+.a7{animation:fadein 0.7s 0.9s ease both;}
+.a8{animation:fadein 0.7s 1.05s ease both;}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;padding:7px 16px;border-radius:100px;border:0.5px solid #1e4060;color:#7ab0e8;background:#0d2535;}
+.dot{width:10px;height:10px;border-radius:50%;background:#1d9e75;animation:pulse 2s ease-in-out infinite;flex-shrink:0;}
+</style>
+
+<div style="background:#070d1b;border-radius:24px;overflow:hidden;position:relative;padding:3.5rem 2.5rem 3rem;text-align:center;">
+
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 20%, #0c1f38 0%, transparent 60%);pointer-events:none;"></div>
+  <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,#1e3a5f,transparent);"></div>
+
+  <div style="position:relative;z-index:1;max-width:560px;margin:0 auto;">
+
+    <div class="a1" style="margin-bottom:3.2rem;">
+      <p style="font-size:12px;letter-spacing:0.18em;color:#2a4a6a;margin:0 0 1.2rem;text-transform:uppercase;font-weight:500;">The experience right now</p>
+      <p style="font-size:56px;font-weight:800;color:#fff;line-height:1.05;letter-spacing:-3px;margin:0 0 0.15rem;">Travel today</p>
+      <p style="font-size:56px;font-weight:800;color:#1e5a9a;line-height:1.05;letter-spacing:-3px;margin:0;">is fragmented.</p>
+    </div>
+
+    <div class="a2" style="margin-bottom:1.6rem;">
+      <div style="display:inline-flex;align-items:center;gap:12px;">
+        <div style="height:1px;width:40px;background:linear-gradient(to right,transparent,#c05050);"></div>
+        <span style="font-size:11px;letter-spacing:0.16em;color:#c05050;text-transform:uppercase;font-weight:600;">The problem</span>
+        <div style="height:1px;width:40px;background:linear-gradient(to left,transparent,#c05050);"></div>
+      </div>
+    </div>
+
+    <div class="a3" style="margin-bottom:2rem;">
+      <p style="font-size:15px;color:#3a5a7a;margin:0;">One trip. You're juggling all of these.</p>
+    </div>
+
+    <div class="a4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:2rem;align-items:start;">
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;animation:float1 3.4s ease-in-out infinite;">
+        <div style="width:76px;height:76px;border-radius:20px;background:#0f2035;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 6px 24px rgba(0,0,0,0.5);">✈️</div>
+        <p style="font-size:13px;font-weight:600;color:#4a7aaa;margin:0;">Flight tracker</p>
+        <p style="font-size:11px;color:#2a4a6a;margin:0;line-height:1.5;">Check delays &amp; gate changes</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;animation:float2 3.9s ease-in-out infinite;">
+        <div style="width:76px;height:76px;border-radius:20px;background:#0f2a1a;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 6px 24px rgba(0,0,0,0.5);">☑️</div>
+        <p style="font-size:13px;font-weight:600;color:#3a8a5a;margin:0;">Packing app</p>
+        <p style="font-size:11px;color:#1a4a2a;margin:0;line-height:1.5;">Manage your checklist</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;animation:float3 3.6s ease-in-out infinite;">
+        <div style="width:76px;height:76px;border-radius:20px;background:#2a1010;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 6px 24px rgba(0,0,0,0.5);">🗺️</div>
+        <p style="font-size:13px;font-weight:600;color:#8a4a3a;margin:0;">Maps</p>
+        <p style="font-size:11px;color:#5a2a1a;margin:0;line-height:1.5;">Navigate to terminal</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;animation:float4 4.1s ease-in-out infinite;">
+        <div style="width:76px;height:76px;border-radius:20px;background:#1e1030;display:flex;align-items:center;justify-content:center;font-size:32px;box-shadow:0 6px 24px rgba(0,0,0,0.5);">💬</div>
+        <p style="font-size:13px;font-weight:600;color:#7a5aaa;margin:0;">Messaging</p>
+        <p style="font-size:11px;color:#4a2a7a;margin:0;line-height:1.5;">Update family yourself</p>
+      </div>
+
+    </div>
+
+    <div class="a5" style="margin-bottom:2.8rem;">
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;">
+        <div style="height:1px;flex:1;background:linear-gradient(to right,transparent,#c05050);"></div>
+        <span style="font-size:22px;font-weight:700;color:#fff;letter-spacing:-0.5px;">4 apps.</span>
+        <span style="font-size:22px;font-weight:400;color:#c05050;">Every. Single. Trip.</span>
+        <div style="height:1px;flex:1;background:linear-gradient(to left,transparent,#c05050);"></div>
+      </div>
+    </div>
+
+    <div style="width:1px;height:48px;background:linear-gradient(to bottom,#c05050,#1d9e75);margin:0 auto 2.4rem;"></div>
+
+    <div class="a6" style="margin-bottom:1.4rem;">
+      <div style="display:inline-flex;align-items:center;gap:12px;">
+        <div style="height:1px;width:40px;background:linear-gradient(to right,transparent,#1d9e75);"></div>
+        <span style="font-size:11px;letter-spacing:0.16em;color:#1d9e75;text-transform:uppercase;font-weight:600;">The solution</span>
+        <div style="height:1px;width:40px;background:linear-gradient(to left,transparent,#1d9e75);"></div>
+      </div>
+    </div>
+
+    <div class="a6" style="background:#0b1928;border:0.5px solid #1e3a5f;border-radius:18px;padding:1.6rem 1.8rem;margin-bottom:2rem;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div class="dot"></div>
+        <span style="font-size:16px;color:#c8ddf5;font-weight:500;flex:1;">AI 302 · Sydney → Delhi · On time</span>
+        <span style="font-size:14px;color:#2a7a5a;">14:30</span>
+      </div>
+      <div style="height:0.5px;background:#1e3a5f;margin-bottom:14px;"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:12px;">
+        <span class="pill">☑ Checklist</span>
+        <span class="pill">👥 Family notified</span>
+        <span class="pill">★ Memories</span>
+      </div>
+      <p style="font-size:12px;color:#1d5a3a;margin:0;text-align:center;">Everything updated automatically. You did nothing.</p>
+    </div>
+
+    <div class="a7" style="margin-bottom:2.4rem;">
+      <p style="font-size:36px;font-weight:700;color:#fff;letter-spacing:-1.5px;margin:0 0 0.2rem;line-height:1.15;">One app.</p>
+      <p style="font-size:36px;font-weight:700;color:#1d9e75;letter-spacing:-1.5px;margin:0;line-height:1.15;">The whole journey.</p>
+    </div>
+
+    <div class="a8" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <div style="background:#fff;color:#080808;border-radius:14px;padding:15px 36px;font-size:15px;font-weight:600;cursor:pointer;letter-spacing:-0.3px;">Get early access</div>
+      <div style="border:0.5px solid #1e3a5f;border-radius:14px;padding:15px 28px;font-size:15px;color:#7ab0e8;cursor:pointer;background:transparent;">See how it works</div>
+    </div>
+    <p style="font-size:12px;color:#1e3a5a;margin:1.2rem 0 0;">Free · No credit card · Ships Q3 2026</p>
+
+  </div>
+</div>
