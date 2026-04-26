@@ -111,6 +111,37 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .intro-headline{font-size:clamp(32px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-2px;line-height:1.08;}
 .intro-sub{font-size:16px;color:var(--muted);font-weight:300;line-height:1.6;}
 .scroll-story{position:relative;max-width:960px;margin:0 auto;padding:0 2rem;}
+
+/* Product story: full-bleed lifestyle BG (ETA latest) merged into page */
+.story-section{
+  position:relative;
+  overflow:hidden;
+  padding:0;
+  background:#07101f;
+}
+.story-section::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:url('ETA%20latest.png') no-repeat center;
+  background-size:cover;
+  background-position:72% center;
+}
+.story-section::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(8,22,58,0.96) 0%,rgba(8,22,58,0.82) 36%,rgba(8,22,58,0.5) 52%,rgba(15,16,48,0.22) 78%,rgba(15,16,48,0.12) 100%),
+    linear-gradient(to bottom,rgba(7,13,27,0.45) 0%,transparent 15%,transparent 70%,rgba(7,13,27,0.65) 100%);
+}
+.story-section > *{position:relative;z-index:2;}
+@media (max-width:768px){
+  .story-section::before{background-position:center top;}
+}
 .steps{display:flex;flex-direction:column;padding-bottom:4rem;}
 .step{min-height:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;padding:3rem 0;position:relative;}
 .step-inner{max-width:440px;opacity:1;transform:none;}
@@ -406,7 +437,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 <!-- PRODUCT STORY — Scroll driven -->
 <div style="width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(30,58,95,0.5),transparent);margin:0 auto;"></div>
-<section style="background:linear-gradient(to right,#08163a,#08163a 70%,#0f1030 100%);padding:0;">
+<section class="story-section">
 <!-- INTRO -->
 <div class="intro">
   <div class="intro-inner">
