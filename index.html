@@ -268,6 +268,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
 
+/* ETA step only: full-bleed lifestyle BG, merged into page */
+.step-wrap.eta-step{
+  position:relative;
+  z-index:0;
+  overflow:hidden;
+}
+.step-wrap.eta-step::before{
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  margin-left:-50vw;
+  z-index:0;
+  background:url('ETA%20latest.png') no-repeat center;
+  background-size:cover;
+  background-position:72% center;
+  pointer-events:none;
+}
+.step-wrap.eta-step::after{
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  margin-left:-50vw;
+  z-index:1;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(8,22,58,0.96) 0%,rgba(8,22,58,0.82) 38%,rgba(8,22,58,0.45) 56%,rgba(15,16,48,0.2) 100%),
+    linear-gradient(to bottom,rgba(7,13,27,0.4) 0%,transparent 12%,transparent 75%,rgba(7,13,27,0.5) 100%);
+}
+.step-wrap.eta-step > .step,
+.step-wrap.eta-step > .step-chips{
+  position:relative;
+  z-index:2;
+}
+
 /* ETA step: same device frame + screen crop as pins section */
 .eta-step .step-right{
   position:relative;
