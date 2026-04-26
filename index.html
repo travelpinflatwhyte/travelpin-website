@@ -299,14 +299,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   overflow:hidden;
   position:relative;
   aspect-ratio:9/19.5;
-  background:#000;
+  /* Match story section so any crop/edge pixels aren’t white */
+  background:#08163a;
 }
 .eta-step .eta-screen-inner img{
   width:100%;
   height:100%;
   object-fit:cover;
-  object-position:50% 50%;
+  object-position:50% 48%;
   display:block;
+  background:#08163a;
+  /* PNG includes a white rounded canvas around the device — zoom past it */
+  transform:scale(1.32);
+  transform-origin:center center;
+  will-change:transform;
 }
 @media (max-width:768px){
   .eta-step .eta-phone-col{justify-content:center !important;}
