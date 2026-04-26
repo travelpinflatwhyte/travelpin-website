@@ -268,39 +268,50 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
 
-/* ETA step: product UI shot blended into section (no card frame) */
+/* ETA step: same device frame + screen crop as pins section */
 .eta-step .step-right{
   position:relative;
   padding:0;
   margin:0;
-  min-height:280px;
+  min-height:0;
   justify-content:center;
-  align-items:flex-end;
+  align-items:center;
 }
-.eta-step .eta-visual{
+.eta-step .eta-phone-col{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
   position:relative;
   width:100%;
-  max-width:360px;
-  margin-left:auto;
-  line-height:0;
 }
-.eta-step .eta-visual img{
+.eta-step .eta-phone-bezel{
+  width:260px;
+  background:#000;
+  border-radius:50px;
+  padding:10px;
+  box-shadow:0 0 0 1px rgba(255,255,255,0.08),0 40px 100px rgba(0,0,0,0.8);
+  position:relative;
+  z-index:1;
+  flex-shrink:0;
+}
+.eta-step .eta-screen-inner{
+  border-radius:42px;
+  overflow:hidden;
+  position:relative;
+  aspect-ratio:9/19.5;
+  background:#000;
+}
+.eta-step .eta-screen-inner img{
   width:100%;
-  height:auto;
+  height:100%;
+  object-fit:cover;
+  object-position:50% 50%;
   display:block;
-  border:0;
-  border-radius:16px;
-  box-shadow:none;
 }
 @media (max-width:768px){
-  .eta-step .step-right{
-    min-height:220px !important;
-    margin:0 auto !important;
-    align-items:center !important;
-  }
-  .eta-step .eta-visual{
-    max-width:260px !important;
-    margin:0 auto !important;
+  .eta-step .eta-phone-col{justify-content:center !important;}
+  .eta-step .eta-phone-bezel{
+    width:min(200px,55vw) !important;
   }
 }
 </style>
@@ -424,8 +435,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Traffic, airport buffers, check-in deadlines — no more mental maths. Travelpin tells you exactly when to walk out the door.</p>
         </div>
         <div class="step-right">
-          <div class="eta-visual" aria-hidden="true">
-            <img src="5EF75BC7-C6D2-47F3-B5BF-C3CAF9D53BC3.PNG" alt="" decoding="async" loading="lazy" />
+          <div class="eta-phone-col" aria-hidden="true">
+            <div class="eta-phone-bezel">
+              <div class="eta-screen-inner">
+                <img src="5EF75BC7-C6D2-47F3-B5BF-C3CAF9D53BC3.PNG" alt="" decoding="async" loading="lazy" />
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,transparent 50%);pointer-events:none;"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
