@@ -270,7 +270,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
 
-/* ETA step only: full-bleed lifestyle BG, merged into page */
+@keyframes etaMockupIn{from{opacity:0;transform:translateY(24px) scale(0.82)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes etaCardIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+@keyframes etaSoftFloat{0%,100%{opacity:1;transform:translateY(0) scale(1)}50%{opacity:1;transform:translateY(-8px) scale(1)}}
+
+/* ETA step only: Lunera-style app mockup */
 .step-wrap.eta-step{
   position:relative;
   z-index:0;
@@ -289,9 +293,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   width:100vw;
   margin-left:-50vw;
   z-index:0;
-  background:url('ETA%20latest.png') no-repeat;
-  background-size:cover;
-  background-position:68% center;
+  background:
+    radial-gradient(circle at 78% 42%,rgba(255,255,255,0.18),transparent 28%),
+    radial-gradient(circle at 72% 50%,rgba(74,122,170,0.18),transparent 34%),
+    linear-gradient(90deg,#08163a 0%,#08163a 48%,#f7f8fb 48%,#eef1f6 100%);
   pointer-events:none;
 }
 .step-wrap.eta-step::after{
@@ -305,8 +310,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   z-index:1;
   pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(8,22,58,0.97) 0%,rgba(8,22,58,0.88) 35%,rgba(8,22,58,0.4) 58%,rgba(15,16,48,0.05) 100%),
-    linear-gradient(to bottom,rgba(7,13,27,0.6) 0%,transparent 15%,transparent 80%,rgba(7,13,27,0.6) 100%);
+    linear-gradient(90deg,rgba(8,22,58,0.98) 0%,rgba(8,22,58,0.9) 38%,rgba(8,22,58,0.22) 58%,rgba(255,255,255,0.02) 100%),
+    linear-gradient(to bottom,rgba(7,13,27,0.6) 0%,transparent 18%,transparent 82%,rgba(7,13,27,0.6) 100%);
 }
 .step-wrap.eta-step > .step,
 .step-wrap.eta-step > .step-chips{
@@ -321,7 +326,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   padding-bottom:3rem;
 }
 
-/* ETA step: same device frame + screen crop as pins section */
 .eta-step .step-right{
   position:relative;
   padding:0;
@@ -330,48 +334,92 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   justify-content:center;
   align-items:center;
 }
-.eta-step .eta-phone-col{
+.eta-showcase{
   display:flex;
-  justify-content:flex-end;
+  justify-content:center;
   align-items:center;
   position:relative;
   width:100%;
+  min-height:460px;
+  pointer-events:none;
 }
-.eta-step .eta-phone-bezel{
-  width:260px;
-  background:#000;
-  border-radius:50px;
-  padding:10px;
-  box-shadow:0 0 0 1px rgba(255,255,255,0.08),0 40px 100px rgba(0,0,0,0.8);
+.eta-phone-art{
+  width:min(310px,34vw);
+  max-width:360px;
+  filter:drop-shadow(0 34px 58px rgba(0,0,0,0.32));
+  opacity:0;
+  transform:translateY(24px) scale(0.82);
   position:relative;
-  z-index:1;
+  z-index:2;
   flex-shrink:0;
 }
-.eta-step .eta-screen-inner{
-  border-radius:42px;
-  overflow:hidden;
-  position:relative;
-  aspect-ratio:9/19.5;
-  /* Match story section so any crop/edge pixels aren’t white */
-  background:#08163a;
-}
-.eta-step .eta-screen-inner img{
+.eta-phone-art img{
   width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:50% 48%;
+  height:auto;
   display:block;
-  background:#08163a;
-  /* PNG includes a white rounded canvas around the device — zoom past it */
-  transform:scale(1.32);
-  transform-origin:center center;
-  will-change:transform;
 }
+.eta-float-card{
+  position:absolute;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-radius:18px;
+  padding:14px 16px;
+  background:rgba(255,255,255,0.88);
+  color:#1b2430;
+  box-shadow:0 20px 55px rgba(13,24,43,0.16);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  opacity:0;
+  transform:scale(0.8);
+}
+.eta-showcase.visible .eta-phone-art{animation:etaMockupIn 0.9s 0.15s cubic-bezier(0.22,0.61,0.36,1) forwards;}
+.eta-showcase.visible .eta-float-card{
+  animation:
+    etaCardIn 0.7s var(--eta-delay,0s) cubic-bezier(0.22,0.61,0.36,1) forwards,
+    etaSoftFloat 5s calc(var(--eta-delay,0s) + 0.75s) ease-in-out infinite;
+}
+.eta-float-card > span{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(74,122,170,0.12);
+  color:#4a7aaa;
+  flex-shrink:0;
+}
+.eta-float-card strong{
+  display:block;
+  font-size:15px;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+}
+.eta-float-card small{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+  color:rgba(27,36,48,0.52);
+}
+.eta-card-amount{top:34px;left:4%;--eta-delay:0.35s;}
+.eta-card-route{right:0;top:112px;--eta-delay:0.5s;}
+.eta-card-leave{left:0;bottom:82px;--eta-delay:0.65s;}
 @media (max-width:768px){
-  .eta-step .eta-phone-col{justify-content:center !important;}
-  .eta-step .eta-phone-bezel{
-    width:min(200px,55vw) !important;
+  .step-wrap.eta-step::before{
+    background:
+      linear-gradient(to bottom,rgba(8,22,58,0.96) 0%,rgba(8,22,58,0.86) 48%,rgba(247,248,251,0.92) 48%,rgba(238,241,246,0.95) 100%);
   }
+  .step-wrap.eta-step::after{background:linear-gradient(to bottom,rgba(7,13,27,0.72) 0%,transparent 24%,transparent 76%,rgba(7,13,27,0.55) 100%);}
+  .eta-showcase{min-height:380px;margin-top:0.5rem;}
+  .eta-phone-art{width:min(245px,62vw);}
+  .eta-float-card{padding:10px 12px;border-radius:14px;}
+  .eta-float-card strong{font-size:13px;}
+  .eta-float-card small{font-size:10px;}
+  .eta-card-amount{left:0;top:34px;}
+  .eta-card-route{right:0;top:108px;}
+  .eta-card-leave{left:4%;bottom:46px;}
 }
 </style>
 </head>
@@ -492,6 +540,34 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           "If I leave now...<br>actually let me check."
         </p>
           <p class="step-body">Traffic, airport buffers, check-in deadlines — no more mental maths. Travelpin tells you exactly when to walk out the door.</p>
+        </div>
+        <div class="step-right">
+          <div class="eta-showcase reveal" aria-hidden="true">
+            <div class="eta-float-card eta-card-amount">
+              <span>⏱</span>
+              <div>
+                <strong>Leave by 7:20</strong>
+                <small>Traffic + airport buffer</small>
+              </div>
+            </div>
+            <div class="eta-phone-art">
+              <img src="eta-phone-placeholder.png" alt="">
+            </div>
+            <div class="eta-float-card eta-card-route">
+              <span>🚕</span>
+              <div>
+                <strong>42 min to airport</strong>
+                <small>Route checked live</small>
+              </div>
+            </div>
+            <div class="eta-float-card eta-card-leave">
+              <span>✈</span>
+              <div>
+                <strong>Flight on time</strong>
+                <small>AI checklist ready</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step-chips">
