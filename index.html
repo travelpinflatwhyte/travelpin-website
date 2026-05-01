@@ -321,6 +321,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   transform:perspective(1200px) translateY(50px) scale(0.98);
   will-change:opacity,transform;
 }
+.airport-alert-card.highlighted{
+  margin-left:-34px;
+  margin-right:-6px;
+  background:rgba(255,255,255,0.085);
+  border-color:rgba(238,243,255,0.55);
+  box-shadow:0 22px 54px rgba(0,0,0,0.34),0 0 0 1px rgba(255,255,255,0.08);
+}
+.airport-alert-card.highlighted .airport-alert-icon{
+  background:rgba(200,168,74,0.16);
+  border-color:rgba(200,168,74,0.36);
+}
+.airport-alert-card.highlighted .airport-alert-title{font-size:15px;}
+.airport-alert-card.highlighted .airport-alert-body{color:rgba(238,243,255,0.78);}
 .airport-notification-stack.visible .airport-alert-card{
   animation:airportCardReveal 0.72s cubic-bezier(0.22,0.61,0.36,1) forwards;
 }
