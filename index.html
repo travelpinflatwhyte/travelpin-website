@@ -265,7 +265,103 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
+@keyframes airportCardReveal{from{opacity:0;transform:perspective(1200px) translateY(50px) scale(0.98)}to{opacity:1;transform:perspective(1200px) translateY(0) scale(1)}}
+
 .step-left{display:flex;flex-direction:column;}
+
+.airport-notification-stack{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:14px;
+  perspective:1200px;
+}
+.airport-flight-strip{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:4px;
+  padding:12px 14px;
+  border-radius:16px;
+  background:rgba(255,255,255,0.035);
+  border:0.5px solid rgba(255,255,255,0.08);
+}
+.airport-route{
+  font-size:18px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:-0.4px;
+}
+.airport-flight-meta{
+  font-size:10px;
+  color:rgba(200,221,245,0.38);
+  margin-top:3px;
+}
+.airport-status-pill{
+  font-size:10px;
+  font-weight:700;
+  padding:5px 11px;
+  border-radius:999px;
+  color:#1d9e75;
+  background:rgba(29,158,117,0.12);
+  border:0.5px solid rgba(29,158,117,0.25);
+  white-space:nowrap;
+}
+.airport-alert-card{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  padding:16px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.055);
+  border:0.5px solid rgba(255,255,255,0.1);
+  box-shadow:0 18px 44px rgba(0,0,0,0.24);
+  opacity:0;
+  transform:perspective(1200px) translateY(50px) scale(0.98);
+  will-change:opacity,transform;
+}
+.airport-notification-stack.visible .airport-alert-card{
+  animation:airportCardReveal 0.72s cubic-bezier(0.22,0.61,0.36,1) forwards;
+}
+.airport-notification-stack.visible .airport-alert-card:nth-of-type(2){animation-delay:0.08s;}
+.airport-notification-stack.visible .airport-alert-card:nth-of-type(3){animation-delay:0.2s;}
+.airport-notification-stack.visible .airport-alert-card:nth-of-type(4){animation-delay:0.32s;}
+.airport-alert-icon{
+  width:34px;
+  height:34px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  background:rgba(29,158,117,0.12);
+  border:0.5px solid rgba(29,158,117,0.22);
+}
+.airport-alert-content{flex:1;min-width:0;}
+.airport-alert-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:5px;
+}
+.airport-alert-title{
+  font-size:14px;
+  font-weight:750;
+  color:#fff;
+  letter-spacing:-0.2px;
+}
+.airport-alert-time{
+  font-size:10px;
+  color:rgba(200,221,245,0.34);
+  white-space:nowrap;
+}
+.airport-alert-body{
+  font-size:12px;
+  color:rgba(200,221,245,0.62);
+  line-height:1.45;
+}
 .step-right{display:flex;flex-direction:column;justify-content:center;}
 .step-wrap{margin-bottom:4rem;padding-bottom:4rem;border-bottom:0.5px solid rgba(30,58,95,0.3);}
 .step-wrap .step-chips{margin-top:1.2rem;padding-left:0;}
@@ -593,12 +689,45 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">The moment the airline knows, you know. Gate changes, delays, boarding time — live, without lifting a finger.</p>
         </div>
         <div class="step-right">
-          <div style="display:flex;flex-direction:column;justify-content:center;">
-<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><div><p style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin:0;">SYD &rarr; DEL</p><p style="font-size:10px;color:rgba(200,221,245,0.4);margin:3px 0 0;">AI 302 &middot; Boarding 14:10 &middot; Gate B14</p></div><span style="font-size:10px;font-weight:700;padding:4px 12px;border-radius:100px;background:rgba(29,158,117,0.12);color:#1d9e75;border:0.5px solid rgba(29,158,117,0.25);">On time</span></div>
-<div style="height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;margin-bottom:6px;"><div style="width:38%;height:100%;background:linear-gradient(to right,#1d9e75,#4ec9a0);border-radius:2px;"></div></div>
-<div style="display:flex;justify-content:space-between;margin-bottom:12px;"><span style="font-size:9px;color:rgba(200,221,245,0.3);">Dep 14:30</span><span style="font-size:9px;color:#1d9e75;font-weight:600;">Boarding now</span><span style="font-size:9px;color:rgba(200,221,245,0.3);">Arr 20:15</span></div>
-<div style="display:flex;align-items:center;gap:8px;padding-top:10px;border-top:0.5px solid rgba(255,255,255,0.06);"><div style="width:7px;height:7px;border-radius:50%;background:#1d9e75;flex-shrink:0;animation:blink 1.5s ease-in-out infinite;"></div><span style="font-size:12px;color:rgba(200,221,245,0.7);">Gate changed <strong style="color:#fff;">B4 &rarr; B14</strong> &middot; <span style="color:rgba(200,221,245,0.35);">2 min ago</span></span></div>
-</div>
+          <div class="airport-notification-stack reveal">
+            <div class="airport-flight-strip">
+              <div>
+                <div class="airport-route">SYD &rarr; DEL</div>
+                <div class="airport-flight-meta">AI 302 &middot; Departure 14:30</div>
+              </div>
+              <div class="airport-status-pill">Live</div>
+            </div>
+            <div class="airport-alert-card">
+              <div class="airport-alert-icon">🛫</div>
+              <div class="airport-alert-content">
+                <div class="airport-alert-top">
+                  <div class="airport-alert-title">Gate assigned</div>
+                  <div class="airport-alert-time">Just now</div>
+                </div>
+                <div class="airport-alert-body">Gate B14 is confirmed. Travelpin updates your trip before you start checking screens.</div>
+              </div>
+            </div>
+            <div class="airport-alert-card">
+              <div class="airport-alert-icon">⏱</div>
+              <div class="airport-alert-content">
+                <div class="airport-alert-top">
+                  <div class="airport-alert-title">Delay detected</div>
+                  <div class="airport-alert-time">2 min ago</div>
+                </div>
+                <div class="airport-alert-body">Departure moved to 15:05. Your airport timing and reminders adjust automatically.</div>
+              </div>
+            </div>
+            <div class="airport-alert-card">
+              <div class="airport-alert-icon">🔔</div>
+              <div class="airport-alert-content">
+                <div class="airport-alert-top">
+                  <div class="airport-alert-title">Boarding soon</div>
+                  <div class="airport-alert-time">18 min</div>
+                </div>
+                <div class="airport-alert-body">Boarding starts soon at B14. You get the nudge without opening another app.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step-chips">
