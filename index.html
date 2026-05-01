@@ -271,8 +271,211 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 @keyframes checklistTick{0%,45%{background:transparent;border-color:rgba(30,58,95,0.18)}46%,100%{background:#3a8a5a;border-color:#3a8a5a}}
 @keyframes checklistCheckmark{from{opacity:0;transform:rotate(45deg) scale(0.6)}to{opacity:1;transform:rotate(45deg) scale(1)}}
 @keyframes checklistSpark{0%,100%{opacity:0.45;transform:scale(0.92)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes shareCardIn{from{opacity:0;transform:translateY(26px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes shareItemIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes routeDraw{from{stroke-dashoffset:220}to{stroke-dashoffset:0}}
 
 .step-left{display:flex;flex-direction:column;}
+
+.share-preview{
+  width:100%;
+  max-width:410px;
+  padding:16px;
+  border-radius:26px;
+  background:rgba(16,20,44,0.88);
+  border:0.5px solid rgba(196,168,232,0.2);
+  box-shadow:0 24px 70px rgba(0,0,0,0.34);
+  opacity:0;
+  transform:translateY(26px) scale(0.97);
+  overflow:hidden;
+}
+.share-preview.visible{animation:shareCardIn 0.72s cubic-bezier(0.22,0.61,0.36,1) forwards;}
+.share-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+.share-kicker{
+  font-size:10px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(196,168,232,0.62);
+  margin-bottom:4px;
+}
+.share-route{
+  font-size:20px;
+  font-weight:800;
+  color:#fff;
+  letter-spacing:-0.5px;
+}
+.share-live-pill{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:11px;
+  font-weight:700;
+  color:#4ec9a0;
+  background:rgba(29,158,117,0.13);
+  border:0.5px solid rgba(29,158,117,0.28);
+  border-radius:999px;
+  padding:6px 10px;
+  white-space:nowrap;
+}
+.share-live-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:#1d9e75;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+.share-map{
+  position:relative;
+  height:150px;
+  border-radius:20px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 22% 30%,rgba(78,201,160,0.28),transparent 16%),
+    radial-gradient(circle at 76% 68%,rgba(196,168,232,0.24),transparent 18%),
+    linear-gradient(135deg,rgba(74,122,170,0.28),rgba(13,24,52,0.82));
+  border:0.5px solid rgba(255,255,255,0.08);
+  margin-bottom:13px;
+  opacity:0;
+}
+.share-map::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(255,255,255,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.06) 1px,transparent 1px);
+  background-size:34px 34px;
+  opacity:0.55;
+}
+.share-route-line{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+}
+.share-route-line path{
+  stroke:#4ec9a0;
+  stroke-width:4;
+  fill:none;
+  stroke-linecap:round;
+  stroke-dasharray:220;
+  stroke-dashoffset:220;
+}
+.share-map-pin{
+  position:absolute;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#1d9e75;
+  box-shadow:0 0 0 5px rgba(29,158,117,0.18);
+}
+.share-map-pin.start{left:22%;top:58%;}
+.share-map-pin.end{right:18%;top:28%;background:#c4a8e8;box-shadow:0 0 0 5px rgba(196,168,232,0.18);}
+.share-plane{
+  position:absolute;
+  left:56%;
+  top:40%;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,0.9);
+  color:#07101f;
+  box-shadow:0 10px 26px rgba(0,0,0,0.24);
+}
+.share-timeline{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+.share-milestone{
+  min-width:0;
+  border-radius:14px;
+  padding:10px 8px;
+  background:rgba(255,255,255,0.055);
+  border:0.5px solid rgba(255,255,255,0.08);
+  opacity:0;
+}
+.share-milestone-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#7a5aaa;
+  margin-bottom:8px;
+}
+.share-milestone.done .share-milestone-dot{background:#1d9e75;}
+.share-milestone-title{
+  font-size:11px;
+  font-weight:700;
+  color:rgba(238,243,255,0.82);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.share-milestone-time{
+  font-size:9px;
+  color:rgba(200,221,245,0.3);
+  margin-top:3px;
+}
+.share-family-bubble{
+  display:flex;
+  align-items:flex-start;
+  gap:11px;
+  padding:13px;
+  border-radius:18px;
+  background:rgba(196,168,232,0.12);
+  border:0.5px solid rgba(196,168,232,0.25);
+  opacity:0;
+}
+.share-avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(196,168,232,0.22);
+  flex-shrink:0;
+}
+.share-family-title{
+  font-size:13px;
+  font-weight:750;
+  color:#fff;
+  margin-bottom:3px;
+}
+.share-family-copy{
+  font-size:11px;
+  color:rgba(200,221,245,0.6);
+  line-height:1.45;
+}
+.share-map-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+  font-size:11px;
+  font-weight:700;
+  color:#4ec9a0;
+}
+.share-preview.visible .share-map,
+.share-preview.visible .share-milestone,
+.share-preview.visible .share-family-bubble{
+  animation:shareItemIn 0.55s cubic-bezier(0.22,0.61,0.36,1) forwards;
+}
+.share-preview.visible .share-map{animation-delay:0.14s;}
+.share-preview.visible .share-route-line path{animation:routeDraw 1.1s 0.42s ease forwards;}
+.share-preview.visible .share-milestone:nth-child(1){animation-delay:0.62s;}
+.share-preview.visible .share-milestone:nth-child(2){animation-delay:0.78s;}
+.share-preview.visible .share-milestone:nth-child(3){animation-delay:0.94s;}
+.share-preview.visible .share-milestone:nth-child(4){animation-delay:1.1s;}
+.share-preview.visible .share-family-bubble{animation-delay:1.34s;}
 
 .checklist-preview{
   width:100%;
@@ -988,13 +1191,56 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-moment" style="color:var(--c4);border-color:var(--c4);">
           "Mum's been awake since 4am.<br>She knows now."
         </p>
-          <p class="step-body">Boarding. In the air. Landed. The people waiting for you know at every milestone — automatically. No message sent. No one left wondering.</p>
+          <p class="step-body">Share your trip once. They get live flight tracking, milestone updates, and arrival status automatically — without asking where you are.</p>
         </div>
         <div class="step-right">
-          <div style="display:flex;flex-direction:column;justify-content:center;">
-<div style="margin-bottom:12px;"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Left home</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">08:42</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Checked in</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">10:05</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;"><div style="width:8px;height:8px;border-radius:50%;background:#7a5aaa;flex-shrink:0;"></div><span style="font-size:12px;color:rgba(200,221,245,0.6);flex:1;">Boarded</span><span style="font-size:11px;color:rgba(200,221,245,0.3);">14:18</span></div><div style="width:1px;height:12px;margin-left:3.5px;background:rgba(255,255,255,0.08);margin-bottom:6px;"></div><div style="display:flex;align-items:center;gap:8px;"><div style="width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.15);flex-shrink:0;animation:blink 2s ease-in-out infinite;"></div><span style="font-size:12px;color:rgba(200,221,245,0.25);flex:1;">In the air</span><span style="font-size:11px;color:rgba(200,221,245,0.2);">&mdash;</span></div></div>
-<div style="border-top:0.5px solid rgba(255,255,255,0.06);padding-top:10px;"><p style="font-size:9px;color:rgba(200,221,245,0.25);margin:0 0 4px;text-transform:uppercase;letter-spacing:0.06em;">Mum</p><p style="font-size:12px;color:rgba(200,221,245,0.7);margin:0 0 8px;line-height:1.5;">"Safe travels &#10084;&#65039; I'll be at arrivals."</p><p style="font-size:10px;color:rgba(200,221,245,0.25);margin:0;">Auto-updated &middot; <strong style="color:rgba(122,90,170,0.7);">No message sent by you</strong></p></div>
-</div>
+          <div class="share-preview reveal">
+            <div class="share-top">
+              <div>
+                <div class="share-kicker">Live tracking shared</div>
+                <div class="share-route">AA1691 · TPA → MIA</div>
+              </div>
+              <div class="share-live-pill"><span class="share-live-dot"></span> Live</div>
+            </div>
+            <div class="share-map">
+              <svg class="share-route-line" viewBox="0 0 400 150" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M88 95 C150 54 224 115 312 42"></path>
+              </svg>
+              <span class="share-map-pin start"></span>
+              <span class="share-map-pin end"></span>
+              <span class="share-plane">✈</span>
+            </div>
+            <div class="share-timeline">
+              <div class="share-milestone done">
+                <div class="share-milestone-dot"></div>
+                <div class="share-milestone-title">Boarded</div>
+                <div class="share-milestone-time">5:51</div>
+              </div>
+              <div class="share-milestone done">
+                <div class="share-milestone-dot"></div>
+                <div class="share-milestone-title">Departed</div>
+                <div class="share-milestone-time">6:05</div>
+              </div>
+              <div class="share-milestone done">
+                <div class="share-milestone-dot"></div>
+                <div class="share-milestone-title">Arrived</div>
+                <div class="share-milestone-time">6:42</div>
+              </div>
+              <div class="share-milestone">
+                <div class="share-milestone-dot"></div>
+                <div class="share-milestone-title">Gate</div>
+                <div class="share-milestone-time">MIA</div>
+              </div>
+            </div>
+            <div class="share-family-bubble">
+              <div class="share-avatar">👩</div>
+              <div>
+                <div class="share-family-title">Mum opened live map</div>
+                <div class="share-family-copy">She can follow the map, timeline, and arrival updates. No message sent by you.</div>
+                <div class="share-map-cta">Open live map →</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="step-chips">
