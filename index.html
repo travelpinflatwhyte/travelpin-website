@@ -303,6 +303,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   font-size:12px;
   font-weight:700;
   color:#4a7aaa;
+  margin-left:auto;
+  align-self:center;
 }
 .checklist-chips{
   display:flex;
@@ -376,6 +378,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   font-weight:700;
   letter-spacing:-0.2px;
 }
+.checklist-row.checked .checklist-item-title{
+  color:rgba(23,27,36,0.48);
+  text-decoration:line-through;
+  text-decoration-thickness:1.5px;
+  text-decoration-color:rgba(58,138,90,0.7);
+}
+.checklist-row.checked .checklist-item-sub{
+  color:rgba(23,27,36,0.34);
+}
 .checklist-item-sub{
   font-size:11px;
   color:rgba(23,27,36,0.48);
@@ -394,9 +405,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   transform:translateY(8px);
 }
 .checklist-footer strong{color:#3a8a5a;}
+.checklist-powered{
+  font-size:10px;
+  color:rgba(23,27,36,0.36);
+  margin-top:7px;
+  opacity:0;
+  transform:translateY(8px);
+}
+.checklist-powered strong{color:rgba(23,27,36,0.58);}
 .checklist-preview.visible .checklist-chip,
 .checklist-preview.visible .checklist-row,
-.checklist-preview.visible .checklist-footer{
+.checklist-preview.visible .checklist-footer,
+.checklist-preview.visible .checklist-powered{
   animation:checklistItemIn 0.5s cubic-bezier(0.22,0.61,0.36,1) forwards;
 }
 .checklist-preview.visible .checklist-chip:nth-child(1){animation-delay:0.12s;}
@@ -408,6 +428,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .checklist-preview.visible .checklist-row:nth-child(3){animation-delay:0.9s;}
 .checklist-preview.visible .checklist-row:nth-child(4){animation-delay:1.06s;}
 .checklist-preview.visible .checklist-footer{animation-delay:1.25s;}
+.checklist-preview.visible .checklist-powered{animation-delay:1.36s;}
 .checklist-preview.visible .checklist-row.checked .checklist-box{
   animation:checklistTick 0.9s 1.45s ease forwards;
 }
@@ -838,13 +859,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <div class="checklist-preview reveal">
             <div class="checklist-top">
               <div class="checklist-title">Checklist</div>
-              <div class="checklist-refine">Refine</div>
             </div>
             <div class="checklist-chips">
               <span class="checklist-chip">1-2 days</span>
               <span class="checklist-chip">Leisure</span>
               <span class="checklist-chip">Solo</span>
               <span class="checklist-chip">Carry-on</span>
+              <span class="checklist-refine">Refine</span>
             </div>
             <div class="checklist-category">Clothing</div>
             <div class="checklist-card">
@@ -882,6 +903,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
               </div>
             </div>
             <p class="checklist-footer"><strong>1 of 8</strong> packed &middot; Built for weather, duration, and carry-on space</p>
+            <p class="checklist-powered">Powered by <strong>Gemini</strong> and <strong>OpenAI</strong></p>
           </div>
         </div>
       </div>
