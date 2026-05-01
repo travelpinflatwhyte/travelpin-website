@@ -322,11 +322,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   will-change:opacity,transform;
 }
 .airport-alert-card.highlighted{
-  margin-left:-34px;
-  margin-right:-6px;
+  position:relative;
+  left:-58px;
+  width:calc(100% + 58px);
   background:rgba(255,255,255,0.085);
   border-color:rgba(238,243,255,0.55);
   box-shadow:0 22px 54px rgba(0,0,0,0.34),0 0 0 1px rgba(255,255,255,0.08);
+  z-index:2;
 }
 .airport-alert-card.highlighted .airport-alert-icon{
   background:rgba(200,168,74,0.16);
@@ -502,6 +504,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .eta-card-amount{left:0;top:34px;}
   .eta-card-route{right:0;top:108px;}
   .eta-card-leave{left:4%;bottom:46px;}
+  .airport-alert-card.highlighted{
+    left:0;
+    width:100%;
+  }
 }
 </style>
 </head>
@@ -720,7 +726,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
                 <div class="airport-alert-body">Gate B14 is confirmed. Travelpin updates your trip before you start checking screens.</div>
               </div>
             </div>
-            <div class="airport-alert-card">
+            <div class="airport-alert-card highlighted">
               <div class="airport-alert-icon">⏱</div>
               <div class="airport-alert-content">
                 <div class="airport-alert-top">
