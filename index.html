@@ -277,6 +277,60 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 .step-left{display:flex;flex-direction:column;}
 
+.checklist-phone-shell{
+  position:relative;
+  width:min(405px,38vw);
+  height:600px;
+  margin:0 auto;
+  overflow:hidden;
+}
+.checklist-phone-frame{
+  position:absolute;
+  top:0;
+  left:50%;
+  width:100%;
+  height:auto;
+  transform:translateX(-50%);
+  z-index:1;
+  pointer-events:none;
+  user-select:none;
+}
+.checklist-phone-screen{
+  position:absolute;
+  top:58px;
+  left:7.6%;
+  right:7.6%;
+  height:470px;
+  z-index:2;
+  overflow:hidden;
+  border-radius:34px;
+}
+.checklist-phone-screen .checklist-preview{
+  max-width:none;
+  width:100%;
+  min-height:100%;
+  padding:18px 16px;
+  border-radius:32px;
+  box-shadow:none;
+}
+.checklist-phone-screen .checklist-title{font-size:18px;}
+.checklist-phone-screen .checklist-powered{font-size:9px;}
+.checklist-phone-screen .checklist-chip{
+  font-size:10px;
+  padding:4px 8px;
+}
+.checklist-phone-screen .checklist-category{
+  font-size:14px;
+  margin-bottom:8px;
+}
+.checklist-phone-screen .checklist-row{
+  padding:10px 12px;
+  grid-template-columns:26px 1fr auto;
+}
+.checklist-phone-screen .checklist-item-title{font-size:13px;}
+.checklist-phone-screen .checklist-item-sub{font-size:10px;}
+.checklist-phone-screen .checklist-footer{font-size:10px;}
+
 .share-preview{
   width:100%;
   max-width:410px;
@@ -874,6 +928,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .eta-card-route{right:0;top:112px;--eta-delay:0.5s;}
 .eta-card-leave{left:0;bottom:82px;--eta-delay:0.65s;}
 @media (max-width:768px){
+  .checklist-phone-shell{
+    width:min(360px,88vw);
+    height:540px;
+  }
+  .checklist-phone-screen{
+    top:52px;
+    height:420px;
+  }
+  .checklist-phone-screen .checklist-preview{
+    padding:16px 14px;
+  }
+  .checklist-phone-screen .checklist-title{font-size:17px;}
+  .checklist-phone-screen .checklist-row{padding:9px 10px;}
   .eta-showcase{min-height:380px;margin-top:0.5rem;}
   .eta-phone-art{width:min(225px,58vw);}
   .eta-float-card{padding:10px 12px;border-radius:14px;}
@@ -1060,56 +1127,61 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Not a generic list. A checklist built for this trip — destination, weather, how long you're gone. Everything you need. Nothing you don't.</p>
         </div>
         <div class="step-right">
-          <div class="checklist-preview reveal">
-            <div class="checklist-top">
-              <div class="checklist-title-row">
-                <div class="checklist-title">Checklist</div>
-                <div class="checklist-powered">Powered by <strong>Gemini</strong> and <strong>OpenAI</strong></div>
+          <div class="checklist-phone-shell">
+            <img class="checklist-phone-frame" src="checklist-phone-frame.png" alt="" aria-hidden="true">
+            <div class="checklist-phone-screen">
+              <div class="checklist-preview reveal">
+                <div class="checklist-top">
+                  <div class="checklist-title-row">
+                    <div class="checklist-title">Checklist</div>
+                    <div class="checklist-powered">Powered by <strong>Gemini</strong> and <strong>OpenAI</strong></div>
+                  </div>
+                </div>
+                <div class="checklist-chips">
+                  <span class="checklist-chip">1-2 days</span>
+                  <span class="checklist-chip">Leisure</span>
+                  <span class="checklist-chip">Solo</span>
+                  <span class="checklist-chip">Carry-on</span>
+                  <span class="checklist-refine">Refine</span>
+                </div>
+                <div class="checklist-category">Clothing</div>
+                <div class="checklist-card">
+                  <div class="checklist-row checked">
+                    <div class="checklist-box"></div>
+                    <div>
+                      <div class="checklist-item-title">breathable T-shirt</div>
+                      <div class="checklist-item-sub">Trip-specific essential</div>
+                    </div>
+                    <div class="checklist-spark">✦</div>
+                  </div>
+                  <div class="checklist-row">
+                    <div class="checklist-box"></div>
+                    <div>
+                      <div class="checklist-item-title">light waterproof jacket</div>
+                      <div class="checklist-item-sub">Weather aware suggestion</div>
+                    </div>
+                    <div class="checklist-spark">✦</div>
+                  </div>
+                  <div class="checklist-row">
+                    <div class="checklist-box"></div>
+                    <div>
+                      <div class="checklist-item-title">boarding pass</div>
+                      <div class="checklist-item-sub">Required for flight boarding</div>
+                    </div>
+                    <div class="checklist-spark">✦</div>
+                  </div>
+                  <div class="checklist-row">
+                    <div class="checklist-box"></div>
+                    <div>
+                      <div class="checklist-item-title">quick-dry socks</div>
+                      <div class="checklist-item-sub">Built for this trip</div>
+                    </div>
+                    <div class="checklist-spark">✦</div>
+                  </div>
+                </div>
+                <p class="checklist-footer"><strong>1 of 8</strong> packed &middot; Built for weather, duration, and carry-on space</p>
               </div>
             </div>
-            <div class="checklist-chips">
-              <span class="checklist-chip">1-2 days</span>
-              <span class="checklist-chip">Leisure</span>
-              <span class="checklist-chip">Solo</span>
-              <span class="checklist-chip">Carry-on</span>
-              <span class="checklist-refine">Refine</span>
-            </div>
-            <div class="checklist-category">Clothing</div>
-            <div class="checklist-card">
-              <div class="checklist-row checked">
-                <div class="checklist-box"></div>
-                <div>
-                  <div class="checklist-item-title">breathable T-shirt</div>
-                  <div class="checklist-item-sub">Trip-specific essential</div>
-                </div>
-                <div class="checklist-spark">✦</div>
-              </div>
-              <div class="checklist-row">
-                <div class="checklist-box"></div>
-                <div>
-                  <div class="checklist-item-title">light waterproof jacket</div>
-                  <div class="checklist-item-sub">Weather aware suggestion</div>
-                </div>
-                <div class="checklist-spark">✦</div>
-              </div>
-              <div class="checklist-row">
-                <div class="checklist-box"></div>
-                <div>
-                  <div class="checklist-item-title">boarding pass</div>
-                  <div class="checklist-item-sub">Required for flight boarding</div>
-                </div>
-                <div class="checklist-spark">✦</div>
-              </div>
-              <div class="checklist-row">
-                <div class="checklist-box"></div>
-                <div>
-                  <div class="checklist-item-title">quick-dry socks</div>
-                  <div class="checklist-item-sub">Built for this trip</div>
-                </div>
-                <div class="checklist-spark">✦</div>
-              </div>
-            </div>
-            <p class="checklist-footer"><strong>1 of 8</strong> packed &middot; Built for weather, duration, and carry-on space</p>
           </div>
         </div>
       </div>
