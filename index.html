@@ -371,6 +371,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .checklist-device .checklist-footer{font-size:10px;margin-top:10px;}
 
 .checklist-screenshot-wrap{
+  position:relative;
   width:min(330px,32vw);
   max-width:360px;
   margin:0 auto;
@@ -385,6 +386,54 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   width:100%;
   height:auto;
   display:block;
+}
+.checklist-float-card{
+  position:absolute;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-radius:18px;
+  padding:13px 15px;
+  background:rgba(255,255,255,0.9);
+  color:#1b2430;
+  box-shadow:0 20px 55px rgba(13,24,43,0.16);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  opacity:0;
+  transform:scale(0.8);
+  min-width:190px;
+}
+.checklist-float-card > span{
+  width:32px;
+  height:32px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(58,138,90,0.12);
+  color:#3a8a5a;
+  flex-shrink:0;
+}
+.checklist-float-card strong{
+  display:block;
+  font-size:14px;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+}
+.checklist-float-card small{
+  display:block;
+  margin-top:3px;
+  font-size:11px;
+  color:rgba(27,36,48,0.52);
+}
+.checklist-tag-ai{top:14%;left:-46%;--checklist-delay:0.28s;}
+.checklist-tag-weather{top:42%;right:-40%;--checklist-delay:0.48s;}
+.checklist-tag-location{bottom:14%;left:-34%;--checklist-delay:0.68s;}
+.checklist-screenshot-wrap.visible .checklist-float-card{
+  animation:
+    etaCardIn 0.7s var(--checklist-delay,0s) cubic-bezier(0.22,0.61,0.36,1) forwards,
+    etaSoftFloat 5s calc(var(--checklist-delay,0s) + 0.75s) ease-in-out infinite;
 }
 
 .share-preview{
@@ -986,6 +1035,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .checklist-screenshot-wrap{
     width:min(300px,76vw);
   }
+  .checklist-float-card{
+    min-width:150px;
+    padding:10px 12px;
+    border-radius:14px;
+  }
+  .checklist-float-card > span{
+    width:28px;
+    height:28px;
+  }
+  .checklist-float-card strong{font-size:12px;}
+  .checklist-float-card small{font-size:10px;}
+  .checklist-tag-ai{left:-16%;top:10%;}
+  .checklist-tag-weather{right:-18%;top:42%;}
+  .checklist-tag-location{left:-12%;bottom:12%;}
   .checklist-device{
     width:min(360px,88vw);
     height:420px;
@@ -1185,7 +1248,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         </div>
         <div class="step-right">
           <div class="checklist-screenshot-wrap reveal">
+            <div class="checklist-float-card checklist-tag-ai">
+              <span>✦</span>
+              <div>
+                <strong>Powered by AI</strong>
+                <small>OpenAI + Gemini</small>
+              </div>
+            </div>
             <img src="checklist-image.png" alt="Travelpin checklist preview">
+            <div class="checklist-float-card checklist-tag-weather">
+              <span>🌦</span>
+              <div>
+                <strong>Weather aware</strong>
+                <small>Rain jacket suggested</small>
+              </div>
+            </div>
+            <div class="checklist-float-card checklist-tag-location">
+              <span>📍</span>
+              <div>
+                <strong>Built for Mumbai</strong>
+                <small>1-2 days · Carry-on</small>
+              </div>
+            </div>
           </div>
           <!-- Previous animated checklist design kept for reference.
           <div class="checklist-device">
