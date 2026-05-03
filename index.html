@@ -370,6 +370,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .checklist-device .checklist-item-sub{font-size:10px;}
 .checklist-device .checklist-footer{font-size:10px;margin-top:10px;}
 
+.checklist-screenshot-wrap{
+  width:min(330px,32vw);
+  max-width:360px;
+  margin:0 auto;
+  opacity:0;
+  transform:translateY(24px) scale(0.97);
+}
+.checklist-screenshot-wrap.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.checklist-screenshot-wrap img{
+  width:100%;
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 28px 68px rgba(0,0,0,0.34));
+}
+
 .share-preview{
   width:100%;
   max-width:410px;
@@ -966,6 +984,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .eta-card-route{right:0;top:112px;--eta-delay:0.5s;}
 .eta-card-leave{left:0;bottom:82px;--eta-delay:0.65s;}
 @media (max-width:768px){
+  .checklist-screenshot-wrap{
+    width:min(300px,76vw);
+  }
   .checklist-device{
     width:min(360px,88vw);
     height:420px;
@@ -1164,6 +1185,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Not a generic list. A checklist built for this trip — destination, weather, how long you're gone. Everything you need. Nothing you don't.</p>
         </div>
         <div class="step-right">
+          <div class="checklist-screenshot-wrap reveal">
+            <img src="checklist-image.png" alt="Travelpin checklist preview">
+          </div>
+          <!-- Previous animated checklist design kept for reference.
           <div class="checklist-device">
             <span class="checklist-device-button left-one"></span>
             <span class="checklist-device-button left-two"></span>
@@ -1222,6 +1247,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
               </div>
             </div>
           </div>
+          -->
         </div>
       </div>
       <div class="step-chips">
