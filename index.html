@@ -387,21 +387,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   opacity:0.75;
   pointer-events:none;
 }
-.checklist-screenshot-wrap::after{
-  content:'';
-  position:absolute;
-  left:-26%;
-  right:-26%;
-  bottom:-8%;
-  height:28%;
-  background:
-    radial-gradient(ellipse at 50% 100%,rgba(238,243,255,0.2) 0%,rgba(238,243,255,0.08) 38%,transparent 72%),
-    radial-gradient(ellipse at 50% 80%,rgba(58,138,90,0.16) 0%,transparent 64%);
-  filter:blur(28px);
-  opacity:0.9;
-  pointer-events:none;
-  z-index:1;
-}
 .checklist-screenshot-wrap.visible{
   opacity:1;
   transform:translateY(0) scale(1);
@@ -662,6 +647,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .share-preview.visible .share-milestone:nth-child(3){animation-delay:0.94s;}
 .share-preview.visible .share-milestone:nth-child(4){animation-delay:1.1s;}
 .share-preview.visible .share-family-bubble{animation-delay:1.34s;}
+
+.family-screenshot-wrap{
+  width:min(520px,46vw);
+  max-width:560px;
+  margin:0 auto;
+  opacity:0;
+  transform:translateY(26px) scale(0.97);
+}
+.family-screenshot-wrap.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+.family-screenshot-wrap img{
+  width:100%;
+  height:auto;
+  display:block;
+}
 
 .checklist-preview{
   width:100%;
@@ -1059,6 +1061,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .eta-card-route{right:0;top:112px;--eta-delay:0.5s;}
 .eta-card-leave{left:0;bottom:82px;--eta-delay:0.65s;}
 @media (max-width:768px){
+  .family-screenshot-wrap{
+    width:min(360px,88vw);
+  }
   .checklist-screenshot-wrap{
     width:min(300px,76vw);
   }
@@ -1441,6 +1446,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Share your trip once. They get live flight tracking, milestone updates, and arrival status automatically — without asking where you are.</p>
         </div>
         <div class="step-right">
+          <div class="family-screenshot-wrap reveal">
+            <img src="family-live-tracking.png" alt="Travelpin live flight tracking preview">
+          </div>
+          <!-- Previous custom live-tracking card kept for reference.
           <div class="share-preview reveal">
             <div class="share-top">
               <div>
@@ -1488,6 +1497,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
               </div>
             </div>
           </div>
+          -->
         </div>
       </div>
       <div class="step-chips">
