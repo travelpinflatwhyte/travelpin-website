@@ -1602,6 +1602,146 @@ body.is-scrolling .phone-frame::before{
   .btn, .final-cta .btn::after{ transition:none; }
   .reveal{ transition:none; opacity:1; transform:none; }
   .wing-underline{ transition:none; background-size:100% 3px; }
+  .frag-timeline::before{ transition:none; height:calc(100% - 32px); }
+  .frag-dot{ transition:none; opacity:1; transform:scale(1); }
+  .frag-step-label{ transition:none; opacity:1; }
+  .frag-branch-line{ transition:none; width:24px; }
+  .frag-card{ transition:none; opacity:1; transform:translateX(0); }
+}
+
+/* ── Fragmented Journey Timeline ── */
+
+.hero-intro-sub{
+  font-size:clamp(17px,1.6vw,22px);
+  color:rgba(238,243,255,.60);
+  max-width:560px;
+  text-align:center;
+  margin:0 auto;
+  line-height:1.5;
+}
+
+.frag-timeline{
+  position:relative;
+  max-width:560px;
+  width:100%;
+  text-align:left;
+}
+
+.frag-timeline::before{
+  content:"";
+  position:absolute;
+  left:5px;
+  top:20px;
+  width:2px;
+  height:0;
+  background:linear-gradient(to bottom, rgba(255,255,255,.32) 0%, rgba(255,255,255,.08) 100%);
+  border-radius:2px;
+  transition:height 1.1s cubic-bezier(.22,.61,.36,1) .1s;
+}
+
+.frag-timeline.frag-in::before{
+  height:calc(100% - 32px);
+}
+
+.frag-step{
+  position:relative;
+  padding-bottom:28px;
+}
+
+.frag-step:last-child{
+  padding-bottom:0;
+}
+
+.frag-step-label{
+  font-size:11px;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.42);
+  padding-left:24px;
+  margin-bottom:9px;
+  opacity:0;
+  transition:opacity .3s ease calc(var(--si,0) * .22s + .05s);
+}
+
+.frag-timeline.frag-in .frag-step-label{
+  opacity:1;
+}
+
+.frag-row{
+  display:flex;
+  align-items:center;
+}
+
+.frag-dot{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(255,255,255,.12), 0 0 14px rgba(200,220,255,.35);
+  flex-shrink:0;
+  opacity:0;
+  transform:scale(0);
+  transition:opacity .28s ease calc(var(--si,0) * .22s + .14s),
+             transform .28s cubic-bezier(.34,1.56,.64,1) calc(var(--si,0) * .22s + .14s);
+}
+
+.frag-timeline.frag-in .frag-dot{
+  opacity:1;
+  transform:scale(1);
+}
+
+.frag-branch-line{
+  height:1px;
+  width:0;
+  background:linear-gradient(to right, rgba(255,255,255,.28), rgba(255,255,255,.12));
+  flex-shrink:0;
+  transition:width .4s cubic-bezier(.22,.61,.36,1) calc(var(--si,0) * .22s + .28s);
+}
+
+.frag-timeline.frag-in .frag-branch-line{
+  width:24px;
+}
+
+.frag-card{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  opacity:0;
+  transform:translateX(-12px);
+  transition:opacity .34s ease calc(var(--si,0) * .22s + .38s),
+             transform .34s cubic-bezier(.22,.61,.36,1) calc(var(--si,0) * .22s + .38s);
+}
+
+.frag-timeline.frag-in .frag-card{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.frag-card-icon{
+  font-size:22px;
+  line-height:1;
+  flex-shrink:0;
+}
+
+.frag-card-problem{
+  font-size:clamp(15px,1.3vw,18px);
+  font-weight:600;
+  color:rgba(255,255,255,.88);
+  letter-spacing:-.01em;
+  line-height:1.3;
+}
+
+.frag-card-app{
+  font-size:11px;
+  color:rgba(255,255,255,.36);
+  letter-spacing:.04em;
+  margin-top:3px;
 }
 </style>
 </head>
@@ -1640,30 +1780,71 @@ body.is-scrolling .phone-frame::before{
         </h1>
       </div>
 
-      <div class="problem-list">
+      <p class="hero-intro-sub">One journey. You're switching apps at every step.</p>
 
-        <div class="story-block">
-          <div class="problem-item">Your ✈️ <span class="wing-underline wing-underline--blue">flight details</span> live in <span class="wing-underline wing-underline--blue">one app</span>.</div>
-          <div class="problem-item">Your 🧳 <span class="wing-underline">packing checklist</span> sits <span class="wing-underline">somewhere else</span>.</div>
+      <div class="frag-timeline" id="frag-timeline">
+
+        <div class="frag-step" style="--si:0">
+          <div class="frag-step-label">The day before</div>
+          <div class="frag-row">
+            <div class="frag-dot"></div>
+            <div class="frag-branch-line"></div>
+            <div class="frag-card">
+              <span class="frag-card-icon">🧳</span>
+              <div>
+                <div class="frag-card-problem">Did I pack everything?</div>
+                <div class="frag-card-app">Notes · Another app</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="story-block">
-          <div class="problem-item">When should I leave to reach the airport before check-in closes?</div>
-          <div class="problem-item">Check traffic • Book 🚕 — <span class="wing-underline wing-underline--orange">in another app</span>.</div>
+        <div class="frag-step" style="--si:1">
+          <div class="frag-step-label">Time to leave</div>
+          <div class="frag-row">
+            <div class="frag-dot"></div>
+            <div class="frag-branch-line"></div>
+            <div class="frag-card">
+              <span class="frag-card-icon">🗺</span>
+              <div>
+                <div class="frag-card-problem">Check traffic. Book a cab.</div>
+                <div class="frag-card-app">Google Maps · Uber</div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="story-block">
-          <div class="problem-item">To keep your loved ones updated — <span class="wing-underline wing-underline--white">you message</span> 💬</div>
-          <div class="problem-item">🏠 Leaving home • 🛫 Taking off • 🛬 Landed</div>
+        <div class="frag-step" style="--si:2">
+          <div class="frag-step-label">At the airport</div>
+          <div class="frag-row">
+            <div class="frag-dot"></div>
+            <div class="frag-branch-line"></div>
+            <div class="frag-card">
+              <span class="frag-card-icon">✈️</span>
+              <div>
+                <div class="frag-card-problem">Flight status. Gate change?</div>
+                <div class="frag-card-app">Airline app · Yet another</div>
+              </div>
+            </div>
+          </div>
         </div>
-          
-        <div class="story-block">
-          <div class="problem-item">One journey — yet it takes multiple apps to make it work.</div>
+
+        <div class="frag-step" style="--si:3">
+          <div class="frag-step-label">Boarding</div>
+          <div class="frag-row">
+            <div class="frag-dot"></div>
+            <div class="frag-branch-line"></div>
+            <div class="frag-card">
+              <span class="frag-card-icon">💬</span>
+              <div>
+                <div class="frag-card-problem">Tell family you're boarding.</div>
+                <div class="frag-card-app">WhatsApp · Manually</div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
-
-      <div class="hero-signal-note">But the journey is one continuous experience.</div>
       <div class="hero-signal-strip">
         <div class="hero-signal-item">Live flight updates</div>
         <div class="hero-signal-item">Smart checklist</div>
@@ -2053,7 +2234,7 @@ const phone = document.querySelector('.phone-frame');
 const nav = document.querySelector('.nav');
 const revealTargets = [
   '.hero-title',
-  '.problem-list .story-block',
+  '.hero-intro-sub',
   '.hero-signal-strip',
   '.solution-stack',
   '.story-intro',
@@ -2293,6 +2474,22 @@ window.addEventListener('resize', () => {
   });
 });
 setupReveals();
+
+const fragTimeline = document.getElementById('frag-timeline');
+if(fragTimeline){
+  if(reducedMotionMedia.matches){
+    fragTimeline.classList.add('frag-in');
+  }else{
+    const fragObs = new IntersectionObserver(entries => {
+      if(entries[0].isIntersecting){
+        fragTimeline.classList.add('frag-in');
+        fragObs.disconnect();
+      }
+    }, { threshold:0.15 });
+    fragObs.observe(fragTimeline);
+  }
+}
+
 setupFeatureSelector();
 updateNavBehavior();
 setFeatureByIndex(0, { force:true });
