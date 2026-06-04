@@ -20,14 +20,31 @@
 <meta name="twitter:title" content="Travelpin — From departure to memory"/>
 <meta name="twitter:description" content="One app for your entire journey. Live flight updates, smart packing, leave time, and memories."/>
 <meta name="twitter:image" content="https://travelpinapp.com/images/og-image.png"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Travelpin",
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "iOS",
+  "url": "https://travelpinapp.com/",
+  "description": "One app for your entire journey — live flight updates, smart packing, leave time, and memories that last.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 
+<link rel="icon" type="image/png" href="tp_favicon.png"/>
+<link rel="apple-touch-icon" href="tp_favicon.png"/>
 <!-- Favicon -->
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAB0UlEQVR4nO2bPU4DMRSE3+4VaElHS0XNFaiQkChzALq0XCASF0CKOAINBT1C3ICCMhLXCA0vSjb22m9t7/jnfVWkRN6Z8XjXSXY7mpHFZrXz/ex2ue5SamGSHkRi2EWqQKIPGtO0jZhhRBtoDuNDYgQRPADC+JCQIPqQA+dgnihMx6TkcjFuQtoGcQNyNk8k1ycKIHfzjESndwClmGd89XoFUJp5xke3M4BSzTMu/aMBlG6eGfNhDaAW84zNT9BGqAaMAdQ2+4zJ10kAtZpnhv6aXwJH++Yps/9280CXZ+fxFDl4/Hqll+/P4HH4O0PzDdgHUPvaH8J+tQFoAWh6ovbqzyw2q13HL1If7On6jm4vrqzv378/08fvT2oZJ+gSQAtA07e6/hltAFoAGg0ALQCNBoAWgEYDQAtAowGgBaDp57obK1e0AWgBaDQAovnuysyN7XLdaQPQAtDsA2htGehfY/8cBdBKCw59Nt8A44zX/EvxsOXGBtS6FEy+ml8C1gBqa4HNz2gDaglhzIdzCZQegku/1zmg1BB8dHufBEsLwVev6CpQSggSneLLYO4hSPUFmclpxzh1YoI2Qrm0IUSHPjkaQ8ghzT47bKKEp8f/AJMXoqMBTaqqAAAAAElFTkSuQmCC"/>
 <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAB0UlEQVR4nO2bPU4DMRSE3+4VaElHS0XNFaiQkChzALq0XCASF0CKOAINBT1C3ICCMhLXCA0vSjb22m9t7/jnfVWkRN6Z8XjXSXY7mpHFZrXz/ex2ue5SamGSHkRi2EWqQKIPGtO0jZhhRBtoDuNDYgQRPADC+JCQIPqQA+dgnihMx6TkcjFuQtoGcQNyNk8k1ycKIHfzjESndwClmGd89XoFUJp5xke3M4BSzTMu/aMBlG6eGfNhDaAW84zNT9BGqAaMAdQ2+4zJ10kAtZpnhv6aXwJH++Yps/9280CXZ+fxFDl4/Hqll+/P4HH4O0PzDdgHUPvaH8J+tQFoAWh6ovbqzyw2q13HL1If7On6jm4vrqzv378/08fvT2oZJ+gSQAtA07e6/hltAFoAGg0ALQCNBoAWgEYDQAtAowGgBaDp57obK1e0AWgBaDQAovnuysyN7XLdaQPQAtDsA2htGehfY/8cBdBKCw59Nt8A44zX/EvxsOXGBtS6FEy+ml8C1gBqa4HNz2gDaglhzIdzCZQegku/1zmg1BB8dHufBEsLwVev6CpQSggSneLLYO4hSPUFmclpxzh1YoI2Qrm0IUSHPjkaQ8ghzT47bKKEp8f/AJMXoqMBTaqqAAAAAElFTkSuQmCC"/>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Travelpin — From departure to memory</title>
-<meta name="description" content="Travelpin brings the journey together — from leaving home to remembering why you went."/>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&display=swap" rel="stylesheet"/>
 <style>
 
@@ -59,6 +76,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,#0d2040 0%,transparent 55%);}
 .hero-inner{position:relative;z-index:1;max-width:620px;width:100%;}
 .eyebrow{font-size:11px;letter-spacing:0.2em;color:#2a4a6a;text-transform:uppercase;font-weight:500;margin-bottom:1.4rem;animation:rise 0.8s 0.1s ease both;}
+.hero-h1-wrap{margin:0;padding:0;font:inherit;font-size:inherit;line-height:inherit;font-weight:inherit;letter-spacing:inherit;color:inherit;border:0;}
+.hero-h1-wrap .hero-h1,.hero-h1-wrap .hero-h1-2{display:block;}
 .hero-h1{font-size:clamp(50px,10vw,82px);font-weight:800;line-height:1.0;letter-spacing:-3px;color:#fff;margin:0 0 0.1em;animation:rise 0.8s 0.2s ease both;}
 .hero-h1-2{font-size:clamp(50px,10vw,82px);font-weight:800;line-height:1.0;letter-spacing:-3px;color:#fff;margin:0 0 3rem;animation:rise 0.8s 0.3s ease both;}
 .problem-kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:1.2rem;animation:rise 0.8s 0.4s ease both;}
@@ -1124,8 +1143,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   <div class="hero-inner">
 
     <p class="eyebrow">The experience right now</p>
-    <h1 class="hero-h1">Travel today is</h1>
-    <h1 class="hero-h1-2">fragmented.</h1>
+    <h1 class="hero-h1-wrap"><span class="hero-h1">Travel today is</span><span class="hero-h1-2">fragmented.</span></h1>
 
     <p class="problem-sub">One journey. You're juggling all of these.</p>
 
