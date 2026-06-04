@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Travelpin">
+  <rect width="32" height="32" rx="6" fill="#07101f"/>
+  <text x="16" y="22" font-family="'Caveat', cursive" font-size="20" text-anchor="middle">
+    <tspan fill="#ffffff">T</tspan><tspan fill="#1d9e75">p</tspan>
+  </text>
+</svg>
