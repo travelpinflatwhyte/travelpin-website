@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Travelpin</title>
+  <meta name="description" content="Travelpin privacy policy — how we handle your trips, location, and memories." />
+  <meta property="og:title" content="Privacy Policy — Travelpin" />
+  <meta property="og:description" content="How Travelpin handles your trips, location, and memories." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://travelpinapp.com/privacy.html" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#07101f" />
+  <link rel="canonical" href="https://travelpinapp.com/privacy.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #07101f;
+      --surface: #0d1929;
+      --border: rgba(74,122,170,0.15);
+      --green: #1d9e75;
+      --blue: #4a7aaa;
+      --text: #c8dff4;
+      --muted: rgba(200,223,244,0.45);
+      --heading: #e8f2fc;
+      --caveat: 'Caveat', cursive;
+      --sans: 'DM Sans', sans-serif;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(7,16,31,0.92); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family: var(--caveat); font-size: 1.4rem; color: var(--heading); text-decoration: none; }
+    .nav-back { font-size: 0.8rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--text); }
+    .nav-back::before { content: '←'; }
+    .page { max-width: 720px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+    .page-eyebrow { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); font-weight: 500; margin-bottom: 0.75rem; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 500; color: var(--heading); line-height: 1.2; margin-bottom: 0.5rem; }
+    .page-date { font-size: 0.8rem; color: var(--muted); margin-bottom: 3rem; }
+    .plain-words { background: var(--surface); border: 0.5px solid var(--border); border-left: 3px solid var(--green); border-radius: 0 12px 12px 0; padding: 1.5rem 1.75rem; margin-bottom: 3rem; }
+    .plain-words p { font-size: 1rem; color: var(--heading); margin-bottom: 0.5rem; font-weight: 400; }
+    .plain-words .tagline { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; margin-bottom: 0; font-style: italic; }
+    .commitments { margin: 1rem 0 0; display: flex; flex-direction: column; gap: 6px; }
+    .commitment { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; color: var(--text); }
+    .commitment::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green); flex-shrink: 0; }
+    .jurisdiction-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 3rem; }
+    .juris-badge { font-size: 0.72rem; font-weight: 500; padding: 4px 10px; border-radius: 4px; letter-spacing: 0.05em; }
+    .juris-badge.india { background: rgba(29,158,117,0.12); color: #1d9e75; border: 0.5px solid rgba(29,158,117,0.3); }
+    .juris-badge.us { background: rgba(74,122,170,0.12); color: #4a7aaa; border: 0.5px solid rgba(74,122,170,0.3); }
+    .juris-badge.au { background: rgba(200,168,74,0.12); color: #c8a84a; border: 0.5px solid rgba(200,168,74,0.3); }
+    .section { margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 0.5px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    h2 { font-size: 1.1rem; font-weight: 500; color: var(--heading); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+    h2 .section-num { font-size: 0.7rem; font-weight: 500; color: var(--blue); background: rgba(74,122,170,0.1); border: 0.5px solid rgba(74,122,170,0.25); border-radius: 4px; padding: 2px 7px; letter-spacing: 0.05em; }
+    h3 { font-size: 0.85rem; font-weight: 500; color: var(--heading); margin: 1.5rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; display: flex; align-items: center; gap: 8px; }
+    h3 .flag { font-style: normal; font-size: 0.9rem; }
+    p { margin-bottom: 0.75rem; font-size: 0.95rem; }
+    p:last-child { margin-bottom: 0; }
+    ul { list-style: none; margin: 0.5rem 0; display: flex; flex-direction: column; gap: 5px; }
+    ul li { font-size: 0.9rem; color: var(--text); padding-left: 1rem; position: relative; }
+    ul li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+    .data-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+    .data-table th { text-align: left; font-weight: 500; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); padding: 8px 12px; border-bottom: 0.5px solid var(--border); }
+    .data-table td { padding: 10px 12px; border-bottom: 0.5px solid rgba(74,122,170,0.08); vertical-align: top; color: var(--text); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { color: var(--heading); font-weight: 400; white-space: nowrap; }
+    .notice { background: rgba(29,158,117,0.07); border: 0.5px solid rgba(29,158,117,0.2); border-radius: 8px; padding: 1rem 1.25rem; margin: 1rem 0; font-size: 0.88rem; }
+    .notice.blue { background: rgba(74,122,170,0.07); border-color: rgba(74,122,170,0.2); }
+    .notice.amber { background: rgba(200,168,74,0.07); border-color: rgba(200,168,74,0.2); }
+    .notice strong { display: block; font-weight: 500; color: var(--heading); margin-bottom: 4px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; margin: 1rem 0; }
+    .right-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: 8px; padding: 0.85rem 1rem; }
+    .right-card .right-title { font-size: 0.78rem; font-weight: 500; color: var(--heading); margin-bottom: 4px; }
+    .right-card .right-desc { font-size: 0.75rem; color: var(--muted); line-height: 1.5; }
+    .grievance-block { background: var(--surface); border: 0.5px solid rgba(29,158,117,0.25); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1rem 0; }
+    .grievance-block .g-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--green); font-weight: 500; margin-bottom: 0.5rem; }
+    .grievance-block p { font-size: 0.88rem; margin-bottom: 0.3rem; }
+    .contact-block { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-top: 1rem; }
+    .contact-block a { color: var(--green); text-decoration: none; }
+    .contact-block a:hover { text-decoration: underline; }
+    footer { border-top: 0.5px solid var(--border); padding: 2rem; text-align: center; }
+    .footer-logo { font-family: var(--caveat); font-size: 1.3rem; color: var(--heading); display: block; margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.75rem; color: var(--muted); margin-bottom: 1rem; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 0.75rem; color: var(--muted); margin-top: 1rem; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    @media (max-width: 600px) {
+      .page { padding: 2.5rem 1.25rem 4rem; }
+      .data-table { font-size: 0.8rem; }
+      .data-table td:first-child { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="https://travelpinapp.com/">Travel<span style="color:var(--green)">pin</span></a>
+    <a class="nav-back" href="https://travelpinapp.com/">Back to home</a>
+  </nav>
+
+  <main class="page">
+
+    <p class="page-eyebrow">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="page-date">Last updated: June 4, 2026</p>
+
+    <div class="jurisdiction-bar">
+      <span class="juris-badge india">India — DPDPA 2023</span>
+      <span class="juris-badge us">United States — CCPA / CPRA</span>
+      <span class="juris-badge au">Australia — Privacy Act 1988</span>
+    </div>
+
+    <div class="plain-words">
+      <p>In plain words —</p>
+      <div class="commitments">
+        <div class="commitment">We do not sell your data.</div>
+        <div class="commitment">We do not run ads.</div>
+        <div class="commitment">We do not track you across apps or websites.</div>
+        <div class="commitment">We only collect what is needed to make Travelpin work.</div>
+      </div>
+      <p class="tagline">Your trips, your places, your memories — they belong to you.</p>
+    </div>
+
+    <!-- 01 WHO WE ARE -->
+    <div class="section">
+      <h2><span class="section-num">01</span> Who We Are</h2>
+      <p>Travelpin is a travel companion app built and operated by Travelpin ("we", "us", "our"), based in India. This policy explains how we collect, use, and protect your personal data when you use the Travelpin iOS app and any related services.</p>
+      <p>We operate as a <strong style="color:var(--heading);font-weight:500;">Data Fiduciary</strong> under India's Digital Personal Data Protection Act 2023, a <strong style="color:var(--heading);font-weight:500;">Business</strong> under the California Consumer Privacy Act, and an <strong style="color:var(--heading);font-weight:500;">App Entity</strong> under the Australian Privacy Act 1988. In each case, we are responsible for how your personal data is handled.</p>
+      <p>This policy applies to users in India, the United States, and Australia. Where requirements differ by jurisdiction, we have noted them clearly throughout this document.</p>
+    </div>
+
+    <!-- 02 WHAT WE COLLECT -->
+    <div class="section">
+      <h2><span class="section-num">02</span> What We Collect and Why</h2>
+      <p>We collect only what is necessary to provide the features you use. Here is a complete breakdown:</p>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>What We Collect</th>
+            <th>Purpose</th>
+            <th>Legal Basis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account</td>
+            <td>Name, email address (optional)</td>
+            <td>Sync across devices, backup, account recovery</td>
+            <td>Contract / Consent</td>
+          </tr>
+          <tr>
+            <td>Trips &amp; Flights</td>
+            <td>Flight numbers, routes, timings, airports, travel history</td>
+            <td>Flight tracking, ETA calculations, trip organisation</td>
+            <td>Contract</td>
+          </tr>
+          <tr>
+            <td>Precise Location</td>
+            <td>Current location, saved places (home, office), airport proximity</td>
+            <td>ETA calculations, travel insights</td>
+            <td>Consent</td>
+          </tr>
+          <tr>
+            <td>Pins &amp; Memories</td>
+            <td>Saved places, notes, tags, visit dates</td>
+            <td>Personal travel map, memory recall, AI suggestions</td>
+            <td>Contract</td>
+          </tr>
+          <tr>
+            <td>Basecamp Insights</td>
+            <td>Travel patterns, routes, time-of-day preferences</td>
+            <td>Journey insights and statistics</td>
+            <td>Legitimate interests</td>
+          </tr>
+          <tr>
+            <td>Technical Data</td>
+            <td>Device type, app version, crash logs</td>
+            <td>App reliability and bug fixing</td>
+            <td>Legitimate interests</td>
+          </tr>
+          <tr>
+            <td>Analytics</td>
+            <td>Anonymous feature usage, screen interactions</td>
+            <td>Product improvement</td>
+            <td>Legitimate interests</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="notice">
+        <strong>Precise Location — Sensitive Data</strong>
+        Precise geolocation is considered sensitive personal information under US law (CPRA) and is personal data under Indian and Australian law. We access your location only when a feature requires it. We do not track your location continuously or in the background without your explicit permission. You can disable location access at any time in your device settings without losing access to the rest of the app.
+      </div>
+
+      <div class="notice blue">
+        <strong>Sensitive Personal Information (US Users)</strong>
+        Under the California Privacy Rights Act (CPRA), precise geolocation qualifies as sensitive personal information. We use this data only to provide the ETA and travel insight features you request. We do not use it for advertising, profiling, or any secondary purpose. You have the right to limit our use of your sensitive personal information — contact us at <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a> to exercise this right.
+      </div>
+    </div>
+
+    <!-- 03 AI FEATURES -->
+    <div class="section">
+      <h2><span class="section-num">03</span> AI Features</h2>
+      <p>Travelpin uses AI to suggest packing checklists, generate travel insights, and assist with trip planning. AI features are optional — the core app works without them.</p>
+      <ul>
+        <li>AI features use only the minimum data required for that specific function.</li>
+        <li>Your raw notes and memories are not used to train Travelpin's own systems.</li>
+        <li>Some AI features are powered by third-party AI service providers. These providers process only the data necessary to return a result and are contractually prohibited from using your data to train their models or for any secondary purpose.</li>
+        <li>We do not use your personal data for automated decision-making that produces legal or similarly significant effects on you.</li>
+        <li>You can opt out of AI features at any time in the app settings without losing access to other features.</li>
+      </ul>
+    </div>
+
+    <!-- 04 ANALYTICS -->
+    <div class="section">
+      <h2><span class="section-num">04</span> Analytics and Tracking</h2>
+      <p>We collect anonymous, aggregated usage data to understand what users value and improve the app.</p>
+      <ul>
+        <li>We do not track you across other apps or websites.</li>
+        <li>We do not build advertising profiles.</li>
+        <li>We do not use Apple's Advertising Identifier (IDFA) for tracking.</li>
+        <li>Analytics data is anonymised before storage and cannot be linked back to you individually.</li>
+        <li>We do not sell or share analytics data with data brokers or advertising networks.</li>
+      </ul>
+    </div>
+
+    <!-- 05 DATA SHARING -->
+    <div class="section">
+      <h2><span class="section-num">05</span> Data Sharing</h2>
+      <p>We do not sell your personal data. We do not share your data with advertisers or data brokers. We share data only where necessary to operate the service:</p>
+      <ul>
+        <li><strong style="color:var(--heading);font-weight:500;">Cloud infrastructure providers</strong> — for secure storage and sync. Servers may be located in India, the United States, or other countries.</li>
+        <li><strong style="color:var(--heading);font-weight:500;">Flight data API providers</strong> — to retrieve live flight status and gate information. Only flight numbers and route data are shared.</li>
+        <li><strong style="color:var(--heading);font-weight:500;">Mapping service providers</strong> — to support location-based ETA features. Location data is shared only when you actively use these features.</li>
+        <li><strong style="color:var(--heading);font-weight:500;">Crash reporting and diagnostics tools</strong> — to identify and fix technical issues. Only anonymised technical data is shared.</li>
+        <li><strong style="color:var(--heading);font-weight:500;">AI service providers</strong> — to power optional AI features. Only the minimum data required for the specific function is shared.</li>
+      </ul>
+      <p>Each partner receives only the minimum data required for their specific function and is prohibited from using your data for any other purpose. We require all partners to maintain appropriate security standards.</p>
+      <p>We may disclose data if required by law, court order, or regulatory authority in India, the United States, Australia, or any other applicable jurisdiction, or to protect the safety and rights of our users.</p>
+
+      <div class="notice amber">
+        <strong>Australia — Cross-Border Disclosure (APP 8)</strong>
+        When we share data with overseas service providers, we take reasonable steps to ensure those recipients handle your personal information in a manner consistent with the Australian Privacy Principles. By using Travelpin, you consent to your personal information being transferred to overseas recipients as described in this policy. If you have concerns about overseas transfers, contact us at <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a>.
+      </div>
+    </div>
+
+    <!-- 06 DATA RETENTION -->
+    <div class="section">
+      <h2><span class="section-num">06</span> Data Retention</h2>
+      <p>We retain personal data only as long as necessary for the purpose it was collected:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Retention Period</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Account &amp; trip data</td>
+            <td>For the life of your account. Deleted within 30 days of account deletion.</td>
+          </tr>
+          <tr>
+            <td>Pins &amp; memories</td>
+            <td>For the life of your account. Deleted within 30 days of account deletion.</td>
+          </tr>
+          <tr>
+            <td>Location data</td>
+            <td>Not stored persistently. Used in-session only, except for saved places which follow account retention.</td>
+          </tr>
+          <tr>
+            <td>Crash logs &amp; technical data</td>
+            <td>Up to 90 days.</td>
+          </tr>
+          <tr>
+            <td>Analytics data</td>
+            <td>Anonymised immediately. Aggregated data may be retained indefinitely as it cannot be linked to you.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>We may retain certain data longer if required by applicable law or to resolve disputes. When data is no longer required, we securely delete or anonymise it.</p>
+    </div>
+
+    <!-- 07 YOUR RIGHTS -->
+    <div class="section">
+      <h2><span class="section-num">07</span> Your Rights and Controls</h2>
+      <p>Regardless of where you are located, you have the following controls within Travelpin at all times:</p>
+
+      <div class="rights-grid">
+        <div class="right-card">
+          <div class="right-title">Access</div>
+          <div class="right-desc">View all personal data we hold about you</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">Correction</div>
+          <div class="right-desc">Update or correct your trips, pins, and account details</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">Deletion</div>
+          <div class="right-desc">Delete individual items or your entire account in-app</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">Portability</div>
+          <div class="right-desc">Request a copy of your data in a readable format</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">Withdraw consent</div>
+          <div class="right-desc">Opt out of location access or AI features at any time</div>
+        </div>
+        <div class="right-card">
+          <div class="right-title">Objection</div>
+          <div class="right-desc">Object to processing based on legitimate interests</div>
+        </div>
+      </div>
+
+      <div class="notice blue" style="margin-top:1.25rem;">
+        <strong>In-App Account Deletion</strong>
+        You can permanently delete your account directly within the Travelpin app under Settings. This removes all your personal data from our systems within 30 days. You do not need to email us — the option is available directly in the app.
+      </div>
+
+      <h3><span class="flag">🇮🇳</span> India — DPDPA 2023</h3>
+      <p>If you are located in India, you have the following rights under the Digital Personal Data Protection Act 2023:</p>
+      <ul>
+        <li>Right to access a summary of your personal data and how it is processed</li>
+        <li>Right to correction and erasure of your personal data</li>
+        <li>Right to grievance redressal — complaints must be acknowledged within 48 hours and resolved within 30 days</li>
+        <li>Right to nominate a person to exercise your rights on your behalf in the event of death or incapacity</li>
+      </ul>
+      <p>We process your data based on your consent, which you may withdraw at any time. Withdrawal of consent does not affect the lawfulness of processing before withdrawal, but may affect your ability to use certain features.</p>
+      <p>Our legal basis for processing data in India is <strong style="color:var(--heading);font-weight:500;">consent</strong> for all personal data collection. Where processing is necessary for the performance of a contract (providing the app service), we rely on that as an additional basis.</p>
+
+      <div class="grievance-block">
+        <div class="g-label">Grievance Officer — India</div>
+        <p>In accordance with the DPDPA 2023, we have designated a Grievance Officer for India.</p>
+        <p><strong style="color:var(--heading);font-weight:500;">Contact:</strong> <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a></p>
+        <p><strong style="color:var(--heading);font-weight:500;">Response time:</strong> Acknowledgement within 48 hours. Resolution within 30 days.</p>
+        <p style="font-size:0.82rem;color:var(--muted);margin-top:0.5rem;">If your complaint is not resolved to your satisfaction, you may escalate to the Data Protection Board of India once it is constituted under the DPDPA 2023.</p>
+      </div>
+
+      <p style="margin-top:1rem;font-size:0.88rem;"><strong style="color:var(--heading);font-weight:500;">Children (India):</strong> Travelpin is not intended for users under 18 years of age. We do not knowingly collect personal data from minors under 18. If you believe a minor has registered, contact us immediately and we will delete their data promptly. Processing data of children under 18 requires verifiable parental consent under the DPDPA.</p>
+
+      <h3><span class="flag">🇺🇸</span> United States — CCPA / CPRA</h3>
+      <p>If you are a California resident, you have the following rights under the California Consumer Privacy Act as amended by the California Privacy Rights Act:</p>
+      <ul>
+        <li>Right to know what personal information we collect, use, disclose, and sell</li>
+        <li>Right to delete your personal information</li>
+        <li>Right to correct inaccurate personal information</li>
+        <li>Right to opt out of the sale or sharing of personal information</li>
+        <li>Right to limit the use of sensitive personal information (including precise geolocation)</li>
+        <li>Right to non-discrimination for exercising any of these rights</li>
+      </ul>
+      <p><strong style="color:var(--heading);font-weight:500;">We do not sell your personal information.</strong> We do not share your personal information with third parties for cross-context behavioural advertising.</p>
+      <p>To exercise any of your rights, contact us at <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a>. We will respond within 45 days. We may extend this by a further 45 days where necessary and will notify you.</p>
+      <p>For users in Virginia, Colorado, Connecticut, Texas, and other US states with privacy laws: you have similar rights to access, correct, delete, and opt out of data processing. We honour these rights for all US users regardless of state. Contact us to exercise them.</p>
+
+      <div class="notice blue">
+        <strong>Do Not Sell or Share My Personal Information</strong>
+        We do not sell or share personal information for advertising purposes. If you wish to confirm this or submit a formal opt-out request, contact us at <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a>. We will process your request within 15 business days.
+      </div>
+
+      <p style="margin-top:1rem;font-size:0.88rem;"><strong style="color:var(--heading);font-weight:500;">Children (US):</strong> Travelpin is not directed at children under 13. We do not knowingly collect personal information from children under 13 in compliance with the Children's Online Privacy Protection Act (COPPA). If you believe a child under 13 has provided us with personal information, contact us and we will delete it immediately.</p>
+
+      <h3><span class="flag">🇦🇺</span> Australia — Privacy Act 1988 (APPs)</h3>
+      <p>Travelpin handles your personal information in accordance with the Australian Privacy Principles (APPs) contained in the Privacy Act 1988 (Cth). This section is our APP Privacy Policy as required under APP 1.</p>
+      <p>You have the following rights under Australian privacy law:</p>
+      <ul>
+        <li>Right to access personal information we hold about you (APP 12) — we will respond within 30 days</li>
+        <li>Right to correct personal information that is inaccurate, out of date, incomplete, or misleading (APP 13)</li>
+        <li>Right to request we not use your personal information for direct marketing (APP 7)</li>
+        <li>Right to complain about a breach of the APPs</li>
+      </ul>
+      <p><strong style="color:var(--heading);font-weight:500;">Direct marketing:</strong> We do not use your personal information for direct marketing. If this changes, we will seek your consent first and provide a clear opt-out mechanism in every communication.</p>
+      <p><strong style="color:var(--heading);font-weight:500;">Overseas disclosure:</strong> We disclose personal information to overseas recipients including cloud infrastructure, AI service providers, and flight data providers. See Section 05 for details. We take reasonable steps to ensure overseas recipients handle your data consistently with the APPs.</p>
+
+      <div class="notice amber">
+        <strong>Complaints — Australian Users</strong>
+        If you are an Australian user and believe we have breached the Australian Privacy Principles, you may:
+        <br/><br/>
+        1. Contact us first at <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a>. We will acknowledge within 5 business days and respond within 30 days.
+        <br/><br/>
+        2. If you are not satisfied with our response, you may lodge a complaint with the <strong style="color:var(--heading);font-weight:500;">Office of the Australian Information Commissioner (OAIC)</strong> at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">www.oaic.gov.au</a> or by calling 1300 363 992.
+      </div>
+
+      <p style="margin-top:1rem;font-size:0.88rem;"><strong style="color:var(--heading);font-weight:500;">Children (Australia):</strong> Travelpin is not intended for users under 13. We do not knowingly collect personal information from children under 13.</p>
+    </div>
+
+    <!-- 08 SECURITY -->
+    <div class="section">
+      <h2><span class="section-num">08</span> Security</h2>
+      <p>We implement reasonable and appropriate technical and organisational measures to protect your personal data:</p>
+      <ul>
+        <li>All data is transmitted over encrypted connections (HTTPS / TLS 1.2 or higher)</li>
+        <li>Data at rest is stored with encryption</li>
+        <li>Access to personal data is restricted to authorised personnel with a legitimate need</li>
+        <li>We use access controls and monitoring to detect and respond to unauthorised access</li>
+        <li>We regularly review our security practices</li>
+      </ul>
+      <p>No system is perfectly secure. In the event of a data breach that is likely to result in serious harm to affected individuals, we will notify the relevant authorities and affected users as required by law — including the Data Protection Board of India, the relevant US state authorities where applicable, and the Office of the Australian Information Commissioner under the Notifiable Data Breaches (NDB) scheme.</p>
+      <p>If you become aware of any security concern, please contact us immediately at <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a>.</p>
+    </div>
+
+    <!-- 09 INTERNATIONAL TRANSFERS -->
+    <div class="section">
+      <h2><span class="section-num">09</span> International Data Transfers</h2>
+      <p>Travelpin is based in India. Your data may be processed on servers located in other countries, including the United States and the European Union, depending on the infrastructure providers we use.</p>
+      <p>When transferring data internationally, we take appropriate steps to ensure your data is protected:</p>
+      <ul>
+        <li>For transfers from India: we rely on consent and contractual safeguards with overseas recipients.</li>
+        <li>For transfers involving Australian users: we take reasonable steps to ensure overseas recipients comply with principles consistent with the APPs (APP 8).</li>
+        <li>For transfers involving EU/UK users: we rely on Standard Contractual Clauses (SCCs) or other appropriate safeguards under GDPR.</li>
+      </ul>
+    </div>
+
+    <!-- 10 CHANGES -->
+    <div class="section">
+      <h2><span class="section-num">10</span> Changes to This Policy</h2>
+      <p>We may update this policy as Travelpin evolves or as laws change. If changes are significant, we will notify you via the app or by email at least 14 days before they take effect.</p>
+      <p>The "last updated" date at the top of this page always reflects the current version. We encourage you to review this policy periodically. Continued use of the app after changes take effect constitutes your acceptance of the updated policy.</p>
+      <p>Previous versions of this policy are available on request by emailing <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a>.</p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section">
+      <h2>Contact and Grievance Redressal</h2>
+      <p>For any privacy questions, data access requests, corrections, deletions, or complaints:</p>
+      <div class="contact-block">
+        <p style="margin-bottom:0.4rem;"><strong style="color:var(--heading);font-weight:500;">Email:</strong> <a href="mailto:hello@travelpinapp.com">hello@travelpinapp.com</a></p>
+        <p style="margin-bottom:0.4rem;"><strong style="color:var(--heading);font-weight:500;">Response time:</strong> Acknowledgement within 48 hours. Full response within 30 days.</p>
+        <p style="margin-bottom:1rem;font-size:0.85rem;color:var(--muted);">Please include your name, the jurisdiction you are writing from, and a description of your request. This helps us direct your request appropriately.</p>
+        <p style="font-size:0.82rem;color:var(--muted);margin-bottom:0;">If you are an Australian user and are not satisfied with our response, you may escalate to the OAIC at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener">www.oaic.gov.au</a>. If you are an Indian user, you may escalate to the Data Protection Board of India once constituted under the DPDPA 2023.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <span class="footer-logo">Travel<span style="color:var(--green)">pin</span></span>
+    <p class="footer-tagline">From departure to memory · India</p>
+    <div class="footer-links">
+      <a href="https://travelpinapp.com/privacy.html">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="mailto:hello@travelpinapp.com">Contact</a>
+    </div>
+    <p class="footer-copy">© 2026 Travelpin</p>
+  </footer>
+
+</body>
+</html>
