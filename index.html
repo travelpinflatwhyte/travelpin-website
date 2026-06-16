@@ -233,7 +233,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   .calm-h2{font-size:clamp(22px,6vw,34px) !important;letter-spacing:-1px !important;}
   .calm-body{font-size:14px !important;}
   .scroll-story{padding:0 1.2rem !important;}
-  .step-wrap.eta-step{min-height:480px !important;}
+  .step-wrap.eta-step,
+  .step-wrap.checklist-step{min-height:480px !important;}
   .step{grid-template-columns:1fr !important;gap:1rem !important;min-height:auto !important;}
   .steps{padding-bottom:4vh !important;}
   .step-wrap{margin-bottom:2.5rem !important;padding-bottom:2.5rem !important;}
@@ -392,11 +393,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 .checklist-screenshot-wrap{
   position:relative;
-  width:min(330px,32vw);
-  max-width:360px;
+  width:min(285px,31vw);
+  max-width:330px;
   margin:0 auto;
   opacity:0;
-  transform:translateY(24px) scale(0.97);
+  transform:translateY(24px) scale(0.82);
 }
 .checklist-screenshot-wrap::before{
   content:'';
@@ -459,10 +460,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   font-size:11px;
   color:rgba(27,36,48,0.52);
 }
-.checklist-tag-ai{top:14%;left:-46%;--checklist-delay:0.28s;}
-.checklist-tag-weather{top:42%;right:-40%;--checklist-delay:0.48s;}
-.checklist-tag-location{bottom:14%;left:-34%;--checklist-delay:0.68s;}
-.checklist-screenshot-wrap.visible .checklist-float-card{
+.checklist-tag-ai{top:34px;left:4%;--checklist-delay:0.35s;}
+.checklist-tag-weather{right:0;top:112px;--checklist-delay:0.5s;}
+.checklist-tag-location{left:0;bottom:82px;--checklist-delay:0.65s;}
+.checklist-step .eta-showcase.visible .checklist-float-card{
   animation:
     etaCardIn 0.7s var(--checklist-delay,0s) cubic-bezier(0.22,0.61,0.36,1) forwards,
     etaSoftFloat 5s calc(var(--checklist-delay,0s) + 0.75s) ease-in-out infinite;
@@ -971,8 +972,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 @keyframes etaCardIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
 @keyframes etaSoftFloat{0%,100%{opacity:1;transform:translateY(0) scale(1)}50%{opacity:1;transform:translateY(-8px) scale(1)}}
 
-/* ETA step only: Lunera-style app mockup */
-.step-wrap.eta-step{
+/* Phone showcase steps: ETA + Checklist */
+.step-wrap.eta-step,
+.step-wrap.checklist-step{
   position:relative;
   z-index:0;
   overflow:hidden;
@@ -982,26 +984,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   justify-content:center;
   background:transparent;
 }
-.step-wrap.eta-step::before{
+.step-wrap.eta-step::before,
+.step-wrap.checklist-step::before{
   display:none;
 }
-.step-wrap.eta-step::after{
+.step-wrap.eta-step::after,
+.step-wrap.checklist-step::after{
   display:none;
 }
 .step-wrap.eta-step > .step,
-.step-wrap.eta-step > .step-chips{
+.step-wrap.eta-step > .step-chips,
+.step-wrap.checklist-step > .step,
+.step-wrap.checklist-step > .step-chips{
   position:relative;
   z-index:2;
 }
-.step-wrap.eta-step > .step{
+.step-wrap.eta-step > .step,
+.step-wrap.checklist-step > .step{
   align-items:center;
   padding:4rem 0;
 }
-.step-wrap.eta-step > .step-chips{
+.step-wrap.eta-step > .step-chips,
+.step-wrap.checklist-step > .step-chips{
   padding-bottom:3rem;
 }
 
-.eta-step .step-right{
+.eta-step .step-right,
+.checklist-step .step-right{
   position:relative;
   padding:0;
   margin:0;
@@ -1077,6 +1086,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   font-size:11px;
   color:rgba(27,36,48,0.52);
 }
+.checklist-step .eta-phone-art::before{
+  content:'';
+  position:absolute;
+  inset:-12% -20% -8%;
+  background:radial-gradient(circle at 50% 38%,rgba(58,138,90,0.22),transparent 58%);
+  filter:blur(34px);
+  opacity:0.75;
+  pointer-events:none;
+  z-index:-1;
+}
 .eta-card-amount{top:34px;left:4%;--eta-delay:0.35s;}
 .eta-card-route{right:0;top:112px;--eta-delay:0.5s;}
 .eta-card-leave{left:0;bottom:82px;--eta-delay:0.65s;}
@@ -1085,7 +1104,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
     width:min(360px,88vw);
   }
   .checklist-screenshot-wrap{
-    width:min(300px,76vw);
+    width:min(225px,58vw);
   }
   .checklist-float-card{
     min-width:150px;
@@ -1098,9 +1117,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   }
   .checklist-float-card strong{font-size:12px;}
   .checklist-float-card small{font-size:10px;}
-  .checklist-tag-ai{left:-16%;top:10%;}
-  .checklist-tag-weather{right:-18%;top:42%;}
-  .checklist-tag-location{left:-12%;bottom:12%;}
+  .checklist-tag-ai{left:0;top:34px;}
+  .checklist-tag-weather{right:0;top:108px;}
+  .checklist-tag-location{left:4%;bottom:46px;}
   .checklist-device{
     width:min(360px,88vw);
     height:420px;
@@ -1284,7 +1303,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         </div>
     </div>
 
-    <div class="step-wrap">
+    <div class="step-wrap checklist-step">
       <div class="step" data-step="1">
         <div class="step-left">
           <div class="step-number" style="color:var(--c2);">
@@ -1298,7 +1317,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
           <p class="step-body">Not a generic list. A checklist built for this trip — destination, weather, how long you're gone. Everything you need. Nothing you don't.</p>
         </div>
         <div class="step-right">
-          <div class="checklist-screenshot-wrap reveal">
+          <div class="eta-showcase reveal" aria-hidden="true">
             <div class="checklist-float-card checklist-tag-ai">
               <span>✦</span>
               <div>
@@ -1306,7 +1325,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
                 <small>OpenAI + Gemini</small>
               </div>
             </div>
-            <img src="checklist-image.png?v=20260614-checklist-madrid" alt="Travelpin checklist preview for Madrid trip">
+            <div class="eta-phone-art">
+              <img src="checklist-image.png?v=20260615-checklist-sized" alt="Travelpin checklist preview for Madrid trip">
+            </div>
             <div class="checklist-float-card checklist-tag-weather">
               <span>🌦</span>
               <div>
