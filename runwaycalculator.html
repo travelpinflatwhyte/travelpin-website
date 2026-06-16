@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travelpin — Runway & Revenue Calculator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#07101f; --teal:#1d9e75; --teal-dark:#0f6e56; --teal-bg:#e1f5ee;
+    --blue:#4a7aaa; --amber:#ba7517; --amber-bg:#faeeda; --amber-ink:#854f0b;
+    --red:#cc4444; --red-bg:#fcebeb; --red-ink:#a32d2d;
+    --green:#1d9e75; --green-bg:#e1f5ee; --green-ink:#0f6e56;
+    --ink:#07101f; --muted:#5a7a9a; --hint:#8899aa;
+    --card:#f4f8fc; --border:#d8e4f0; --bg:#ffffff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+    background:#eef3f8; color:var(--ink); margin:0; padding:2.5rem 1rem;
+    display:flex; justify-content:center; align-items:flex-start; min-height:100vh;
+  }
+  .wrap {
+    width:100%; max-width:640px; background:var(--bg);
+    border-radius:16px; border:1px solid var(--border);
+    padding:2rem 2rem 2.25rem; box-shadow:0 4px 24px rgba(7,16,31,0.06);
+  }
+  .brand { display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+  .logo { font-family:"Caveat","Brush Script MT",cursive; font-size:34px; color:var(--teal); font-weight:600; line-height:1; }
+  h1 { font-size:18px; font-weight:600; margin:0 0 4px; }
+  .sub { font-size:13px; color:var(--muted); margin:0 0 1.5rem; }
+  .tabs { display:flex; gap:6px; margin-bottom:1.75rem; border-bottom:1px solid var(--border); }
+  .tab {
+    font-size:14px; padding:10px 16px; border:none; background:none; cursor:pointer;
+    color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-1px; font-weight:500;
+  }
+  .tab.active { color:var(--teal-dark); border-bottom-color:var(--teal); }
+  .panel { display:none; }
+  .panel.active { display:block; }
+  .cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:1.75rem; }
+  .stat { background:var(--card); border-radius:10px; padding:1rem; }
+  .stat.hl { background:var(--teal-bg); }
+  .stat .lbl { font-size:12px; color:var(--muted); margin:0 0 4px; }
+  .stat.hl .lbl { color:var(--teal-dark); }
+  .stat .val { font-size:22px; font-weight:600; margin:0; }
+  .stat.hl .val { color:var(--teal-dark); }
+  .slider-block { margin-bottom:1.25rem; }
+  .slider-head { display:flex; justify-content:space-between; margin-bottom:8px; }
+  .slider-head label { font-size:14px; color:var(--muted); }
+  .slider-head .v { font-size:14px; font-weight:600; }
+  input[type=range] {
+    -webkit-appearance:none; appearance:none; width:100%; height:6px;
+    border-radius:3px; background:#dde6ef; outline:none; margin:0;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance:none; appearance:none; width:20px; height:20px;
+    border-radius:50%; background:var(--teal); cursor:pointer;
+    border:3px solid #fff; box-shadow:0 1px 4px rgba(7,16,31,0.25);
+  }
+  input[type=range]::-moz-range-thumb {
+    width:20px; height:20px; border-radius:50%; background:var(--teal);
+    cursor:pointer; border:3px solid #fff; box-shadow:0 1px 4px rgba(7,16,31,0.25);
+  }
+  .ends { display:flex; justify-content:space-between; font-size:11px; color:var(--hint); margin-top:4px; }
+  .presets { display:flex; gap:8px; flex-wrap:wrap; margin:0.5rem 0 1.75rem; }
+  .presets button {
+    font-size:12px; padding:7px 12px; border-radius:8px; border:1px solid var(--border);
+    background:#fff; color:var(--ink); cursor:pointer; transition:all 0.15s;
+  }
+  .presets button:hover { background:var(--card); border-color:var(--blue); }
+  .presets button:active { transform:scale(0.97); }
+  #verdict, #rev-verdict { border-radius:12px; padding:12px 16px; font-size:14px; line-height:1.55; margin-bottom:1.25rem; }
+  .bar-wrap { position:relative; height:56px; background:var(--card); border-radius:10px; overflow:hidden; }
+  #bar { position:absolute; left:0; top:0; bottom:0; width:50%; transition:width 0.25s,background 0.25s; }
+  #bar-label { position:absolute; left:0; top:0; bottom:0; display:flex; align-items:center; padding-left:14px; font-size:13px; font-weight:600; z-index:2; }
+  #benchmark { position:absolute; top:0; bottom:0; width:2px; background:var(--red); z-index:3; }
+  #benchmark-label { position:absolute; top:4px; font-size:10px; color:var(--red); z-index:3; white-space:nowrap; font-weight:600; }
+  .formula { text-align:center; font-size:12px; color:var(--hint); margin-top:1.5rem; font-family:ui-monospace,"SF Mono",Menlo,monospace; }
+  .note { font-size:12px; color:var(--muted); line-height:1.6; margin-top:1rem; padding:10px 14px; background:var(--card); border-radius:8px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand"><span class="logo">Travelpin</span></div>
+    <h1>Runway &amp; Revenue Calculator</h1>
+    <p class="sub">Model how long the money lasts — and what revenue Year 2 could bring.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="runway">Runway</button>
+      <button class="tab" data-tab="revenue">Year 2 Revenue</button>
+    </div>
+
+    <div class="panel active" id="panel-runway">
+      <div class="cards">
+        <div class="stat"><p class="lbl">Funding raised</p><p class="val" id="fund-out">$48,000</p></div>
+        <div class="stat"><p class="lbl">Monthly burn</p><p class="val" id="burn-out">$4,000</p></div>
+        <div class="stat hl"><p class="lbl">Runway</p><p class="val" id="runway-out">12 months</p></div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label>Funding raised</label><span class="v" id="fund-label">$48,000</span></div>
+        <input type="range" min="10000" max="80000" value="48000" step="1000" id="fund">
+        <div class="ends"><span>$10K</span><span>$80K</span></div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label>Monthly burn rate</label><span class="v" id="burn-label">$4,000</span></div>
+        <input type="range" min="2184" max="5059" value="4000" step="50" id="burn">
+        <div class="ends"><span>$2,184 · lean low</span><span>$5,059 · full team high</span></div>
+      </div>
+      <div class="presets">
+        <button data-burn="2184">Lean · low</button>
+        <button data-burn="3659">Lean · high</button>
+        <button data-burn="3084">Full team · low</button>
+        <button data-burn="5059">Full team · high</button>
+      </div>
+      <div id="verdict"></div>
+      <div class="bar-wrap">
+        <div id="bar"></div>
+        <div id="bar-label">12 months runway</div>
+        <div id="benchmark"></div>
+        <div id="benchmark-label">18mo benchmark</div>
+      </div>
+      <p class="formula">Runway (months) = Total Funds ÷ Monthly Burn Rate</p>
+    </div>
+
+    <div class="panel" id="panel-revenue">
+      <div class="cards">
+        <div class="stat"><p class="lbl">End-Y2 users</p><p class="val" id="rev-users">3,950</p></div>
+        <div class="stat"><p class="lbl">Premium users</p><p class="val" id="rev-premium">395</p></div>
+        <div class="stat hl"><p class="lbl">Exit ARR</p><p class="val" id="rev-arr">$18K</p></div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label>New users / month</label><span class="v" id="growth-label">150</span></div>
+        <input type="range" min="50" max="800" value="150" step="10" id="growth">
+        <div class="ends"><span>50 (slow)</span><span>800 (viral)</span></div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label>Conversion to premium</label><span class="v" id="conv-label">10%</span></div>
+        <input type="range" min="5" max="20" value="10" step="1" id="conv">
+        <div class="ends"><span>5%</span><span>20%</span></div>
+      </div>
+      <div class="slider-block">
+        <div class="slider-head"><label>Blended price / month</label><span class="v" id="price-label">$3.81</span></div>
+        <input type="range" min="3" max="10" value="3.81" step="0.10" id="price">
+        <div class="ends"><span>$3 (current low)</span><span>$10 (premium)</span></div>
+      </div>
+      <div class="presets">
+        <button data-preset="conservative">Conservative</button>
+        <button data-preset="optimistic">Optimistic</button>
+        <button data-preset="strong">Strong (PMF)</button>
+      </div>
+      <div id="rev-verdict"></div>
+      <div class="note" id="rev-note"></div>
+      <p class="formula">Exit ARR = End-Y2 premium users × price × 12</p>
+    </div>
+  </div>
+
+<script>
+(function(){
+  document.querySelectorAll('.tab').forEach(t => {
+    t.onclick = () => {
+      document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById('panel-' + t.dataset.tab).classList.add('active');
+    };
+  });
+
+  const fmt = n => '$' + Math.round(n).toLocaleString();
+  const fmtK = n => n >= 1000 ? '$' + (n/1000).toFixed(0) + 'K' : '$' + Math.round(n);
+  const C = {
+    greenBg:'#e1f5ee', greenInk:'#0f6e56',
+    amberBg:'#faeeda', amberInk:'#854f0b',
+    redBg:'#fcebeb', redInk:'#a32d2d'
+  };
+
+  const fund=document.getElementById('fund'), burn=document.getElementById('burn');
+  const MAX_MONTHS=42;
+  function updateRunway(){
+    const f=+fund.value, b=+burn.value, months=Math.round(f/b);
+    document.getElementById('fund-out').textContent=fmt(f);
+    document.getElementById('burn-out').textContent=fmt(b);
+    document.getElementById('fund-label').textContent=fmt(f);
+    document.getElementById('burn-label').textContent=fmt(b);
+    document.getElementById('runway-out').textContent=months+' months';
+    const bar=document.getElementById('bar');
+    bar.style.width=Math.min(100,(months/MAX_MONTHS)*100)+'%';
+    document.getElementById('bar-label').textContent=months+' months runway';
+    const benchPct=(18/MAX_MONTHS)*100;
+    document.getElementById('benchmark').style.left=benchPct+'%';
+    document.getElementById('benchmark-label').style.left='calc('+benchPct+'% + 4px)';
+    const v=document.getElementById('verdict');
+    let txt;
+    if(months>=18){ bar.style.background=C.greenBg; v.style.background=C.greenBg; v.style.color=C.greenInk;
+      txt='\u2713  '+months+' months \u2014 above the 18-month benchmark. Comfortable runway to ship, prove the model, and raise again from strength.'; }
+    else if(months>=12){ bar.style.background=C.amberBg; v.style.background=C.amberBg; v.style.color=C.amberInk;
+      txt='\u26a0  '+months+' months \u2014 workable but tight. You will be fundraising again within 6 months. Acceptable if you hit a clear milestone fast.'; }
+    else { bar.style.background=C.redBg; v.style.background=C.redBg; v.style.color=C.redInk;
+      txt='\u2715  '+months+' months \u2014 risky. Under 12 months means fundraising almost immediately.'; }
+    v.textContent=txt;
+  }
+  document.querySelectorAll('#panel-runway .presets button').forEach(btn=>{
+    btn.onclick=()=>{ burn.value=btn.dataset.burn; updateRunway(); };
+  });
+  fund.addEventListener('input',updateRunway);
+  burn.addEventListener('input',updateRunway);
+  updateRunway();
+
+  const growth=document.getElementById('growth'), conv=document.getElementById('conv'), price=document.getElementById('price');
+  const START_USERS=2150, Y2_COST=48000;
+  function leverHint(g,c,p){
+    if(p<5) return 'Price. At $'+p.toFixed(2)+' you are leaving money on the table \u2014 even $6\u20137 changes the picture dramatically.';
+    if(g<250) return 'Growth. '+g+'/month is slow \u2014 the sharing loop needs to fire to push this higher.';
+    if(c<10) return 'Conversion. Below 10% is low for a product people rely on this often.';
+    return 'You are pulling all three levers well \u2014 this is the combination to aim for.';
+  }
+  function updateRevenue(){
+    const g=+growth.value, cPct=+conv.value, c=cPct/100, p=+price.value;
+    const endUsers=START_USERS + g*12;
+    const premium=Math.round(endUsers*c);
+    const exitMRR=premium*p, exitARR=exitMRR*12;
+    document.getElementById('growth-label').textContent=g;
+    document.getElementById('conv-label').textContent=cPct+'%';
+    document.getElementById('price-label').textContent='$'+p.toFixed(2);
+    document.getElementById('rev-users').textContent=endUsers.toLocaleString();
+    document.getElementById('rev-premium').textContent=premium.toLocaleString();
+    document.getElementById('rev-arr').textContent=fmtK(exitARR);
+    const v=document.getElementById('rev-verdict');
+    let txt;
+    if(exitARR>=Y2_COST*1.5){ v.style.background=C.greenBg; v.style.color=C.greenInk;
+      txt='\u2713  Exit ARR of '+fmt(exitARR)+' comfortably clears Year-1 cost ('+fmtK(Y2_COST)+'). A fundable trajectory \u2014 revenue is outrunning spend.'; }
+    else if(exitARR>=Y2_COST){ v.style.background=C.amberBg; v.style.color=C.amberInk;
+      txt='\u26a0  Exit ARR of '+fmt(exitARR)+' roughly matches Year-1 cost ('+fmtK(Y2_COST)+'). Break-even territory \u2014 promising but not yet venture-scale.'; }
+    else { v.style.background=C.redBg; v.style.color=C.redInk;
+      txt='\u2715  Exit ARR of '+fmt(exitARR)+' is below Year-1 cost ('+fmtK(Y2_COST)+'). Still burning \u2014 you need higher price, faster growth, or better conversion.'; }
+    v.textContent=txt;
+    document.getElementById('rev-note').innerHTML='<b>Exit run-rate:</b> '+fmt(Math.round(exitMRR))+'/month at end of Year 2.<br><b>Biggest lever right now:</b> '+leverHint(g,cPct,p);
+  }
+  function setPreset(name){
+    if(name==='conservative'){ growth.value=150; conv.value=10; price.value=3.81; }
+    else if(name==='optimistic'){ growth.value=400; conv.value=13; price.value=5.00; }
+    else if(name==='strong'){ growth.value=600; conv.value=15; price.value=7.00; }
+    updateRevenue();
+  }
+  document.querySelectorAll('#panel-revenue .presets button').forEach(btn=>{
+    btn.onclick=()=>setPreset(btn.dataset.preset);
+  });
+  growth.addEventListener('input',updateRevenue);
+  conv.addEventListener('input',updateRevenue);
+  price.addEventListener('input',updateRevenue);
+  updateRevenue();
+})();
+</script>
+</body>
+</html>
