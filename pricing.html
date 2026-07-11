@@ -4,17 +4,17 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Travelpin Pro Pricing — Free, Week Pass, Monthly &amp; Annual</title>
-<meta name="description" content="Travelpin Pro pricing: free for up to 5 owned trips. Week Pass $2.99, monthly $4.99, or annual $29.99 with optional 7-day free trial. Subscriptions purchased in the iOS app."/>
+<meta name="description" content="Travelpin is free for your travel journal. Go Pro for unlimited owned trips — Week Pass $2.99, monthly $4.99, or annual $29.99 with a 7-day free trial."/>
 <meta name="theme-color" content="#07101f"/>
 <link rel="canonical" href="https://travelpinapp.com/pricing.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://travelpinapp.com/pricing.html"/>
 <meta property="og:title" content="Travelpin Pro Pricing"/>
-<meta property="og:description" content="Free trip planning, or upgrade to Pro for unlimited owned trips. Week Pass, monthly, and annual plans."/>
+<meta property="og:description" content="Remember every trip. Never miss a gate. Free journal, Pro for unlimited owned trips."/>
 <meta property="og:image" content="https://travelpinapp.com/images/og-image.png"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Travelpin Pro Pricing"/>
-<meta name="twitter:description" content="Free trip planning, or upgrade to Pro for unlimited owned trips."/>
+<meta name="twitter:description" content="Free for your travel journal. Go Pro for unlimited owned trips."/>
 <meta name="twitter:image" content="https://travelpinapp.com/images/og-image.png"/>
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png"/>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
@@ -89,30 +89,34 @@ nav {
 
 .hero {
   text-align: center;
-  padding: clamp(3rem, 8vw, 5rem) 1.5rem 2.5rem;
+  padding: clamp(3rem, 8vw, 5rem) 1.5rem 2.25rem;
   position: relative;
   overflow: hidden;
 }
 .hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(97,58,158,0.35) 0%, transparent 65%);
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(97,58,158,0.38) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(15,40,90,0.35) 0%, transparent 55%);
   pointer-events: none;
 }
 .hero-inner { position: relative; max-width: 640px; margin: 0 auto; }
-.eyebrow {
-  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--green); font-weight: 600; margin-bottom: 1rem;
-}
 .hero h1 {
   font-size: clamp(2.2rem, 6vw, 3.4rem);
   font-weight: 700; letter-spacing: -1.5px;
   color: #fff; line-height: 1.08; margin-bottom: 1rem;
 }
-.hero p {
+.hero p.lead {
   font-size: clamp(1rem, 2.5vw, 1.15rem);
-  color: var(--muted); max-width: 480px; margin: 0 auto 1.75rem;
+  color: var(--muted); max-width: 520px; margin: 0 auto 1rem;
 }
+.hero-meta {
+  font-size: 0.82rem; color: rgba(200,223,244,0.4);
+  margin-bottom: 1.75rem;
+  display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap;
+}
+.hero-meta .star { color: #f5c542; }
 .btn-primary {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   background: #fff; color: #080808; border-radius: 999px;
@@ -120,50 +124,114 @@ nav {
   text-decoration: none; transition: opacity 0.2s;
 }
 .btn-primary:hover { opacity: 0.9; text-decoration: none; }
+.btn-accent {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border-radius: 999px;
+  padding: 12px 24px; font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: opacity 0.2s; border: none; cursor: pointer;
+  width: 100%;
+}
+.btn-accent:hover { opacity: 0.92; text-decoration: none; }
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.08); color: #fff; border-radius: 999px;
+  padding: 12px 24px; font-size: 14px; font-weight: 600;
+  text-decoration: none; transition: background 0.2s; width: 100%;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
 
 .plans {
-  max-width: 1100px; margin: 0 auto;
-  padding: 0 1.5rem 3rem;
+  max-width: 920px; margin: 0 auto;
+  padding: 0 1.5rem 1.25rem;
 }
 .plans-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 16px;
   align-items: stretch;
 }
 .plan-card {
   background: var(--surface);
   border: 0.5px solid var(--border);
-  border-radius: 18px;
-  padding: 1.35rem 1.25rem 1.5rem;
+  border-radius: 20px;
+  padding: 1.5rem 1.4rem 1.6rem;
   display: flex; flex-direction: column;
   position: relative;
 }
 .plan-card.featured {
-  border-color: rgba(47,102,236,0.45);
-  background: linear-gradient(180deg, rgba(47,102,236,0.12) 0%, var(--surface) 55%);
-  box-shadow: 0 0 0 1px rgba(47,102,236,0.1), 0 16px 40px rgba(0,0,0,0.25);
+  border-color: rgba(47,102,236,0.5);
+  background: linear-gradient(180deg, rgba(47,102,236,0.14) 0%, var(--surface) 50%);
+  box-shadow: 0 0 0 1px rgba(47,102,236,0.12), 0 18px 44px rgba(0,0,0,0.28);
 }
 .plan-badge {
   display: inline-block;
   font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
   text-transform: uppercase;
   padding: 4px 10px; border-radius: 999px;
-  margin-bottom: 0.75rem; align-self: flex-start;
+  margin-bottom: 0.85rem; align-self: flex-start;
 }
-.plan-badge.value { background: var(--pink); color: #fff; }
-.plan-badge.flex { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.75); }
-.plan-badge.spacer { visibility: hidden; }
-.plan-name { font-size: 1.05rem; font-weight: 600; color: var(--heading); margin-bottom: 0.35rem; }
-.plan-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.1rem; flex-grow: 1; line-height: 1.5; }
-.plan-price { font-size: 1.75rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
-.plan-price .unit { font-size: 0.95rem; font-weight: 500; color: var(--muted); }
-.plan-billing { font-size: 0.78rem; color: var(--muted); margin-top: 4px; margin-bottom: 0.75rem; }
-.plan-note { font-size: 0.72rem; color: rgba(200,223,244,0.35); margin-top: auto; padding-top: 0.5rem; }
-.plan-popular {
-  font-size: 0.72rem; color: var(--green); margin-top: 0.5rem;
-  display: flex; align-items: center; gap: 5px;
+.plan-badge.popular { background: var(--accent); color: #fff; }
+.plan-badge.save { background: var(--pink); color: #fff; margin-left: 8px; vertical-align: middle; }
+.plan-name { font-size: 1.2rem; font-weight: 600; color: var(--heading); margin-bottom: 0.35rem; }
+.plan-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.15rem; line-height: 1.5; }
+.plan-features {
+  list-style: none; margin: 0 0 1.25rem; padding: 0;
+  display: flex; flex-direction: column; gap: 8px;
+  flex-grow: 1;
 }
+.plan-features li {
+  font-size: 0.85rem; color: rgba(200,223,244,0.72);
+  padding-left: 1.15rem; position: relative;
+}
+.plan-features li::before {
+  content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 600;
+}
+
+.billing-toggle {
+  display: inline-flex;
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  margin-bottom: 1.15rem;
+  align-self: flex-start;
+}
+.billing-toggle button {
+  appearance: none; border: none; background: transparent;
+  color: var(--muted); font-family: var(--sans);
+  font-size: 0.78rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 999px; cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.billing-toggle button[aria-pressed="true"] {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+}
+
+.plan-price-row {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 0;
+  margin-bottom: 4px;
+}
+.plan-price { font-size: 2rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+.plan-price .unit { font-size: 1rem; font-weight: 500; color: var(--muted); }
+.plan-billing { font-size: 0.8rem; color: var(--muted); margin-bottom: 1.15rem; min-height: 1.3em; }
+.plan-cta { margin-top: auto; }
+
+.week-pass {
+  max-width: 920px; margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+}
+.week-pass-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  background: var(--surface);
+  border: 0.5px dashed rgba(74,122,170,0.35);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+}
+.week-pass-copy { font-size: 0.92rem; color: rgba(200,223,244,0.7); }
+.week-pass-copy strong { color: var(--heading); font-weight: 600; }
+.week-pass-price { font-size: 0.92rem; color: #fff; font-weight: 600; white-space: nowrap; }
+.week-pass-price span { color: var(--muted); font-weight: 400; }
 
 .section-wrap {
   max-width: 900px; margin: 0 auto;
@@ -199,6 +267,7 @@ nav {
 .compare-table th:not(:first-child), .compare-table td:not(:first-child) { text-align: center; }
 .compare-table tr:last-child td { border-bottom: none; }
 .compare-table td:first-child { color: var(--heading); font-weight: 400; }
+.compare-table .diff-row td { background: rgba(47,102,236,0.06); }
 .check { color: var(--green); font-weight: 600; }
 .dash { color: var(--muted); }
 
@@ -237,7 +306,8 @@ nav {
   margin: 0 1.5rem 2rem;
   max-width: 900px;
   margin-left: auto; margin-right: auto;
-  background: var(--surface);
+  background:
+    linear-gradient(180deg, rgba(97,58,158,0.22) 0%, var(--surface) 70%);
   border: 0.5px solid var(--border);
   border-radius: 20px;
 }
@@ -262,17 +332,21 @@ footer {
 .footer-links a.active { color: rgba(238,243,255,0.7); }
 .footer-copy { font-size: 12px; color: rgba(238,243,255,0.2); margin: 0; }
 
-@media (max-width: 960px) {
-  .plans-grid { grid-template-columns: repeat(2, 1fr); }
-  .plan-card.featured { order: -1; grid-column: 1 / -1; max-width: 420px; margin: 0 auto; width: 100%; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 720px) {
+  .plans-grid { grid-template-columns: 1fr; }
+  .plan-card.featured { order: -1; }
 }
 @media (max-width: 600px) {
   nav { padding: 1rem 1.25rem; }
   .nav-link { display: none; }
-  .plans-grid { grid-template-columns: 1fr; }
-  .plan-card.featured { grid-column: auto; max-width: none; }
   .compare-table { font-size: 0.8rem; }
   .compare-table th, .compare-table td { padding: 10px 12px; }
+  .week-pass-inner { flex-direction: column; align-items: flex-start; }
   footer { padding: 2rem 1.5rem; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-links { justify-content: center; }
@@ -291,9 +365,12 @@ footer {
 
 <section class="hero">
   <div class="hero-inner">
-    <p class="eyebrow">Travelpin Pro</p>
-    <h1>Level up with Travelpin Pro</h1>
-    <p>The smartest way to plan, track, and remember every journey — unlimited trips when you need them.</p>
+    <h1>Remember every trip.<br/>Never miss a gate.</h1>
+    <p class="lead">Travelpin is free to keep your travel journal. Go Pro when you need unlimited owned trips — and the full assistant that gets you there.</p>
+    <p class="hero-meta">
+      <span class="star" aria-hidden="true">★</span>
+      <span>7-day free trial on annual · cancel anytime</span>
+    </p>
     <a class="btn-primary" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
   </div>
 </section>
@@ -303,58 +380,72 @@ footer {
   <div class="plans-grid">
 
     <article class="plan-card">
-      <span class="plan-badge spacer">—</span>
       <h3 class="plan-name">Free</h3>
       <p class="plan-desc">Your travel journal — free, forever.</p>
-      <div class="plan-price">$0</div>
+      <ul class="plan-features">
+        <li>Up to 5 owned trips</li>
+        <li>Unlimited pins &amp; memories</li>
+        <li>Unlimited following shared trips</li>
+        <li>Flight tracking, packing &amp; leave-by</li>
+      </ul>
+      <div class="plan-price-row">
+        <div class="plan-price">$0</div>
+      </div>
       <p class="plan-billing">Forever</p>
-      <p class="plan-note">Up to 5 owned trips · unlimited following</p>
+      <div class="plan-cta">
+        <a class="btn-ghost" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Download free</a>
+      </div>
     </article>
 
-    <article class="plan-card featured">
-      <span class="plan-badge value">Best value</span>
-      <h3 class="plan-name">Annual</h3>
-      <p class="plan-desc">One missed gate costs more than a year of Pro.</p>
-      <div class="plan-price">$2.50<span class="unit"> / month</span></div>
-      <p class="plan-billing">$29.99/yr · save 50%</p>
-      <p class="plan-popular">★ 7-day free trial for new subscribers</p>
-      <p class="plan-note">Purchased in the iOS app</p>
-    </article>
+    <article class="plan-card featured" id="pro-card">
+      <span class="plan-badge popular">Most popular</span>
+      <h3 class="plan-name">Travelpin Pro</h3>
+      <p class="plan-desc">Unlimited owned trips — one missed gate costs more than a year of Pro.</p>
 
-    <article class="plan-card">
-      <span class="plan-badge spacer">—</span>
-      <h3 class="plan-name">Monthly</h3>
-      <p class="plan-desc">Your travel assistant, for about one airport coffee a month.</p>
-      <div class="plan-price">$4.99<span class="unit"> / month</span></div>
-      <p class="plan-billing">Billed monthly</p>
-      <p class="plan-note">Purchased in the iOS app</p>
-    </article>
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <button type="button" id="toggle-annual" aria-pressed="true">Annual</button>
+        <button type="button" id="toggle-monthly" aria-pressed="false">Monthly</button>
+      </div>
 
-    <article class="plan-card">
-      <span class="plan-badge flex">Most flexible</span>
-      <h3 class="plan-name">Week Pass</h3>
-      <p class="plan-desc">One trip, fully handled — for less than a bottle of water past security.</p>
-      <div class="plan-price">$2.99</div>
-      <p class="plan-billing">One-time · 7 days of Pro</p>
-      <p class="plan-note">Pay-as-you-go · purchased in the app</p>
+      <ul class="plan-features">
+        <li>Unlimited owned trips</li>
+        <li>Everything in Free</li>
+        <li>Same live assistant on every trip</li>
+      </ul>
+
+      <div class="plan-price-row" id="pro-price-row">
+        <div class="plan-price"><span id="pro-price">$2.50</span><span class="unit" id="pro-unit"> / month</span></div>
+        <span class="plan-badge save" id="pro-save">Save 50%</span>
+      </div>
+      <p class="plan-billing" id="pro-billing">$29.99/yr · 7-day free trial for new subscribers</p>
+      <div class="plan-cta">
+        <a class="btn-accent" id="pro-cta" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Start 7-day free trial</a>
+      </div>
     </article>
 
   </div>
 </section>
 
+<section class="week-pass" aria-label="Week Pass">
+  <div class="week-pass-inner">
+    <p class="week-pass-copy">Just one trip? Get a 7-day <strong>Week Pass</strong> — does not renew.</p>
+    <p class="week-pass-price">$2.99 <span>· one-time</span></p>
+  </div>
+</section>
+
 <section class="section-wrap" id="compare">
-  <h2 class="section-title">Compare plans</h2>
-  <p class="section-sub">Free includes the full Travelpin experience with a cap on trips you own.</p>
+  <h2 class="section-title">Journal vs unlimited trips</h2>
+  <p class="section-sub">Free includes the full Travelpin experience. Pro removes the owned-trip cap.</p>
   <table class="compare-table">
     <thead>
       <tr>
         <th scope="col">Feature</th>
-        <th scope="col">Free</th>
-        <th scope="col">Pro</th>
+        <th scope="col">Free · Journal</th>
+        <th scope="col">Pro · Unlimited</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr class="diff-row">
         <td>Owned trips you create</td>
         <td>5</td>
         <td class="check">Unlimited</td>
@@ -380,7 +471,7 @@ footer {
         <td class="check">✓</td>
       </tr>
       <tr>
-        <td>Leave-time &amp; airport ETA</td>
+        <td>Leave-by &amp; airport ETA</td>
         <td class="check">✓</td>
         <td class="check">✓</td>
       </tr>
@@ -396,7 +487,7 @@ footer {
       </tr>
     </tbody>
   </table>
-  <p class="legal">Pro unlocks <strong style="color:rgba(200,223,244,0.5);font-weight:500;">unlimited owned trips</strong>. Following shared trips never counts toward your cap. Prices shown in USD; amounts may vary by App Store region. Purchases are made in the iOS app.</p>
+  <p class="legal">Pro unlocks <strong style="color:rgba(200,223,244,0.5);font-weight:500;">unlimited owned trips</strong>. Following shared trips never counts toward your cap. Prices shown in USD; amounts may vary by App Store region and are confirmed in the iOS app before purchase.</p>
 </section>
 
 <section class="section-wrap" id="faq">
@@ -404,24 +495,28 @@ footer {
   <p class="section-sub">Subscriptions are purchased inside the Travelpin iOS app.</p>
   <div class="faq">
     <details>
+      <summary>Is there a free trial?</summary>
+      <div class="faq-body">New subscribers may be eligible for a 7-day free trial on the annual plan. Apple charges you when the trial ends unless you cancel at least 24 hours before. Eligibility is determined by Apple.</div>
+    </details>
+    <details>
+      <summary>Can I cancel anytime?</summary>
+      <div class="faq-body">Yes. Manage or cancel in iOS Settings → Apple ID → Subscriptions. Cancel at least 24 hours before the period ends to avoid the next charge. Refunds are handled by Apple.</div>
+    </details>
+    <details>
+      <summary>What happens to my trips if I go back to Free?</summary>
+      <div class="faq-body">They stay viewable. You keep everything you already created. On Free you can own up to 5 non-archived trips — you won’t be able to create new ones until you’re under the limit or upgrade again.</div>
+    </details>
+    <details>
+      <summary>Does the Week Pass renew?</summary>
+      <div class="faq-body">No. It’s a one-time purchase for 7 days of Pro. Ideal for a single busy travel week.</div>
+    </details>
+    <details>
       <summary>How do I subscribe?</summary>
       <div class="faq-body">Download Travelpin, create an account, and tap <strong>Upgrade to Pro</strong> in Settings — or save a 6th owned trip to see the paywall. Payment is handled securely by Apple.</div>
     </details>
     <details>
-      <summary>What is the Week Pass?</summary>
-      <div class="faq-body">A one-time purchase that gives you 7 days of Pro. It does not auto-renew. Ideal for a single busy travel week.</div>
-    </details>
-    <details>
-      <summary>Is there a free trial on Annual?</summary>
-      <div class="faq-body">New subscribers may be eligible for a 7-day free trial on the annual plan. Apple charges you when the trial ends unless you cancel at least 24 hours before. Eligibility is determined by Apple.</div>
-    </details>
-    <details>
-      <summary>How do I cancel or get a refund?</summary>
-      <div class="faq-body">Manage or cancel subscriptions in iOS Settings → Apple ID → Subscriptions. Refunds are handled by Apple according to their policies.</div>
-    </details>
-    <details>
-      <summary>What happens if I downgrade?</summary>
-      <div class="faq-body">You keep all trips you already created. On the free tier you can own up to 5 non-archived trips — you won't be able to create new ones until you're under the limit or upgrade again.</div>
+      <summary>Is Family Sharing supported?</summary>
+      <div class="faq-body">Travelpin Pro purchases follow Apple’s Family Sharing rules for the product type. Check the App Store product page and your Apple ID subscription settings for the latest availability.</div>
     </details>
     <details>
       <summary>New phone — will Pro transfer?</summary>
@@ -432,9 +527,9 @@ footer {
 </section>
 
 <section class="cta-band">
-  <h2>Ready to travel smarter?</h2>
+  <h2>Ready when you are</h2>
   <p>Free to start. Upgrade when you need unlimited trips.</p>
-  <a class="btn-primary" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Get Travelpin</a>
+  <a class="btn-primary" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
 </section>
 
 <footer>
@@ -452,6 +547,39 @@ footer {
   </div>
 </footer>
 
-<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}</style>
+<script>
+(function () {
+  var annualBtn = document.getElementById('toggle-annual');
+  var monthlyBtn = document.getElementById('toggle-monthly');
+  var priceEl = document.getElementById('pro-price');
+  var unitEl = document.getElementById('pro-unit');
+  var billingEl = document.getElementById('pro-billing');
+  var saveEl = document.getElementById('pro-save');
+  var ctaEl = document.getElementById('pro-cta');
+
+  function setAnnual() {
+    annualBtn.setAttribute('aria-pressed', 'true');
+    monthlyBtn.setAttribute('aria-pressed', 'false');
+    priceEl.textContent = '$2.50';
+    unitEl.textContent = ' / month';
+    billingEl.textContent = '$29.99/yr · 7-day free trial for new subscribers';
+    saveEl.hidden = false;
+    ctaEl.textContent = 'Start 7-day free trial';
+  }
+
+  function setMonthly() {
+    annualBtn.setAttribute('aria-pressed', 'false');
+    monthlyBtn.setAttribute('aria-pressed', 'true');
+    priceEl.textContent = '$4.99';
+    unitEl.textContent = ' / month';
+    billingEl.textContent = 'Billed monthly · purchased in the iOS app';
+    saveEl.hidden = true;
+    ctaEl.textContent = 'Get Pro in the app';
+  }
+
+  annualBtn.addEventListener('click', setAnnual);
+  monthlyBtn.addEventListener('click', setMonthly);
+})();
+</script>
 </body>
 </html>
