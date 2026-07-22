@@ -395,7 +395,7 @@
         <p>
           <span class="mono">Annual $29.99/yr</span> · 7-day free trial, then $29.99 · <span class="mono">SAVE 50%</span> · $2.50/mo &nbsp;(pre-selected)<br>
           <span class="mono">Monthly $4.99/mo</span><br>
-          <span class="mono">Week Pass $2.99</span> — the slim secondary link
+          <span class="mono">Week Pass $2.99/wk</span> — renews weekly until cancelled
         </p>
       </div>
     </div>
@@ -430,15 +430,15 @@
   </div>
 
   <!-- ===== week pass branch ===== -->
-  <h2 class="sec-h">The other path — a one-off Week Pass</h2>
-  <p class="sec-sub">For Laya-the-once-a-year-traveller who doesn't want to subscribe.</p>
+  <h2 class="sec-h">The other path — a weekly Week Pass</h2>
+  <p class="sec-sub">For Laya who wants Pro for a busy travel week without committing to monthly or annual.</p>
   <div class="branch">
-    <p style="margin:0;color:var(--ink-soft);font-size:0.95rem;">She taps the Week Pass link and pays <span class="mono">$2.99</span> once — full Pro for 7 days, unlimited trips in that window. Because it's <strong>non-renewing</strong>, StoreKit doesn't track its expiry, so your <strong>backend computes the 7-day window from the purchase date</strong> and flips her back to Free when it lapses. Since Pro is the <em>live-feature</em> layer (not a permanent trip-unlock), when it expires she simply loses live tracking — nothing kept. <strong>That's what closes the old $0.99 loophole.</strong></p>
+    <p style="margin:0;color:var(--ink-soft);font-size:0.95rem;">She picks the Week Pass and pays <span class="mono">$2.99</span> — full Pro for one week. It’s an <strong>auto-renewable weekly subscription</strong> in the same App Store group as monthly/yearly. Apple sends <span class="mono">expiresDate</span>; your server stores that and keeps her Pro until she cancels or the period ends. Renewals arrive via StoreKit <code>Transaction.updates</code> and App Store Server Notifications — same path as the other plans.</p>
     <div class="branch-flow">
       <span class="step" style="--c:var(--free)"><span class="swatch"></span>Free</span>
-      <span class="arrow">→ pays $2.99 →</span>
-      <span class="step" style="--c:var(--pass)"><span class="swatch"></span>Week Pass · Pro for 7 days</span>
-      <span class="arrow">→ server expiry →</span>
+      <span class="arrow">→ $2.99/wk →</span>
+      <span class="step" style="--c:var(--pass)"><span class="swatch"></span>Week Pass · Pro</span>
+      <span class="arrow">→ cancels / expires →</span>
       <span class="step" style="--c:var(--lapsed)"><span class="swatch"></span>Back to Free</span>
     </div>
   </div>
@@ -453,7 +453,7 @@
     </div>
     <div class="owner" style="--c:var(--pro)">
       <p class="who"><span class="dot"></span>Your server</p>
-      <p>The source of truth. Given Apple's signed receipt, it decides <span class="mono">isPro</span> and the limits, and computes non-renewing expiry.</p>
+      <p>The source of truth. Given Apple's signed receipt, it decides <span class="mono">isPro</span> and the limits from Apple's <span class="mono">expiresDate</span>.</p>
     </div>
     <div class="owner" style="--c:var(--paywall)">
       <p class="who"><span class="dot"></span>The app</p>
