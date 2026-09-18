@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"/>
 <style>
   :root {
     --ground: #F5F7F9;
@@ -37,6 +37,7 @@
     --display: "Newsreader", Georgia, serif;
     --body: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --caveat: "Caveat", cursive;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -73,11 +74,12 @@
     align-items: baseline;
   }
   .wordmark {
-    font-family: var(--display);
-    font-size: 28px;
+    font-family: var(--caveat);
+    font-size: 36px;
     font-weight: 600;
     color: var(--navy);
-    letter-spacing: -0.015em;
+    letter-spacing: 0;
+    line-height: 1;
   }
   .issue {
     font-family: var(--mono);
@@ -678,7 +680,6 @@
 
   <footer>
     <span>Travelpin · Flatwhyte Technologies Pvt Ltd</span>
-    <span><span class="fillin">[ email ]</span></span>
   </footer>
 
 </div>
