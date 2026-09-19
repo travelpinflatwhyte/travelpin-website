@@ -544,12 +544,36 @@
 <script>
 (function () {
   const SESSION_KEY = "tp_update_sept2026_v5";
+  const UNLOCK_TRACKED_KEY = "tp_update_sept2026_unlock_tracked";
+  const PAGE_SLUG = "september-2026";
+  const API_BASE = "https://travelpin-production.up.railway.app";
   const payload = JSON.parse(document.getElementById("secure-payload").textContent);
   const gate = document.getElementById("gate");
   const root = document.getElementById("secure-root");
   const form = document.getElementById("gate-form");
   const input = document.getElementById("gate-pin");
   const err = document.getElementById("gate-err");
+
+  function track(eventName) {
+    try {
+      const url = API_BASE + "/v1/page-events?page=" + encodeURIComponent(PAGE_SLUG)
+        + "&event=" + encodeURIComponent(eventName)
+        + "&_=" + Date.now();
+      const img = new Image();
+      img.referrerPolicy = "no-referrer-when-downgrade";
+      img.src = url;
+    } catch (_) {}
+  }
+
+  function trackUnlockOnce() {
+    try {
+      if (sessionStorage.getItem(UNLOCK_TRACKED_KEY)) return;
+      sessionStorage.setItem(UNLOCK_TRACKED_KEY, "1");
+    } catch (_) {}
+    track("unlock");
+  }
+
+  track("open");
 
   function b64ToBytes(b64) {
     const bin = atob(b64);
@@ -580,6 +604,7 @@
     root.hidden = false;
     gate.hidden = true;
     try { sessionStorage.setItem(SESSION_KEY, pin); } catch (_) {}
+    trackUnlockOnce();
   }
 
   form.addEventListener("submit", async (e) => {
