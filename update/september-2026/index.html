@@ -559,9 +559,17 @@
       const url = API_BASE + "/v1/page-events?page=" + encodeURIComponent(PAGE_SLUG)
         + "&event=" + encodeURIComponent(eventName)
         + "&_=" + Date.now();
-      const img = new Image();
-      img.referrerPolicy = "no-referrer-when-downgrade";
-      img.src = url;
+      // Prefer fetch so DevTools shows the request; fall back to image pixel.
+      if (window.fetch) {
+        fetch(url, { method: "GET", mode: "cors", keepalive: true, credentials: "omit" })
+          .catch(function () {
+            var img = new Image();
+            img.src = url;
+          });
+      } else {
+        var img = new Image();
+        img.src = url;
+      }
     } catch (_) {}
   }
 
