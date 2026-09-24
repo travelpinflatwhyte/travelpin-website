@@ -153,6 +153,8 @@
 html{scroll-behavior:smooth;}
 #journey{scroll-margin-top:88px;}
 #journey .intro{scroll-margin-top:88px;}
+#explore{scroll-margin-top:88px;}
+#reviews{scroll-margin-top:88px;}
 body{background:#07101f;color:#eef3ff;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;overflow-x:hidden;}
 
 @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
@@ -1255,6 +1257,102 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
     width:100%;
   }
 }
+
+/* —— Explore Cities —— */
+.explore-section{position:relative;overflow:hidden;padding:6rem 2rem;background:#07101f;}
+.explore-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(29,158,117,0.12) 0%,transparent 45%),radial-gradient(ellipse at 85% 60%,rgba(74,122,170,0.1) 0%,transparent 50%);pointer-events:none;}
+.explore-inner{position:relative;z-index:1;max-width:1040px;margin:0 auto;}
+.explore-header{text-align:center;margin-bottom:2.5rem;max-width:720px;margin-left:auto;margin-right:auto;}
+.explore-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;color:rgba(29,158,117,0.85);margin-bottom:1.2rem;}
+.explore-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#1d9e75;}
+.explore-title{font-size:clamp(34px,5vw,52px);font-weight:800;color:#fff;letter-spacing:-2.2px;line-height:1.05;margin:0 0 1rem;}
+.explore-title span{color:#1d9e75;white-space:nowrap;}
+.explore-sub{font-size:17px;color:rgba(238,243,255,0.5);line-height:1.7;font-weight:300;margin:0;}
+.explore-cities{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;overflow:visible;padding:10px 8px 1.75rem;margin-bottom:0.5rem;}
+.explore-cities::-webkit-scrollbar{display:none;}
+.explore-city{flex:0 0 auto;width:132px;height:168px;border:none;padding:0;border-radius:18px;overflow:hidden;cursor:pointer;position:relative;background:#0c1a2e;isolation:isolate;transition:transform 0.25s ease,box-shadow 0.25s ease;}
+.explore-city:hover{transform:translateY(-3px);}
+.explore-city.is-active{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,0.35);}
+.explore-city.is-active::before{content:'';position:absolute;inset:0;border-radius:18px;box-shadow:inset 0 0 0 2.5px #1d9e75;z-index:3;pointer-events:none;}
+.explore-city img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease,opacity 0.35s ease;}
+.explore-city.is-active img{transform:scale(1.06);}
+.explore-city::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,16,31,0.95) 0%,rgba(7,16,31,0.25) 45%,transparent 70%);z-index:1;}
+.explore-city-label{position:absolute;left:12px;right:12px;bottom:12px;z-index:2;text-align:left;}
+.explore-city-name{display:block;font-size:15px;font-weight:700;color:#fff;letter-spacing:-0.3px;}
+.explore-city-hint{display:block;font-size:11px;color:rgba(238,243,255,0.55);margin-top:2px;}
+.explore-stage{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,440px);gap:3rem;align-items:start;max-width:920px;margin:0 auto;width:100%;}
+.explore-copy{display:flex;flex-direction:column;gap:1.1rem;padding-top:1.25rem;justify-content:flex-start;}
+.explore-moment{font-size:15px;font-style:italic;line-height:1.5;padding-left:14px;border-left:2px solid #1d9e75;color:rgba(125,206,160,0.9);margin:0;}
+.explore-body{font-size:15px;color:rgba(238,243,255,0.5);line-height:1.7;font-weight:300;margin:0;}
+.explore-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:0.3rem;}
+.explore-chip{font-size:12px;padding:6px 12px;border-radius:999px;border:0.5px solid rgba(29,158,117,0.35);background:rgba(29,158,117,0.1);color:#7dcea0;}
+.explore-cta{margin-top:0.6rem;align-self:flex-start;}
+.explore-cards-wrap{
+  width:100%;
+  max-width:420px;
+  margin:0 auto;
+  padding-left:36px; /* room for highlighted card offset */
+}
+.explore-cards-wrap .airport-flight-strip,
+.explore-cards-wrap .airport-alert-card{
+  opacity:1;
+  transform:none;
+  will-change:auto;
+}
+.explore-cards-wrap .airport-alert-card.highlighted{
+  left:-36px;
+}
+.explore-cards-wrap.is-swapping .airport-flight-strip,
+.explore-cards-wrap.is-swapping .airport-alert-card{
+  opacity:0;
+  animation:airportCardReveal 0.72s cubic-bezier(0.22,0.61,0.36,1) forwards;
+}
+.explore-cards-wrap.is-swapping .airport-flight-strip{animation-delay:0s;}
+.explore-cards-wrap.is-swapping .airport-alert-card:nth-of-type(2){animation-delay:0.16s;}
+.explore-cards-wrap.is-swapping .airport-alert-card:nth-of-type(3){animation-delay:0.40s;}
+.explore-cards-wrap.is-swapping .airport-alert-card:nth-of-type(4){animation-delay:0.64s;}
+.explore-swap{animation:exploreSwap 0.35s ease both;}
+@keyframes exploreSwap{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){
+  .explore-city,.explore-city img{transition:none;}
+  .explore-swap,
+  .explore-cards-wrap.is-swapping .airport-flight-strip,
+  .explore-cards-wrap.is-swapping .airport-alert-card{animation:none;opacity:1;transform:none;}
+}
+@media (max-width:860px){
+  .explore-section{padding:4rem 1.2rem;}
+  .explore-stage{grid-template-columns:1fr;gap:1.75rem;max-width:440px;}
+  .explore-copy{order:2;text-align:left;padding-top:0;}
+  .explore-cards-wrap{order:1;padding-left:20px;max-width:100%;}
+  .explore-cards-wrap .airport-alert-card.highlighted{left:-20px;}
+  .explore-city{width:118px;height:148px;}
+}
+
+/* —— App Store reviews —— */
+.reviews-section{position:relative;overflow:hidden;padding:5.5rem 2rem;background:#07101f;}
+.reviews-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,168,74,0.07) 0%,transparent 50%);pointer-events:none;}
+.reviews-inner{position:relative;z-index:1;max-width:860px;margin:0 auto;}
+.reviews-header{text-align:center;margin-bottom:2.5rem;}
+.reviews-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;color:rgba(200,168,74,0.8);margin-bottom:1rem;}
+.reviews-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#c8a84a;}
+.reviews-score{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:0.35rem;}
+.reviews-score-num{font-size:clamp(40px,6vw,56px);font-weight:800;color:#fff;letter-spacing:-2px;line-height:1;}
+.reviews-score-meta{display:flex;flex-direction:column;justify-content:center;gap:4px;}
+.reviews-stars{color:#c8a84a;font-size:15px;letter-spacing:2px;line-height:1;}
+.reviews-count{font-size:13px;color:rgba(238,243,255,0.4);margin:0;line-height:1.2;}
+.reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.review-card{padding:1.4rem 1.5rem;border-radius:18px;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:0.7rem;}
+.review-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.review-title{font-size:15px;font-weight:700;color:#fff;letter-spacing:-0.3px;margin:0;line-height:1.3;}
+.review-stars{color:#c8a84a;font-size:12px;letter-spacing:1px;margin-top:4px;}
+.review-author{font-size:12px;color:rgba(238,243,255,0.35);text-align:right;flex-shrink:0;line-height:1.35;}
+.review-body{font-size:14px;color:rgba(238,243,255,0.55);line-height:1.65;font-weight:300;margin:0;}
+.reviews-foot{text-align:center;margin-top:1.75rem;font-size:12px;color:rgba(238,243,255,0.3);}
+.reviews-foot a{color:rgba(238,243,255,0.45);text-decoration:underline;text-underline-offset:2px;}
+@media (max-width:720px){
+  .reviews-section{padding:4rem 1.2rem;}
+  .reviews-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
@@ -1718,6 +1816,121 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 
 
+<!-- EXPLORE CITIES -->
+<section id="explore" class="explore-section" aria-labelledby="explore-heading">
+  <div class="explore-inner">
+    <div class="explore-header reveal">
+      <div class="explore-eyebrow">
+        <span class="explore-eyebrow-dot" aria-hidden="true"></span>
+        On the ground
+      </div>
+      <h2 id="explore-heading" class="explore-title">
+        See a city.<br>Then see what <span>fits your day.</span>
+      </h2>
+      <p class="explore-sub">
+        Pick a place you might fly to. Travelpin opens a shortlist for that trip — not another endless map.
+      </p>
+    </div>
+
+    <div class="explore-cities reveal" role="tablist" aria-label="Example cities">
+      <button type="button" class="explore-city is-active" role="tab" aria-selected="true" data-city="goa">
+        <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=480&amp;q=70&amp;auto=format&amp;fit=crop" alt="" loading="lazy" width="132" height="168"/>
+        <span class="explore-city-label">
+          <span class="explore-city-name">Goa</span>
+          <span class="explore-city-hint">Last day</span>
+        </span>
+      </button>
+      <button type="button" class="explore-city" role="tab" aria-selected="false" data-city="tokyo">
+        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=480&amp;q=70&amp;auto=format&amp;fit=crop" alt="" loading="lazy" width="132" height="168"/>
+        <span class="explore-city-label">
+          <span class="explore-city-name">Tokyo</span>
+          <span class="explore-city-hint">Land late</span>
+        </span>
+      </button>
+      <button type="button" class="explore-city" role="tab" aria-selected="false" data-city="madrid">
+        <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=480&amp;q=70&amp;auto=format&amp;fit=crop" alt="" loading="lazy" width="132" height="168"/>
+        <span class="explore-city-label">
+          <span class="explore-city-name">Madrid</span>
+          <span class="explore-city-hint">Free day</span>
+        </span>
+      </button>
+      <button type="button" class="explore-city" role="tab" aria-selected="false" data-city="paris">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=480&amp;q=70&amp;auto=format&amp;fit=crop" alt="" loading="lazy" width="132" height="168"/>
+        <span class="explore-city-label">
+          <span class="explore-city-name">Paris</span>
+          <span class="explore-city-hint">Worth seeing</span>
+        </span>
+      </button>
+      <button type="button" class="explore-city" role="tab" aria-selected="false" data-city="costarica">
+        <img src="explore-costarica.jpg" alt="" loading="lazy" width="132" height="168"/>
+        <span class="explore-city-label">
+          <span class="explore-city-name">Costa Rica</span>
+          <span class="explore-city-hint">Day plan</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="explore-stage">
+      <div class="explore-copy reveal">
+        <p class="explore-moment" id="explore-moment">"Five hours left before the airport. What still fits?"</p>
+        <p class="explore-body" id="explore-body">Explore knows your return flight. On your last day in Goa it surfaces places that fit before leave-by — not a list that assumes you have all afternoon.</p>
+        <div class="explore-chips">
+          <span class="explore-chip">Trip-aware</span>
+          <span class="explore-chip">Curated shortlist</span>
+          <span class="explore-chip">Share with your group</span>
+        </div>
+        <a class="btn-p explore-cta" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Get Travelpin</a>
+      </div>
+
+      <div class="explore-cards-wrap reveal" aria-live="polite">
+        <div class="airport-notification-stack" id="explore-cards">
+          <div class="airport-flight-strip">
+            <div>
+              <div class="airport-route">Goa</div>
+              <div class="airport-flight-meta">Return 6:10 PM · leave for airport by 3:40 PM</div>
+            </div>
+            <div class="airport-status-pill">5 hrs free</div>
+          </div>
+          <div class="airport-alert-card">
+            <div class="airport-alert-icon">⏳</div>
+            <div class="airport-alert-content">
+              <div class="airport-alert-top">
+                <div class="airport-alert-title">Still fits before leave-by</div>
+                <div class="airport-alert-time">Today</div>
+              </div>
+              <div class="airport-alert-body">Explore trims the shortlist to what you can actually do before the airport — not a full-day wishlist.</div>
+            </div>
+          </div>
+          <div class="airport-alert-card highlighted">
+            <div class="airport-alert-icon">🏰</div>
+            <div class="airport-alert-content">
+              <div class="airport-alert-top">
+                <div class="airport-alert-title">Fort Aguada</div>
+                <div class="airport-alert-time">Suggested</div>
+              </div>
+              <div class="airport-alert-body">Hilltop Portuguese fort over the Arabian Sea — close enough to make it before you leave.</div>
+            </div>
+          </div>
+          <div class="airport-alert-card">
+            <div class="airport-alert-icon">🌅</div>
+            <div class="airport-alert-content">
+              <div class="airport-alert-top">
+                <div class="airport-alert-title">Chapora Fort</div>
+                <div class="airport-alert-time">If time</div>
+              </div>
+              <div class="airport-alert-body">Cliff fort with classic North Goa views — add it only if the clock still allows.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(30,58,95,0.5),transparent);margin:0 auto;"></div>
+
+
+
 <!-- PINS SECTION -->
 <div style="width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(30,58,95,0.5),transparent);margin:0 auto;"></div>
 <section style="position:relative;overflow:hidden;padding:6rem 2rem;background:#07101f;">
@@ -1897,6 +2110,54 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 
 
 
+<!-- APP STORE REVIEWS -->
+<section id="reviews" class="reviews-section" aria-labelledby="reviews-heading">
+  <div class="reviews-inner">
+    <div class="reviews-header reveal">
+      <div class="reviews-eyebrow">
+        <span class="reviews-eyebrow-dot" aria-hidden="true"></span>
+        From travellers
+      </div>
+      <div class="reviews-score">
+        <span class="reviews-score-num">4.8</span>
+        <div class="reviews-score-meta">
+          <div class="reviews-stars" aria-label="4.8 stars on the App Store" id="reviews-heading">★★★★★</div>
+          <p class="reviews-count">on the App Store</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-grid">
+      <article class="review-card reveal">
+        <div class="review-card-top">
+          <div>
+            <h3 class="review-title">An app making travel hassle free</h3>
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p class="review-author">Shi Doc</p>
+        </div>
+        <p class="review-body">Really enjoyed using the app, the interface is simple and so easy to navigate making the overall experience quite smooth. The app also offers some really cool Gen Z-coded features!</p>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card-top">
+          <div>
+            <h3 class="review-title">Travel handled ‘Just Right’</h3>
+            <div class="review-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          </div>
+          <p class="review-author">Love Worthy Things</p>
+        </div>
+        <p class="review-body">This app envisions ‘just right’ how much information I really need after I or someone I care for have booked my plane tickets. Not more. Not less. Every new release surprises wonderfully. Though a handful of apps in this cohort, this one tackles my real travel anxiety.</p>
+      </article>
+    </div>
+
+    <p class="reviews-foot reveal">
+      Reviews from the
+      <a href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082" target="_blank" rel="noopener noreferrer">Apple App Store</a>
+    </p>
+  </div>
+</section>
+
 <section style="background:#07101f;position:relative;overflow:hidden;">
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(29,158,117,0.08) 0%,transparent 55%);pointer-events:none;"></div>
   <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(29,158,117,0.3),transparent);"></div>
@@ -1975,6 +2236,128 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
       const top = target.getBoundingClientRect().top + window.scrollY - navH - gap;
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top: Math.max(0, top), behavior: prefersReduced ? 'auto' : 'smooth' });
+    });
+  });
+
+  // Explore Cities — city strip swaps trip moment + scenario cards (same style as journey airport stack)
+  const exploreCities = {
+    goa: {
+      moment: '"Five hours left before the airport. What still fits?"',
+      body: 'Explore knows your return flight. On your last day in Goa it surfaces places that fit before leave-by — not a list that assumes you have all afternoon.',
+      strip: { title: 'Goa', meta: 'Return 6:10 PM · leave for airport by 3:40 PM', pill: '5 hrs free' },
+      cards: [
+        { icon: '⏳', title: 'Still fits before leave-by', time: 'Today', body: 'Explore trims the shortlist to what you can actually do before the airport — not a full-day wishlist.', highlight: false },
+        { icon: '🏰', title: 'Fort Aguada', time: 'Suggested', body: 'Hilltop Portuguese fort over the Arabian Sea — close enough to make it before you leave.', highlight: true },
+        { icon: '🌅', title: 'Chapora Fort', time: 'If time', body: 'Cliff fort with classic North Goa views — add it only if the clock still allows.', highlight: false }
+      ]
+    },
+    tokyo: {
+      moment: '"Wheels down at 10:40. Where still feels alive?"',
+      body: 'On arrival night, Explore leans toward places that still feel open — so you land late and still have somewhere worth going.',
+      strip: { title: 'Tokyo', meta: 'Land 10:40 PM · city still humming', pill: 'Open late' },
+      cards: [
+        { icon: '🛬', title: 'You just landed', time: '10:40 PM', body: 'Explore skips the closed museums and points you at neighborhoods that still feel awake.', highlight: false },
+        { icon: '🚦', title: 'Shibuya Crossing', time: 'Tonight', body: 'World’s busiest scramble — electric after dark, and still worth the short detour.', highlight: true },
+        { icon: '🏮', title: 'Asakusa & Senso-ji', time: 'If energy', body: 'Lantern streets around Tokyo’s oldest temple — late bites near the glow.', highlight: false }
+      ]
+    },
+    madrid: {
+      moment: '"One free day. Don’t waste it on the wrong museum queue."',
+      body: 'Mid-trip, Explore is a tight shortlist for the city you’re already in — curated places, not another map to browse forever.',
+      strip: { title: 'Madrid', meta: 'Day 2 of 4 · 28° · sunset 8:12 PM', pill: 'Free day' },
+      cards: [
+        { icon: '🗓', title: 'One free day in the middle', time: 'Day 2', body: 'A shortlist sized for the day you have — not every museum in the guide book.', highlight: false },
+        { icon: '🖼', title: 'Museo Nacional del Prado', time: 'Morning', body: 'Spain’s premier painting museum — start here while energy is high.', highlight: true },
+        { icon: '🌮', title: 'Casa Dani', time: 'Lunch', body: 'Busy counter in Mercado de la Paz — eat well, then keep moving.', highlight: false }
+      ]
+    },
+    paris: {
+      moment: '"Everyone sends the same three pins. Start from the ones that matter."',
+      body: 'A short, curated list for Paris — the landmarks you’d actually open the app for, ready before you leave the hotel.',
+      strip: { title: 'Paris', meta: '3 days · clear and mild', pill: 'Worth seeing' },
+      cards: [
+        { icon: '✦', title: 'Start from the classics', time: 'Day 1', body: 'Curated places you’d actually open the app for — not another endless map.', highlight: false },
+        { icon: '🗼', title: 'Eiffel Tower', time: 'Must', body: 'Gustave Eiffel’s wrought-iron tower — lock it in before the calendar fills up.', highlight: true },
+        { icon: '🏛', title: 'Louvre & Notre-Dame', time: 'Next', body: 'Palace museum and the cathedral on the Île de la Cité — the pair everyone means.', highlight: false }
+      ]
+    },
+    costarica: {
+      moment: '"Day 2 locked. Parks in the morning, dinner in town."',
+      body: 'In Costa Rica, Explore turns a shortlist into a day plan — stay, drives, and when you’ll actually go — not a map you rebuild by hand.',
+      strip: { title: 'San Jose', meta: 'Day 2 · Wed, Sep 23', pill: 'Day plan' },
+      cards: [
+        { icon: '🛏', title: 'Stay locked in', time: 'Hilton', body: 'Home base set — morning drives start from here until you change stay.', highlight: false },
+        { icon: '🌿', title: 'Braulio Carrillo National Park', time: 'AM', body: '~70 km from stay · ~1 hr 38 min. Parks first while it’s cool.', highlight: true },
+        { icon: '🍽', title: 'Árbol de Seda → National Museum', time: 'PM → Eve', body: 'Dinner in town, then history in the old fortress after dark.', highlight: false }
+      ]
+    }
+  };
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function renderExploreCity(id) {
+    const data = exploreCities[id];
+    if (!data) return;
+    const moment = document.getElementById('explore-moment');
+    const body = document.getElementById('explore-body');
+    const cards = document.getElementById('explore-cards');
+    const wrap = cards && cards.closest('.explore-cards-wrap');
+    if (!moment || !body || !cards) return;
+
+    moment.textContent = data.moment;
+    body.textContent = data.body;
+    moment.classList.remove('explore-swap');
+    body.classList.remove('explore-swap');
+    void moment.offsetWidth;
+    moment.classList.add('explore-swap');
+    body.classList.add('explore-swap');
+
+    const strip = data.strip;
+    const cardsHtml = data.cards.map((c) => (
+      '<div class="airport-alert-card' + (c.highlight ? ' highlighted' : '') + '">' +
+        '<div class="airport-alert-icon">' + c.icon + '</div>' +
+        '<div class="airport-alert-content">' +
+          '<div class="airport-alert-top">' +
+            '<div class="airport-alert-title">' + escapeHtml(c.title) + '</div>' +
+            '<div class="airport-alert-time">' + escapeHtml(c.time) + '</div>' +
+          '</div>' +
+          '<div class="airport-alert-body">' + escapeHtml(c.body) + '</div>' +
+        '</div>' +
+      '</div>'
+    )).join('');
+
+    cards.innerHTML =
+      '<div class="airport-flight-strip">' +
+        '<div>' +
+          '<div class="airport-route">' + escapeHtml(strip.title) + '</div>' +
+          '<div class="airport-flight-meta">' + escapeHtml(strip.meta) + '</div>' +
+        '</div>' +
+        '<div class="airport-status-pill">' + escapeHtml(strip.pill) + '</div>' +
+      '</div>' +
+      cardsHtml;
+
+    if (wrap) {
+      wrap.classList.remove('is-swapping');
+      void wrap.offsetWidth;
+      wrap.classList.add('is-swapping');
+    }
+  }
+
+  document.querySelectorAll('.explore-city').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-city');
+      document.querySelectorAll('.explore-city').forEach((b) => {
+        const on = b === btn;
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      renderExploreCity(id);
     });
   });
 })();
