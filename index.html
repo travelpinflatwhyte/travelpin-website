@@ -1341,6 +1341,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .reviews-stars{color:#c8a84a;font-size:15px;letter-spacing:2px;line-height:1;}
 .reviews-count{font-size:13px;color:rgba(238,243,255,0.4);margin:0;line-height:1.2;}
 .reviews-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+.reviews-grid .review-card:last-child:nth-child(odd){grid-column:1 / -1;}
 .review-card{padding:1.4rem 1.5rem;border-radius:18px;background:rgba(255,255,255,0.03);border:0.5px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:0.7rem;}
 .review-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
 .review-title{font-size:15px;font-weight:700;color:#fff;letter-spacing:-0.3px;margin:0;line-height:1.3;}
@@ -2119,10 +2120,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
         From travellers
       </div>
       <div class="reviews-score">
-        <span class="reviews-score-num">4.8</span>
+        <span class="reviews-score-num">5.0</span>
         <div class="reviews-score-meta">
-          <div class="reviews-stars" aria-label="4.8 stars on the App Store" id="reviews-heading">★★★★★</div>
-          <p class="reviews-count">on the App Store</p>
+          <div class="reviews-stars" aria-label="5.0 stars on the App Store" id="reviews-heading">★★★★★</div>
+          <p class="reviews-count">7 ratings</p>
         </div>
       </div>
     </div>
@@ -2131,10 +2132,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
       <article class="review-card reveal">
         <div class="review-card-top">
           <div>
+            <h3 class="review-title">Travelpin</h3>
+            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          </div>
+          <p class="review-author">Sh@mbh@vi · 1 Oct</p>
+        </div>
+        <p class="review-body">I've tried a lot of travel apps, and most only handle one part of a trip. Travelpin follows the whole journey, from getting ready to get to the airport through to remembering the trip afterward. It made travel very easy and genuinely fun</p>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-card-top">
+          <div>
             <h3 class="review-title">An app making travel hassle free</h3>
             <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
           </div>
-          <p class="review-author">Shi Doc</p>
+          <p class="review-author">Shi Doc · 22 Sep</p>
         </div>
         <p class="review-body">Really enjoyed using the app, the interface is simple and so easy to navigate making the overall experience quite smooth. The app also offers some really cool Gen Z-coded features!</p>
       </article>
