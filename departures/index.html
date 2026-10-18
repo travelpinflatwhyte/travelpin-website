@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Departures: travel guides from Travelpin</title>
+<meta name="description" content="Travel guides from Travelpin: what to eat, see and plan around, timed to when you'll actually go.">
+<link rel="canonical" href="https://travelpinapp.com/departures/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Departures: travel guides from Travelpin">
+<meta property="og:description" content="Travel guides timed to when you'll actually go. Check the board for what's boarding now.">
+<meta property="og:url" content="https://travelpinapp.com/departures/">
+<meta property="og:site_name" content="Travelpin">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="apple-itunes-app" content="app-id=6758201082">
+<link rel="icon" type="image/png" href="/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Caveat:wght@600&display=swap">
+<style>
+:root{
+  --night:#07101f;
+  --board:#0a1626;
+  --tile:#12233a;
+  --tile-edge:#050c17;
+  --line:rgba(74,122,170,.22);
+  --text:#e9eff7;
+  --muted:#93a7c0;
+  --amber:#f3c74f;
+  --green:#1d9e75;
+  --green-hi:#3cc596;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --board-face:"Barlow Condensed","Arial Narrow",sans-serif;
+  --hand:"Caveat","Bradley Hand",cursive;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--night);color:var(--text);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.6}
+a{color:var(--green-hi)}
+a:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px}
+
+.nav{max-width:1120px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--hand);font-weight:600;font-size:32px;color:var(--text);text-decoration:none;line-height:1}
+.btn{display:inline-block;font:600 15px/1 var(--sans);color:#04140d;background:var(--green);padding:12px 18px;border-radius:999px;text-decoration:none}
+.btn:hover{background:var(--green-hi)}
+
+/* Split-flap tiles */
+.flap{display:inline-flex;gap:3px;vertical-align:middle}
+.tile{position:relative;display:inline-grid;place-items:center;width:1.02em;height:1.42em;background:linear-gradient(var(--tile) 49.5%,var(--tile-edge) 49.5%,var(--tile-edge) 50.5%,#0f1f34 50.5%);border-radius:3px;color:var(--amber);font-family:var(--board-face);font-weight:600;line-height:1;text-transform:uppercase;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.tile.blank{color:transparent}
+
+/* Header */
+.head{max-width:1120px;margin:0 auto;padding:36px 24px 28px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+h1{margin:0;font-size:clamp(30px,6.6vw,64px);line-height:1;font-weight:400}
+h1 .flap{gap:4px}
+.intro{margin:20px 0 0;color:var(--muted);font-size:18px;max-width:46ch}
+.clock{text-align:right}
+.clock .flap{font-size:30px}
+.clock p{margin:8px 0 0;color:var(--muted);font-size:14px}
+
+/* Board */
+.board{max-width:1120px;margin:0 auto 20px;padding:0 24px}
+.frame{background:var(--board);border:1px solid var(--line);border-radius:14px;padding:8px 24px 14px}
+.cols,.row{display:grid;grid-template-columns:76px 300px minmax(0,1fr) 70px 250px;gap:20px;align-items:center}
+.cols{padding:12px 0 10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px}
+.row{padding:16px 0;border-bottom:1px solid var(--line);color:var(--text);text-decoration:none;font-size:20px}
+.row:last-child{border-bottom:0}
+a.row:hover .guide{color:#fff;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+a.row:hover{background:linear-gradient(90deg,rgba(29,158,117,.07),rgba(29,158,117,0))}
+.row.later{cursor:default}
+.row.later .guide{color:var(--muted)}
+.guide{font-size:17px;line-height:1.4}
+.guide small{display:block;color:var(--muted);font-size:14px;margin-top:2px}
+.read{color:var(--muted);font-size:15px}
+.status{display:flex;align-items:center}
+.status-boarding .tile{color:var(--green-hi)}
+.status-scheduled .tile{color:#7f93ad}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green-hi);margin-left:10px;vertical-align:middle;animation:blink 1.4s steps(2,start) infinite}
+@keyframes blink{to{visibility:hidden}}
+
+.note{max-width:1120px;margin:0 auto;padding:6px 24px 0;color:var(--muted);font-size:15px}
+.note p{margin:0 0 6px}
+
+.cta{max-width:1120px;margin:56px auto 0;padding:0 24px}
+.cta div{border-top:1px solid var(--line);padding-top:36px;display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;justify-content:space-between}
+.cta h2{margin:0;font-size:26px;font-weight:700;letter-spacing:-.015em;line-height:1.25;max-width:30ch}
+
+footer{max-width:1120px;margin:56px auto 0;padding:32px 24px 52px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+footer nav{display:flex;gap:22px}
+footer nav a{color:var(--muted);text-decoration:none}
+footer nav a:hover{color:var(--text)}
+
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
+.guide small .rt{display:none}
+
+@media (max-width:980px){
+  .cols{display:none}
+  .frame{padding:4px 18px}
+  .row{grid-template-columns:auto 1fr;grid-template-areas:"when status" "dest dest" "guide guide";gap:10px 12px;padding:18px 0}
+  .row .when{grid-area:when}
+  .row .status{grid-area:status;justify-self:end}
+  .row .dest{grid-area:dest}
+  .row .guide{grid-area:guide}
+  .row .read{display:none}
+  .guide small .rt{display:inline}
+  .clock{text-align:left}
+}
+@media (max-width:480px){
+  .head{padding-top:18px}
+  .row{font-size:16px}
+  .clock .flap{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="/">Travelpin</a>
+  <a class="btn" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082">Get the app</a>
+</header>
+
+<section class="head">
+  <div>
+    <h1 aria-label="Departures"><span class="flap" data-text="DEPARTURES" aria-hidden="true"></span></h1>
+    <p class="intro">Travel guides from Travelpin, each one timed to when you'll actually go. Check what's boarding now.</p>
+  </div>
+  <div class="clock" aria-hidden="true">
+    <span class="flap" id="clock" data-text="00:00"></span>
+    <p>India time</p>
+  </div>
+</section>
+
+<section class="board" aria-label="Travel guides">
+  <div class="frame">
+    <div class="cols" aria-hidden="true">
+      <span>Best time</span><span>Destination</span><span>Guide</span><span>Read</span><span>Status</span>
+    </div>
+    <div id="rows"></div>
+  </div>
+</section>
+
+<div class="note">
+  <p><strong style="color:var(--green-hi);font-weight:600">Boarding</strong> means the season is close, so read it now. <strong style="color:var(--amber);font-weight:600">On time</strong> guides are good all year. <strong style="color:#a9b8cc;font-weight:600">Scheduled</strong> guides are on their way.</p>
+</div>
+
+<section class="cta">
+  <div>
+    <h2>Read the guide, then let Travelpin handle the trip itself.</h2>
+    <a class="btn" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082">Download Travelpin on the App Store</a>
+  </div>
+</section>
+
+<footer>
+  <a class="logo" href="/" style="font-size:26px">Travelpin</a>
+  <nav aria-label="Footer">
+    <a href="/privacy.html">Privacy</a>
+    <a href="https://www.instagram.com/travelpin.app/">Instagram</a>
+  </nav>
+  <span>© 2026 Travelpin</span>
+</footer>
+
+<script>
+/*
+  ADD A GUIDE: copy one block below and change the values.
+  - when:     best time to go, 3 letters (JAN, DEC, ALL)
+  - dest:     destination shown on the board (up to 12 letters)
+  - title:    the guide's title
+  - sub:      one short line under the title
+  - url:      the guide's address on your site
+  - minutes:  reading time
+  - live:     true once the guide is published; false shows it as Scheduled
+  - season:   [start, end] dates of the best time to go, as "MM-DD".
+              The guide shows Boarding from 45 days before the start until the end.
+              Leave out for guides that are good all year (shows On time).
+*/
+const GUIDES = [
+  {
+    when: "DEC", dest: "GOA",
+    title: "Christmas in Goa, beyond the parties",
+    sub: "How Goa really celebrates Christmas and New Year",
+    url: "/departures/goa-christmas-new-year-guide",
+    minutes: 6, live: true, season: ["12-01", "12-31"]
+  },
+  {
+    when: "ALL", dest: "25 COUNTRIES",
+    title: "The Travelpin 25",
+    sub: "The easiest great trips from India, scored",
+    url: "/departures/travelpin-25",
+    minutes: 5, live: false
+  },
+  {
+    when: "JUN", dest: "GOA",
+    title: "Goa, when the tourists leave",
+    sub: "What to eat, see and skip in the monsoon",
+    url: "/departures/goa-monsoon-guide",
+    minutes: 6, live: false, season: ["06-01", "09-30"]
+  }
+];
+
+const STATUS_LEN = 9, DEST_LEN = 12, WHEN_LEN = 3;
+
+function statusFor(g, now){
+  if(!g.live) return "SCHEDULED";
+  if(!g.season) return "ON TIME";
+  const y = now.getFullYear();
+  const d = s => { const [m, day] = s.split("-").map(Number); return new Date(y, m - 1, day); };
+  let start = d(g.season[0]), end = d(g.season[1]);
+  if(end < start) end.setFullYear(y + 1);
+  const DAY = 864e5;
+  for(const shift of [0, -1]){ // this year's season, or last year's if it wraps past new year
+    const s = new Date(start), e = new Date(end);
+    s.setFullYear(s.getFullYear() + shift); e.setFullYear(e.getFullYear() + shift);
+    if(now >= new Date(s - 45 * DAY) && now <= new Date(+e + DAY)) return "BOARDING";
+  }
+  return "ON TIME";
+}
+
+const pad = (t, n) => (t.toUpperCase() + " ".repeat(n)).slice(0, n);
+const order = {BOARDING: 0, "ON TIME": 1, SCHEDULED: 2};
+
+function buildRows(){
+  const now = new Date();
+  const rows = GUIDES.map(g => ({...g, status: statusFor(g, now)}))
+                     .sort((a, b) => order[a.status] - order[b.status]);
+  const host = document.getElementById("rows");
+  for(const g of rows){
+    const el = document.createElement(g.live ? "a" : "div");
+    el.className = "row" + (g.live ? "" : " later");
+    if(g.live) el.href = g.url;
+    const statusWord = g.status.charAt(0) + g.status.slice(1).toLowerCase();
+    el.setAttribute("aria-label", `${g.title}. ${g.sub}. Best time ${g.when === "ALL" ? "all year" : g.when}. ${g.minutes} minute read. ${statusWord}.`);
+    el.innerHTML = `
+      <span class="when"><span class="flap" aria-hidden="true" data-text="${pad(g.when, WHEN_LEN)}"></span></span>
+      <span class="dest"><span class="flap" aria-hidden="true" data-text="${pad(g.dest, DEST_LEN)}"></span></span>
+      <span class="guide" aria-hidden="true">${g.title}<small>${g.sub}<span class="rt"> · ${g.minutes} min read</span></small></span>
+      <span class="read" aria-hidden="true">${g.minutes} min</span>
+      <span class="status status-${g.status.replace(" ", "").toLowerCase()}"><span class="flap" aria-hidden="true" data-text="${pad(g.status, STATUS_LEN)}"></span>${g.status === "BOARDING" ? '<span class="dot" aria-hidden="true"></span>' : ""}</span>`;
+    host.appendChild(el);
+  }
+}
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const DIGITS = "0123456789";
+const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function render(el, text){
+  el.textContent = "";
+  for(const ch of text){
+    const t = document.createElement("span");
+    t.className = "tile" + (ch === " " ? " blank" : "");
+    t.textContent = ch === " " ? " " : ch;
+    t.dataset.ch = ch;
+    el.appendChild(t);
+  }
+}
+
+function flip(el, delay){
+  const tiles = [...el.children];
+  if(reduce) return;
+  tiles.forEach((t, i) => {
+    const target = t.dataset.ch;
+    if(target === " ") return;
+    const pool = /[0-9]/.test(target) ? DIGITS : CHARS;
+    let n = 4 + Math.floor(Math.random() * 6);
+    const start = delay + i * 30;
+    setTimeout(function step(){
+      if(n-- > 0){
+        t.textContent = target === ":" ? ":" : pool[Math.floor(Math.random() * pool.length)];
+        setTimeout(step, 45);
+      } else t.textContent = target;
+    }, start);
+  });
+}
+
+function clockText(){
+  return new Intl.DateTimeFormat("en-GB", {hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Asia/Kolkata"}).format(new Date());
+}
+
+buildRows();
+const clock = document.getElementById("clock");
+clock.dataset.text = clockText();
+document.querySelectorAll(".flap").forEach((el, i) => { render(el, el.dataset.text); flip(el, 100 + i * 70); });
+setInterval(() => {
+  const t = clockText();
+  if(t !== clock.dataset.text){ clock.dataset.text = t; render(clock, t); }
+}, 15000);
+</script>
+</body>
+</html>
