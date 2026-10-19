@@ -286,6 +286,50 @@
     text-underline-offset: 2px;
   }
   .sample:hover { color: var(--ink); }
+  .preview {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(16, 24, 35, 0.72);
+    align-items: center;
+    justify-content: center;
+    padding: 28px 16px;
+  }
+  .preview.is-open { display: flex; }
+  .preview figure {
+    margin: 0;
+    max-width: min(920px, 100%);
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .preview img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(100vh - 88px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    background: var(--surface);
+    border-radius: 4px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.28);
+  }
+  .preview-close {
+    appearance: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #F5F7F9;
+    background: transparent;
+    border: none;
+    padding: 4px 0;
+    cursor: pointer;
+  }
+  .preview-close:hover { color: #fff; }
   .kv {
     display: grid;
     gap: 1px;
@@ -471,7 +515,7 @@
       <div class="snip">
         <h3>Scrapbook</h3>
         <p>Four photos on paper.</p>
-        <a class="sample" href="studio-scrapbook.png" target="_blank" rel="noopener">Sample</a>
+        <a class="sample" href="studio-scrapbook.png">Sample</a>
       </div>
       <div class="snip">
         <h3>Magazine</h3>
@@ -488,27 +532,27 @@
       <div class="snip">
         <h3>Journal</h3>
         <p>Five polaroids on paper, swipeable.</p>
-        <a class="sample" href="studio-journal.png" target="_blank" rel="noopener">Sample</a>
+        <a class="sample" href="studio-journal.png">Sample</a>
       </div>
       <div class="snip">
         <h3>Unboxed</h3>
         <p>Four polaroids as a spread.</p>
-        <a class="sample" href="studio-unboxed.png" target="_blank" rel="noopener">Sample</a>
+        <a class="sample" href="studio-unboxed.png">Sample</a>
       </div>
       <div class="snip">
         <h3>Top 5</h3>
         <p>Ranked five-photo strip.</p>
-        <a class="sample" href="studio-top5.png" target="_blank" rel="noopener">Sample</a>
+        <a class="sample" href="studio-top5.png">Sample</a>
       </div>
       <div class="snip">
         <h3>Days</h3>
         <p>Four polaroids on a trip line.</p>
-        <a class="sample" href="studio-days.png" target="_blank" rel="noopener">Sample</a>
+        <a class="sample" href="studio-days.png">Sample</a>
       </div>
       <div class="snip">
         <h3>Kitchen</h3>
         <p>Café / court carousel, square slides.</p>
-        <a class="sample" href="studio-kitchen.png" target="_blank" rel="noopener">Sample</a>
+        <a class="sample" href="studio-kitchen.png">Sample</a>
       </div>
       <div class="snip">
         <h3>Receipt</h3>
@@ -575,6 +619,12 @@
     <span>Next update · November 2026</span>
   </footer>
 </div>
+<div class="preview" id="sample-preview" role="dialog" aria-modal="true" aria-label="Layout sample" hidden>
+  <figure>
+    <img id="sample-preview-img" alt=""/>
+    <button type="button" class="preview-close" id="sample-preview-close">Close</button>
+  </figure>
+</div>
 <script>
 (function () {
   const PAGE_SLUG = "october-2026";
@@ -595,6 +645,45 @@
       window.location.href = select.value;
     }
   };
+
+  const preview = document.getElementById("sample-preview");
+  const previewImg = document.getElementById("sample-preview-img");
+  const previewClose = document.getElementById("sample-preview-close");
+  let lastSample = null;
+
+  function closePreview() {
+    preview.classList.remove("is-open");
+    preview.hidden = true;
+    previewImg.removeAttribute("src");
+    previewImg.alt = "";
+    document.body.style.overflow = "";
+    if (lastSample) lastSample.focus();
+  }
+
+  function openPreview(link) {
+    lastSample = link;
+    previewImg.src = link.getAttribute("href");
+    previewImg.alt = (link.closest(".snip") && link.closest(".snip").querySelector("h3")
+      ? link.closest(".snip").querySelector("h3").textContent + " sample"
+      : "Layout sample");
+    preview.hidden = false;
+    preview.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    previewClose.focus();
+  }
+
+  document.querySelectorAll("a.sample").forEach(function (link) {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      openPreview(link);
+    });
+  });
+  preview.addEventListener("click", function (e) {
+    if (e.target === preview || e.target === previewClose) closePreview();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && preview.classList.contains("is-open")) closePreview();
+  });
 })();
 </script>
 </body>
