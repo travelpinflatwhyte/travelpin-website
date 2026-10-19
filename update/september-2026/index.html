@@ -68,10 +68,9 @@
   }
   .masthead-top {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    justify-content: space-between;
-    align-items: baseline;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 16px;
   }
   .wordmark {
     font-family: var(--caveat);
@@ -79,7 +78,7 @@
     font-weight: 600;
     color: var(--navy);
     letter-spacing: 0;
-    line-height: 1;
+    line-height: 0.85;
   }
   .issue {
     font-family: var(--mono);
@@ -87,6 +86,9 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink-2);
+    line-height: 1;
+    padding-bottom: 0.12em;
+    white-space: nowrap;
   }
   h1 {
     font-family: var(--display);

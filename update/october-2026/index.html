@@ -24,6 +24,14 @@
     --ink-3: #8A93A6;
     --navy: #011735;
     --rule: #DCE2EA;
+    --rule-soft: #E9EDF2;
+    --live: #15703F;
+    --live-bg: #E7F2EB;
+    --hold: #8A5206;
+    --hold-bg: #F7EEDF;
+    --flag: #7A2E12;
+    --flag-bg: #F6E9E3;
+    --fill: #EEF1F5;
     --display: "Newsreader", Georgia, serif;
     --body: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
     --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -32,7 +40,9 @@
   @media (prefers-color-scheme: dark) {
     :root {
       --ground: #0A0E15; --surface: #141B25; --ink: #E9EDF3; --ink-2: #9BA5B8;
-      --ink-3: #6E7889; --navy: #9FC0E6; --rule: #27313F;
+      --ink-3: #6E7889; --navy: #9FC0E6; --rule: #27313F; --rule-soft: #1C242F;
+      --live: #63C08C; --live-bg: #102C1D; --hold: #D9A441; --hold-bg: #2E2313;
+      --flag: #E08A66; --flag-bg: #2E1A12; --fill: #1B222D;
     }
   }
   * { box-sizing: border-box; }
@@ -48,7 +58,6 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 36px 20px 64px;
-    min-height: 70vh;
   }
   .masthead {
     border-bottom: 2px solid var(--navy);
@@ -57,17 +66,17 @@
   }
   .masthead-top {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px 16px;
-    justify-content: space-between;
-    align-items: baseline;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    gap: 16px;
   }
   .wordmark {
     font-family: var(--caveat);
     font-size: 36px;
     font-weight: 600;
     color: var(--navy);
-    line-height: 1;
+    letter-spacing: 0;
+    line-height: 0.85;
   }
   .issue {
     font-family: var(--mono);
@@ -75,6 +84,9 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink-2);
+    line-height: 1;
+    padding-bottom: 0.12em;
+    white-space: nowrap;
   }
   h1 {
     font-family: var(--display);
@@ -90,6 +102,221 @@
     color: var(--ink-3);
     margin-top: 10px;
     letter-spacing: 0.04em;
+  }
+  .lede {
+    font-family: var(--display);
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin: 0 0 8px;
+  }
+  section { margin-top: 32px; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .eyebrow::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+  h2 {
+    font-family: var(--display);
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  p { margin: 0 0 10px; color: var(--ink-2); }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--ink); font-weight: 600; }
+  .chip {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    vertical-align: 0.15em;
+    margin-left: 8px;
+    white-space: nowrap;
+  }
+  .chip.live { color: var(--live); background: var(--live-bg); }
+  .chip.hold { color: var(--hold); background: var(--hold-bg); }
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .metric { background: var(--surface); padding: 12px 14px; }
+  .metric dt {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 6px;
+  }
+  .metric dd { margin: 0; font-family: var(--mono); font-size: 13px; color: var(--ink-3); }
+  .delta-up {
+    color: var(--live);
+    font-weight: 500;
+    margin-left: 6px;
+  }
+  .fillin {
+    color: var(--flag);
+    background: var(--flag-bg);
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  .metrics-note {
+    font-family: var(--display);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-3);
+    margin-top: 8px;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .card {
+    background: var(--surface);
+    padding: 14px 16px;
+  }
+  .card h3 {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 8px;
+  }
+  .card p, .card li {
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .card ul { margin: 0; padding: 0; list-style: none; }
+  .card li { padding-left: 12px; position: relative; margin-bottom: 5px; }
+  .card li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65em;
+    width: 5px;
+    height: 1.5px;
+    background: var(--ink-3);
+  }
+  .card li:last-child { margin-bottom: 0; }
+  .snips {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  .snips-3 { grid-template-columns: repeat(3, 1fr); }
+  .snip {
+    background: var(--surface);
+    padding: 12px 12px 14px;
+  }
+  .snip h3 {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 4px;
+  }
+  .snip p {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .sample {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .sample:hover { color: var(--ink); }
+  .kv {
+    display: grid;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 12px 0;
+  }
+  .kv-row {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    background: var(--surface);
+  }
+  .kv-row dt {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding: 10px 12px;
+    background: var(--fill);
+    display: flex;
+    align-items: center;
+  }
+  .kv-row dd {
+    margin: 0;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.4;
   }
   .month-inline { display: inline; }
   .month-inline select {
@@ -119,6 +346,17 @@
     font-size: 11px;
     letter-spacing: 0.05em;
     color: var(--ink-3);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    justify-content: space-between;
+  }
+  @media (max-width: 640px) {
+    .metrics, .grid-2, .grid-3, .snips, .snips-3 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 420px) {
+    .metrics, .grid-2, .grid-3, .snips, .snips-3 { grid-template-columns: 1fr; }
+    .kv-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -126,17 +364,216 @@
 <div class="sheet">
   <header class="masthead">
     <div class="masthead-top">
-      <div class="wordmark">Travelpin</div>
-      <div class="issue">
+      <span class="wordmark">Travelpin</span>
+      <span class="issue">
         Update ·
         <span class="month-inline">
           <select id="month-switch" aria-label="Choose month"></select>
         </span>
-      </div>
+        · 5 min read
+      </span>
     </div>
-    <h1>October 2026</h1>
+    <h1>Product progress: a creator pilot and Pins Studio</h1>
     <div class="byline">Satish · Flatwhyte Technologies Pvt Ltd · iOS App Store since 11 June 2026</div>
   </header>
+
+  <section>
+    <div class="eyebrow">Subscription model</div>
+    <p class="lede">Free ($0) — travel journal. Up to 5 owned trips; unlimited pins and following. Pro unlocks unlimited owned trips.</p>
+    <div class="grid-3" style="margin-top:14px">
+      <div class="card">
+        <h3>Yearly</h3>
+        <p><strong>$29.99 / year</strong> — Pro. 7-day trial.</p>
+      </div>
+      <div class="card">
+        <h3>Monthly</h3>
+        <p><strong>$4.99 / month</strong> — Pro. Renews monthly until cancelled.</p>
+      </div>
+      <div class="card">
+        <h3>Weekly</h3>
+        <p><strong>$2.99 / week</strong> — Pro for a busy week; renews weekly until cancelled.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Metrics</div>
+    <dl class="metrics">
+      <div class="metric"><dt>Total users</dt><dd>64</dd></div>
+      <div class="metric"><dt>New this month</dt><dd>24</dd></div>
+      <div class="metric"><dt>Paid users</dt><dd>7 <span class="delta-up">(↑+2)</span></dd></div>
+      <div class="metric"><dt>Trips added this month</dt><dd>25</dd></div>
+    </dl>
+    <p class="metrics-note">19 Sep–19 Oct. New users vs 40 on 18 Sep. Excludes test data.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">This period</div>
+    <p class="lede">Travel creator Max Zaharenkov — <strong>4.1M Instagram followers</strong> — reached out to Travelpin proposing a collaboration. I agreed a $1,000 pilot. Not published yet. Pins Studio also shipped on-device.</p>
+    <div class="grid-2" style="margin-top:14px">
+      <div class="card">
+        <h3>Max Zaharenkov <span class="chip hold">Agreed</span></h3>
+        <p>He reached out to Travelpin. 4.1M followers. 1 Reel + Stories. $1,000 pilot.</p>
+      </div>
+      <div class="card">
+        <h3>Pins Studio <span class="chip live">Released</span></h3>
+        <p>Share templates from a pin. On-device. Free.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">1 · Marketing</div>
+    <h2>Max Zaharenkov <span class="chip hold">Agreed — not published</span></h2>
+    <p><strong>Travel creator Max Zaharenkov reached out directly to Travelpin proposing a collaboration.</strong> Max has an Instagram audience of 4.1M followers, with strong reach across the US, UK and other international markets.</p>
+
+    <dl class="kv">
+      <div class="kv-row"><dt>Who</dt><dd>Recent Reels regularly several hundred thousand to 1M+ views.</dd></div>
+      <div class="kv-row"><dt>Why this</dt><dd>A measured first test with a large, relevant travel audience — App Store traffic, downloads, and product use, not views alone. Learnings should shape later creator spend.</dd></div>
+      <div class="kv-row"><dt>Price</dt><dd>Quoted <strong>$3,500</strong>, then $1,500. Agreed <strong>$1,000</strong> pilot — $500 upfront, $500 before publication.</dd></div>
+      <div class="kv-row"><dt>Deliverables</dt><dd>1 Instagram Reel + 2–3 Stories. Script and final-cut review. 7-day performance insights. Organic repost rights for Travelpin.</dd></div>
+      <div class="kv-row"><dt>Creative</dt><dd>Built on one of Max’s actual trips, filmed while he uses Travelpin — not a conventional app ad. Script: travellers use several apps for one journey; Travelpin holds preparation, flight information, destination explore, and memories in one place.</dd></div>
+      <div class="kv-row"><dt>Tracking</dt><dd>Dedicated App Store campaign <strong>maxzaharenkov</strong> so this traffic is separate from organic.</dd></div>
+      <div class="kv-row"><dt>Status</dt><dd>Terms and creative direction agreed. Contract ready. Campaign link live. Next: real-journey filming, final-cut review, publication.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <div class="eyebrow">2 · Shipped</div>
+    <h2>Pins Studio <span class="chip live">Released</span></h2>
+    <p>From a pin, the traveller picks a layout, places photos, adds stickers and text, and exports a story or carousel to the share sheet. Separate from the older single-image place-story share.</p>
+
+    <div class="eyebrow" style="margin-top:18px">Why I built this</div>
+    <p>A pin was a private record. The only export was one place-story image — so people still left the app to make an Instagram post, and the pin’s place, date, and companions did not come with them. Studio is the composer on the pin they already dropped: Instagram-native sizes, on the phone, no photo upload.</p>
+
+    <div class="eyebrow" style="margin-top:18px">Single frame</div>
+    <div class="snips">
+      <div class="snip">
+        <h3>Photo</h3>
+        <p>Full-bleed story from one pin photo.</p>
+      </div>
+      <div class="snip">
+        <h3>Polaroid</h3>
+        <p>Photo on a card; optional map of the place behind it.</p>
+      </div>
+      <div class="snip">
+        <h3>Grid</h3>
+        <p>Four photos in one frame.</p>
+      </div>
+      <div class="snip">
+        <h3>Torn</h3>
+        <p>Torn-paper collage.</p>
+      </div>
+      <div class="snip">
+        <h3>Film</h3>
+        <p>Three frames on a film strip.</p>
+      </div>
+      <div class="snip">
+        <h3>Scrapbook</h3>
+        <p>Four photos on paper.</p>
+        <a class="sample" href="studio-scrapbook.png" target="_blank" rel="noopener">Sample</a>
+      </div>
+      <div class="snip">
+        <h3>Magazine</h3>
+        <p>Cover-style single photo and title.</p>
+      </div>
+      <div class="snip">
+        <h3>Sticker</h3>
+        <p>Transparent PNG for Instagram’s sticker slot.</p>
+      </div>
+    </div>
+
+    <div class="eyebrow" style="margin-top:18px">Carousels</div>
+    <div class="snips snips-3">
+      <div class="snip">
+        <h3>Journal</h3>
+        <p>Five polaroids on paper, swipeable.</p>
+        <a class="sample" href="studio-journal.png" target="_blank" rel="noopener">Sample</a>
+      </div>
+      <div class="snip">
+        <h3>Unboxed</h3>
+        <p>Four polaroids as a spread.</p>
+        <a class="sample" href="studio-unboxed.png" target="_blank" rel="noopener">Sample</a>
+      </div>
+      <div class="snip">
+        <h3>Top 5</h3>
+        <p>Ranked five-photo strip.</p>
+        <a class="sample" href="studio-top5.png" target="_blank" rel="noopener">Sample</a>
+      </div>
+      <div class="snip">
+        <h3>Days</h3>
+        <p>Four polaroids on a trip line.</p>
+        <a class="sample" href="studio-days.png" target="_blank" rel="noopener">Sample</a>
+      </div>
+      <div class="snip">
+        <h3>Kitchen</h3>
+        <p>Café / court carousel, square slides.</p>
+        <a class="sample" href="studio-kitchen.png" target="_blank" rel="noopener">Sample</a>
+      </div>
+      <div class="snip">
+        <h3>Receipt</h3>
+        <p>Dinner receipt — score, dishes, notes. No prices.</p>
+      </div>
+    </div>
+
+    <dl class="kv">
+      <div class="kv-row"><dt>Tools</dt><dd>Layout → Photos → Layers → Stickers → Text. Pinch-crop to aim a photo.</dd></div>
+      <div class="kv-row"><dt>Pin data</dt><dd>Place name, date, and companions can drop in as stickers.</dd></div>
+      <div class="kv-row"><dt>Formats</dt><dd>Instagram-native: 9:16 stories; 4:5 and square carousels.</dd></div>
+      <div class="kv-row"><dt>Delivery</dt><dd>SwiftUI on-device. Pin photos stay on the phone. MapKit snapshot for the Polaroid backdrop.</dd></div>
+      <div class="kv-row"><dt>Not listed</dt><dd>Times newspaper layout is built and hidden.</dd></div>
+      <div class="kv-row"><dt>Monetization</dt><dd>Free today.</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <div class="eyebrow">This period, in short</div>
+    <div class="grid-2" style="margin-top:4px">
+      <div class="card">
+        <h3>Highlights</h3>
+        <ul>
+          <li>Max Zaharenkov reached out to Travelpin (4.1M). $1,000 pilot agreed. Not published.</li>
+          <li>Pins Studio in the app — single-frame and carousel layouts.</li>
+          <li>Drive times on Explore itinerary.</li>
+          <li>Paid users 7 (↑+2).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Lowlights</h3>
+        <ul>
+          <li>AirHelp vs in-house claims — still open.</li>
+          <li>Android not started. iOS stayed the shipping surface.</li>
+          <li>Plan My Day still gated. Manual day planning remains the live path.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Next 30 days</div>
+    <div class="grid-2" style="margin-top:4px">
+      <div class="card">
+        <h3>Marketing</h3>
+        <ul>
+          <li>Publish the Max Zaharenkov Reel + Stories; read 7-day App Store numbers on the maxzaharenkov campaign</li>
+          <li>Decide AirHelp vs in-house claims</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>App</h3>
+        <ul>
+          <li>Leave-by times already on-device — surface them or park the item</li>
+          <li>Closing-hour nudges for pinned and planned places</li>
+          <li>Replan city / day suggestions when disruption invalidates Day 1</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Travelpin · Flatwhyte Technologies Pvt Ltd</span>
+    <span>Next update · November 2026</span>
+  </footer>
 </div>
 <script>
 (function () {
