@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<meta name="googlebot" content="noindex, nofollow, noarchive"/>
+<title>Travelpin · Updates</title>
+<meta name="description" content="Travelpin product updates."/>
+<meta name="theme-color" content="#F5F7F9"/>
+<link rel="canonical" href="https://travelpinapp.com/update/"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"/>
+<style>
+  :root {
+    --ground: #F5F7F9;
+    --surface: #FFFFFF;
+    --ink: #101823;
+    --ink-2: #58627A;
+    --ink-3: #8A93A6;
+    --navy: #011735;
+    --rule: #DCE2EA;
+    --fill: #EEF1F5;
+    --display: "Newsreader", Georgia, serif;
+    --body: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --caveat: "Caveat", cursive;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0A0E15; --surface: #141B25; --ink: #E9EDF3; --ink-2: #9BA5B8;
+      --ink-3: #6E7889; --navy: #9FC0E6; --rule: #27313F; --fill: #1B222D;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .sheet {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 56px 20px 64px;
+  }
+  .wm {
+    font-family: var(--caveat);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .issue {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 8px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 400;
+    margin: 28px 0 8px;
+  }
+  .lede {
+    color: var(--ink-2);
+    font-size: 15px;
+    margin: 0 0 24px;
+  }
+  a.month {
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: 10px;
+  }
+  a.month:hover { border-color: var(--navy); }
+  a.month strong {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  a.month span {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="wm">Travelpin</div>
+  <div class="issue">Product updates</div>
+  <h1>Choose a month</h1>
+  <p class="lede">Each update is access-code gated. Same people, same code unless I send a new one.</p>
+  <div id="months"></div>
+</div>
+<script>
+(function () {
+  const UPDATES = [
+    { slug: "september-2026", label: "September 2026", href: "/update/september-2026/" },
+  ];
+  const root = document.getElementById("months");
+  UPDATES.forEach(function (u) {
+    const a = document.createElement("a");
+    a.className = "month";
+    a.href = u.href;
+    a.innerHTML = "<strong>" + u.label + "</strong><span>Open update</span>";
+    root.appendChild(a);
+  });
+})();
+</script>
+</body>
+</html>
