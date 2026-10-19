@@ -103,8 +103,8 @@
 <div class="sheet">
   <div class="wm">Travelpin</div>
   <div class="issue">Product updates</div>
-  <h1>Choose a month</h1>
-  <p class="lede">Each update is access-code gated. Same people, same code unless I send a new one.</p>
+  <h1>Opening the latest update</h1>
+  <p class="lede">If you are not redirected, pick a month below.</p>
   <div id="months"></div>
 </div>
 <script>
@@ -113,6 +113,11 @@
     { slug: "october-2026", label: "October 2026", href: "/update/october-2026/" },
     { slug: "september-2026", label: "September 2026", href: "/update/september-2026/" },
   ];
+  const latest = UPDATES[0];
+  if (latest && latest.href) {
+    window.location.replace(latest.href);
+    return;
+  }
   const root = document.getElementById("months");
   UPDATES.forEach(function (u) {
     const a = document.createElement("a");
