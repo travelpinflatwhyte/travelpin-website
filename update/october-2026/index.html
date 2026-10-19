@@ -646,6 +646,7 @@
 <script>
 (function () {
   const PAGE_SLUG = "october-2026";
+  const API_BASE = "https://travelpin-production.up.railway.app";
   const UPDATES = [
     { slug: "october-2026", label: "October 2026", href: "/update/october-2026/" },
     { slug: "september-2026", label: "September 2026", href: "/update/september-2026/" },
@@ -663,6 +664,26 @@
       window.location.href = select.value;
     }
   };
+
+  function track(eventName) {
+    try {
+      const url = API_BASE + "/v1/page-events?page=" + encodeURIComponent(PAGE_SLUG)
+        + "&event=" + encodeURIComponent(eventName)
+        + "&_=" + Date.now();
+      if (window.fetch) {
+        fetch(url, { method: "GET", mode: "cors", keepalive: true, credentials: "omit" })
+          .catch(function () {
+            var img = new Image();
+            img.src = url;
+          });
+      } else {
+        var img = new Image();
+        img.src = url;
+      }
+    } catch (_) {}
+  }
+
+  track("open");
 
   const preview = document.getElementById("sample-preview");
   const previewImg = document.getElementById("sample-preview-img");
