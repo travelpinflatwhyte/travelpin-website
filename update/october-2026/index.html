@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<meta name="googlebot" content="noindex, nofollow, noarchive"/>
+<title>Travelpin · October 2026</title>
+<meta name="description" content="Travelpin update — October 2026."/>
+<meta name="theme-color" content="#F5F7F9"/>
+<link rel="canonical" href="https://travelpinapp.com/update/october-2026"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap"/>
+<style>
+  :root {
+    --ground: #F5F7F9;
+    --surface: #FFFFFF;
+    --ink: #101823;
+    --ink-2: #58627A;
+    --ink-3: #8A93A6;
+    --navy: #011735;
+    --rule: #DCE2EA;
+    --display: "Newsreader", Georgia, serif;
+    --body: "Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+    --caveat: "Caveat", cursive;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #0A0E15; --surface: #141B25; --ink: #E9EDF3; --ink-2: #9BA5B8;
+      --ink-3: #6E7889; --navy: #9FC0E6; --rule: #27313F;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .sheet {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 36px 20px 64px;
+    min-height: 70vh;
+  }
+  .masthead {
+    border-bottom: 2px solid var(--navy);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+  .masthead-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .wordmark {
+    font-family: var(--caveat);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+  }
+  .issue {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  h1 {
+    font-family: var(--display);
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+    margin: 14px 0 0;
+  }
+  .byline {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    margin-top: 10px;
+    letter-spacing: 0.04em;
+  }
+  .month-inline { display: inline; }
+  .month-inline select {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed currentColor;
+    padding: 0 12px 1px 0;
+    margin: 0;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='6' viewBox='0 0 8 6'><path fill='%238A93A6' d='M0 0l4 6 4-6z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    background-size: 7px 5px;
+  }
+  .month-inline select:focus { outline: none; color: var(--navy); }
+  footer {
+    margin-top: 40px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: var(--ink-3);
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="wordmark">Travelpin</div>
+      <div class="issue">
+        Update ·
+        <span class="month-inline">
+          <select id="month-switch" aria-label="Choose month"></select>
+        </span>
+      </div>
+    </div>
+    <h1>October 2026</h1>
+    <div class="byline">Satish · Flatwhyte Technologies Pvt Ltd · iOS App Store since 11 June 2026</div>
+  </header>
+</div>
+<script>
+(function () {
+  const PAGE_SLUG = "october-2026";
+  const UPDATES = [
+    { slug: "october-2026", label: "October 2026", href: "/update/october-2026/" },
+    { slug: "september-2026", label: "September 2026", href: "/update/september-2026/" },
+  ];
+  const select = document.getElementById("month-switch");
+  UPDATES.forEach(function (u) {
+    const opt = document.createElement("option");
+    opt.value = u.href;
+    opt.textContent = u.label.toUpperCase();
+    if (u.slug === PAGE_SLUG) opt.selected = true;
+    select.appendChild(opt);
+  });
+  select.onchange = function () {
+    if (select.value && !select.value.endsWith("/" + PAGE_SLUG + "/")) {
+      window.location.href = select.value;
+    }
+  };
+})();
+</script>
+</body>
+</html>
