@@ -5,13 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>What your low-cost fare actually includes: cabin bag rules by airline | Travelpin</title>
 <meta name="description" content="Free cabin bag sizes, weights and what's included on eight major low-cost airlines, and the one bag size that fits all of them. Checked October 2026.">
-<link rel="canonical" href="https://travelpinapp.com/departures/low-cost-airline-cabin-bags">
+<link rel="canonical" href="https://travelpinapp.com/departures/low-cost-airline-cabin-bags/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The one bag that fits every budget airline">
 <meta property="og:description" content="What eight low-cost airlines include for free, and the one cabin bag size that works on all of them.">
-<meta property="og:url" content="https://travelpinapp.com/departures/low-cost-airline-cabin-bags">
+<meta property="og:url" content="https://travelpinapp.com/departures/low-cost-airline-cabin-bags/">
 <meta property="og:site_name" content="Travelpin">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://travelpinapp.com/departures/share/low-cost-airline-cabin-bags.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="A 54 by 35 by 20 cm cabin bag fits all eight low-cost airlines">
+<meta name="twitter:image" content="https://travelpinapp.com/departures/share/low-cost-airline-cabin-bags.png">
+
 <meta name="apple-itunes-app" content="app-id=6758201082">
 <link rel="icon" type="image/png" href="/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -184,6 +191,17 @@ footer nav a:hover{color:var(--text)}
 .scale span{font-size:13.5px;color:var(--soft)}
 .scale em{font-style:normal;font-size:12px;color:var(--muted);line-height:1.35}
 .scale figcaption{margin-top:10px;color:var(--muted);font-size:14.5px;line-height:1.55}
+
+/* Sharing */
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:1.5em 0}
+.share button,.secshare{font:500 15px/1 var(--sans);color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:11px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.share button:hover,.secshare:hover{border-color:rgba(243,199,79,.55)}
+.share button:focus-visible,.secshare:focus-visible{outline:2px solid var(--amber,#f3c74f);outline-offset:2px}
+.secshare{font-size:13px;padding:6px 10px;color:var(--muted);margin-left:10px;vertical-align:middle;letter-spacing:0}
+.secshare svg{width:13px;height:13px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#12233a;border:1px solid rgba(74,122,170,.4);color:#e9eff7;padding:10px 16px;border-radius:999px;font:500 14px var(--sans,system-ui);opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
 </style>
 </head>
 <body>
@@ -224,6 +242,8 @@ footer nav a:hover{color:var(--text)}
       <li><b>Add extras when you book, not at the gate.</b> Adding a large cabin bag at the gate costs £60 on easyJet, and an oversized bag at the gate costs US$55 per item on flydubai.</li>
     </ol>
   </section>
+
+  <div class="share"><button type="button" data-share><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Send this to whoever you're travelling with</button></div>
 
   <nav class="toc" aria-label="On this page">
     <p>Jump to</p>
@@ -401,6 +421,8 @@ footer nav a:hover{color:var(--text)}
     <p><b>On Scoot:</b> fine. Economy allows 10 kg across both bags.</p>
   </section>
 
+  <div class="share"><button type="button" data-share><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Send this to whoever you're travelling with</button></div>
+
   <section class="cta">
     <h2>Before you go</h2>
     <p>The cheapest fares work best when nothing surprises you, at the gate or on the day.</p>
@@ -457,6 +479,73 @@ footer nav a:hover{color:var(--text)}
       setTimeout(function step(){ if(n-->0){ t.textContent=pool[Math.floor(Math.random()*pool.length)]; setTimeout(step,45);} else t.textContent=ch; }, 150+i*40);
       i++;
     }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const canon=(document.querySelector('link[rel="canonical"]')||{}).href||location.href.split('#')[0];
+  const title=(document.querySelector('meta[property="og:title"]')||{}).content||document.title;
+  const toast=document.createElement('div'); toast.className='toast'; toast.setAttribute('role','status'); document.body.appendChild(toast);
+  let t; function say(msg){ toast.textContent=msg; toast.classList.add('on'); clearTimeout(t); t=setTimeout(()=>toast.classList.remove('on'),2200); }
+  function copyLink(url){
+    const done=()=>say('Link copied');
+    const show=()=>say(url);
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(url).then(done, fallback);
+      return;
+    }
+    fallback();
+    function fallback(){
+      const ta=document.createElement('textarea');
+      ta.value=url; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.left='-9999px';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){ show(); }
+      ta.remove();
+    }
+  }
+  let cardFile=null;
+  const img=(document.querySelector('meta[property="og:image"]')||{}).content;
+  if(img){
+    const name=img.split('/').pop().split('?')[0];
+    const paths=[new URL(img, location.href).pathname, 'share/'+name, '../share/'+name];
+    (async()=>{
+      for(const path of paths){
+        try{
+          const res=await fetch(path);
+          if(!res.ok) continue;
+          const blob=await res.blob();
+          cardFile=new File([blob], name, {type: blob.type||'image/png'});
+          return;
+        }catch(e){}
+      }
+    })();
+  }
+  function share(url,label){
+    const heading=label||title;
+    let data={title:heading, url};
+    if(cardFile){
+      const withCard={files:[cardFile], title:heading, text:url};
+      if(!navigator.canShare || navigator.canShare(withCard)) data=withCard;
+    }
+    if(navigator.share){
+      navigator.share(data).catch(err=>{ if(!err || err.name!=='AbortError') copyLink(url); });
+      return;
+    }
+    copyLink(url);
+  }
+  document.querySelectorAll('[data-share]').forEach(b=>b.addEventListener('click',()=>share(canon)));
+  const ICON='<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.querySelectorAll('article h2[id], .hub[id] h3').forEach(h=>{
+    const host=h.closest('.hub')||h; const id=host.id||h.id;
+    if(!id || ['quick'].includes(id)) return;
+    const name=h.textContent.replace(/\s+/g,' ').trim();
+    const b=document.createElement('button'); b.type='button'; b.className='secshare';
+    b.setAttribute('aria-label','Share this part: '+name); b.innerHTML=ICON+'<span>Share</span>';
+    b.addEventListener('click',()=>share(canon+'#'+id, title+' — '+name));
+    h.appendChild(b);
   });
 })();
 </script>

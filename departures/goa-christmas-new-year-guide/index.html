@@ -5,13 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Goa really celebrates Christmas and New Year | Travelpin</title>
 <meta name="description" content="Kuswar sweets, midnight Mass, glowing stars and the Old Man burning at midnight. A guide to Goa's December, beyond the beach parties.">
-<link rel="canonical" href="https://travelpinapp.com/departures/goa-christmas-new-year-guide">
+<link rel="canonical" href="https://travelpinapp.com/departures/goa-christmas-new-year-guide/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Christmas in Goa, beyond the parties">
 <meta property="og:description" content="How Goa really celebrates Christmas and New Year: kuswar sweets, December feasts, midnight Mass and the Old Man burning at midnight.">
-<meta property="og:url" content="https://travelpinapp.com/departures/goa-christmas-new-year-guide">
+<meta property="og:url" content="https://travelpinapp.com/departures/goa-christmas-new-year-guide/">
 <meta property="og:site_name" content="Travelpin">
 <meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://travelpinapp.com/departures/share/goa-christmas-new-year-guide.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="Christmas in Goa, beyond the parties">
+<meta name="twitter:image" content="https://travelpinapp.com/departures/share/goa-christmas-new-year-guide.png">
+
 <meta name="apple-itunes-app" content="app-id=6758201082">
 <link rel="icon" type="image/png" href="/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,9 +49,6 @@ img{max-width:100%}
 /* Nav */
 .nav{max-width:1080px;margin:0 auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--hand);font-weight:600;font-size:32px;color:var(--text);text-decoration:none;line-height:1}
-.nav-actions{display:flex;align-items:center;gap:22px}
-.nav-blog{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600}
-.nav-blog:hover{color:var(--text)}
 .btn{display:inline-block;font:600 15px/1 var(--sans);color:#04140d;background:var(--green);padding:12px 18px;border-radius:999px;text-decoration:none}
 .btn:hover{background:var(--green-hi)}
 
@@ -130,21 +134,30 @@ footer nav a:hover{color:var(--text)}
   .calendar time{text-align:left}
   .cta{padding:24px}
 }
+
+/* Sharing */
+.share{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:1.5em 0}
+.share button,.secshare{font:500 15px/1 var(--sans);color:var(--text);background:transparent;border:1px solid var(--line);border-radius:999px;padding:11px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.share button:hover,.secshare:hover{border-color:rgba(243,199,79,.55)}
+.share button:focus-visible,.secshare:focus-visible{outline:2px solid var(--amber,#f3c74f);outline-offset:2px}
+.secshare{font-size:13px;padding:6px 10px;color:var(--muted);margin-left:10px;vertical-align:middle;letter-spacing:0}
+.secshare svg{width:13px;height:13px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#12233a;border:1px solid rgba(74,122,170,.4);color:#e9eff7;padding:10px 16px;border-radius:999px;font:500 14px var(--sans,system-ui);opacity:0;transition:opacity .2s;pointer-events:none;z-index:20}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+h2[id]{scroll-margin-top:24px}
 </style>
 </head>
 <body>
 
 <header class="nav">
   <a class="logo" href="/">Travelpin</a>
-  <div class="nav-actions">
-    <a class="nav-blog" href="/departures/">Departures</a>
-    <a class="btn" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082">Get the app</a>
-  </div>
+  <a class="btn" href="https://apps.apple.com/us/app/travelpin-by-flatwhyte/id6758201082">Get the app</a>
 </header>
 
 <section class="hero">
   <div>
-    <p class="crumb"><a href="/">Travelpin</a> / <a href="/departures/">Departures</a> / Goa</p>
+    <p class="crumb"><a href="/departures/">Departures</a> / Goa</p>
     <h1>Christmas in Goa, beyond the parties</h1>
     <p class="sub">How Goa really celebrates Christmas and New Year</p>
     <p class="byline">By <b>Satish</b>, founder of Travelpin. A six-minute read.</p>
@@ -172,7 +185,9 @@ footer nav a:hover{color:var(--text)}
     <p>If you're going to Goa this December, here's how to see that side of it too: what to eat, what not to miss, and what to plan around.</p>
   </div>
 
-  <h2>What to eat</h2>
+  <div class="share"><button type="button" data-share><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Send this to whoever you're travelling with</button></div>
+
+  <h2 id="eat">What to eat</h2>
   <p>Goan Christmas is a food festival first. The centre of it is <strong>kuswar</strong>, a platter of homemade sweets that families make in the days before Christmas and share with neighbours, friends and colleagues. If a Goan friend hands you a plate, that's the greeting.</p>
   <p>You might find:</p>
 
@@ -192,7 +207,7 @@ footer nav a:hover{color:var(--text)}
   <p>You don't need a Goan friend to try them. In December, bakeries and home bakers across Goa sell kuswar boxes, and they make the best edible souvenir you can carry home.</p>
   <p><strong>Beyond the sweets.</strong> Christmas lunch is a family feast. If a restaurant offers a Christmas menu, look for sorpotel and sannas, or a pork vindaloo, the dishes Goan families cook for the day.</p>
 
-  <h2>What not to miss</h2>
+  <h2 id="see">What not to miss</h2>
   <p>December in Goa is a month of feasts, not just one night. Here's the calendar for 2026.</p>
 
   <ol class="calendar">
@@ -229,12 +244,14 @@ footer nav a:hover{color:var(--text)}
   <p class="tip"><strong>Walk Fontainhas at dusk.</strong> Panaji's old Latin quarter, with its painted houses and narrow lanes, looks its best with December lights.</p>
   <p class="tip"><strong>Go south for a quieter Christmas.</strong> If the north feels like one long party, the villages of South Goa keep Christmas closer to home.</p>
 
-  <h2>What to plan around</h2>
+  <h2 id="plan">What to plan around</h2>
   <p><strong>Two airports, far apart.</strong> Goa has two: Dabolim in the south and Mopa in the north. Check which one your flight uses before you book a stay. The drive between them is long, and longer in December traffic.</p>
   <p><strong>Book early.</strong> Flights and stays for the last two weeks of December fill up and get expensive. If your dates are fixed, book as soon as you can.</p>
   <p><strong>December traffic.</strong> The roads to the northern beaches crawl, especially in the evenings and around New Year's Eve. Leave much earlier than you think, particularly on the way to the airport.</p>
   <p><strong>Respect the feasts.</strong> Churches are places of worship first. Dress modestly, keep your phone quiet during Mass, and ask before photographing people.</p>
   <p><strong>New Year's Day is slow.</strong> Many places open late on 1 January. Plan an easy day.</p>
+
+  <div class="share"><button type="button" data-share><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Send this to whoever you're travelling with</button></div>
 
   <section class="cta">
     <h2>Before you go</h2>
@@ -277,5 +294,71 @@ footer nav a:hover{color:var(--text)}
   <span>© 2026 Travelpin</span>
 </footer>
 
+<script>
+(function(){
+  const canon=(document.querySelector('link[rel="canonical"]')||{}).href||location.href.split('#')[0];
+  const title=(document.querySelector('meta[property="og:title"]')||{}).content||document.title;
+  const toast=document.createElement('div'); toast.className='toast'; toast.setAttribute('role','status'); document.body.appendChild(toast);
+  let t; function say(msg){ toast.textContent=msg; toast.classList.add('on'); clearTimeout(t); t=setTimeout(()=>toast.classList.remove('on'),2200); }
+  function copyLink(url){
+    const done=()=>say('Link copied');
+    const show=()=>say(url);
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(url).then(done, fallback);
+      return;
+    }
+    fallback();
+    function fallback(){
+      const ta=document.createElement('textarea');
+      ta.value=url; ta.setAttribute('readonly','');
+      ta.style.position='fixed'; ta.style.left='-9999px';
+      document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){ show(); }
+      ta.remove();
+    }
+  }
+  let cardFile=null;
+  const img=(document.querySelector('meta[property="og:image"]')||{}).content;
+  if(img){
+    const name=img.split('/').pop().split('?')[0];
+    const paths=[new URL(img, location.href).pathname, 'share/'+name, '../share/'+name];
+    (async()=>{
+      for(const path of paths){
+        try{
+          const res=await fetch(path);
+          if(!res.ok) continue;
+          const blob=await res.blob();
+          cardFile=new File([blob], name, {type: blob.type||'image/png'});
+          return;
+        }catch(e){}
+      }
+    })();
+  }
+  function share(url,label){
+    const heading=label||title;
+    let data={title:heading, url};
+    if(cardFile){
+      const withCard={files:[cardFile], title:heading, text:url};
+      if(!navigator.canShare || navigator.canShare(withCard)) data=withCard;
+    }
+    if(navigator.share){
+      navigator.share(data).catch(err=>{ if(!err || err.name!=='AbortError') copyLink(url); });
+      return;
+    }
+    copyLink(url);
+  }
+  document.querySelectorAll('[data-share]').forEach(b=>b.addEventListener('click',()=>share(canon)));
+  const ICON='<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.querySelectorAll('article h2[id], .hub[id] h3').forEach(h=>{
+    const host=h.closest('.hub')||h; const id=host.id||h.id;
+    if(!id || ['quick'].includes(id)) return;
+    const name=h.textContent.replace(/\s+/g,' ').trim();
+    const b=document.createElement('button'); b.type='button'; b.className='secshare';
+    b.setAttribute('aria-label','Share this part: '+name); b.innerHTML=ICON+'<span>Share</span>';
+    b.addEventListener('click',()=>share(canon+'#'+id, title+' — '+name));
+    h.appendChild(b);
+  });
+})();
+</script>
 </body>
 </html>
