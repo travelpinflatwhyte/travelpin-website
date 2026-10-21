@@ -494,30 +494,8 @@ setInterval(() => {
       ta.remove();
     }
   }
-  let cardFile=null;
-  const img=(document.querySelector('meta[property="og:image"]')||{}).content;
-  if(img){
-    const name=img.split('/').pop().split('?')[0];
-    const paths=[new URL(img, location.href).pathname, 'share/'+name, '../share/'+name];
-    (async()=>{
-      for(const path of paths){
-        try{
-          const res=await fetch(path);
-          if(!res.ok) continue;
-          const blob=await res.blob();
-          cardFile=new File([blob], name, {type: blob.type||'image/png'});
-          return;
-        }catch(e){}
-      }
-    })();
-  }
   function share(url,label){
-    const heading=label||title;
-    let data={title:heading, url};
-    if(cardFile){
-      const withCard={files:[cardFile], title:heading, text:url};
-      if(!navigator.canShare || navigator.canShare(withCard)) data=withCard;
-    }
+    const data={title:label||title, url};
     if(navigator.share){
       navigator.share(data).catch(err=>{ if(!err || err.name!=='AbortError') copyLink(url); });
       return;
