@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://travelpinapp.com/departures/</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -39,6 +39,12 @@
   <url>
     <loc>https://travelpinapp.com/departures/travelpin-25</loc>
     <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://travelpinapp.com/departures/jet-lag</loc>
+    <lastmod>2026-10-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
