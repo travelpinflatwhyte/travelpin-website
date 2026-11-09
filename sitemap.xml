@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://travelpinapp.com/departures/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -45,6 +45,12 @@
   <url>
     <loc>https://travelpinapp.com/departures/jet-lag</loc>
     <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://travelpinapp.com/departures/india-rising-2027</loc>
+    <lastmod>2026-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
