@@ -1445,8 +1445,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 (function(){
   document.querySelectorAll('.tp-pill').forEach(function(a){
     var t=(+a.dataset.trips).toLocaleString('en-GB');
-    a.querySelector('.tp-pill__text').innerHTML='<b>'+t+' trips, one app.</b> Still juggling four<span class="tp-pill__long"> for yours</span>?';
-    a.setAttribute('aria-label',t+' trips, one app. Still juggling four for yours? See how it works.');
+    a.querySelector('.tp-pill__text').innerHTML='<b>'+t+' trips, one app.</b> Still juggling four apps<span class="tp-pill__long"> for yours</span>?';
+    a.setAttribute('aria-label',t+' trips, one app. Still juggling four apps for yours? See how it works.');
   });
 })();
 </script>
