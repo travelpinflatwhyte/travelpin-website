@@ -190,10 +190,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .tp-pill__text b{color:var(--tp-digit);font-weight:600}
 .tp-pill__arrow{color:var(--tp-muted);transition:transform .2s}
 .tp-pill:hover .tp-pill__arrow{transform:translateX(3px)}
+.hero .tp-pill{display:none}
 .tp-pill__short{display:none}
 @media (max-width:1100px){.tp-pill__wide{display:none}.tp-pill__short{display:inline}}
-@media (max-width:980px){.tp-pill__wide{display:inline}.tp-pill__short{display:none}}
-@media (max-width:640px){.tp-pill{font-size:13.5px;gap:8px}.tp-pill__wide{display:none}.tp-pill__short{display:inline}}
+@media (max-width:640px){.tp-pill{font-size:13.5px;gap:8px}}
 @media (prefers-reduced-motion:reduce){.tp-pill,.tp-pill__arrow{transition:none}}
 .nav-right{display:flex;align-items:center;gap:1.5rem;}
 .nav-link{font-size:13px;color:rgba(238,243,255,0.55);text-decoration:none;font-weight:500;}
@@ -350,12 +350,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
 .ap{font-size:11px;font-weight:600;padding:4px 9px;border-radius:7px;background:rgba(255,255,255,0.07);border:0.5px solid rgba(255,255,255,0.1);color:rgba(238,243,255,0.65);letter-spacing:0.04em;}
 
 @media (max-width:980px) {
-  nav{flex-direction:column;align-items:center;padding:0.6rem 1rem 0.7rem;}
-  .tp-pill{position:static;transform:none;order:0;margin:0 0 0.55rem;}
-  .tp-pill:hover{transform:translateY(-1px);}
-  .nav-bar{order:1;}
+  nav{padding:0.75rem 1rem;}
+  nav>.tp-pill{display:none;}
+  .hero .tp-pill{display:inline-flex;position:static;left:auto;top:auto;transform:none;max-width:100%;margin:0 auto 1rem;}
+  .hero .tp-pill:hover{transform:translateY(-1px);}
   .nav-btn{padding:8px 14px;font-size:13px;}
-  .hero{padding-top:118px;padding-left:1.2rem;padding-right:1.2rem;}
+  .hero{padding-top:5.5rem;padding-left:1.2rem;padding-right:1.2rem;}
 }
 @media (max-width:768px) {
   .hero-h1,.hero-h1-2{font-size:clamp(36px,10vw,52px);letter-spacing:-2px;}
@@ -1444,6 +1444,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
     <span class="tp-pill__arrow" aria-hidden="true">&rarr;</span>
   </a>
 </nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+
+    <a class="tp-pill" href="#journey" data-trips="100">
+      <span class="tp-pill__badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.5 12c0-.8-.7-1.3-1.5-1.3h-5.2L9.6 3.3H7.8l2.6 7.4H5.6L3.9 8.6H2.5l1 3.4-1 3.4h1.4l1.7-2.1h4.8l-2.6 7.4h1.8l5.2-7.4H20c.8 0 1.5-.5 1.5-1.3z" fill="currentColor"/></svg></span>
+      <span class="tp-pill__text"></span>
+      <span class="tp-pill__arrow" aria-hidden="true">&rarr;</span>
+    </a>
+    <p class="eyebrow">Travelpin · iOS travel app</p>
 <script>
 (function(){
   document.querySelectorAll('.tp-pill').forEach(function(a){
@@ -1452,12 +1463,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2.5rem;displa
   });
 })();
 </script>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-
-    <p class="eyebrow">Travelpin · iOS travel app</p>
     <h1 class="hero-h1-wrap">
       <span class="sr-only">Travelpin — travel app for flights, packing, leave time, and memories. </span>
       <span class="hero-h1" aria-hidden="true">Travel today is</span>
